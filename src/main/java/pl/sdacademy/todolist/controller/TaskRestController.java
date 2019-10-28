@@ -3,51 +3,49 @@ package pl.sdacademy.todolist.controller;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.sdacademy.todolist.dto.PageDto;
-import pl.sdacademy.todolist.entity.Task;
-import pl.sdacademy.todolist.service.TaskService;
+import pl.sdacademy.todolist.entity.Order;
+import pl.sdacademy.todolist.service.OrderService;
 
 import javax.validation.Valid;
-import java.util.Collection;
 import java.util.List;
 
 @Slf4j
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/api/tasks/")
+@RequestMapping("/api/orders/")
 public class TaskRestController {
 
-    private final TaskService taskService;
+    private final OrderService orderService;
 
 
-    @GetMapping
-    public List<Task> findAll(@Valid PageDto page) {
-        return taskService.findAllByDto(page);
-    }
+//    @GetMapping
+//    public List<Order> findAll(@Valid PageDto page) {
+//        return orderService.findAllByDto(page);
+//    }
 
     @GetMapping("/{id}")
-    public Task findTask(@PathVariable Long id) {
-        return taskService.find(id);
+    public Order findOrder(@PathVariable Long id) {
+        return orderService.find(id);
     }
 
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
-    public Task addTask(@Valid @RequestBody Task task) {
-        return taskService.create(task);
+    public Order addOrder(@Valid @RequestBody Order order) {
+        return orderService.create(order);
     }
 
     @PutMapping("/{id}")
-    public Task task(@Valid @RequestBody Task task, @PathVariable Long id) {
-        task.setId(id);
-        return taskService.update(task);
+    public Order order(@Valid @RequestBody Order order, @PathVariable Long id) {
+        order.setId(id);
+        return orderService.update(order);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteTask(@PathVariable Long id) {
-        taskService.delete(id);
+    public void deleteOrder(@PathVariable Long id) {
+        orderService.delete(id);
     }
 }
 

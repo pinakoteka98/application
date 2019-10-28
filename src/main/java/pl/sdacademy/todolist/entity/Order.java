@@ -6,33 +6,40 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Data
 @Entity
-@Table (name="tasks")
-public class Task {
+@Table (name="orders")
+public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotBlank
-    @Length(min=3)
-    private String description;
+    private String orderNo;
 
-    @Future
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date timeLimit;
+    private LocalDate dateOfOrder;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate estimatedDate;
+
+    @NotNull
+    private Long value;
 
     @NotNull
     @Enumerated(EnumType.STRING)
-    private Priority priority;
+    private Status status;
 
-    private boolean isFinished;
+    @NotNull
+    private Long phoneNumber;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name="user_id")
-    private User user;
+    private String comments;
+
+//    @ManyToOne(optional = false)
+//    @JoinColumn(name="user_id")
+//    private User user;
 
 }
