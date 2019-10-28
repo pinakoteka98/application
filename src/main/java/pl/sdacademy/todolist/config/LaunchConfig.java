@@ -16,15 +16,15 @@ public class LaunchConfig {
     @EventListener(ApplicationReadyEvent.class)
     public void loadRoles() {
 
-        Role roleAdmin = roleRepository.findByRole("ROLE_ADMIN");
-        Role roleUser = roleRepository.findByRole("ROLE_USER");
+        Role roleAdmin = roleRepository.findByRole("ADMIN");
+        Role roleUser = roleRepository.findByRole("USER");
 
         if (roleAdmin == null) {
-            roleAdmin = new Role(1L, "ROLE_ADMIN");
+            roleAdmin = new Role(1L, "ADMIN");
             roleRepository.save(roleAdmin);
         }
         if (roleUser == null) {
-            roleUser = new Role(2L, "ROLE_USER");
+            roleUser = new Role(2L, "USER");
             roleRepository.save(roleUser);
         }
     }
