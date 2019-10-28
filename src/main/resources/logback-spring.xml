@@ -1,0 +1,35 @@
+<configuration>
+    ​
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>[%d{yyyy-MM-dd' 'HH:mm:ss.SSS}]	[%C] [%t] [%L] [%p] %m%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder>
+            <pattern>[%d{yyyy-MM-dd' 'HH:mm:ss.SSS}]	[%C] [%t] [%L] [%p] %m%n</pattern>
+        </encoder>
+        <file>.logs/usersapp.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>.logs/archived/usersapp_%d{yyyy-MM-dd}_%i.log</fileNamePattern>
+            <maxFileSize>2MB</maxFileSize>
+            <maxHistory>10</maxHistory>
+            <totalSizeCap>25MB</totalSizeCap>
+        </rollingPolicy>
+    </appender>
+    <root level="DEBUG">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="FILE"/>
+    </root>
+    <logger name="org.hibernate" additivity="false" level="DEBUG">
+        <appender-ref ref="STDOUT"/>
+        <!--        <appender-ref ref="FILE"/>-->
+    </logger>
+    <logger name="org.springframework.web" additivity="false" level="INFO">
+        <appender-ref ref="STDOUT"/>	<!-- te logi od razu mają trafic do pliku -->
+    </logger>
+    <logger name="pl.sdacademy.todolist" additivity="false" level="DEBUG">
+        <appender-ref ref="STDOUT"/>
+        <!--        <appender-ref ref="FILE"/>-->
+    </logger>
+</configuration>
