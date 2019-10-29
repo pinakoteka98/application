@@ -6,11 +6,11 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 @Data
-public class TaskDto {
+public class OrderDto {
 
     @Size(min = 2)
     @NotBlank
-    private String description;
+    private String orderNo;
 }
 
 
