@@ -18,7 +18,7 @@
                 <form method="post" th:action="@{addorder}" th:object="${order}">
                     <div class="row">
                         <div class="form-group col-md-8">
-                            <label for="orderNo" class="col-form-label">Order No.</label>
+                            <label for="orderNo" class="sr-only">Order No.</label>
                             <input type="text" th:field="*{orderNo}" name="orderNo" class="form-control"
                                    id="orderNo" placeholder="enter order number">
                         </div>
@@ -42,12 +42,17 @@
                             </select>
                         </div>
                         <div class="form-group col-md-8">
-                            <label for="phoneNumber" class="col-form-label">Phone number</label>
+                            <label for="phoneNumber" class="sr-only">Phone number</label>
                             <input type="text" th:field="*{phoneNumber}" class="form-control" id="phoneNumber"
                                    placeholder="Phone number 9-digits">
                         </div>
                         <div class="form-group col-md-8">
-                            <label for="comments" class="col-form-label">Comments</label>
+                            <label for="value" class="sr-only">Value</label>
+                            <input type="text" th:field="*{value}" class="form-control" id="value"
+                                   placeholder="Enter value">
+                        </div>
+                        <div class="form-group col-md-8">
+                            <label for="comments" class="sr-only">Comments</label>
                             <input type="text" th:field="*{comments}" class="form-control" id="comments"
                                    placeholder="Comments to the order">
                         </div>
