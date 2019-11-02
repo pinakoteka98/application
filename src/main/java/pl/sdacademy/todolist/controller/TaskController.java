@@ -8,8 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import pl.sdacademy.todolist.entity.Task;
-import pl.sdacademy.todolist.service.TaskService;
+import pl.sdacademy.todolist.dto.OrderDto;
+import pl.sdacademy.todolist.entity.Order;
+import pl.sdacademy.todolist.service.OrderService;
 
 import javax.validation.Valid;
 import java.security.Principal;
@@ -20,28 +21,28 @@ import java.util.List;
 @Controller
 public class TaskController {
 
-    private final TaskService taskService;
+    private final OrderService taskService;
 
-    @GetMapping({"/", "index"})
-    public String showTasks(Model model) {
-        log.info("get tasks list");
-        List<Task> tasks = taskService.findAll();
-        model.addAttribute("tasks", tasks);
-        return "index";
-    }
+//    @GetMapping({"/", "index"})
+//    public String showTasks(Model model) {
+//        log.info("get tasks list");
+//        List<Order> tasks = taskService.findAll();
+//        model.addAttribute("tasks", tasks);
+//        return "index";
+//    }
 
     @GetMapping("/addtask")
     public String taskList(Model model, Principal principal) {
-        List<Task> tasks = taskService.findAll();
+        List<Order> tasks = taskService.findAll();
         model.addAttribute("tasks", tasks);
-        model.addAttribute("task", new Task());
+        model.addAttribute("task", new OrderDto());
         return "add";
     }
 
     @PostMapping("addtask")
-    public String addTask(@Valid Task task, Principal principal) {
+    public String addTask(@Valid OrderDto order, Principal principal) {
         log.info("add task");
-        taskService.create(task);
+        taskService.create(order);
         return "redirect:index";
     }
 
@@ -53,13 +54,13 @@ public class TaskController {
 
     @GetMapping("edit/{id}")
     public String edit(@PathVariable("id") Long id, Model model) {
-        Task taskToEdit = taskService.find(id);
-        model.addAttribute("task", taskToEdit);
+        Order orderToEdit = taskService.find(id);
+        model.addAttribute("task", orderToEdit);
         return "edit";
     }
 
     @PostMapping("edit")
-    public String editTask(@ModelAttribute("task") Task task) {
+    public String editTask(@ModelAttribute("task") Order task) {
         taskService.update(task);
         return "redirect:index";
     }

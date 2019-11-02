@@ -38,8 +38,8 @@ public class Order {
 
     private String comments;
 
-//    @ManyToOne(optional = false)
-//    @JoinColumn(name="user_id")
-//    private User user;
+    @ManyToOne(optional = false)
+    @JoinColumn(name="user_id")
+    private User user;
 
 }
