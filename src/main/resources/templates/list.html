@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>strefa klienta</title>
-    <link href="../static/css/style.css" rel="stylesheet" type="text/css" media="screen"
-          th:href="@{/static/css/style.css}">
+    <title>Lista zamówień</title>
+    <link href="../static/css/style.css" th:href="@{/static/css/style.css}" type="text/css" rel="stylesheet"/>
+    <link href="../static/css/list.css" th:href="@{/static/css/list.css}" type="text/css" rel="stylesheet"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link href='//lucas-rfgv.format.com/stylesheet.css?v=2019-10-30T10:05:15Z' media='screen' rel='stylesheet'
@@ -87,47 +87,44 @@
 
 </head>
 <body>
-<!--<div th:replace="fragments :: header"></div>-->
-<!--<div th:replace="fragments :: language"></div>-->
 
 
 <div id="content">
     <div class="container loaded">
         <div class="_4ORMAT_content_wrapper" id="content_page_wrapper">
+
             <div class="_4ORMAT_content_page_row _4ormat_sort_item _4ORMAT_module_contact_10">
-                <div class=" align_center">
+                <h2 style="text-align: center">Lista zamówień</h2>
+                <br>
+                <div th:switch="${orders}" class="">
 
-                    <form th:action="@{/menu}" method="post">
-                        <div class="fourcol test">
-                            <a style="display:block" th:href="@{list}" id="test1">
-                                <img src="/images/list.svg" title="lista zamówień">
-                                <i class="menu"></i>
-                                <br>
-                                <h2>Lista zamówień</h2>
+                    <table class="">
+                        <thead style="width:100%">
+                        <tr>
+                            <th>Numer zamówienia</th>
+                            <th>Data złożenia zamówienia</th>
+                            <th>Przewidywany termin realizacji</th>
+                            <th>Status realizacji zamówienia</th>
+                            <th>Wartość</th>
+                        </tr>
 
-                            </a>
-                        </div>
-                        <div class="fourcol test">
-                            <a style="display:block" href="#" id="test2">
-                                <img src="/images/clock.svg" title="rezerwacja wizyty">
-                                <i class="menu"></i>
-                                <br>
-                                <h2>Rezerwacja wizyty</h2>
+                        <tbody>
+                        <tr th:each="order : ${orders}">
+                            <td style="font-weight: 700" th:text="${order.orderNo}"></td>
+                            <td th:text="${order.dateOfOrder}"></td>
+                            <td th:text="${order.estimatedDate}"></td>
+                            <td th:switch="${order.status}">
+                                <span style="color:red" th:case="${order.status.INPROGRESS}">w trakcie realizacji</span>
+                                <span style="color:green" th:case="${order.status.READY}">gotowe, oczekuje na odbiór</span>
+                                <span style="color:darkblue" th:case="${order.status.RECEIVED}">odebrane</span>
+                            </td>
+                            <td th:text="${order.value + ' zł'}"></td>
 
-                            </a>
-                        </div>
-                        <div class="fourcol last test">
-                            <a style="display:block" href="#" id="test3">
-                                <img src="images/help.svg" title="usługi dodatkowe">
-                                <i class="menu"></i>
-                                <br>
-                                <h2>Usługi dodatkowe</h2>
-
-                            </a>
-                        </div>
-
-                    </form>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
+
             </div>
         </div>
     </div>
@@ -151,5 +148,6 @@
         type='text/javascript'>
 
 </script>
+
 </body>
 </html>

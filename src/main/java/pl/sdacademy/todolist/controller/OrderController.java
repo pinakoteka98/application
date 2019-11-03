@@ -37,6 +37,14 @@ public class OrderController {
         return "menu";
     }
 
+    @GetMapping({"list"})
+    public String showListOfOrders(Model model) {
+        log.info("list of orders");
+        List<Order> orders = orderService.findAll();
+        model.addAttribute("orders", orders);
+        return "list";
+    }
+
     @GetMapping("/addorder")
     public String taskList(Model model, Principal principal) {
         List<Order> orders = orderService.findAll();

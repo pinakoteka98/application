@@ -1,0 +1,17 @@
+table {
+    table-layout: auto;
+    padding: 20px;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 2px solid transparent;
+    text-align: left;
+    padding: 12px;
+
+}
+
+tr:nth-child {
+    background-color: #f2f2f2;
+}
