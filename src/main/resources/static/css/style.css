@@ -1,0 +1,21 @@
+.test{
+    padding: 10px;
+    border: solid rgba(85, 85, 85, 0.3) 1px;
+    background-color: white;
+    font-family: "Roboto Light";
+    text-decoration: none;
+}
+
+.test:hover{
+    transition: 0.8s;
+    transition-timing-function: ease-in-out;
+    background-color: lightgrey;
+}
+
+a:link, a:hover, a:visited, a:active{
+    text-decoration: none;
+}
+
+#test1, #test2, #test3{
+    text-decoration: none;
+}

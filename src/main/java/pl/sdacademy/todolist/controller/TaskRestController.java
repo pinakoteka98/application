@@ -4,18 +4,17 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import pl.sdacademy.todolist.dto.PageDto;
+import pl.sdacademy.todolist.dto.OrderDto;
 import pl.sdacademy.todolist.entity.Order;
 import pl.sdacademy.todolist.service.OrderService;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @Slf4j
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/orders/")
-public class OrderRestController {
+public class TaskRestController {
 
     private final OrderService orderService;
 
@@ -33,7 +32,7 @@ public class OrderRestController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
-    public Order addOrder(@Valid @RequestBody Order order) {
+    public Order addOrder(@Valid @RequestBody OrderDto order) {
         return orderService.create(order);
     }
 
@@ -48,4 +47,3 @@ public class OrderRestController {
         orderService.delete(id);
     }
 }
-
