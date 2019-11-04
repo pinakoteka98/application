@@ -108,10 +108,11 @@
                                         <fieldset class>
                                             <input class-="_4ORMAT_module_contact_input" id="username" type="text"
                                                    th:field="*{phoneNumber}"
-                                                   style="border-color: rgba(85, 85, 85, 0.3); border-bottom-width: 1px">
+                                                   style="border-color: rgba(85, 85, 85, 0.3); border-bottom-width: 1px" placeholder="Numer telefonu">
                                             <div class="_4ORMAT_module_contact_label  " data-editable-type="label"
-                                                 data-force-html-mode="false">Numer telefonu
+                                                 data-force-html-mode="false" >
                                             </div>
+                                            <span class="error" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></span>
                                         </fieldset>
                                     </div>
                                 </div>
@@ -119,11 +120,13 @@
                                     <div class="twelvecol last">
                                         <fieldset class>
                                             <input class-="_4ORMAT_module_contact_input invalid" id="email" name="email"
-                                                   type="email" data-validate="email" data-original-title="adres e-mail jest wymagany" th:field="*{email}"
-                                                   style="border-color: rgba(85, 85, 85, 0.3); border-bottom-width: 1px">
+                                                   type="text" th:field="*{email}"
+                                                   style="border-color: rgba(85, 85, 85, 0.3); border-bottom-width: 1px"
+                                                   placeholder="E-mail">
                                             <div class="_4ORMAT_module_contact_label  " data-editable-type="label"
-                                                 data-force-html-mode="false">E-mail
+                                                 data-force-html-mode="false">
                                             </div>
+                                            <span class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
                                         </fieldset>
                                     </div>
                                 </div>
@@ -132,11 +135,12 @@
                                         <fieldset class>
                                             <input class-="_4ORMAT_module_contact_input" id="password" name="password"
                                                    type="password" th:field="*{password}"
-                                                   style="border-color: rgba(85, 85, 85, 0.3); border-bottom-width: 1px">
+                                                   style="border-color: rgba(85, 85, 85, 0.3); border-bottom-width: 1px" placeholder = "Hasło">
                                             <div class="_4ORMAT_module_contact_label" data-editable-type="label"
                                                  id="label_3"
-                                                 data-force-html-mode="false">Hasło
+                                                 data-force-html-mode="false" >
                                             </div>
+                                            <span class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
                                         </fieldset>
                                     </div>
                                 </div>
