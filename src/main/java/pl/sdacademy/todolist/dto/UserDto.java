@@ -2,6 +2,7 @@ package pl.sdacademy.todolist.dto;
 
 import lombok.Data;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
@@ -10,17 +11,19 @@ import javax.validation.constraints.NotBlank;
 public class UserDto {
 
     @NotBlank
-    @Max(255)
-    private String firstName;
-
-    @NotBlank
-    @Min(4)
-    @Max(255)
-    private String username;
+    @Min(9)
+    @Max(9)
+    private String phoneNumber;
 
     @NotBlank
     @Min(6)
     @Max(255)
     private String password;
+
+    @NotBlank
+    @Email
+    @Min(6)
+    @Max(255)
+    private String email;
 
 }

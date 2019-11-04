@@ -34,7 +34,7 @@ public class Order {
     private Status status;
 
     @NotNull
-    private Long phoneNumber;
+    private String phoneNumber;
 
     private String comments;
 

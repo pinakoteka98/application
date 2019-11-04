@@ -32,7 +32,7 @@ public class OrderDto {
     private Status status;
 
     @NotNull
-    private Long phoneNumber;
+    private String phoneNumber;
 
     private String comments;
 }

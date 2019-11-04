@@ -1,15 +1,11 @@
 package pl.sdacademy.todolist.service;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
-import org.thymeleaf.util.StringUtils;
 import pl.sdacademy.todolist.dto.OrderDto;
-import pl.sdacademy.todolist.dto.PageDto;
 import pl.sdacademy.todolist.entity.Order;
+import pl.sdacademy.todolist.entity.User;
 import pl.sdacademy.todolist.exception.EntityNotFoundException;
 import pl.sdacademy.todolist.repository.OrderRepository;
 import pl.sdacademy.todolist.repository.UserRepository;
@@ -17,6 +13,7 @@ import pl.sdacademy.todolist.repository.UserRepository;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 
 @RequiredArgsConstructor
@@ -39,12 +36,26 @@ public class OrderService {
         return orderRepository.findAll();
     }
 
+    public List<Order> findAllByPhoneNumber(String phoneNumber) {
+        return orderRepository.findAllByPhoneNumber(phoneNumber);
+    }
+
     public Order find(Long id) {
         return orderRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException(id));
     }
 
     public Order create(OrderDto orderDto) {
+        User user = null;
+        Optional<User> userOptional = userRepository.findUserByPhoneNumber(orderDto.getPhoneNumber());
+        if(userOptional.isPresent()){
+            user = userOptional.get();
+        } else {
+            user = new User();
+            user.setPhoneNumber(orderDto.getPhoneNumber());
+            userRepository.save(user);
+        }
+
         Order orderEntity = new Order();
         orderEntity.setComments(orderDto.getComments());
         orderEntity.setDateOfOrder(orderDto.getDateOfOrder());
@@ -53,6 +64,7 @@ public class OrderService {
         orderEntity.setPhoneNumber(orderDto.getPhoneNumber());
         orderEntity.setStatus(orderDto.getStatus());
         orderEntity.setValue(orderDto.getValue());
+        orderEntity.setUser(user);
         return orderRepository.save(orderEntity);
     }
 

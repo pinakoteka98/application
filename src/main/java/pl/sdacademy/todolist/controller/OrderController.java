@@ -26,7 +26,7 @@ public class OrderController {
         log.info("get tasks list");
         List<Order> orders = orderService.findAll();
         model.addAttribute("orders", orders);
-        return "index";
+        return "menu";
     }
 
     @GetMapping({"menu"})
@@ -38,9 +38,9 @@ public class OrderController {
     }
 
     @GetMapping({"list"})
-    public String showListOfOrders(Model model) {
+    public String showListOfOrders(Model model, Principal principal) {
         log.info("list of orders");
-        List<Order> orders = orderService.findAll();
+        List<Order> orders = orderService.findAllByPhoneNumber(principal.getName());
         model.addAttribute("orders", orders);
         return "list";
     }

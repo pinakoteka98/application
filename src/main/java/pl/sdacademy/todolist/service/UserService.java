@@ -10,8 +10,8 @@ import pl.sdacademy.todolist.entity.User;
 import pl.sdacademy.todolist.repository.RoleRepository;
 import pl.sdacademy.todolist.repository.UserRepository;
 
-import javax.transaction.Transactional;
 import java.util.Collections;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
@@ -22,15 +22,23 @@ public class UserService {
     private final RoleRepository roleRepository;
 
 
-    public void create (UserDto userDto){
-        User entity= new User();
+    public void create(UserDto userDto) {
+        User entity = null;
         Role role = roleRepository.findByRole("USER");
 
-        entity.setFirstName(userDto.getFirstName());
-        entity.setUsername(userDto.getUsername());
-        entity.setRoles(Collections.singleton(role));
+        Optional<User> user = userRepository.findUserByPhoneNumber(userDto.getPhoneNumber());
+        if (user.isPresent()) {
+            entity = user.get();
+        }
+        else {
+            entity = new User();
+            entity.setRoles(Collections.singleton(role));
+            entity.setPhoneNumber(userDto.getPhoneNumber());
+        }
+
         String encodedPassword = passwordEncoder.encode(userDto.getPassword());
         entity.setPassword(encodedPassword);
+        entity.setEmail(userDto.getEmail());
         userRepository.save(entity);
 
     }

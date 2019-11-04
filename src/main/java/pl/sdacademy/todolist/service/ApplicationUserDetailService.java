@@ -19,12 +19,12 @@ public class ApplicationUserDetailService implements UserDetailsService {
 
     @Override
     @Transactional
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User entity = userRepository.findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("User " + username + " not found"));
+    public UserDetails loadUserByUsername(String phoneNumber) throws UsernameNotFoundException {
+        User entity = userRepository.findUserByPhoneNumber(phoneNumber)
+                .orElseThrow(() -> new UsernameNotFoundException("User " + phoneNumber + " not found"));
         String[] roles = entity.getRoles().stream().map(Role::getRole).toArray(String[]::new);
         return org.springframework.security.core.userdetails.User
-                .withUsername(entity.getUsername()).password(entity.getPassword()).roles(roles)
+                .withUsername(entity.getPhoneNumber()).password(entity.getPassword()).roles(roles)
                 .build();
     }
 }

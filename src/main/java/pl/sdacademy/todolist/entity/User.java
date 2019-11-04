@@ -17,14 +17,10 @@ public class User {
 
     @NotNull
     @Column(nullable=false, unique = true)
-    private String username;
+    private String phoneNumber;
 
-    @NotNull
-    @Column(nullable=false)
-    private String firstName;
+    private String email;
 
-    @NotNull
-    @Column(nullable=false)
     private String password;
 
     @ManyToMany(cascade = CascadeType.ALL)
