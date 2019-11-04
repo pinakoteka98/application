@@ -3,7 +3,6 @@ package pl.sdacademy.todolist.validators;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.Errors;
-import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 import pl.sdacademy.todolist.dto.UserDto;
 import pl.sdacademy.todolist.utils.AppUtils;
@@ -20,12 +19,8 @@ public class RegisterValidator implements Validator {
     public void validate(Object o, Errors errors) {
         UserDto userDto = (UserDto) o;
 
-//        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "phoneNumber", "error.phoneNumber.empty");
-//        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "error.email.empty");
-//        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "error.password.empty");
-
         if (StringUtils.isNotBlank(userDto.getPhoneNumber())) {
-            boolean matchPhoneNumber = AppUtils.validateEmailOrPassword(Consts.CELLPHONE_NUMBER, userDto.getPhoneNumber());
+            boolean matchPhoneNumber = AppUtils.validateData(Consts.CELLPHONE_NUMBER, userDto.getPhoneNumber());
             if (!matchPhoneNumber) {
                 errors.rejectValue("phoneNumber", "error.userPhoneIsNotMatch");
             }
@@ -34,7 +29,7 @@ public class RegisterValidator implements Validator {
         }
 
         if (StringUtils.isNotBlank(userDto.getEmail())) {
-            boolean matchEmail = AppUtils.validateEmailOrPassword(Consts.EMAIL_PATTERN, userDto.getEmail());
+            boolean matchEmail = AppUtils.validateData(Consts.EMAIL_PATTERN, userDto.getEmail());
             if (!matchEmail) {
                 errors.rejectValue("email", "error.userEmailIsNotMatch");
             }
@@ -43,7 +38,7 @@ public class RegisterValidator implements Validator {
         }
 
         if (StringUtils.isNotBlank(userDto.getPassword())) {
-            boolean matchPassword = AppUtils.validateEmailOrPassword(Consts.PASSWORD_PATTERN, userDto.getPassword());
+            boolean matchPassword = AppUtils.validateData(Consts.PASSWORD_PATTERN, userDto.getPassword());
             if (!matchPassword) {
                 errors.rejectValue("password", "error.userPasswordIsNotMatch");
             }

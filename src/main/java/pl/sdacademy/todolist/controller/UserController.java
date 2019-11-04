@@ -19,6 +19,11 @@ public class UserController {
     private final UserService userService;
     private final RegisterValidator registerValidator;
 
+    @GetMapping(value = "/login")
+    public String showLoginPage() {
+        return "login";
+    }
+
     @GetMapping("/register")
     public String register(Model model){
         model.addAttribute("userForm", new UserDto());
