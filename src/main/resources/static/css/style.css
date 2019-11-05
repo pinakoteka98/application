@@ -1,4 +1,4 @@
-.test{
+.test {
     padding: 10px;
     border: solid rgba(85, 85, 85, 0.3) 1px;
     background-color: white;
@@ -6,16 +6,43 @@
     text-decoration: none;
 }
 
-.test:hover{
-    transition: 0.8s;
+.test:hover {
+    transition: 500ms;
     transition-timing-function: ease-in-out;
-    background-color: lightgrey;
+    background-color: #f2f2f2;
 }
 
-a:link, a:hover, a:visited, a:active{
+a:link, a:hover, a:visited, a:active {
     text-decoration: none;
 }
 
-#test1, #test2, #test3{
+#test1, #test2, #test3 {
     text-decoration: none;
 }
+
+.register:link, .register:visited, .register:active {
+    text-decoration: none;
+}
+
+.register {
+    font-size: 16px;
+}
+
+.register2 {
+    font-size: 16px;
+}
+
+.register:hover {
+    color: #555555;
+}
+
+input::placeholder {
+    font-family: "Planet Light"
+}
+
+textarea::placeholder {
+    font-family: "Planet Light"
+}
+
+
+

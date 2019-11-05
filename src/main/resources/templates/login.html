@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Register</title>
+    <title>logowanie</title>
     <link href="../static/css/style.css" th:href="@{/static/css/style.css}" type="text/css" rel="stylesheet"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -130,7 +130,7 @@
                                     </fieldset>
                                 </div>
                             </div>
-                            <div class = "error" th:if="${#httpServletRequest.getParameter('error') == 'true'}" th:with="errorMsg=#{error.logging}">
+                            <div class = "error" style="color: #e80404" th:if="${#httpServletRequest.getParameter('error') == 'true'}" th:with="errorMsg=#{error.logging}">
                                 <p class="errorMsg"><span th:text="${errorMsg}"></span></p>
                             </div>
                             <fieldset class="submit _4ORMAT_module_submit_left">
@@ -144,6 +144,13 @@
                                 </div>
                             </fieldset>
                         </form>
+                        <div class="_4ORMAT_content_page_row">
+                            <h4 class="register2">
+                                Nie masz konta?
+                                <a class="register" title="Zarejestruj się" href="/register">Zarejestruj się
+                                </a>
+                            </h4>
+                        </div>
                         <div class="fourcol spacer last">
                         </div>
                     </div>

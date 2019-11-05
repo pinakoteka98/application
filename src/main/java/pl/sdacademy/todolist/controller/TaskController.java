@@ -31,37 +31,5 @@ public class TaskController {
 //        return "index";
 //    }
 
-    @GetMapping("/addtask")
-    public String taskList(Model model, Principal principal) {
-        List<Order> tasks = taskService.findAll();
-        model.addAttribute("tasks", tasks);
-        model.addAttribute("task", new OrderDto());
-        return "add";
-    }
 
-    @PostMapping("addtask")
-    public String addTask(@Valid OrderDto order, Principal principal) {
-        log.info("add task");
-        taskService.create(order);
-        return "redirect:index";
-    }
-
-    @GetMapping("delete/{id}")
-    public String deleteTask(@PathVariable Long id) {
-        taskService.delete(id);
-        return "redirect:/index";
-    }
-
-    @GetMapping("edit/{id}")
-    public String edit(@PathVariable("id") Long id, Model model) {
-        Order orderToEdit = taskService.find(id);
-        model.addAttribute("task", orderToEdit);
-        return "edit";
-    }
-
-    @PostMapping("edit")
-    public String editTask(@ModelAttribute("task") Order task) {
-        taskService.update(task);
-        return "redirect:index";
-    }
 }

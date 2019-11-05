@@ -5,6 +5,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import pl.sdacademy.todolist.dto.OrderDto;
 import pl.sdacademy.todolist.entity.Order;
@@ -45,8 +47,24 @@ public class OrderController {
         return "list";
     }
 
+    @GetMapping({"orders"})
+    public String Orders(Model model) {
+        log.info("show orders");
+        List<Order> orders = orderService.findAll();
+        model.addAttribute("orders", orders);
+        return "orders";
+    }
+
+    @GetMapping({"services"})
+    public String Services(Model model) {
+        log.info("additional services");
+        List<Order> orders = orderService.findAll();
+        model.addAttribute("orders", orders);
+        return "services";
+    }
+
     @GetMapping("/addorder")
-    public String taskList(Model model, Principal principal) {
+    public String orderList(Model model, Principal principal) {
         List<Order> orders = orderService.findAll();
         model.addAttribute("orders", orders);
         model.addAttribute("order", new Order());
@@ -54,9 +72,23 @@ public class OrderController {
     }
 
     @PostMapping("/addorder")
-    public String addTask(@Valid OrderDto order, Principal principal) {
+    public String addOrder(@Valid OrderDto order, Principal principal) {
         log.info("add task");
         orderService.create(order);
         return "redirect:index";
     }
+
+    @GetMapping("edit/{id}")
+    public String edit(@PathVariable("id") Long id, Model model) {
+        Order orderToEdit = orderService.find(id);
+        model.addAttribute("order", orderToEdit);
+        return "edit";
+    }
+
+    @PostMapping("edit")
+    public String editOrder(@ModelAttribute("order") Order order) {
+        orderService.update(order);
+        return "redirect:orders";
+    }
 }
+

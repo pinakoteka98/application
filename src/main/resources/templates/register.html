@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Register</title>
+    <title>zarejestruj się</title>
     <link href="../static/css/style.css" th:href="@{/static/css/style.css}" type="text/css" rel="stylesheet"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -112,7 +112,7 @@
                                             <div class="_4ORMAT_module_contact_label  " data-editable-type="label"
                                                  data-force-html-mode="false" >
                                             </div>
-                                            <span class="error" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></span>
+                                            <span class="error" style="color:#e80404" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></span>
                                         </fieldset>
                                     </div>
                                 </div>
@@ -126,7 +126,7 @@
                                             <div class="_4ORMAT_module_contact_label  " data-editable-type="label"
                                                  data-force-html-mode="false">
                                             </div>
-                                            <span class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+                                            <span class="error" style="color:#e80404"  th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
                                         </fieldset>
                                     </div>
                                 </div>
@@ -135,12 +135,12 @@
                                         <fieldset class>
                                             <input class-="_4ORMAT_module_contact_input" id="password" name="password"
                                                    type="password" th:field="*{password}"
-                                                   style="border-color: rgba(85, 85, 85, 0.3); border-bottom-width: 1px" placeholder = "Hasło">
+                                                   style="border-color: rgba(85, 85, 85, 0.3); border-bottom-width: 1px" placeholder = "Hasło (8-12 znaków)">
                                             <div class="_4ORMAT_module_contact_label" data-editable-type="label"
                                                  id="label_3"
                                                  data-force-html-mode="false" >
                                             </div>
-                                            <span class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+                                            <span class="error" style="color:#e80404"  th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
                                         </fieldset>
                                     </div>
                                 </div>
@@ -155,6 +155,13 @@
                                     </div>
                                 </fieldset>
                             </form>
+                        <div class="_4ORMAT_content_page_row">
+                            <h4 class="register2">
+                                Masz konto?
+                                <a class="register" title="Zaloguj się" href="/login">Zaloguj się
+                                </a>
+                            </h4>
+                        </div>
                             <div class="fourcol spacer last">
                             </div>
                         </div>
