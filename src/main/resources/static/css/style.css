@@ -15,9 +15,13 @@
 a:link, a:hover, a:visited, a:active {
     text-decoration: none;
 }
-
 #test1, #test2, #test3 {
+
     text-decoration: none;
+    line-height: 2;
+    font: 700 2rem 'Planet Light', sans-serif;
+    padding: 2em 3em;
+    letter-spacing: 0.05rem;;
 }
 
 .register:link, .register:visited, .register:active {
@@ -36,11 +40,12 @@ a:link, a:hover, a:visited, a:active {
     color: #555555;
 }
 
-input::placeholder {
-    font-family: "Planet Light"
+textarea, input{
+    font-family: "Planet Light", sans-serif;
+    font-size: 14px;
 }
 
-textarea::placeholder {
+::placeholder {
     font-family: "Planet Light"
 }
 

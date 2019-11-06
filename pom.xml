@@ -67,15 +67,50 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <dependency>
+            <groupId>com.github.warmuuh</groupId>
+            <artifactId>libsass-maven-plugin</artifactId>
+            <version>0.2.10-libsass_3.5.3</version>
+        </dependency>
     </dependencies>
 
     <build>
         <plugins>
             <plugin>
-                 <groupId>org.springframework.boot</groupId>
+                <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.jasig.maven</groupId>
+                <artifactId>sass-maven-plugin</artifactId>
+                <version>1.1.1</version>
+                <executions>
+                    <execution>
+                        <id>compile</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>update-stylesheets</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <resources>
+                        <resource>
+                            <source>
+                                <directory>${basedir}/src/main/resources/static/css/scss</directory>
+                            </source>
+                            <destination>${basedir}/src/main/resources/static/css</destination>
+                        </resource>
+                    </resources>
+                    <sassOptions>
+                        <cache>false</cache>
+                        <always_update>true</always_update>
+                    </sassOptions>
+                </configuration>
             </plugin>
         </plugins>
     </build>
+
+
 
 </project>

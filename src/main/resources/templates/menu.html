@@ -6,6 +6,8 @@
     <title>strefa klienta</title>
     <link href="../static/css/style.css" rel="stylesheet" type="text/css" media="screen"
           th:href="@{/static/css/style.css}">
+    <link href="../static/css/style.css" rel="stylesheet" type="text/css" media="screen"
+          th:href="@{/static/css/main.css}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link href='//lucas-rfgv.format.com/stylesheet.css?v=2019-10-30T10:05:15Z' media='screen' rel='stylesheet'
@@ -85,8 +87,14 @@
         }
     }</style>
 
+
 </head>
-<body>
+<body class="
+    page_6001971
+    content
+    content_page
+
+    ">
 <!--<div th:replace="fragments :: header"></div>-->
 <!--<div th:replace="fragments :: language"></div>-->
 
@@ -94,36 +102,60 @@
 <div id="content">
     <div class="container loaded">
         <div class="_4ORMAT_content_wrapper" id="content_page_wrapper">
-            <div class="_4ORMAT_content_page_row _4ormat_sort_item _4ORMAT_module_contact_10">
+            <div class="_4ORMAT_content_page_row _4ormat_sort_item _4ORMAT_module_image_7">
                 <div class=" align_center">
-
                     <form th:action="@{/menu}" method="post">
-                        <div class="fourcol test">
-                            <a style="display:block" th:href="@{list}" id="test1">
-                                <img src="/images/list.svg" title="lista zamówień">
-                                <i class="menu"></i>
-                                <br>
-                                <h2>Historia zamówień</h2>
-
+                        <div class="fourcol">
+                            <a id="test1" th:href="@{list}">
+                                <!--                                    <img src="/images/list.svg" title="lista zamówień">-->
+                                <!--                                    <i class="menu"></i>-->
+                                <!--                                    <br>-->
+                                <!--                                    <h2>Historia zamówień</h2>-->
+                                <div class="btn1 draw-border">
+                                    <br>
+                                    Historia
+                                    <br>
+                                    zamówień
+                                    <br>
+                                    <br>
+                                    <p>sprawdź status zamówienia</p>
+                                    <br></div>
                             </a>
 
                         </div>
-                        <div class="fourcol test">
-                            <a style="display:block" href="#" id="test2">
-                                <img src="/images/clock.svg" title="rezerwacja wizyty">
-                                <i class="menu"></i>
-                                <br>
-                                <h2>Rezerwacja wizyty</h2>
+                        <div class="fourcol">
+                            <a id="test2" href="#">
+                                <!--                                    <img src="/images/clock.svg" title="rezerwacja wizyty">-->
+                                <!--                                    <i class="menu"></i>-->
+                                <!--                                    <br>-->
+                                <!--                                    <h2>Rezerwacja wizyty</h2>-->
+                                <div class="btn1 draw-border">
+                                    <br>
+                                    Rezerwacja
+                                    <br>
+                                    wizyty
+                                    <br>
+                                    <br>
+                                    <p>umów spotkanie online</p>
+                                    <br></div>
 
                             </a>
                         </div>
-                        <div class="fourcol last test">
-                            <a style="display:block" th:href="@{services}" id="test3">
-                                <img src="images/help.svg" title="usługi dodatkowe">
-                                <i class="menu"></i>
-                                <br>
-                                <h2>Usługi dodatkowe</h2>
-
+                        <div class="fourcol last">
+                            <a id="test3" th:href="@{services}">
+                                <!--                                    <img src="images/help.svg" title="usługi dodatkowe">-->
+                                <!--                                    <i class="menu"></i>-->
+                                <!--                                    <br>-->
+                                <!--                                    <h2>Usługi dodatkowe</h2>-->
+                                <div class="btn1 draw-border">
+                                    <br>
+                                    Usługi
+                                    <br>
+                                    dodatkowe
+                                    <br>
+                                    <br>
+                                    <p>wyślij zapytanie</p>
+                                    <br></div>
                             </a>
                         </div>
 
@@ -132,6 +164,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 
 
