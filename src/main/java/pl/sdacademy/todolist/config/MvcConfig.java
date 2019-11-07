@@ -40,12 +40,6 @@ public class MvcConfig implements WebMvcConfigurer {
         registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
         registry.addResourceHandler("/images/**").addResourceLocations("classpath:/images/");
     }
-
-    @Bean
-    public SpringDataDialect springDataDialect() {
-        return new SpringDataDialect();
-    }
-
 }
 
 
