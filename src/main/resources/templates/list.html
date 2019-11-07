@@ -88,13 +88,45 @@
 </head>
 <body>
 
+<div class="choosesort">
+    <form method="GET" th:action="@{/list/0/sort}" action="sort" id="sort">
+        <div class="form-group">
+            <label for="sortBy">Sortuj po:</label>
+            <select class="form-control" id="sortBy" name="sortcolumn">
+                <option value="ordernr" th:selected="${sortcolumn}=='ordernr'">Numer zamówienia</option>
+                <option value="establishdate" th:selected="${sortcolumn}=='establishdate'">Data złożenia zamówienia
+                </option>
+                <option value="expecteddate" th:selected="${sortcolumn}=='expecteddate'">Przewidywany termin
+                    realizacji
+                </option>
+                <option value="status" th:selected="${sortcolumn}=='status'">Status realizacji zamówienia</option>
+                <option value="ordervalue" th:selected="${sortcolumn}=='ordervalue'">Wartość</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="ascdesc">Rodzaj sortowania:</label>
+            <select class="form-control" id="ascdesc" name="ascdesc">
+                <option value="asc" th:selected="${ascdesc}=='asc'">Rosnąco</option>
+                <option value="desc" th:selected="${ascdesc}=='desc'">Malejąco</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="elementsOnPage">Ilość zamówień na stronie:</label>
+            <input type="number" id="elementsOnPage" name="elements" min="3" max="10"
+                   th:value="${elements==null?5:elements}" value="5">
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-outline-primary" value="Sortuj">
+        </div>
+    </form>
+</div>
 
 <div id="content">
     <div class="container loaded">
         <div class="_4ORMAT_content_wrapper" id="content_page_wrapper">
 
             <div class="_4ORMAT_content_page_row _4ormat_sort_item _4ORMAT_module_contact_10">
-                <h2  class="xl-headline" style="text-align: center">Historia zamówień</h2>
+                <h2 class="xl-headline" style="text-align: center">Historia zamówień</h2>
                 <br>
                 <div th:switch="${orders}" class="">
 
@@ -114,8 +146,10 @@
                             <td th:text="${order.dateOfOrder}"></td>
                             <td th:text="${order.estimatedDate}"></td>
                             <td th:switch="${order.status}">
-                                <span style="color:#e80404" th:case="${order.status.INPROGRESS}">w trakcie realizacji</span>
-                                <span style="color:green" th:case="${order.status.READY}">gotowe, oczekuje na odbiór</span>
+                                <span style="color:#e80404"
+                                      th:case="${order.status.INPROGRESS}">w trakcie realizacji</span>
+                                <span style="color:green"
+                                      th:case="${order.status.READY}">gotowe, oczekuje na odbiór</span>
                                 <span style="color:darkblue" th:case="${order.status.RECEIVED}">odebrane</span>
                             </td>
                             <td th:text="${order.value + ' zł'}"></td>
@@ -130,6 +164,15 @@
     </div>
 </div>
 
+<div>Page <span th:text="${currentPage+1}">1</span> from <span th:text="${totalPages}">1</span> </div>
+
+<div th:if="${currentPage gt 0}">
+    <a th:href="@{${'/list/'+(currentPage+(-1))+'/sort?sortcolumn='+sortcolumn+'&ascdesc='+ascdesc+'&elements='+elements}}">Previous page</a>
+</div>
+
+<div th:if="${currentPage lt totalPages+(-1)}">
+    <a th:href="@{${'/list/'+(currentPage+1)+'/sort?sortcolumn='+(sortcolumn==null?'ordernr':sortcolumn)+'&ascdesc='+(ascdesc==null?'asc':ascdesc)+'&elements='+(elements==null?5:elements)}}">Next page</a>
+</div>
 
 <script src='https://static0.format.com/static/theme_api/v1/4ormat-7ec6872c8e665780eead7b027e2aa66fb06142caecd57b86359163172bf23497.js'
         type='text/javascript'></script>

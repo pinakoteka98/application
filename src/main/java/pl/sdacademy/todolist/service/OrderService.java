@@ -1,6 +1,11 @@
 package pl.sdacademy.todolist.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 import pl.sdacademy.todolist.dto.OrderDto;
@@ -32,7 +37,7 @@ public class OrderService {
         return orderRepository.findAllByStatus(orderDto.getStatus());
     }
 
-    public List<Order> findAll() {
+    public List<Order> findAllAsPage() {
         return orderRepository.findAll();
     }
 
@@ -48,7 +53,7 @@ public class OrderService {
     public Order create(OrderDto orderDto) {
         User user = null;
         Optional<User> userOptional = userRepository.findUserByPhoneNumber(orderDto.getPhoneNumber());
-        if(userOptional.isPresent()){
+        if (userOptional.isPresent()) {
             user = userOptional.get();
         } else {
             user = new User();
@@ -88,4 +93,35 @@ public class OrderService {
         orderRepository.delete(task);
     }
 
+    public Page<Order>findAllPages(Pageable pageable, String phoneNumber){
+        return orderRepository.findAllByPhoneNumber(pageable, phoneNumber);
+    }
+
+    public Page<Order> findAllAsPage(int page, int elementsOnPage, String sortBy, String ascDesc, String phoneNumber) {
+        String chooseSortBy = "";
+        switch (sortBy) {
+            case "establishdate":
+                chooseSortBy = "dateOfOrder";
+                break;
+            case "expecteddate":
+                chooseSortBy = "estimatedDate";
+                break;
+            case "status":
+                chooseSortBy = "status";
+                break;
+            case "ordervalue":
+                chooseSortBy = "value";
+                break;
+            default:
+                chooseSortBy = "orderNo";
+        }
+
+        return ascDesc.equals("asc")
+                ? orderRepository.findAllByPhoneNumber(PageRequest.of(page, elementsOnPage, Sort.by(chooseSortBy).ascending()), phoneNumber)
+                : orderRepository.findAllByPhoneNumber(PageRequest.of(page, elementsOnPage, Sort.by(chooseSortBy).descending()), phoneNumber);
+    }
+
+    public List<Order> findAll() {
+        return orderRepository.findAll();
+    }
 }
