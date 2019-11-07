@@ -93,7 +93,7 @@ public class OrderService {
         orderRepository.delete(task);
     }
 
-    public Page<Order>findAllPages(Pageable pageable, String phoneNumber){
+    public Page<Order> findAllPages(Pageable pageable, String phoneNumber) {
         return orderRepository.findAllByPhoneNumber(pageable, phoneNumber);
     }
 
@@ -116,9 +116,10 @@ public class OrderService {
                 chooseSortBy = "orderNo";
         }
 
-        return ascDesc.equals("asc")
-                ? orderRepository.findAllByPhoneNumber(PageRequest.of(page, elementsOnPage, Sort.by(chooseSortBy).ascending()), phoneNumber)
-                : orderRepository.findAllByPhoneNumber(PageRequest.of(page, elementsOnPage, Sort.by(chooseSortBy).descending()), phoneNumber);
+        return orderRepository.findAllByPhoneNumber(PageRequest.of(page, elementsOnPage, ascDesc.equals("asc") ? Sort.by(chooseSortBy).ascending() : Sort.by(chooseSortBy).descending()), phoneNumber);
+//        return ascDesc.equals("asc")
+//                ? orderRepository.findAllByPhoneNumber(PageRequest.of(page, elementsOnPage, Sort.by(chooseSortBy).ascending()), phoneNumber)
+//                : orderRepository.findAllByPhoneNumber(PageRequest.of(page, elementsOnPage, Sort.by(chooseSortBy).descending()), phoneNumber);
     }
 
     public List<Order> findAll() {
