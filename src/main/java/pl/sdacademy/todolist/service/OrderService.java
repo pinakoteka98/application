@@ -98,7 +98,7 @@ public class OrderService {
     }
 
     public Page<Order> findAllAsPage(int page, int elementsOnPage, String sortBy, String ascDesc, String phoneNumber) {
-        String chooseSortBy = "";
+        String chooseSortBy;
         switch (sortBy) {
             case "establishdate":
                 chooseSortBy = "dateOfOrder";
