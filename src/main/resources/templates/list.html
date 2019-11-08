@@ -164,14 +164,14 @@
     </div>
 </div>
 
-<div>Page <span th:text="${currentPage+1}">1</span> from <span th:text="${totalPages}">1</span> </div>
+<div> <span th:text="'Page '+ ${currentPage + 1}+' from ' + ${totalPages==0 ? 1: totalPages}">1</span> </div>
 
 <div th:if="${currentPage gt 0}">
-    <a th:href="@{${'/list/'+(currentPage+(-1))+'/sort?sortcolumn='+sortcolumn+'&ascdesc='+ascdesc+'&elements='+elements}}">Previous page</a>
+    <a th:href="@{/list/{nr}/sort(nr=${currentPage}-${1}, sortcolumn=${sortcolumn}, ascdesc=${ascdesc}, elements=${elements})}">Previous page</a>
 </div>
 
 <div th:if="${currentPage lt totalPages+(-1)}">
-    <a th:href="@{${'/list/'+(currentPage+1)+'/sort?sortcolumn='+(sortcolumn==null?'ordernr':sortcolumn)+'&ascdesc='+(ascdesc==null?'asc':ascdesc)+'&elements='+(elements==null?5:elements)}}">Next page</a>
+    <a th:href="@{/list/{nr}/sort(nr=${currentPage+1}, sortcolumn=${sortcolumn==null?'ordernr':sortcolumn}, ascdesc=${ascdesc==null?'asc':ascdesc}, elements=${elements==null?5:elements})}">Next page</a>
 </div>
 
 <script src='https://static0.format.com/static/theme_api/v1/4ormat-7ec6872c8e665780eead7b027e2aa66fb06142caecd57b86359163172bf23497.js'
