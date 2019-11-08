@@ -42,4 +42,8 @@ public class UserService {
         userRepository.save(entity);
 
     }
+
+    public Optional<User> findByPhoneNumber(String phoneNumber){
+        return userRepository.findUserByPhoneNumber(phoneNumber);
+    }
 }

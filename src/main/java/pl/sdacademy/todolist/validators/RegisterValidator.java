@@ -5,8 +5,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 import pl.sdacademy.todolist.dto.UserDto;
+import pl.sdacademy.todolist.entity.User;
 import pl.sdacademy.todolist.utils.AppUtils;
 import pl.sdacademy.todolist.utils.Consts;
+
+import java.util.Optional;
+
+import static com.sun.xml.internal.ws.policy.sourcemodel.wspolicy.XmlToken.Optional;
 
 @Service
 public class RegisterValidator implements Validator {
@@ -46,6 +51,10 @@ public class RegisterValidator implements Validator {
             errors.rejectValue("password", "error.password.empty");
         }
 
-
+    }
+    public void validatePhoneExist(Optional<User> user, Errors errors) {
+        if (user.isPresent()) {
+            errors.rejectValue("phoneNumber", "error.userPhoneExist");
+        }
     }
 }
