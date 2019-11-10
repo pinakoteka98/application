@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.sdacademy.todolist.dto.UserDto;
+import pl.sdacademy.todolist.emailService.EmailService;
 import pl.sdacademy.todolist.entity.Order;
 import pl.sdacademy.todolist.entity.User;
 import pl.sdacademy.todolist.service.OrderService;
@@ -26,6 +27,7 @@ public class UserController {
     private final UserService userService;
     private final RegisterValidator registerValidator;
     private final OrderService orderService;
+    private final EmailService emailService;
 
     @GetMapping(value = "/login")
     public String showLoginPage() {
@@ -33,13 +35,13 @@ public class UserController {
     }
 
     @GetMapping("/register")
-    public String register(Model model){
+    public String register(Model model) {
         model.addAttribute("userForm", new UserDto());
         return "register";
     }
 
     @PostMapping("/register")
-    public String registerUser(@ModelAttribute(name = "userForm") UserDto userForm, BindingResult result){
+    public String registerUser(@ModelAttribute(name = "userForm") UserDto userForm, BindingResult result) {
         Optional<User> existing = userService.findByPhoneNumber(userForm.getPhoneNumber());
         registerValidator.validate(userForm, result);
         registerValidator.validatePhoneExist(existing, result);
@@ -48,6 +50,7 @@ public class UserController {
             return "register";
         }
         userService.create(userForm);
+        emailService.sendEmail(userForm.getEmail(), "Potwierdzenie rejestracji w serwisie Pinakoteka.", "Dziękujemy za rejestrację w naszym serwisie.\nJeśli nie dokonywałeś rejestracji napisz do nas o tym w informacji zwrotnej.");
         return "redirect:/login";
     }
 
@@ -65,7 +68,7 @@ public class UserController {
     }
 
     @GetMapping("/list/{page}/sort")
-    public String showSortedValues(@PathVariable Integer page, @RequestParam(name = "sortcolumn") String sortColumn, @RequestParam String ascdesc, @RequestParam Integer elements,Principal principal, Model model){
+    public String showSortedValues(@PathVariable Integer page, @RequestParam(name = "sortcolumn") String sortColumn, @RequestParam String ascdesc, @RequestParam Integer elements, Principal principal, Model model) {
         Page<Order> ordersPage = orderService.findAllAsPage(page, elements, sortColumn, ascdesc, principal.getName());
         List<Order> ordersList = ordersPage.getContent();
         int currentPage = ordersPage.getNumber();
