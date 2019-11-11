@@ -168,18 +168,18 @@
     <div class="footer">
         <div class="pagination">
             <span th:if="${currentPage gt 0}">
-        <a id="pag1" th:href="@{${'/list/'+(currentPage+(-1))+'/sort?sortcolumn='+sortcolumn+'&ascdesc='+ascdesc+'&elements='+elements}}">&lt;</a>
+        <a id="pag1" th:href="@{/list/{nr}/sort(nr=${currentPage}-${1}, sortcolumn=${sortcolumn}, ascdesc=${ascdesc}, elements=${elements})}">&lt;</a>
 
     </span>
             <th:block th:each="i: ${#numbers.sequence(0, totalPages - 1)}">
                 <a th:if="${currentPage == i}" class="active">[[${i}+1]]</a>
                 <span th:unless="${currentPage == i}">
-             <a id="pag2" th:href="@{${'/list/'+(i)+'/sort?sortcolumn='+(sortcolumn==null?'ordernr':sortcolumn)+'&ascdesc='+(ascdesc==null?'asc':ascdesc)+'&elements='+(elements==null?5:elements)}}">[[${i}+1]]</a>
+             <a id="pag2" th:href="@{/list/{nr}/sort(nr=${i}, sortcolumn=${sortcolumn==null?'ordernr':sortcolumn}, ascdesc=${ascdesc==null?'asc':ascdesc}, elements=${elements==null?5:elements})}">[[${i}+1]]</a>
         </span>
             </th:block>
 
             <span th:if="${currentPage lt totalPages+(-1)}">
-        <a id="pag3" th:href="@{${'/list/'+(currentPage+1)+'/sort?sortcolumn='+(sortcolumn==null?'ordernr':sortcolumn)+'&ascdesc='+(ascdesc==null?'asc':ascdesc)+'&elements='+(elements==null?5:elements)}}">&gt;</a>
+        <a id="pag3" th:href="@{/list/{nr}/sort(nr=${currentPage+1}, sortcolumn=${sortcolumn==null?'ordernr':sortcolumn}, ascdesc=${ascdesc==null?'asc':ascdesc}, elements=${elements==null?5:elements})}">&gt;</a>
    </span>
         </div>
     </div>
