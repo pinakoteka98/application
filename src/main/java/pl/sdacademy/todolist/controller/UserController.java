@@ -50,14 +50,14 @@ public class UserController {
             return "register";
         }
         userService.create(userForm);
-        emailService.sendEmail(userForm.getEmail(), "Potwierdzenie rejestracji w serwisie Pinakoteka.", "Dziękujemy za rejestrację w naszym serwisie.\nJeśli nie dokonywałeś rejestracji napisz do nas o tym w informacji zwrotnej.");
+        emailService.sendEmail(userForm.getEmail(), "Potwierdzenie rejestracji w serwisie Pinakoteka Design.", "Dziękujemy za rejestrację w naszym serwisie.\nJeśli nie dokonywałeś rejestracji napisz do nas o tym w informacji zwrotnej.");
         return "redirect:/login";
     }
 
     @GetMapping({"/list/{page}"})
     public String showListOfOrders(@PathVariable Integer page, Model model, Principal principal) {
         log.info("list of orders");
-        Page<Order> ordersPage = orderService.findAllAsPage(page, 5, "ordernr", "asc", principal.getName());
+        Page<Order> ordersPage = orderService.findAllAsPage(page, 5, "orderNo", "asc", principal.getName());
         List<Order> ordersList = ordersPage.getContent();
         int currentPage = ordersPage.getNumber();
         int totalPages = ordersPage.getTotalPages();

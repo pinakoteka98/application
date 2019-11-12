@@ -3,10 +3,10 @@ package pl.sdacademy.todolist.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 import pl.sdacademy.todolist.dto.OrderDto;
 import pl.sdacademy.todolist.entity.Order;
@@ -15,7 +15,6 @@ import pl.sdacademy.todolist.exception.EntityNotFoundException;
 import pl.sdacademy.todolist.repository.OrderRepository;
 import pl.sdacademy.todolist.repository.UserRepository;
 
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -30,7 +29,7 @@ public class OrderService {
     private final UserRepository userRepository;
     private final OrderRepository orderRepository;
 
-    private Map<Long, Order> tasks = new ConcurrentHashMap<>();
+    private Map<Long, Order> orders = new ConcurrentHashMap<>();
 
 
     public List<Order> findAllByDto(OrderDto orderDto) {
@@ -87,10 +86,10 @@ public class OrderService {
         return orderRepository.save(orderEntity);
     }
 
-    public void delete(Long id) {
-        Order task = orderRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException(id));
-        orderRepository.delete(task);
+    public void delete(Order order) {
+        Order orderEntity = orderRepository.findById(order.getId())
+                .orElseThrow(() -> new EntityNotFoundException(order.getId()));
+        orderRepository.delete(order);
     }
 
     public Page<Order> findAllPages(Pageable pageable, String phoneNumber) {
@@ -100,8 +99,8 @@ public class OrderService {
     public Page<Order> findAllAsPage(int page, int elementsOnPage, String sortBy, String ascDesc, String phoneNumber) {
         String chooseSortBy;
         switch (sortBy) {
-            case "establishdate":
-                chooseSortBy = "dateOfOrder";
+            case "orderNumber":
+                chooseSortBy = "orderNo";
                 break;
             case "expecteddate":
                 chooseSortBy = "estimatedDate";
@@ -113,7 +112,7 @@ public class OrderService {
                 chooseSortBy = "value";
                 break;
             default:
-                chooseSortBy = "orderNo";
+                chooseSortBy = "dateOfOrder";
         }
 
         return orderRepository.findAllByPhoneNumber(PageRequest.of(page, elementsOnPage, ascDesc.equals("asc") ? Sort.by(chooseSortBy).ascending() : Sort.by(chooseSortBy).descending()), phoneNumber);
@@ -124,5 +123,6 @@ public class OrderService {
 
     public List<Order> findAll() {
         return orderRepository.findAll();
+
     }
 }

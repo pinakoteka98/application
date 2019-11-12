@@ -11,8 +11,6 @@ import pl.sdacademy.todolist.utils.Consts;
 
 import java.util.Optional;
 
-import static com.sun.xml.internal.ws.policy.sourcemodel.wspolicy.XmlToken.Optional;
-
 @Service
 public class RegisterValidator implements Validator {
     @Override
@@ -46,6 +44,7 @@ public class RegisterValidator implements Validator {
             boolean matchPassword = AppUtils.validateData(Consts.PASSWORD_PATTERN, userDto.getPassword());
             if (!matchPassword) {
                 errors.rejectValue("password", "error.userPasswordIsNotMatch");
+                errors.rejectValue("password", "error.userPasswordIsNotMatch2");
             }
         } else {
             errors.rejectValue("password", "error.password.empty");

@@ -4,10 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import pl.sdacademy.todolist.dto.OrderDto;
 import pl.sdacademy.todolist.entity.Order;
 import pl.sdacademy.todolist.service.OrderService;
@@ -15,6 +12,7 @@ import pl.sdacademy.todolist.service.OrderService;
 import javax.validation.Valid;
 import java.security.Principal;
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Slf4j
@@ -86,9 +84,9 @@ public class OrderController {
     }
 
     @PostMapping("edit")
-    public String editOrder(@ModelAttribute("order") Order order) {
+    public String editOrder(@ModelAttribute("id") Order order) {
         orderService.update(order);
         return "redirect:orders";
     }
-}
 
+}
