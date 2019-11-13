@@ -86,10 +86,10 @@ public class OrderService {
         return orderRepository.save(orderEntity);
     }
 
-    public void delete(Order order) {
-        Order orderEntity = orderRepository.findById(order.getId())
-                .orElseThrow(() -> new EntityNotFoundException(order.getId()));
-        orderRepository.delete(order);
+    public void delete(Long id) {
+        Order orderEntity = orderRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException(id));
+        orderRepository.delete(orderEntity);
     }
 
     public Page<Order> findAllPages(Pageable pageable, String phoneNumber) {
@@ -99,7 +99,7 @@ public class OrderService {
     public Page<Order> findAllAsPage(int page, int elementsOnPage, String sortBy, String ascDesc, String phoneNumber) {
         String chooseSortBy;
         switch (sortBy) {
-            case "orderNumber":
+            case "ordernr":
                 chooseSortBy = "orderNo";
                 break;
             case "expecteddate":
