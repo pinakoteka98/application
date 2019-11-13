@@ -47,23 +47,23 @@
     <link href='https://static1.format.com/static/_common/modal_message-cd25c4ca398e1e31ca8276375f75a14991b41526bbfbeb42dbfa5d76d89cfce7.css'
           media='screen' rel='stylesheet' type='text/css'/>
 
-<!--    <script src="https://bucket0.format-assets.com/theme_versions/4785108/assets/javascripts/jquery.js"-->
-<!--            type="text/javascript"></script>-->
-<!--    <script src="https://bucket0.format-assets.com/theme_versions/4785108/assets/javascripts/menu_dropdown.js"-->
-<!--            type="text/javascript"></script>-->
+    <!--    <script src="https://bucket0.format-assets.com/theme_versions/4785108/assets/javascripts/jquery.js"-->
+    <!--            type="text/javascript"></script>-->
+    <!--    <script src="https://bucket0.format-assets.com/theme_versions/4785108/assets/javascripts/menu_dropdown.js"-->
+    <!--            type="text/javascript"></script>-->
 
-<!--    <script src="https://static2.format.com/static/theme_api/vendor/scrollDelta-1-a3dd9cda1577a24806f10f58011d0abb0bb95829e14b333f8ff198669c28d017.js"></script>-->
-<!--    <script src="https://bucket0.format-assets.com/theme_versions/4785108/assets/javascripts/responsive.js"-->
-<!--            type="text/javascript"></script>-->
-<!--    <script src="https://bucket0.format-assets.com/theme_versions/4785108/assets/javascripts/mobile_menu.js"-->
-<!--            type="text/javascript"></script>-->
-<!--    <script src="https://bucket0.format-assets.com/theme_versions/4785108/assets/javascripts/ls.respimg.min.js"-->
-<!--            type="text/javascript" async=""></script>-->
-<!--    <script src="https://bucket0.format-assets.com/theme_versions/4785108/assets/javascripts/lazysizes.min.js"-->
-<!--            type="text/javascript" async=""></script>-->
-<!--    <script src="https://static0.format.com/static/theme_api/vendor/masonry.pkgd-3.3.1.min-406593430aad94f48f85280469948c4435e44d81ce29b62ee1184006c2b5dcb4.js"></script>-->
-<!--    <script src="https://bucket0.format-assets.com/theme_versions/4785108/assets/javascripts/theme.js"-->
-<!--            type="text/javascript"></script>-->
+    <!--    <script src="https://static2.format.com/static/theme_api/vendor/scrollDelta-1-a3dd9cda1577a24806f10f58011d0abb0bb95829e14b333f8ff198669c28d017.js"></script>-->
+    <!--    <script src="https://bucket0.format-assets.com/theme_versions/4785108/assets/javascripts/responsive.js"-->
+    <!--            type="text/javascript"></script>-->
+    <!--    <script src="https://bucket0.format-assets.com/theme_versions/4785108/assets/javascripts/mobile_menu.js"-->
+    <!--            type="text/javascript"></script>-->
+    <!--    <script src="https://bucket0.format-assets.com/theme_versions/4785108/assets/javascripts/ls.respimg.min.js"-->
+    <!--            type="text/javascript" async=""></script>-->
+    <!--    <script src="https://bucket0.format-assets.com/theme_versions/4785108/assets/javascripts/lazysizes.min.js"-->
+    <!--            type="text/javascript" async=""></script>-->
+    <!--    <script src="https://static0.format.com/static/theme_api/vendor/masonry.pkgd-3.3.1.min-406593430aad94f48f85280469948c4435e44d81ce29b62ee1184006c2b5dcb4.js"></script>-->
+    <!--    <script src="https://bucket0.format-assets.com/theme_versions/4785108/assets/javascripts/theme.js"-->
+    <!--            type="text/javascript"></script>-->
 
 
     <style>._4ORMAT_content_page_row .btn {
@@ -168,18 +168,21 @@
     <div class="footer">
         <div class="pagination">
             <span th:if="${currentPage gt 0}">
-        <a id="pag1" th:href="@{/list/{nr}/sort(nr=${currentPage}-${1}, sortcolumn=${sortcolumn}, ascdesc=${ascdesc}, elements=${elements})}">&lt;</a>
+        <a id="pag1"
+           th:href="@{/list/{nr}/sort(nr=${currentPage}-${1}, sortcolumn=${sortcolumn}, ascdesc=${ascdesc}, elements=${elements})}">&lt;</a>
 
     </span>
-            <th:block th:each="i: ${#numbers.sequence(0, totalPages - 1)}">
+            <th:block th:if="${orders.size()>0}" th:each="i: ${#numbers.sequence(0, totalPages - 1)}">
                 <a th:if="${currentPage == i}" class="active">[[${i}+1]]</a>
                 <span th:unless="${currentPage == i}">
-             <a id="pag2" th:href="@{/list/{nr}/sort(nr=${i}, sortcolumn=${sortcolumn==null?'ordernr':sortcolumn}, ascdesc=${ascdesc==null?'asc':ascdesc}, elements=${elements==null?5:elements})}">[[${i}+1]]</a>
+             <a id="pag2"
+                th:href="@{/list/{nr}/sort(nr=${i}, sortcolumn=${sortcolumn==null?'establishdate':sortcolumn}, ascdesc=${ascdesc==null?'desc':ascdesc}, elements=${elements==null?5:elements})}">[[${i}+1]]</a>
         </span>
             </th:block>
 
             <span th:if="${currentPage lt totalPages+(-1)}">
-        <a id="pag3" th:href="@{/list/{nr}/sort(nr=${currentPage+1}, sortcolumn=${sortcolumn==null?'ordernr':sortcolumn}, ascdesc=${ascdesc==null?'asc':ascdesc}, elements=${elements==null?5:elements})}">&gt;</a>
+        <a id="pag3"
+           th:href="@{/list/{nr}/sort(nr=${currentPage+1}, sortcolumn=${sortcolumn==null?'establishdate':sortcolumn}, ascdesc=${ascdesc==null?'desc':ascdesc}, elements=${elements==null?5:elements})}">&gt;</a>
    </span>
         </div>
     </div>
