@@ -172,7 +172,7 @@
            th:href="@{/list/{nr}/sort(nr=${currentPage}-${1}, sortcolumn=${sortcolumn}, ascdesc=${ascdesc}, elements=${elements})}">&lt;</a>
 
     </span>
-            <th:block th:if="${orders.size()>0}" th:each="i: ${#numbers.sequence(0, totalPages - 1)}">
+            <th:block th:if="${orders.size() > 0}" th:each="i: ${#numbers.sequence(0, totalPages - 1)}">
                 <a th:if="${currentPage == i}" class="active">[[${i}+1]]</a>
                 <span th:unless="${currentPage == i}">
              <a id="pag2"
