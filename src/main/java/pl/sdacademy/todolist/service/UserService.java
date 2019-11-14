@@ -46,4 +46,8 @@ public class UserService {
     public Optional<User> findByPhoneNumber(String phoneNumber){
         return userRepository.findUserByPhoneNumber(phoneNumber);
     }
+
+    public User uptade(User user) {
+        return userRepository.save(user);
+    }
 }
