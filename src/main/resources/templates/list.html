@@ -123,13 +123,7 @@
 
 <div id="content">
     <h2 th:if="${orders.isEmpty()}" class="xl-headline" style="text-align: center; padding-top: 36px; font-size: 21px">Nie masz jeszcze żadnych zamówień</h2>
-<!--    <div th:if="${orders.isEmpty()}" class="container loaded">-->
-<!--        <div class="_4ORMAT_content_wrapper">-->
-<!--            <div class="_4ORMAT_content_page_row _4ormat_sort_item _4ORMAT_module_contact_10">-->
-<!--                <h2 class="xl-headline" style="text-align: center">Nie masz jeszcze żadnych zamówień</h2>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
+
     <div th:if="${!orders.isEmpty()}" class="container loaded">
         <div class="_4ORMAT_content_wrapper" id="content_page_wrapper">
 
