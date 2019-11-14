@@ -17,7 +17,7 @@ public class AppUtils {
         String numbers = "0123456789";
         String letters = "abcdefghijklmnopqrstuvwxyz";
         String signs = "!@#$*_";
-        String allSigns = numbers + letters + letters.toUpperCase()+signs;
+        String allSigns = numbers + letters + letters.toUpperCase() + signs;
 
         do {
             Random random = new Random();
