@@ -100,12 +100,12 @@ public class UserController {
                 user.setPassword(passwordEncoder.encode(newPassword));
                 userService.uptade(user);
                 model.addAttribute("login", phoneNumber);
-                model.addAttribute("info", "Nowe hasło zostało wysłane na Twój adres email. Możesz się nim zalogować");
+                model.addAttribute("info", "Nowe hasło zostało wysłane na Twój adres email. Możesz się nim zalogować.");
                 emailService.sendEmail(email, "Twoje hasło zostało zresetowane", "Twoje nowe hasło to:\n"+newPassword);
                 return "login";
             }
         }
-        model.addAttribute("info", "Brak konta używknika w bazie dla wskazanego adresu email i nr telefonu");
+        model.addAttribute("info", "Brak konta użytkownika w bazie dla wskazanego adresu email i nr telefonu");
         return "resetpassword";
     }
 
