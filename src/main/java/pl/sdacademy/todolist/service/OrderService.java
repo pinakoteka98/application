@@ -10,11 +10,14 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 import pl.sdacademy.todolist.dto.OrderDto;
 import pl.sdacademy.todolist.entity.Order;
+import pl.sdacademy.todolist.entity.Role;
 import pl.sdacademy.todolist.entity.User;
 import pl.sdacademy.todolist.exception.EntityNotFoundException;
 import pl.sdacademy.todolist.repository.OrderRepository;
+import pl.sdacademy.todolist.repository.RoleRepository;
 import pl.sdacademy.todolist.repository.UserRepository;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -28,6 +31,7 @@ public class OrderService {
 
     private final UserRepository userRepository;
     private final OrderRepository orderRepository;
+    private final RoleRepository roleRepository;
 
     private Map<Long, Order> orders = new ConcurrentHashMap<>();
 
@@ -50,13 +54,15 @@ public class OrderService {
     }
 
     public Order create(OrderDto orderDto) {
-        User user = null;
+        User user;
         Optional<User> userOptional = userRepository.findUserByPhoneNumber(orderDto.getPhoneNumber());
         if (userOptional.isPresent()) {
             user = userOptional.get();
         } else {
+            Role role = roleRepository.findByRole("USER");
             user = new User();
             user.setPhoneNumber(orderDto.getPhoneNumber());
+            user.setRoles(Collections.singleton(role));
             userRepository.save(user);
         }
 

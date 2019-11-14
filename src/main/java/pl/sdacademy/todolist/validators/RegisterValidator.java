@@ -49,11 +49,13 @@ public class RegisterValidator implements Validator {
         } else {
             errors.rejectValue("password", "error.password.empty");
         }
-
     }
+
     public void validatePhoneExist(Optional<User> user, Errors errors) {
         if (user.isPresent()) {
-            errors.rejectValue("phoneNumber", "error.userPhoneExist");
+            if (user.get().getEmail() != null) {
+                errors.rejectValue("phoneNumber", "error.userPhoneExist");
+            }
         }
     }
 }
