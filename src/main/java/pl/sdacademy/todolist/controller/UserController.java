@@ -55,6 +55,7 @@ public class UserController {
         userService.create(userForm);
         emailService.sendEmail(userForm.getEmail(), "Potwierdzenie rejestracji w serwisie Pinakoteka Design.", "Dziękujemy za rejestrację w naszym serwisie.\nJeśli nie dokonywałeś rejestracji napisz do nas o tym w informacji zwrotnej.");
         model.addAttribute("info", "Rejestracja zakończona sukcesem. Możesz się zalogować.");
+        model.addAttribute("login", userForm.getPhoneNumber());
         return "login";
     }
 
