@@ -44,7 +44,7 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String registerUser(@ModelAttribute(name = "userForm") UserDto userForm, BindingResult result) {
+    public String registerUser(@ModelAttribute(name = "userForm") UserDto userForm, BindingResult result, Model model) {
         Optional<User> existing = userService.findByPhoneNumber(userForm.getPhoneNumber());
         registerValidator.validate(userForm, result);
         registerValidator.validatePhoneExist(existing, result);
@@ -54,7 +54,8 @@ public class UserController {
         }
         userService.create(userForm);
         emailService.sendEmail(userForm.getEmail(), "Potwierdzenie rejestracji w serwisie Pinakoteka Design.", "Dziękujemy za rejestrację w naszym serwisie.\nJeśli nie dokonywałeś rejestracji napisz do nas o tym w informacji zwrotnej.");
-        return "redirect:/login";
+        model.addAttribute("info", "Rejestracja zakończona sukcesem. Możesz się zalogować.");
+        return "login";
     }
 
     @GetMapping({"/list/{page}"})
