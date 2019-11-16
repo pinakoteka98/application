@@ -128,13 +128,13 @@
 
 <div id="content">
     <h2 th:if="${orders.isEmpty()}" class="xl-headline" style="text-align: center; padding-top: 36px; font-size: 21px">
-        Nie masz jeszcze żadnych zamówień</h2>
+        Nie masz jeszcze żadnych zarejestrowanych zamówień</h2>
 
     <div th:if="${!orders.isEmpty()}" class="container loaded">
         <div class="_4ORMAT_content_wrapper" id="content_page_wrapper">
 
-            <div class="_4ORMAT_content_page_row _4ormat_sort_item _4ORMAT_module_contact_10">
-                <h2 class="xl-headline" style="text-align: center">Historia zamówień</h2>
+            <div class="_4ORMAT_content_page_row _4ormat_sort_item _4ORMAT_module_contact_10" style="padding-top: 5px">
+                <h2 style="text-align: center">Historia zamówień</h2>
                 <br>
                 <div th:switch="${orders}" class="">
 
@@ -188,13 +188,13 @@
                 <a th:if="${currentPage == i}" class="active">[[${i}+1]]</a>
                 <span th:unless="${currentPage == i}">
              <a id="pag2"
-                th:href="@{/list/{nr}/sort(nr=${i}, sortcolumn=${sortcolumn==null?'establishdate':sortcolumn}, ascdesc=${ascdesc==null?'desc':ascdesc}, elements=${elements==null?5:elements})}">[[${i}+1]]</a>
+                th:href="@{/list/{nr}/sort(nr=${i}, sortcolumn=${sortcolumn==null?'establishdate':sortcolumn}, ascdesc=${ascdesc==null?'asc':ascdesc}, elements=${elements==null?5:elements})}">[[${i}+1]]</a>
         </span>
             </th:block>
 
             <span th:if="${currentPage lt totalPages+(-1)}">
         <a id="pag3"
-           th:href="@{/list/{nr}/sort(nr=${currentPage+1}, sortcolumn=${sortcolumn==null?'establishdate':sortcolumn}, ascdesc=${ascdesc==null?'desc':ascdesc}, elements=${elements==null?5:elements})}">&gt;</a>
+           th:href="@{/list/{nr}/sort(nr=${currentPage+1}, sortcolumn=${sortcolumn==null?'establishdate':sortcolumn}, ascdesc=${ascdesc==null?'asc':ascdesc}, elements=${elements==null?5:elements})}">&gt;</a>
    </span>
         </div>
         <div class="pagination" style="float: right">

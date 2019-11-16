@@ -23,10 +23,10 @@ public class OrderController {
 
     @GetMapping({"/", "index"})
     public String showOrders(Model model) {
-        log.info("get tasks list");
+        log.info("get order list");
         List<Order> orders = orderService.findAll();
         model.addAttribute("orders", orders);
-        return "menu";
+        return "login";
     }
 
     @GetMapping({"menu"})
@@ -73,7 +73,7 @@ public class OrderController {
     public String addOrder(@Valid OrderDto order, Principal principal) {
         log.info("add task");
         orderService.create(order);
-        return "redirect:index";
+        return "redirect:orders";
     }
 
     @GetMapping("edit/{id}")
