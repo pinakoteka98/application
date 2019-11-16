@@ -20,7 +20,7 @@ public class EmailService {
         try {
             MimeMessageHelper mmHelper = new MimeMessageHelper(email);//MimeMessageHelper mmHelper = new MimeMessageHelper(email, true);
             mmHelper.setTo(to);
-            mmHelper.setFrom("pinakotekagdansk@gmail.com");
+            mmHelper.setFrom("rejestracja@pinakoteka.pl");
             mmHelper.setSubject(subject);
             mmHelper.setText(content); //true - mogę w tekście przesłać HTML, wyświetli się mailu. mmHelper.setText(content, true);
         } catch (MessagingException e) {
