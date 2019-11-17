@@ -29,7 +29,7 @@ public class OrderController {
         return "login";
     }
 
-    @GetMapping({"menu"})
+    @GetMapping("/menu")
     public String showOptions(Model model) {
         log.info("show menu");
         List<Order> orders = orderService.findAll();

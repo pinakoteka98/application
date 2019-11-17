@@ -88,22 +88,22 @@ public class UserController {
     }
 
     @GetMapping("resetpassword")
-    public String showResetPage(){
+    public String showResetPage() {
         return "resetpassword";
     }
 
     @PostMapping("resetpassword")
-    public String resetPassword(@RequestParam String phoneNumber, @RequestParam String email, Model model){
+    public String resetPassword(@RequestParam String phoneNumber, @RequestParam String email, Model model) {
         Optional<User> userOptional = userService.findByPhoneNumber(phoneNumber);
-        if(userOptional.isPresent()){
+        if (userOptional.isPresent()) {
             User user = userOptional.get();
-            if (user.getEmail().equals(email)){
+            if (user.getEmail().equals(email)) {
                 String newPassword = AppUtils.generatePassword();
                 user.setPassword(passwordEncoder.encode(newPassword));
                 userService.uptade(user);
                 model.addAttribute("login", phoneNumber);
                 model.addAttribute("info", "Nowe hasło zostało wysłane na Twój adres email. Możesz się nim zalogować.");
-                emailService.sendEmail(email, "Twoje hasło zostało zresetowane", "Twoje nowe hasło to:\n"+newPassword);
+                emailService.sendEmail(email, "Twoje hasło zostało zresetowane", "Twoje nowe hasło to:\n" + newPassword);
                 return "login";
             }
         }

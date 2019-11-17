@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -118,9 +118,28 @@
                      data-content-module-category="layout" data-content-module-template-id="18">
                     <div class=" align_center">
                         <form th:action="@{/menu}" method="post">
-                            <div class="fourcol">
+                            <div sec:authorize="hasRole('USER')" class="fourcol">
                                 <div class="btn1 draw-border" id="menu1">
                                     <a id="test1" th:href="@{/list/0}">
+                                        <!--                                    <img src="/images/list.svg" title="lista zamówień">-->
+                                        <!--                                    <i class="menu"></i>-->
+                                        <!--                                    <br>-->
+                                        <!--                                    <h2>Historia zamówień</h2>-->
+
+                                        <br>
+                                        Historia
+                                        <br>
+                                        zamówień
+                                        <br>
+                                        <br>
+                                        <p>sprawdź status zamówienia</p>
+                                        <br>
+                                    </a>
+                                </div>
+                            </div>
+                            <div sec:authorize="hasRole('ADMIN')" class="fourcol">
+                                <div class="btn1 draw-border" id="menu4">
+                                    <a id="test4" th:href="@{/orders}">
                                         <!--                                    <img src="/images/list.svg" title="lista zamówień">-->
                                         <!--                                    <i class="menu"></i>-->
                                         <!--                                    <br>-->
