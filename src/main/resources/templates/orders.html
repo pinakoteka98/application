@@ -24,20 +24,21 @@
         <div class="card-body">
 
             <div id="header">
-                <div class="col-md-3 szukaj" style="float: left; padding: 0px">
+
+                <div class="btn btn-primary" style="float: left; padding: 0px; width: 20%">
                     <a href="/addorder" class="btn btn-primary">
                         <i class="fas fa-user-plus ml-2"> Add Order</i>
                     </a>
                 </div>
-                <div>
-                    <!--                <td th:text="${size}"></td>-->
-                </div>
+<!--                <div class="btn btn-secondary col-md-2 szukaj">-->
+<!--                    <a href th:text="${size}"></a>-->
+<!--                </div>-->
 
-                <div class="input-group mb-2 szukaj" style="float: right; width: auto !important">
+                <div class="form-group szukaj" style="margin-bottom: 0px !important; margin-left: 1rem">
                     <form method="GET" th:action="@{/orders}" action="/orders" id="sort">
                         <span class="_4ORMAT_content_page_row _4ormat_sort_item _4ORMAT_module_contact_10">
-                                        <label for="sortBy">Sortuj po:</label>
-                                        <select class="form-control" id="sortBy" name="sortcolumn">
+                            <select class="form-control" id="sortBy"
+                                    name="sortcolumn">
                                             <option value="establishdate" th:selected="${sortcolumn}=='establishdate'">Data złożenia zamówienia
                                             </option>
                                             <option value="ordernr" th:selected="${sortcolumn}=='ordernr'">Numer zamówienia</option>
@@ -47,79 +48,84 @@
                                             <option value="status" th:selected="${sortcolumn}=='status'">Status realizacji zamówienia</option>
                                         </select>
                                     </span>
-                                    <span class="form-group">
-                                        <label for="ascdesc">Rodzaj sortowania:</label>
-                                        <select class="form-control" id="ascdesc" name="ascdesc">
+                    </form>
+                </div>
+                <div class="form-group mb-2 szukaj" style="width: 20%; margin-left: 1rem">
+                        <span class="form-group">
+                              <select class="form-control" id="ascdesc" name="ascdesc">
                                             <option value="desc" th:selected="${ascdesc}=='desc'">Malejąco</option>
                                             <option value="asc" th:selected="${ascdesc}=='asc'">Rosnąco</option>
                                         </select>
                                     </span>
-                        <input type="hidden" name="page" value="0">
-                        <input type="search" placeholder="szukaj" aria-describedby="button-addon5"
-                               th:value="${searchtext}" name="searchtext"
-                               class="form-control">
-                        <span class="input-group-append">
-                            <button id="button-addon5" type="submit" class="btn btn-primary"><i
-                                    class="fa fa-search"></i>
-                            </button>
-                        </span>
-                    </form>
+
+                </div>
+                <div class="input-group szukaj" style="float:right; width: 25%">
+                    <input type="hidden" name="page" value="0">
+                    <input type="search" placeholder="szukaj" aria-describedby="button-addon5"
+                           th:value="${searchtext}" name="searchtext"
+                           class="form-control">
+                    <div class="input-group-append">
+                        <button id="button-addon5" type="submit" class="btn btn-primary"><i
+                                class="fa fa-search"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
-
         </div>
-        <div th:switch="${orders}" class="container my-5" style="margin-top: 1rem !important;">
-            <div class="col-md-12" style="width: 100%; padding: 0px">
-                <table class="table table-striped table-responsive-md">
-                    <thead>
-                    <tr>
-                        <th>Order No.</th>
-                        <th>Date of order</th>
-                        <th>Estimated date</th>
-                        <th>Status</th>
-                        <th>Phone No.</th>
-                        <th>Comments</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr th:each="order : ${orders}">
-                        <td th:text="${order.orderNo}"></td>
-                        <td th:text="${order.dateOfOrder}"></td>
-                        <td th:text="${order.estimatedDate}"></td>
-                        <td th:text="${order.status}"></td>
-                        <td th:text="${order.phoneNumber}"></td>
-                        <td th:text="${order.comments}"></td>
-                        <td><a th:href="@{edit/{id}(id=${order.id})}"
-                               class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a></td>
-                        <td><a th:href="@{delete/{id}(id=${order.id})}"
-                               class="btn btn-primary"><i class="fas fa-user-times ml-2"></i></a></td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="pagination">
+    </div>
+
+    <div th:switch="${orders}" class="container my-5" style="margin-top: 1rem !important;">
+        <div class="col-md-12" style="width: 100%; padding: 0px">
+            <table class="table table-striped table-responsive-md">
+                <thead>
+                <tr>
+                    <th>Order No.</th>
+                    <th>Date of order</th>
+                    <th>Estimated date</th>
+                    <th>Status</th>
+                    <th>Phone No.</th>
+                    <th>Comments</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="order : ${orders}">
+                    <td th:text="${order.orderNo}"></td>
+                    <td th:text="${order.dateOfOrder}"></td>
+                    <td th:text="${order.estimatedDate}"></td>
+                    <td th:text="${order.status}"></td>
+                    <td th:text="${order.phoneNumber}"></td>
+                    <td th:text="${order.comments}"></td>
+                    <td><a th:href="@{edit/{id}(id=${order.id})}"
+                           class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a></td>
+                    <td><a th:href="@{delete/{id}(id=${order.id})}"
+                           class="btn btn-primary"><i class="fas fa-user-times ml-2"></i></a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="pagination">
             <span th:if="${currentPage gt 0}">
         <a id="pag1"
            th:href="@{/orders(page=${currentPage}-${1}, sortcolumn=${sortcolumn}, ascdesc=${ascdesc}, searchtext=${searchtext})}">&lt;</a>
 
     </span>
-                <th:block th:if="${!orders.isEmpty()}" th:each="i: ${#numbers.sequence(0, totalPages - 1)}">
-                    <a th:if="${currentPage == i}" class="active">[[${i}+1]]</a>
-                    <span th:unless="${currentPage == i}">
+            <th:block th:if="${!orders.isEmpty()}" th:each="i: ${#numbers.sequence(0, totalPages - 1)}">
+                <a th:if="${currentPage == i}" class="active">[[${i}+1]]</a>
+                <span th:unless="${currentPage == i}">
              <a id="pag2"
                 th:href="@{/orders(page=${i}, sortcolumn=${sortcolumn}, ascdesc=${ascdesc}, searchtext=${searchtext})}">[[${i}+1]]</a>
         </span>
-                </th:block>
+            </th:block>
 
-                <span th:if="${currentPage lt totalPages+(-1)}">
+            <span th:if="${currentPage lt totalPages+(-1)}">
         <a id="pag3"
            th:href="@{/orders(page=${currentPage+1}, sortcolumn=${sortcolumn}, ascdesc=${ascdesc}, searchtext=${searchtext})}">&gt;</a>
    </span>
-            </div>
         </div>
     </div>
+</div>
 </div>
 </div>
 </div>
