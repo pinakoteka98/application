@@ -139,7 +139,7 @@
                             </div>
                             <div sec:authorize="hasRole('ADMIN')" class="fourcol">
                                 <div class="btn1 draw-border" id="menu4">
-                                    <a id="test4" th:href="@{/orders}">
+                                    <a id="test4" th:href="@{/orders(page=0, sortcolumn=${'orderdate'}, ascdesc=${'desc'})}">
                                         <!--                                    <img src="/images/list.svg" title="lista zamówień">-->
                                         <!--                                    <i class="menu"></i>-->
                                         <!--                                    <br>-->

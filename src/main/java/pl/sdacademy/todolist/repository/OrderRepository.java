@@ -19,12 +19,12 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
 
     Page<Order> findAllByPhoneNumber(Pageable pageable, String phoneNumber);
 
-    @Query("SELECT o FROM Order o WHERE o.phoneNumber =:phoneNumber and " +
-            "(o.orderNo LIKE CONCAT('%',:searchText,'%') " +
+    @Query("SELECT o FROM Order o WHERE " +
+            "o.orderNo LIKE CONCAT('%',:searchText,'%') " +
             "OR o.comments LIKE CONCAT('%',:searchText,'%') " +
             "OR o.dateOfOrder LIKE CONCAT('%',:searchText,'%') " +
             "OR o.estimatedDate LIKE CONCAT('%',:searchText,'%')" +
             "OR o.status LIKE CONCAT('%',:searchText,'%')" +
-            "OR o.value LIKE CONCAT('%',:searchText,'%'))")
-    Page<Order> findAllBySearchText(Pageable pageable, String phoneNumber, String searchText);
+            "OR o.value LIKE CONCAT('%',:searchText,'%')")
+    Page<Order> findAllBySearchText(Pageable pageable, String searchText);
 }

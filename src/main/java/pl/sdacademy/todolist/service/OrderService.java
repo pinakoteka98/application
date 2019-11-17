@@ -1,6 +1,7 @@
 package pl.sdacademy.todolist.service;
 
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -130,5 +131,25 @@ public class OrderService {
     public List<Order> findAll() {
         return orderRepository.findAll();
 
+    }
+
+    public Page<Order> findAllBySearchText(Integer page, String sortColumn, String ascDesc, String searchText) {
+        String chooseSortBy;
+        switch (sortColumn) {
+            case "ordernr":
+                chooseSortBy = "orderNo";
+                break;
+            case "status":
+                chooseSortBy = "status";
+                break;
+            case "expecteddate":
+                chooseSortBy = "estimatedDate";
+                break;
+            default:
+                chooseSortBy = "dateOfOrder";
+        }
+        return StringUtils.isNotBlank(searchText)
+                ? orderRepository.findAllBySearchText(PageRequest.of(page, 6, ascDesc.equals("asc") ? Sort.by(chooseSortBy).ascending() : Sort.by(chooseSortBy).descending()), searchText)
+                : orderRepository.findAll(PageRequest.of(page, 6, ascDesc.equals("asc") ? Sort.by(chooseSortBy).ascending() : Sort.by(chooseSortBy).descending()));
     }
 }

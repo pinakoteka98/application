@@ -2,6 +2,9 @@ package pl.sdacademy.todolist.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -45,11 +48,23 @@ public class OrderController {
         return "list";
     }
 
-    @GetMapping({"orders"})
-    public String Orders(Model model) {
+    @GetMapping("orders")
+    public String Orders(@RequestParam Integer page,
+                         @RequestParam (name = "sortcolumn") String sortColumn,
+                         @RequestParam (name = "ascdesc") String ascDesc,
+                         @RequestParam (name = "searchtext", required = false) String searchText,
+                         Model model) {
         log.info("show orders");
-        List<Order> orders = orderService.findAll();
+        Page<Order>orderPage = orderService.findAllBySearchText(page, sortColumn, ascDesc, searchText);
+        int currentPage = orderPage.getNumber();
+        int totalPages = orderPage.getTotalPages();
+        List<Order> orders = orderPage.getContent();
         model.addAttribute("orders", orders);
+        model.addAttribute("currentPage", currentPage);
+        model.addAttribute("totalPages", totalPages);
+        model.addAttribute("sortcolumn", sortColumn);
+        model.addAttribute("ascdesc", ascDesc);
+        model.addAttribute("searchtext", searchText);
         return "orders";
     }
 
