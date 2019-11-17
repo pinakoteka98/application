@@ -8,6 +8,7 @@ public class MessageDto {
     private NotificationType notificationType;
     private MessageType messageType;
     private UserDto recipient;
+
 }
 
 
