@@ -1,0 +1,16 @@
+#header {
+    max-width: 1140px;
+    display: block;
+    bottom: 0;
+    margin: 10px auto;
+}
+
+.szukaj {
+    display: inline-block;
+    text-decoration: none;
+}
+
+.count {
+    margin-left:30px;
+    font-size:25px;
+}
