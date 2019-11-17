@@ -58,7 +58,7 @@ public class OrderController {
                          Model model) {
         log.info("show orders");
         Page<Order>orderPage = orderService.findAllBySearchText(page, sortColumn, ascDesc, searchText);
-        long size = orderService.findAll().stream().filter(e -> e.getStatus() == Status.INPROGRESS).count();
+        long size = orderService.findAll().stream().filter(e -> e.getStatus()== Status.INPROGRESS).count();
         int currentPage = orderPage.getNumber();
         int totalPages = orderPage.getTotalPages();
         List<Order> orders = orderPage.getContent();
