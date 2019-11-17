@@ -74,6 +74,7 @@ public class OrderController {
         log.info("add task");
         orderService.create(order);
         return "redirect:orders";
+
     }
 
     @GetMapping("edit/{id}")
