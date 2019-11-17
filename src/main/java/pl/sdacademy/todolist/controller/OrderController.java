@@ -10,12 +10,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.sdacademy.todolist.dto.OrderDto;
 import pl.sdacademy.todolist.entity.Order;
+import pl.sdacademy.todolist.entity.Status;
 import pl.sdacademy.todolist.service.OrderService;
 
 import javax.validation.Valid;
 import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Slf4j
@@ -56,6 +58,7 @@ public class OrderController {
                          Model model) {
         log.info("show orders");
         Page<Order>orderPage = orderService.findAllBySearchText(page, sortColumn, ascDesc, searchText);
+        long size = orderService.findAll().stream().filter(e -> e.getStatus() == Status.INPROGRESS).count();
         int currentPage = orderPage.getNumber();
         int totalPages = orderPage.getTotalPages();
         List<Order> orders = orderPage.getContent();
@@ -65,6 +68,7 @@ public class OrderController {
         model.addAttribute("sortcolumn", sortColumn);
         model.addAttribute("ascdesc", ascDesc);
         model.addAttribute("searchtext", searchText);
+        model.addAttribute("size", size);
         return "orders";
     }
 
