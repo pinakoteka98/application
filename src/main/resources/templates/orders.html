@@ -5,6 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Orders</title>
     <link href="../static/css/style.css" th:href="@{/static/css/orders.css}" type="text/css" rel="stylesheet"/>
+    <link href="../static/css/style.css" th:href="@{/static/css/search.css}" type="text/css" rel="stylesheet"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet"
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
@@ -15,8 +16,13 @@
           integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
           crossorigin="anonymous">
 
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
+
 <body>
+<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
 <!--<div th:replace="fragments :: header"></div>-->
 <!--<div th:replace="fragments :: language"></div>-->
 <div class="container my-2">
@@ -25,17 +31,18 @@
 
             <div id="header">
 
-                <div class="btn btn-primary" style="float: left; padding: 0px; width: 20%">
+                <div class="" style="float: left; padding: 0px; width: auto; margin-right: 30px">
                     <a href="/addorder" class="btn btn-primary">
                         <i class="fas fa-user-plus ml-2"> Add Order</i>
                     </a>
                 </div>
-<!--                <div class="btn btn-secondary col-md-2 szukaj">-->
-<!--                    <a href th:text="${size}"></a>-->
-<!--                </div>-->
+                <!--                <div class="btn btn-secondary col-md-2 szukaj">-->
+                <!--                    <a href th:text="${size}"></a>-->
+                <!--                </div>-->
 
-                <div class="form-group szukaj" style="margin-bottom: 0px !important; margin-left: 1rem">
-                    <form method="GET" th:action="@{/orders}" action="/orders" id="sort">
+
+                <form method="GET" th:action="@{/orders}" action="/orders" id="sort">
+                    <div class="form-group szukaj" style="margin-left: 1rem">
                         <span class="_4ORMAT_content_page_row _4ormat_sort_item _4ORMAT_module_contact_10">
                             <select class="form-control" id="sortBy"
                                     name="sortcolumn">
@@ -48,33 +55,68 @@
                                             <option value="status" th:selected="${sortcolumn}=='status'">Status realizacji zamówienia</option>
                                         </select>
                                     </span>
-                    </form>
-                </div>
-                <div class="form-group mb-2 szukaj" style="width: 20%; margin-left: 1rem">
+
+                    </div>
+                    <div class="form-group mb-2 szukaj" style="width: 20%; margin-left: 1rem">
                         <span class="form-group">
                               <select class="form-control" id="ascdesc" name="ascdesc">
                                             <option value="desc" th:selected="${ascdesc}=='desc'">Malejąco</option>
                                             <option value="asc" th:selected="${ascdesc}=='asc'">Rosnąco</option>
                                         </select>
                                     </span>
-
-                </div>
-                <div class="input-group szukaj" style="float:right; width: 20%">
-                    <input type="hidden" name="page" value="0">
-                    <input type="search" placeholder="szukaj" aria-describedby="button-addon5"
-                           th:value="${searchtext}" name="searchtext"
-                           class="form-control">
-                    <div class="input-group-append">
-                        <button id="button-addon5" type="submit" class="btn btn-primary"><i
-                                class="fa fa-search"></i>
-                        </button>
                     </div>
+                    <div class="input-group mb-4 szukaj" style="float:right; width: 20%">
+
+                        <input type="search" placeholder="szukaj" aria-describedby="button-addon5"
+                               th:value="${searchtext}" name="searchtext"
+                               class="form-control"><input type="hidden" name="page" value="0">
+                        <div class="input-group-append" style="margin-left: 0px">
+                            <button id="button-addon5" type="submit" class="btn btn-primary"><i
+                                    class="fa fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+
+        <div class="row text-center">
+            <div class="col">
+                <div class="counter">
+                    <i class="fa fa-cogs fa-2x"></i>
+                    <h2 class="counter-count" th:text="${size}"/></h2>
+                    <p class="count-text ">Orders in progress</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="counter">
+                    <i class="fa fa-calendar fa-2x"></i>
+                    <h2 class="counter-count"/>22</h2>
+                    <p class="count-text ">Years of experience</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="counter">
+                    <i class="fa fa-globe fa-2x"></i>
+                    <h2 class="counter-count">31</h2>
+                    <p class="count-text ">International markets</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="counter">
+                    <i class="fa fa-image fa-2x"></i>
+                    <h2 class="counter-count"/>750</h2>
+                    <p class="count-text ">Orders completed</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <div th:switch="${orders}" class="container my-5" style="margin-top: 1rem !important;">
+    <div th:switch="${orders}" class="container" style="margin-top: 1rem !important;">
         <div class="col-md-12" style="width: 100%; padding: 0px">
             <table class="table table-striped table-responsive-md">
                 <thead>
@@ -105,29 +147,48 @@
                 </tbody>
             </table>
         </div>
-        <div class="pagination">
+    </div>
+
+    <div style="text-align: center">
+        <a th:href="@{@{/orders(page=0, sortcolumn=${'orderdate'}, ascdesc=${'desc'}, searchtext=${'INPROGRESS'})}}"
+           th:text="${'Ilość zamówień w trakcie realizacji: '+size}"></a>
+    </div>
+    <div th:if="${totalPages gt 1}" class="pagination">
             <span th:if="${currentPage gt 0}">
         <a id="pag1"
            th:href="@{/orders(page=${currentPage}-${1}, sortcolumn=${sortcolumn}, ascdesc=${ascdesc}, searchtext=${searchtext})}">&lt;</a>
 
     </span>
-            <th:block th:if="${!orders.isEmpty()}" th:each="i: ${#numbers.sequence(0, totalPages - 1)}">
-                <a th:if="${currentPage == i}" class="active">[[${i}+1]]</a>
-                <span th:unless="${currentPage == i}">
+        <th:block th:if="${!orders.isEmpty()}" th:each="i: ${#numbers.sequence(0, totalPages - 1)}">
+            <a th:if="${currentPage == i}" class="active">[[${i}+1]]</a>
+            <span th:unless="${currentPage == i}">
              <a id="pag2"
                 th:href="@{/orders(page=${i}, sortcolumn=${sortcolumn}, ascdesc=${ascdesc}, searchtext=${searchtext})}">[[${i}+1]]</a>
         </span>
-            </th:block>
+        </th:block>
 
-            <span th:if="${currentPage lt totalPages+(-1)}">
+        <span th:if="${currentPage lt totalPages+(-1)}">
         <a id="pag3"
            th:href="@{/orders(page=${currentPage+1}, sortcolumn=${sortcolumn}, ascdesc=${ascdesc}, searchtext=${searchtext})}">&gt;</a>
    </span>
-        </div>
     </div>
 </div>
 </div>
-</div>
-</div>
+
+
+<script>
+    $('.counter-count').each(function () {
+        $(this).prop('Counter', 0).animate({
+            Counter: $(this).text()
+        }, {
+            duration: 2500,
+            easing: 'swing',
+            step: function (now) {
+                $(this).text(Math.ceil(now));
+            }
+        });
+    });
+</script>
+
 </body>
 </html>

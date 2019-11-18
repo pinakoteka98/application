@@ -1,6 +1,6 @@
 table {
     table-layout: auto;
-    padding: 20px;
+    padding: 25px;
     border-collapse: collapse;
     width: 100%;
 }
@@ -11,10 +11,14 @@ table {
 }
 
 td, th {
-    border: 3px solid transparent;
+    border: 5px solid transparent;
     text-align: left;
-    padding: 15px;
+    padding: 20px;
 
+}
+
+tr {
+    line-height: 200% !important;
 }
 
 tr:nth-child(even) {

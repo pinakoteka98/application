@@ -31,7 +31,7 @@
     .draw-border:hover::after {
       transition-delay: 0s, 0.25s, 0s; }
 
-Button styling, semi-ignore .btn {
+.btn {
   background: none;
   border: none;
   cursor: pointer;
@@ -39,5 +39,5 @@ Button styling, semi-ignore .btn {
   font: 700 1.2rem 'Planet Light', sans-serif;
   padding: 1em 2em;
   letter-spacing: 0.05rem; }
-  Button styling:focus, semi-ignore .btn:focus {
+  .btn:focus {
     outline: 2px black; }

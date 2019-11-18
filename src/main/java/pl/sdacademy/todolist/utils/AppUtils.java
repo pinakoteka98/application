@@ -13,18 +13,19 @@ public class AppUtils {
 
     public static String generatePassword() {
         int passwordLength = 8;
-        String newPassword = "";
+        StringBuilder newPassword;
         String numbers = "0123456789";
         String letters = "abcdefghijklmnopqrstuvwxyz";
         String signs = "!@#$*_";
         String allSigns = numbers + letters + letters.toUpperCase() + signs;
 
         do {
+            newPassword = new StringBuilder();
             Random random = new Random();
             for (int i = 0; i < passwordLength; i++) {
-                newPassword += allSigns.charAt(random.nextInt(allSigns.length()));
+                newPassword.append(allSigns.charAt(random.nextInt(allSigns.length())));
             }
-        } while (!validateData(Consts.PASSWORD_PATTERN, newPassword));
-        return newPassword;
+        } while (!validateData(Consts.PASSWORD_PATTERN, newPassword.toString()));
+        return newPassword.toString();
     }
 }

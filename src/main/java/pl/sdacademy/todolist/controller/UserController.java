@@ -2,12 +2,15 @@ package pl.sdacademy.todolist.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.MessageSource;
 import org.springframework.data.domain.Page;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import pl.sdacademy.todolist.dto.MessageDto;
+import pl.sdacademy.todolist.dto.MessageType;
 import pl.sdacademy.todolist.dto.UserDto;
 import pl.sdacademy.todolist.emailService.EmailService;
 import pl.sdacademy.todolist.entity.Order;
@@ -19,6 +22,7 @@ import pl.sdacademy.todolist.validators.RegisterValidator;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -31,6 +35,7 @@ public class UserController {
     private final OrderService orderService;
     private final EmailService emailService;
     private final PasswordEncoder passwordEncoder;
+    private final MessageSource messageSource;
 
     @GetMapping(value = "/login")
     public String showLoginPage() {
@@ -43,17 +48,18 @@ public class UserController {
         return "register";
     }
 
-    @PostMapping("/register")
-    public String registerUser(@ModelAttribute(name = "userForm") UserDto userForm, BindingResult result, Model model) {
+    @PostMapping({"/register","/message"})
+    public String registerUser(@ModelAttribute(name = "userForm") UserDto userForm, BindingResult result, Model model, MessageDto message) {
         Optional<User> existing = userService.findByPhoneNumber(userForm.getPhoneNumber());
         registerValidator.validate(userForm, result);
         registerValidator.validatePhoneExist(existing, result);
-
         if (result.hasErrors()) {
             return "register";
         }
         userService.create(userForm);
-        emailService.sendEmail(userForm.getEmail(), "Potwierdzenie rejestracji w serwisie Pinakoteka Design.", "Dziękujemy za rejestrację w naszym serwisie.\nJeśli nie dokonywałeś rejestracji napisz do nas o tym w informacji zwrotnej.");
+        UserDto recipient = message.getRecipient();
+//        emailService.sendMessage(userForm.getEmail(), messageSource.getMessage(message.getNotificationType().getMessageKey(), null, Locale.getDefault()));
+        emailService.sendMessage(userForm.getEmail(), "Potwierdzenie rejestracji w serwisie Pinakoteka.");
         model.addAttribute("info", "Rejestracja zakończona sukcesem. Możesz się zalogować.");
         model.addAttribute("login", userForm.getPhoneNumber());
         return "login";
@@ -103,7 +109,7 @@ public class UserController {
                 userService.uptade(user);
                 model.addAttribute("login", phoneNumber);
                 model.addAttribute("info", "Nowe hasło zostało wysłane na Twój adres email. Możesz się nim zalogować.");
-                emailService.sendEmail(email, "Twoje hasło zostało zresetowane", "Twoje nowe hasło to:\n" + newPassword);
+//                emailService.notify(email, "Twoje hasło zostało zresetowane", "Twoje nowe hasło to:\n" + newPassword);
                 return "login";
             }
         }

@@ -3,8 +3,6 @@ package pl.sdacademy.todolist.controller;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -16,8 +14,6 @@ import pl.sdacademy.todolist.service.OrderService;
 import javax.validation.Valid;
 import java.security.Principal;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Slf4j
@@ -52,12 +48,12 @@ public class OrderController {
 
     @GetMapping("orders")
     public String Orders(@RequestParam Integer page,
-                         @RequestParam (name = "sortcolumn") String sortColumn,
-                         @RequestParam (name = "ascdesc") String ascDesc,
-                         @RequestParam (name = "searchtext", required = false) String searchText,
+                         @RequestParam(name = "sortcolumn") String sortColumn,
+                         @RequestParam(name = "ascdesc") String ascDesc,
+                         @RequestParam(name = "searchtext", required = false) String searchText,
                          Model model) {
         log.info("show orders");
-        Page<Order>orderPage = orderService.findAllBySearchText(page, sortColumn, ascDesc, searchText);
+        Page<Order> orderPage = orderService.findAllBySearchText(page, sortColumn, ascDesc, searchText);
         long size = orderService.findAll().stream().filter(e -> e.getStatus() == Status.INPROGRESS).count();
         int currentPage = orderPage.getNumber();
         int totalPages = orderPage.getTotalPages();
