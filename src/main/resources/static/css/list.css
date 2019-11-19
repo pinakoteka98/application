@@ -86,3 +86,19 @@ tr:nth-child(even) {
 #pag1, #pag2, #pag3 {
     color: black;
 }
+
+#order_list {
+     background: lightgrey;
+     padding: 10px;
+ }
+
+.col-1 {
+    display: inline;
+    width: 300px !important;
+    margin-right: 100px;
+}
+
+col-2 {
+    text-align: right !important;
+    display: inline;
+}

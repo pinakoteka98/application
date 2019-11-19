@@ -92,7 +92,7 @@ public class OrderService {
         orderEntity.setOrderNo(order.getOrderNo());
         orderEntity.setStatus(order.getStatus());
         if (oldStatus != newStatus.READY) {
-            smsService.sendMessage(orderEntity.getPhoneNumber(), "Dzień dobry, zapraszamy po odbiór zrealizowanego zamówienia nr " + orderEntity.getOrderNo() + ". Pozdrawiamy i życzymy miłego dnia.");
+            smsService.sendMessage(orderEntity.getPhoneNumber(), "Dzień dobry! Miło nam poinformować, że zamówienie nr " + orderEntity.getOrderNo() + "zostało zrealizowane. Zapraszamy po odbiór. Pozdrawiamy i życzymy miłego dnia.");
         }
     }
 

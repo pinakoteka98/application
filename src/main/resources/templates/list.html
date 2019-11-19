@@ -136,35 +136,57 @@
             <div class="_4ORMAT_content_page_row _4ormat_sort_item _4ORMAT_module_contact_10" style="padding-top: 5px">
                 <h2 style="text-align: center">Historia zamówień</h2>
                 <br>
-                <div th:switch="${orders}" class="">
 
-                    <table class="">
-                        <thead id="table-head" style="width:100%">
-                        <tr>
-                            <th>Numer zamówienia</th>
-                            <th>Data złożenia zamówienia</th>
-                            <th>Przewidywany termin realizacji</th>
-                            <th>Status realizacji zamówienia</th>
-                            <th>Wartość</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr th:each="order : ${orders}">
-                            <td style="font-weight: 700" th:text="${order.orderNo}"></td>
-                            <td th:text="${order.dateOfOrder}"></td>
-                            <td th:text="${order.estimatedDate}"></td>
-                            <td th:switch="${order.status}">
-                                <span style="color:#e80404; font-weight: 700"
-                                      th:case="${order.status.INPROGRESS}">w trakcie realizacji</span>
-                                <span style="color:green; font-weight: 700"
-                                      th:case="${order.status.READY}">gotowe, oczekuje na odbiór</span>
-                                <span style="color:darkgrey; font-weight: 700" th:case="${order.status.RECEIVED}">odebrane</span>
-                            </td>
-                            <td th:text="${order.value + ' zł'}"></td>
+                <div id="order_list" th:each="order : ${orders}" style="margin-bottom: 10px !important;">
+                    <div style="max-width: 1140px">
+                        <h5 style="font-weight: 700" th:text="'Numer zamówienia: '+${order.orderNo}"></h5>
+                        <p th:text="'Data złożenia zamówienia: '+${order.dateOfOrder}"></p>
 
-                        </tr>
-                        </tbody>
-                    </table>
+
+                        <div class="col-1" th:switch="${order.status}">
+                            <span style="color:#e80404; font-weight: 700"
+                                  th:case="${order.status.INPROGRESS}">w trakcie realizacji</span>
+                            <span style="color:green; font-weight: 700"
+                                  th:case="${order.status.READY}">gotowe, oczekuje na odbiór</span>
+                            <span style="color:darkgrey; font-weight: 700" th:case="${order.status.RECEIVED}">zrealizowane i odebrane</span>
+                        </div>
+
+                        <div class="col-2" th:text="'Wartość: '+${order.value + ' zł'}"
+                             style="font-size: 18px; font-weight: 700; float: right">
+
+                        </div>
+
+                    </div>
+
+
+                    <!--                <table class="">-->
+                    <!--                    <thead id="table-head" style="width:100%">-->
+                    <!--                    <tr>-->
+                    <!--                        <th>Numer zamówienia</th>-->
+                    <!--                        <th>Data złożenia zamówienia</th>-->
+                    <!--                        <th>Przewidywany termin realizacji</th>-->
+                    <!--                        <th>Status realizacji zamówienia</th>-->
+                    <!--                        <th>Wartość</th>-->
+                    <!--                    </tr>-->
+                    <!--                    </thead>-->
+                    <!--                    <tbody>-->
+                    <!--                    <tr th:each="order : ${orders}">-->
+                    <!--                        <td style="font-weight: 700" th:text="${order.orderNo}"></td>-->
+                    <!--                        <td th:text="${order.dateOfOrder}"></td>-->
+                    <!--                        <td th:text="${order.estimatedDate}"></td>-->
+                    <!--                        <td th:switch="${order.status}">-->
+                    <!--                                <span style="color:#e80404; font-weight: 700"-->
+                    <!--                                      th:case="${order.status.INPROGRESS}">w trakcie realizacji</span>-->
+                    <!--                            <span style="color:green; font-weight: 700"-->
+                    <!--                                  th:case="${order.status.READY}">gotowe, oczekuje na odbiór</span>-->
+                    <!--                            <span style="color:darkgrey; font-weight: 700"-->
+                    <!--                                  th:case="${order.status.RECEIVED}">odebrane</span>-->
+                    <!--                        </td>-->
+                    <!--                        <td th:text="${order.value + ' zł'}"></td>-->
+
+                    <!--                    </tr>-->
+                    <!--                    </tbody>-->
+                    <!--                </table>-->
                 </div>
 
             </div>
@@ -172,37 +194,38 @@
     </div>
 
 
-<div class="_4ORMAT_content_page_row _4ormat_sort_item _4ORMAT_module_contact_10">
-<div class="footerholder">
-    <div id="footer">
-        <div class="pagination" style="float: left;">
-            <a th:href="@{/menu}">powrót</a>
-        </div>
-        <div class="pagination">
+    <div class="_4ORMAT_content_page_row _4ormat_sort_item _4ORMAT_module_contact_10">
+        <div class="footerholder">
+            <div id="footer">
+                <div class="pagination" style="float: left;">
+                    <a th:href="@{/menu}">powrót</a>
+                </div>
+                <div class="pagination">
             <span th:if="${currentPage gt 0}">
         <a id="pag1"
            th:href="@{/list/{nr}/sort(nr=${currentPage}-${1}, sortcolumn=${sortcolumn}, ascdesc=${ascdesc}, elements=${elements})}">&lt;</a>
 
     </span>
-            <th:block th:if="${!orders.isEmpty()}" th:each="i: ${#numbers.sequence(0, totalPages - 1)}">
-                <a th:if="${currentPage == i}" class="active">[[${i}+1]]</a>
-                <span th:unless="${currentPage == i}">
+                    <th:block th:if="${!orders.isEmpty()}" th:each="i: ${#numbers.sequence(0, totalPages - 1)}">
+                        <a th:if="${currentPage == i}" class="active">[[${i}+1]]</a>
+                        <span th:unless="${currentPage == i}">
              <a id="pag2"
                 th:href="@{/list/{nr}/sort(nr=${i}, sortcolumn=${sortcolumn==null?'establishdate':sortcolumn}, ascdesc=${ascdesc==null?'asc':ascdesc}, elements=${elements==null?5:elements})}">[[${i}+1]]</a>
         </span>
-            </th:block>
+                    </th:block>
 
-            <span th:if="${currentPage lt totalPages+(-1)}">
+                    <span th:if="${currentPage lt totalPages+(-1)}">
         <a id="pag3"
            th:href="@{/list/{nr}/sort(nr=${currentPage+1}, sortcolumn=${sortcolumn==null?'establishdate':sortcolumn}, ascdesc=${ascdesc==null?'asc':ascdesc}, elements=${elements==null?5:elements})}">&gt;</a>
    </span>
-        </div>
-        <div class="pagination" style="float: right">
-            <a href="/logout">wyloguj</a>
+                </div>
+                <div class="pagination" style="float: right">
+                    <a href="/logout">wyloguj</a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-
 
 
 <script src='https://static0.format.com/static/theme_api/v1/4ormat-7ec6872c8e665780eead7b027e2aa66fb06142caecd57b86359163172bf23497.js'
