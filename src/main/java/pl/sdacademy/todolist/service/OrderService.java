@@ -91,8 +91,8 @@ public class OrderService {
         orderEntity.setEstimatedDate(order.getEstimatedDate());
         orderEntity.setOrderNo(order.getOrderNo());
         orderEntity.setStatus(order.getStatus());
-        if (oldStatus != newStatus) {
-            smsService.sendMessage(orderEntity.getPhoneNumber(), "Tu Pinakoteka! Status Twojego zamówienia nr " + orderEntity.getOrderNo() + " zmienił się z " + oldStatus + " na " + newStatus +".");
+        if (oldStatus != newStatus.READY) {
+            smsService.sendMessage(orderEntity.getPhoneNumber(), "Dzień dobry, zapraszamy po odbiór zrealizowanego zamówienia nr " + orderEntity.getOrderNo() + ". Pozdrawiamy i życzymy miłego dnia.");
         }
     }
 
