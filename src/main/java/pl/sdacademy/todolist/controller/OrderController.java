@@ -7,9 +7,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.sdacademy.todolist.dto.OrderDto;
+import pl.sdacademy.todolist.dto.UserDto;
+import pl.sdacademy.todolist.emailService.EmailService;
 import pl.sdacademy.todolist.entity.Order;
 import pl.sdacademy.todolist.entity.Status;
 import pl.sdacademy.todolist.service.OrderService;
+import pl.sdacademy.todolist.service.SMSService;
+import pl.sdacademy.todolist.service.UserService;
 
 import javax.validation.Valid;
 import java.security.Principal;
@@ -21,6 +25,8 @@ import java.util.List;
 public class OrderController {
 
     private final OrderService orderService;
+    private final SMSService smsService;
+    private final UserService userService;
 
     @GetMapping({"/", "index"})
     public String showOrders(Model model) {
@@ -100,8 +106,9 @@ public class OrderController {
     }
 
     @PostMapping("edit")
-    public String editOrder(@ModelAttribute("id") Order order) {
+    public String editOrder(@ModelAttribute("id") UserDto userForm, Order order) {
         orderService.update(order);
+//        smsService.sendMessage(userForm.getPhoneNumber(), "Dzień dobry, zapraszamy po odbiór oprawionych prac.");
         return "redirect:orders";
     }
 
