@@ -82,7 +82,7 @@ public class OrderService {
     }
 
     @Transactional
-    public Order update(Order order) {
+    public void update(Order order) {
         Order orderEntity = orderRepository.findById(order.getId())
                 .orElseThrow(() -> new EntityNotFoundException(order.getId()));
         Status oldStatus = orderEntity.getStatus();
@@ -92,9 +92,8 @@ public class OrderService {
         orderEntity.setOrderNo(order.getOrderNo());
         orderEntity.setStatus(order.getStatus());
         if (oldStatus != newStatus) {
-            smsService.sendMessage(orderEntity.getPhoneNumber(), "Tu Pinakoteka! Status Twojego zadania zmienił się z " + oldStatus + " na " + newStatus);
+            smsService.sendMessage(orderEntity.getPhoneNumber(), "Tu Pinakoteka! Status Twojego zamówienia nr " + orderEntity.getOrderNo() + " zmienił się z " + oldStatus + " na " + newStatus +".");
         }
-        return orderEntity;
     }
 
     public void delete(Long id) {
