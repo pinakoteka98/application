@@ -83,14 +83,11 @@ public class OrderService {
     public Order update(Order order) {
         Order orderEntity = orderRepository.findById(order.getId())
                 .orElseThrow(() -> new EntityNotFoundException(order.getId()));
-        orderEntity.setComments(order.getComments());
         orderEntity.setDateOfOrder(order.getDateOfOrder());
         orderEntity.setEstimatedDate(order.getEstimatedDate());
         orderEntity.setOrderNo(order.getOrderNo());
-        orderEntity.setPhoneNumber(order.getPhoneNumber());
         orderEntity.setStatus(order.getStatus());
-        orderEntity.setValue(order.getValue());
-        return orderRepository.save(orderEntity);
+        return orderEntity;
     }
 
     public void delete(Long id) {

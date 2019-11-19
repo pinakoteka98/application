@@ -53,13 +53,13 @@ public class OrderController {
     }
 
     @GetMapping("orders")
-    public String Orders(@RequestParam Integer page,
-                         @RequestParam(name = "sortcolumn") String sortColumn,
-                         @RequestParam(name = "ascdesc") String ascDesc,
+    public String Orders(@RequestParam(required = false) Integer page,
+                         @RequestParam(name = "sortcolumn", required = false) String sortColumn,
+                         @RequestParam(name = "ascdesc", required = false) String ascDesc,
                          @RequestParam(name = "searchtext", required = false) String searchText,
                          Model model) {
         log.info("show orders");
-        Page<Order> orderPage = orderService.findAllBySearchText(page, sortColumn, ascDesc, searchText);
+        Page<Order> orderPage = orderService.findAllBySearchText(page == null ? 0 : page, sortColumn == null ? "orderdate" : sortColumn, ascDesc == null ? "desc" : ascDesc, searchText);
         long size = orderService.findAll().stream().filter(e -> e.getStatus() == Status.INPROGRESS).count();
         int currentPage = orderPage.getNumber();
         int totalPages = orderPage.getTotalPages();
@@ -98,15 +98,15 @@ public class OrderController {
 
     }
 
-    @GetMapping("edit/{id}")
+    @GetMapping("/edit/{id}")
     public String edit(@PathVariable("id") Long id, Model model) {
         Order orderToEdit = orderService.find(id);
         model.addAttribute("order", orderToEdit);
         return "edit";
     }
 
-    @PostMapping("edit")
-    public String editOrder(@ModelAttribute("id") UserDto userForm, Order order) {
+    @PostMapping("/edit")
+    public String editOrder(@ModelAttribute(name = "order") Order order) {
         orderService.update(order);
 //        smsService.sendMessage(userForm.getPhoneNumber(), "Dzień dobry, zapraszamy po odbiór oprawionych prac.");
         return "redirect:orders";
