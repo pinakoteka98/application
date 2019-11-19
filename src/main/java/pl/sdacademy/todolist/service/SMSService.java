@@ -16,10 +16,10 @@ import pl.smsapi.exception.SmsapiException;
 @Service
 public class SMSService implements MessageService {
 
-    @Value("${api.sms.client.login}")
+//    @Value("${api.sms.client.login}")
     private String login;
 
-    @Value("${api.sms.client.password}")
+//    @Value("${api.sms.client.password}")
     private String password;
 
     @Override

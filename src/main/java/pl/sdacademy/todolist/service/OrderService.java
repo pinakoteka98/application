@@ -12,6 +12,7 @@ import org.springframework.validation.annotation.Validated;
 import pl.sdacademy.todolist.dto.OrderDto;
 import pl.sdacademy.todolist.entity.Order;
 import pl.sdacademy.todolist.entity.Role;
+import pl.sdacademy.todolist.entity.Status;
 import pl.sdacademy.todolist.entity.User;
 import pl.sdacademy.todolist.exception.EntityNotFoundException;
 import pl.sdacademy.todolist.repository.OrderRepository;
@@ -33,6 +34,7 @@ public class OrderService {
     private final UserRepository userRepository;
     private final OrderRepository orderRepository;
     private final RoleRepository roleRepository;
+    private final SMSService smsService;
 
     private Map<Long, Order> orders = new ConcurrentHashMap<>();
 
@@ -83,10 +85,15 @@ public class OrderService {
     public Order update(Order order) {
         Order orderEntity = orderRepository.findById(order.getId())
                 .orElseThrow(() -> new EntityNotFoundException(order.getId()));
+        Status oldStatus = orderEntity.getStatus();
+        Status newStatus = order.getStatus();
         orderEntity.setDateOfOrder(order.getDateOfOrder());
         orderEntity.setEstimatedDate(order.getEstimatedDate());
         orderEntity.setOrderNo(order.getOrderNo());
         orderEntity.setStatus(order.getStatus());
+        if (oldStatus != newStatus) {
+            smsService.sendMessage(orderEntity.getPhoneNumber(), "Tu Pinakoteka! Status Twojego zadania zmienił się z " + oldStatus + " na " + newStatus);
+        }
         return orderEntity;
     }
 
