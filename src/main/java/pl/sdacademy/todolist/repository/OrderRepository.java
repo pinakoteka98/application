@@ -27,6 +27,7 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
             "OR o.dateOfOrder LIKE CONCAT('%',:searchText,'%') " +
             "OR o.estimatedDate LIKE CONCAT('%',:searchText,'%')" +
             "OR o.status LIKE CONCAT('%',:searchText,'%')" +
-            "OR o.value LIKE CONCAT('%',:searchText,'%')")
+            "OR o.value LIKE CONCAT('%',:searchText,'%')" +
+            "OR o.phoneNumber LIKE CONCAT('%',:searchText,'%')")
     Page<Order> findAllBySearchText(Pageable pageable, String searchText);
 }
