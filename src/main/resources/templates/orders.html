@@ -163,9 +163,11 @@
                 </li>
 
                 <li th:block th:if="${!orders.isEmpty()}" th:each="i: ${#numbers.sequence(0, totalPages - 1)}">
-                    <a th:if="${currentPage == i}" class="page-item active" th:unless="${currentPage == i}">[[${i}+1]]</a>
+                    <a th:if="${currentPage == i}" class="page-item active"
+                       th:unless="${currentPage == i}">[[${i}+1]]</a>
 
-                    <a class="page-link" th:href="@{/orders(page=${i}, sortcolumn=${sortcolumn}, ascdesc=${ascdesc}, searchtext=${searchtext})}">[[${i}+1]]</a>
+                    <a class="page-link"
+                       th:href="@{/orders(page=${i}, sortcolumn=${sortcolumn}, ascdesc=${ascdesc}, searchtext=${searchtext})}">[[${i}+1]]</a>
 
                 </li>
 
