@@ -126,9 +126,6 @@ public class OrderService {
         }
 
         return orderRepository.findAllByPhoneNumber(PageRequest.of(page, elementsOnPage, ascDesc.equals("asc") ? Sort.by(chooseSortBy).ascending() : Sort.by(chooseSortBy).descending()), phoneNumber);
-//        return ascDesc.equals("asc")
-//                ? orderRepository.findAllByPhoneNumber(PageRequest.of(page, elementsOnPage, Sort.by(chooseSortBy).ascending()), phoneNumber)
-//                : orderRepository.findAllByPhoneNumber(PageRequest.of(page, elementsOnPage, Sort.by(chooseSortBy).descending()), phoneNumber);
     }
 
     public List<Order> findAll() {
