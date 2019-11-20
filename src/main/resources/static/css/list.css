@@ -88,7 +88,7 @@ tr:nth-child(even) {
 }
 
 #order_list {
-     background: lightgrey;
+     background: #ededed;
      padding: 10px;
  }
 

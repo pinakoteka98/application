@@ -68,7 +68,7 @@ public class UserController {
     @GetMapping({"/list/{page}"})
     public String showListOfOrders(@PathVariable Integer page, Model model, Principal principal) {
         log.info("list of orders");
-        Page<Order> ordersPage = orderService.findAllAsPage(page, 5, "dateOfOrder", "asc", principal.getName());
+        Page<Order> ordersPage = orderService.findAllAsPage(page, 3, "dateOfOrder", "asc", principal.getName());
         List<Order> ordersList = ordersPage.getContent();
         int currentPage = ordersPage.getNumber();
         int totalPages = ordersPage.getTotalPages();

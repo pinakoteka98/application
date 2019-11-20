@@ -109,7 +109,6 @@ public class OrderController {
     @PostMapping("/edit")
     public String editOrder(@ModelAttribute(name = "order") Order order) {
         orderService.update(order);
-//        smsService.sendMessage(userForm.getPhoneNumber(), "Dzień dobry, zapraszamy po odbiór oprawionych prac.");
         return "redirect:orders";
     }
 

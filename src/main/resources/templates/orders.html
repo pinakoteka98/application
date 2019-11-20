@@ -7,15 +7,13 @@
     <link href="../static/css/style.css" th:href="@{/static/css/orders.css}" type="text/css" rel="stylesheet"/>
     <link href="../static/css/style.css" th:href="@{/static/css/search.css}" type="text/css" rel="stylesheet"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet"
-          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-          crossorigin="anonymous">
+
     <link rel="stylesheet"
           href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
           integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
           crossorigin="anonymous">
 
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -31,9 +29,10 @@
 
             <div id="header">
 
-                <div class="" style="float: left; padding: 0px; width: auto; margin-right: 30px; font-family: Planet Light, sans-serif !important;">
+                <div class=""
+                     style="float: left; padding: 0px; width: auto; margin-right: 30px; font-family: Planet Light, sans-serif !important;">
                     <a href="/addorder" class="btn btn-primary">
-                        <i class="fa fa-tasks ml-2"></i>   Add order
+                        <i class="fa fa-tasks ml-2"></i> Add order
 
                     </a>
                 </div>
@@ -85,15 +84,18 @@
 
 
     <div class="container">
-
         <div class="row text-center">
-            <div class="col">
-                <div class="counter">
-                    <i class="fa fa-cogs fa-2x"></i>
-                    <h2 class="counter-count" th:text="${size}"/></h2>
-                    <p class="count-text ">Orders in progress</p>
+            <a class="col" id="link1"
+               th:href="@{@{/orders(page=0, sortcolumn=${'orderdate'}, ascdesc=${'desc'}, searchtext=${'INPROGRESS'})}}">
+                <div class="">
+                    <div class="counter">
+                        <i class="fa fa-cogs fa-2x"></i>
+                        <h2 class="counter-count" th:text="${size}"/></h2>
+                        <p class="count-text ">Orders in progress</p>
+
+                    </div>
                 </div>
-            </div>
+            </a>
             <div class="col">
                 <div class="counter">
                     <i class="fa fa-calendar fa-2x"></i>
@@ -149,33 +151,33 @@
                 </tbody>
             </table>
         </div>
-    </div>
 
-    <div style="text-align: center">
-        <a th:href="@{@{/orders(page=0, sortcolumn=${'orderdate'}, ascdesc=${'desc'}, searchtext=${'INPROGRESS'})}}"
-           th:text="${'Ilość zamówień w trakcie realizacji: '+size}"></a>
-    </div>
-    <div th:if="${totalPages gt 1}" class="pagination">
-            <span th:if="${currentPage gt 0}">
-        <a id="pag1"
-           th:href="@{/orders(page=${currentPage}-${1}, sortcolumn=${sortcolumn}, ascdesc=${ascdesc}, searchtext=${searchtext})}">&lt;</a>
 
-    </span>
-        <th:block th:if="${!orders.isEmpty()}" th:each="i: ${#numbers.sequence(0, totalPages - 1)}">
-            <a th:if="${currentPage == i}" class="active">[[${i}+1]]</a>
-            <span th:unless="${currentPage == i}">
-             <a id="pag2"
-                th:href="@{/orders(page=${i}, sortcolumn=${sortcolumn}, ascdesc=${ascdesc}, searchtext=${searchtext})}">[[${i}+1]]</a>
-        </span>
-        </th:block>
+        <nav class="pagination-control text-center">
+            <ul class="pagination justify-content-center" style="margin: 10px 0">
 
-        <span th:if="${currentPage lt totalPages+(-1)}">
-        <a id="pag3"
-           th:href="@{/orders(page=${currentPage+1}, sortcolumn=${sortcolumn}, ascdesc=${ascdesc}, searchtext=${searchtext})}">&gt;</a>
-   </span>
+                <li class="page-item" th:if="${currentPage gt 0}">
+                    <a class="page-link"
+                       th:href="@{/orders(page=${currentPage}-${1}, sortcolumn=${sortcolumn}, ascdesc=${ascdesc}, searchtext=${searchtext})}">Previous</a>
+
+                </li>
+
+                <li th:block th:if="${!orders.isEmpty()}" th:each="i: ${#numbers.sequence(0, totalPages - 1)}">
+                    <a th:if="${currentPage == i}" class="page-item active" th:unless="${currentPage == i}">[[${i}+1]]</a>
+
+                    <a class="page-link" th:href="@{/orders(page=${i}, sortcolumn=${sortcolumn}, ascdesc=${ascdesc}, searchtext=${searchtext})}">[[${i}+1]]</a>
+
+                </li>
+
+                <li class="page-item" th:if="${currentPage lt totalPages+(-1)}">
+                    <a class="page-link"
+                       th:href="@{/orders(page=${currentPage+1}, sortcolumn=${sortcolumn}, ascdesc=${ascdesc}, searchtext=${searchtext})}">Next</a>
+                </li>
+
+            </ul>
+        </nav>
     </div>
 </div>
-
 
 <script>
     $('.counter-count').each(function () {

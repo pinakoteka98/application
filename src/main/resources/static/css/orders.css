@@ -2,7 +2,7 @@
     max-width: 1140px;
     display: block;
     bottom: 0;
-    margin: 10px auto;
+    margin: 0;
 }
 
 .szukaj {
@@ -43,4 +43,21 @@
     font-size: 14px;
     color: #aaa;
     font-style: italic;
+}
+
+#link1 {
+    text-decoration: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.counter {
+    padding: 10px 0;
+}
+
+.active {
+    background-color: #428bca;
+    text-decoration: white;
 }

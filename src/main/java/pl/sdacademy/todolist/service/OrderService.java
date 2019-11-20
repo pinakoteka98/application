@@ -92,7 +92,7 @@ public class OrderService {
         orderEntity.setOrderNo(order.getOrderNo());
         orderEntity.setStatus(order.getStatus());
         if (oldStatus != newStatus.READY) {
-            smsService.sendMessage(orderEntity.getPhoneNumber(), "Dzień dobry! Miło nam poinformować, że zamówienie nr " + orderEntity.getOrderNo() + "zostało zrealizowane. Zapraszamy po odbiór. Pozdrawiamy i życzymy miłego dnia.");
+            smsService.sendMessage(orderEntity.getPhoneNumber(), "Dzień dobry! Miło nam poinformować, że zamówienie nr " + orderEntity.getOrderNo() + " zostało zrealizowane. Zapraszamy po odbiór. Pozdrawiamy i życzymy miłego dnia.");
         }
     }
 
@@ -149,7 +149,7 @@ public class OrderService {
                 chooseSortBy = "dateOfOrder";
         }
         return StringUtils.isNotBlank(searchText)
-                ? orderRepository.findAllBySearchText(PageRequest.of(page, 6, ascDesc.equals("asc") ? Sort.by(chooseSortBy).ascending() : Sort.by(chooseSortBy).descending()), searchText)
-                : orderRepository.findAll(PageRequest.of(page, 6, ascDesc.equals("asc") ? Sort.by(chooseSortBy).ascending() : Sort.by(chooseSortBy).descending()));
+                ? orderRepository.findAllBySearchText(PageRequest.of(page, 5, ascDesc.equals("asc") ? Sort.by(chooseSortBy).ascending() : Sort.by(chooseSortBy).descending()), searchText)
+                : orderRepository.findAll(PageRequest.of(page, 5, ascDesc.equals("asc") ? Sort.by(chooseSortBy).ascending() : Sort.by(chooseSortBy).descending()));
     }
 }
