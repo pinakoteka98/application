@@ -75,9 +75,10 @@ public class SMSService implements MessageService {
         List<Sms> allSms = smsRepository.findAll();
         allSms.forEach(sms -> {
             sendMessage(sms.getPhoneNumber(), sms.getMessage());
+            log.info("Wysłano sms o treści \"{}\" na nr telefonu: {}", sms.getMessage(), sms.getPhoneNumber());
             smsRepository.delete(sms);
         });
-        log.info("TODO: Sprawdzenie w bazie czy istnieją smsy do wysłania oraz ich wysłanie");
+        log.info("Sprawdzenie w bazie czy istnieją smsy do wysłania oraz ich wysłanie");
     }
 
 //    @Override
