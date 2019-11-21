@@ -70,7 +70,7 @@ public class SMSService implements MessageService {
         smsRepository.save(sms);
     }
 
-    @Scheduled(cron = "0 0 0/1 10-19 * MON-FRI")
+    @Scheduled(cron = "0 0 10-19 * * MON-FRI")
     public void resendUndeliveredMessages() {
         List<Sms> allSms = smsRepository.findAll();
         allSms.forEach(sms -> {
