@@ -14,6 +14,7 @@ import pl.smsapi.api.response.MessageResponse;
 import pl.smsapi.api.response.StatusResponse;
 import pl.smsapi.exception.SmsapiException;
 
+import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -35,7 +36,8 @@ public class SMSService implements MessageService {
         log.info("Sending SMS message \"{}\" to phone {}", message, recipient);
         LocalDateTime startNotSendPeriod = LocalDateTime.of(LocalDateTime.now().getYear(), LocalDateTime.now().getMonth(), LocalDateTime.now().getDayOfMonth(), 21, 0);
         LocalDateTime endNotSendPeriod = LocalDateTime.of(LocalDateTime.now().getYear(), LocalDateTime.now().getMonth(), LocalDateTime.now().getDayOfMonth() + 1, 10, 0);
-        if (LocalDateTime.now().isAfter(startNotSendPeriod) && LocalDateTime.now().isBefore(endNotSendPeriod)) {
+        DayOfWeek dayOfWeek = LocalDateTime.now().getDayOfWeek();
+        if ((LocalDateTime.now().isAfter(startNotSendPeriod) && LocalDateTime.now().isBefore(endNotSendPeriod)) || (dayOfWeek == DayOfWeek.SATURDAY) || dayOfWeek == DayOfWeek.SUNDAY) {
             Sms sms = new Sms();
             sms.setPhoneNumber(recipient);
             sms.setMessage(message);
