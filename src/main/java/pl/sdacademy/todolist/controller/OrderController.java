@@ -26,8 +26,8 @@ import java.util.List;
 public class OrderController {
 
     private final OrderService orderService;
-    private final SMSService smsService;
-    private final UserService userService;
+//    private final SMSService smsService;
+//    private final UserService userService;
 
     @GetMapping({"/", "index"})
     public String showOrders(Model model) {
