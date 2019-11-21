@@ -86,7 +86,7 @@ public class OrderService {
         Order orderEntity = orderRepository.findById(order.getId())
                 .orElseThrow(() -> new EntityNotFoundException(order.getId()));
         Status oldStatus = orderEntity.getStatus();
-        Status newStatus = order.getStatus();
+//        Status newStatus = order.getStatus();
         orderEntity.setDateOfOrder(order.getDateOfOrder());
         orderEntity.setEstimatedDate(order.getEstimatedDate());
         orderEntity.setOrderNo(order.getOrderNo());
