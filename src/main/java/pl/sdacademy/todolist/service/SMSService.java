@@ -80,5 +80,4 @@ public class SMSService implements MessageService {
         });
         log.info("Sprawdzenie w bazie czy istnieją smsy do wysłania oraz ich wysłanie");
     }
-
 }
