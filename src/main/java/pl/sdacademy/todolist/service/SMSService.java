@@ -34,16 +34,8 @@ public class SMSService implements MessageService {
     @Override
     public void sendMessage(String recipient, String message) {
         int hourNow = LocalDateTime.now().getHour();
-//        LocalDateTime startNotSendPeriod = LocalDateTime.of(LocalDateTime.now().getYear(), LocalDateTime.now().getMonth(), LocalDateTime.now().getDayOfMonth(), 21, 0);
-//        LocalDateTime endNotSendPeriod = LocalDateTime.of(LocalDateTime.now().getYear(), LocalDateTime.now().getMonth(), LocalDateTime.now().getDayOfMonth() + 1, 10, 0);
         DayOfWeek dayOfWeek = LocalDateTime.now().getDayOfWeek();
-//        if ((LocalDateTime.now().isAfter(startNotSendPeriod) && LocalDateTime.now().isBefore(endNotSendPeriod)) || (dayOfWeek == DayOfWeek.SATURDAY) || dayOfWeek == DayOfWeek.SUNDAY) {
-//            Sms sms = new Sms();
-//            sms.setPhoneNumber(recipient);
-//            sms.setMessage(message);
-//            saveSMS(sms);
-//        }
-        if (hourNow < 10 || hourNow > 18 || (dayOfWeek == DayOfWeek.SATURDAY) || dayOfWeek == DayOfWeek.SUNDAY) {
+        if (hourNow < 10 || hourNow > 20 || (dayOfWeek == DayOfWeek.SATURDAY) || dayOfWeek == DayOfWeek.SUNDAY) {
             Sms sms = new Sms();
             sms.setPhoneNumber(recipient);
             sms.setMessage(message);
@@ -54,7 +46,6 @@ public class SMSService implements MessageService {
                 BasicAuthClient client = new BasicAuthClient(login, password);
                 log.info("Sending SMS message \"{}\" to phone {}", message, recipient);
                 SmsFactory smsApi = new SmsFactory(client);
-//            String phoneNumber = "602271300";
                 SMSSend action = smsApi.actionSend()
                         .setText(message)
                         .setTo(recipient);
@@ -79,7 +70,7 @@ public class SMSService implements MessageService {
         smsRepository.save(sms);
     }
 
-    @Scheduled(cron = "0 0 10-19 * * MON-FRI")
+    @Scheduled(cron = "0 10 10-19/1 * * MON-FRI")
     public void resendUndeliveredMessages() {
         List<Sms> allSms = smsRepository.findAll();
         allSms.forEach(sms -> {
@@ -89,29 +80,4 @@ public class SMSService implements MessageService {
         });
         log.info("Sprawdzenie w bazie czy istnieją smsy do wysłania oraz ich wysłanie");
     }
-
-//    @Override
-//    public void sendMessage(String recipient, String message) {
-//        log.info("Sending SMS message \"{}\" to phone {}", message, recipient);
-//
-//        try {
-//            BasicAuthClient client = new BasicAuthClient(login, password);
-//
-//            SmsFactory smsApi = new SmsFactory(client);
-////            String phoneNumber = "602271300";
-//            SMSSend action = smsApi.actionSend()
-//                    .setText(message)
-//                    .setTo(recipient);
-//
-//            StatusResponse result = action.execute();
-//
-//            for (MessageResponse status : result.getList()) {
-//                log.info("sms status: {} {}", status.getNumber(), status.getStatus());
-//            }
-//
-//        } catch (SmsapiException e) {
-//            log.error("Error when sending SMS message", e);
-//        }
-//    }
 }
-
