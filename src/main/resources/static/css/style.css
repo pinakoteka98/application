@@ -15,9 +15,18 @@
 a:link, a:hover, a:visited, a:active {
     text-decoration: none;
 }
-#test1, #test2, #test3, #test4 {
+#test1, #test2, #test3 {
 
     text-decoration: none;
+    line-height: 2;
+    font: 700 2rem 'Planet Light', sans-serif;
+    padding: 2em 3em;
+    letter-spacing: 0.05rem;;
+}
+
+#test4 {
+
+    text-decoration: #062b67;
     line-height: 2;
     font: 700 2rem 'Planet Light', sans-serif;
     padding: 2em 3em;
@@ -58,6 +67,3 @@ input:focus {
     border: 2px solid !important;
     font-size: 14px !important;
 }
-
-
-

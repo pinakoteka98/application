@@ -89,34 +89,31 @@
                             <div class="row naked">
                                 <div class="twelvecol last">
                                     <fieldset class>
-                                        <input class="_4ORMAT_module_contact_input" id="username" name="login"
+                                        <input class="_4ORMAT_module_contact_input input-group error" id="username" name="login"
                                                type="text" th:value="${login}"
                                                style="border-color: rgba(85, 85, 85, 0.3); border-bottom-width: 1px"
                                                placeholder="Login (numer telefonu)">
-                                        <div class="_4ORMAT_module_contact_label  " data-editable-type="label"
-                                             data-force-html-mode="false">
-                                        </div></input>
+                                        <div class="_4ORMAT_module_contact_label error-message">
+                                        </div>
                                     </fieldset>
                                 </div>
                             </div>
                             <div class="row naked">
                                 <div class="twelvecol last">
                                     <fieldset class>
-                                        <input class="_4ORMAT_module_contact_input" id="password" name="password"
+                                        <input class="_4ORMAT_module_contact_input error" id="password" name="password"
                                                type="password"
                                                style="border-color: rgba(85, 85, 85, 0.3); border-bottom-width: 1px"
                                                placeholder="Podaj hasło">
-                                        <div class="_4ORMAT_module_contact_label" data-editable-type="label"
-                                             id="label_3"
-                                             data-force-html-mode="false">
+                                        <div class="_4ORMAT_module_contact_label error-message">
                                         </div>
                                     </fieldset>
                                 </div>
                             </div>
-                            <div class="error" style="color: #e80404"
+                            <div class="error-message" style="color: #e80404"
                                  th:if="${#httpServletRequest.getParameter('error') == 'true'}"
                                  th:with="errorMsg=#{error.logging}">
-                                <p class="errorMsg"><span th:text="${errorMsg}"></span></p>
+                                <p class=""><span th:text="${errorMsg}"></span></p>
                             </div>
                             <fieldset class="submit _4ORMAT_module_submit_left">
                                 <input class="btn primary _4ORMAT_module_contact_btn _4ORMAT_module_contact_input"

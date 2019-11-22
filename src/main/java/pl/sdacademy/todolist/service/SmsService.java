@@ -43,7 +43,7 @@ public class SMSService implements MessageService {
 //            sms.setMessage(message);
 //            saveSMS(sms);
 //        }
-        if (hourNow < 10 || hourNow > 20 || (dayOfWeek == DayOfWeek.SATURDAY) || dayOfWeek == DayOfWeek.SUNDAY) {
+        if (hourNow < 10 || hourNow > 18 || (dayOfWeek == DayOfWeek.SATURDAY) || dayOfWeek == DayOfWeek.SUNDAY) {
             Sms sms = new Sms();
             sms.setPhoneNumber(recipient);
             sms.setMessage(message);
@@ -79,7 +79,7 @@ public class SMSService implements MessageService {
         smsRepository.save(sms);
     }
 
-    @Scheduled(cron = "0 10 10-19/1 * * MON-FRI")
+    @Scheduled(cron = "0 0 10-19 * * MON-FRI")
     public void resendUndeliveredMessages() {
         List<Sms> allSms = smsRepository.findAll();
         allSms.forEach(sms -> {

@@ -138,34 +138,22 @@
             <artifactId>assertj-core</artifactId>
         </dependency>
     </dependencies>
-    <repositories>
-        <repository>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-                <checksumPolicy>fail</checksumPolicy>
-            </releases>
-            <id>smsapi</id>
-            <name>smsapi</name>
-            <url>http://labs.smsapi.com/maven/</url>
-            <layout>default</layout>
-        </repository>
-    </repositories>
+
     <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <configuration>-->
-<!--                            <mainClass>pl.sdacademy.todolist.TodolistApplication</mainClass>-->
-<!--                        </configuration>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--                <configuration>-->
-<!--                    <executable>true</executable>-->
-<!--                </configuration>-->
+                <!--                <executions>-->
+                <!--                    <execution>-->
+                <!--                        <configuration>-->
+                <!--                            <mainClass>pl.sdacademy.todolist.TodolistApplication</mainClass>-->
+                <!--                        </configuration>-->
+                <!--                    </execution>-->
+                <!--                </executions>-->
+                <!--                <configuration>-->
+                <!--                    <executable>true</executable>-->
+                <!--                </configuration>-->
             </plugin>
 
             <plugin>
