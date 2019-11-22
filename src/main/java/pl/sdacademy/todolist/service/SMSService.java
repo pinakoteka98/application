@@ -33,19 +33,26 @@ public class SMSService implements MessageService {
 
     @Override
     public void sendMessage(String recipient, String message) {
-        log.info("Sending SMS message \"{}\" to phone {}", message, recipient);
-        LocalDateTime startNotSendPeriod = LocalDateTime.of(LocalDateTime.now().getYear(), LocalDateTime.now().getMonth(), LocalDateTime.now().getDayOfMonth(), 21, 0);
-        LocalDateTime endNotSendPeriod = LocalDateTime.of(LocalDateTime.now().getYear(), LocalDateTime.now().getMonth(), LocalDateTime.now().getDayOfMonth() + 1, 10, 0);
+        int hourNow = LocalDateTime.now().getHour();
+//        LocalDateTime startNotSendPeriod = LocalDateTime.of(LocalDateTime.now().getYear(), LocalDateTime.now().getMonth(), LocalDateTime.now().getDayOfMonth(), 21, 0);
+//        LocalDateTime endNotSendPeriod = LocalDateTime.of(LocalDateTime.now().getYear(), LocalDateTime.now().getMonth(), LocalDateTime.now().getDayOfMonth() + 1, 10, 0);
         DayOfWeek dayOfWeek = LocalDateTime.now().getDayOfWeek();
-        if ((LocalDateTime.now().isAfter(startNotSendPeriod) && LocalDateTime.now().isBefore(endNotSendPeriod)) || (dayOfWeek == DayOfWeek.SATURDAY) || dayOfWeek == DayOfWeek.SUNDAY) {
+//        if ((LocalDateTime.now().isAfter(startNotSendPeriod) && LocalDateTime.now().isBefore(endNotSendPeriod)) || (dayOfWeek == DayOfWeek.SATURDAY) || dayOfWeek == DayOfWeek.SUNDAY) {
+//            Sms sms = new Sms();
+//            sms.setPhoneNumber(recipient);
+//            sms.setMessage(message);
+//            saveSMS(sms);
+//        }
+        if (hourNow < 10 || hourNow > 18 || (dayOfWeek == DayOfWeek.SATURDAY) || dayOfWeek == DayOfWeek.SUNDAY) {
             Sms sms = new Sms();
             sms.setPhoneNumber(recipient);
             sms.setMessage(message);
             saveSMS(sms);
-        } else {
+        }
+        else {
             try {
                 BasicAuthClient client = new BasicAuthClient(login, password);
-
+                log.info("Sending SMS message \"{}\" to phone {}", message, recipient);
                 SmsFactory smsApi = new SmsFactory(client);
 //            String phoneNumber = "602271300";
                 SMSSend action = smsApi.actionSend()
