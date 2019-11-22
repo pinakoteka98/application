@@ -8,13 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.sdacademy.todolist.dto.OrderDto;
-import pl.sdacademy.todolist.dto.UserDto;
-import pl.sdacademy.todolist.emailService.EmailService;
 import pl.sdacademy.todolist.entity.Order;
 import pl.sdacademy.todolist.entity.Status;
 import pl.sdacademy.todolist.service.OrderService;
-import pl.sdacademy.todolist.service.SMSService;
-import pl.sdacademy.todolist.service.UserService;
 
 import javax.validation.Valid;
 import java.security.Principal;

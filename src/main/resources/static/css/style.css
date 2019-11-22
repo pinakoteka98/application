@@ -53,5 +53,11 @@ textarea, input{
     font-family: "Planet Light", sans-serif;
 }
 
+input:focus {
+    border-color:grey !important;
+    border: 2px solid !important;
+    font-size: 14px !important;
+}
+
 
 

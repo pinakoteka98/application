@@ -144,11 +144,11 @@
 
 
                         <div class="col-1" th:switch="${order.status}">
-                            <span style="color:#e80404; font-weight: 700"
+                            <span style="color:#e80404; font-weight: 700; text-transform: uppercase"
                                   th:case="${order.status.INPROGRESS}">w trakcie realizacji</span>
-                            <span style="color:green; font-weight: 700"
+                            <span style="color:green; font-weight: 700; text-transform: uppercase"
                                   th:case="${order.status.READY}">gotowe, oczekuje na odbiór</span>
-                            <span style="color:darkgrey; font-weight: 700" th:case="${order.status.RECEIVED}">zrealizowane i odebrane</span>
+                            <span style="color:darkgrey; font-weight: 700; text-transform: uppercase" th:case="${order.status.RECEIVED}">zrealizowane i odebrane</span>
                         </div>
 
                         <div class="col-2" th:text="'Wartość: '+${order.value + ' zł'}"
