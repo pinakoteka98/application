@@ -35,7 +35,6 @@ public class SMSService implements MessageService {
     public void sendMessage(String recipient, String message) {
         int hourNow = LocalDateTime.now().getHour();
         DayOfWeek dayOfWeek = LocalDateTime.now().getDayOfWeek();
-
         if (hourNow < 10 || hourNow > 20 || (dayOfWeek == DayOfWeek.SATURDAY) || dayOfWeek == DayOfWeek.SUNDAY) {
             Sms sms = new Sms();
             sms.setPhoneNumber(recipient);
