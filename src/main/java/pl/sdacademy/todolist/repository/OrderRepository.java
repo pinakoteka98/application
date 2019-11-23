@@ -28,4 +28,19 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
             "OR o.value LIKE CONCAT('%',:searchText,'%')" +
             "OR o.phoneNumber LIKE CONCAT('%',:searchText,'%')")
     Page<Order> findAllBySearchText(Pageable pageable, String searchText);
+
+    @Query(value = "select sum(value) / count(*)\n" +
+            "from orders\n" +
+            "where date_of_order between now() - INTERVAL 12 MONTH and now()", nativeQuery = true)
+    Double findMiddleOrderValueFromLastYear();
+
+    @Query(value = "select count(*)\n" +
+            "from orders\n" +
+            "where date_of_order between now() - INTERVAL 12 MONTH and now()", nativeQuery = true)
+    Integer findNumberOfOrdersFromLastYear();
+
+    @Query(value = "select count(*) / 12 \n" +
+            "from orders\n" +
+            "where date_of_order between now() - INTERVAL 12 MONTH and now()", nativeQuery = true)
+    Double findAverageMonthlyNumberOfOrdersFromTheLastYear();
 }

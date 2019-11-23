@@ -99,22 +99,22 @@
             <div class="col">
                 <div class="counter">
                     <i class="fa fa-calendar fa-2x"></i>
-                    <h2 class="counter-count"/>22</h2>
-                    <p class="count-text ">Years of experience</p>
+                    <h2 class="counter-count" th:text="${averageOrderValueFromLastYear}">22</h2>
+                    <p class="count-text ">Average order value over the last 12 months</p>
                 </div>
             </div>
             <div class="col">
                 <div class="counter">
                     <i class="fa fa-globe fa-2x"></i>
-                    <h2 class="counter-count">31</h2>
-                    <p class="count-text ">International markets</p>
+                    <h2 class="counter-count" th:text="${numberOfOrdersFromLastYear}">31</h2>
+                    <p class="count-text ">Number of orders from last year</p>
                 </div>
             </div>
             <div class="col">
                 <div class="counter">
                     <i class="fa fa-image fa-2x"></i>
-                    <h2 class="counter-count"/>750</h2>
-                    <p class="count-text ">Orders completed</p>
+                    <h2 class="counter-count" th:text="${averageMonthlyNumberOfOrdersFromTheLastYear}">750</h2>
+                    <p class="count-text ">Average monthly number of orders from the last year</p>
                 </div>
             </div>
         </div>

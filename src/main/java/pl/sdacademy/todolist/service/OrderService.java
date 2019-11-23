@@ -152,4 +152,17 @@ public class OrderService {
                 ? orderRepository.findAllBySearchText(PageRequest.of(page, 5, ascDesc.equals("asc") ? Sort.by(chooseSortBy).ascending() : Sort.by(chooseSortBy).descending()), searchText)
                 : orderRepository.findAll(PageRequest.of(page, 5, ascDesc.equals("asc") ? Sort.by(chooseSortBy).ascending() : Sort.by(chooseSortBy).descending()));
     }
+
+    public Double findMiddleOrderValueFromLastYear() {
+        return orderRepository.findMiddleOrderValueFromLastYear();
+    }
+
+    public Integer findNumberOfOrdersFromLastYear() {
+        return orderRepository.findNumberOfOrdersFromLastYear();
+    }
+
+    public Double findAverageMonthlyNumberOfOrdersFromTheLastYear() {
+        return orderRepository.findAverageMonthlyNumberOfOrdersFromTheLastYear();
+    }
+
 }

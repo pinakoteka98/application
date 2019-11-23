@@ -13,6 +13,7 @@ import pl.sdacademy.todolist.entity.Status;
 import pl.sdacademy.todolist.service.OrderService;
 
 import javax.validation.Valid;
+import java.math.BigDecimal;
 import java.security.Principal;
 import java.util.List;
 
@@ -60,6 +61,9 @@ public class OrderController {
         long size = orderService.findAll().stream().filter(e -> e.getStatus() == Status.INPROGRESS).count();
         int currentPage = orderPage.getNumber();
         int totalPages = orderPage.getTotalPages();
+        double averageOrderValueFromLastYear = orderService.findMiddleOrderValueFromLastYear();
+        Integer numberOfOrdersFromLastYear = orderService.findNumberOfOrdersFromLastYear();
+        double averageMonthlyNumberOfOrdersFromTheLastYear = orderService.findAverageMonthlyNumberOfOrdersFromTheLastYear();
         List<Order> orders = orderPage.getContent();
         model.addAttribute("orders", orders);
         model.addAttribute("currentPage", currentPage);
@@ -68,6 +72,9 @@ public class OrderController {
         model.addAttribute("ascdesc", ascDesc);
         model.addAttribute("searchtext", StringUtils.isNotBlank(searchText) ? searchText : "");
         model.addAttribute("size", size);
+        model.addAttribute("averageOrderValueFromLastYear", averageOrderValueFromLastYear);
+        model.addAttribute("numberOfOrdersFromLastYear", numberOfOrdersFromLastYear);
+        model.addAttribute("averageMonthlyNumberOfOrdersFromTheLastYear", averageMonthlyNumberOfOrdersFromTheLastYear);
         return "orders";
     }
 
