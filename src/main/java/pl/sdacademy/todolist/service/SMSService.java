@@ -66,7 +66,7 @@ public class SMSService implements MessageService {
         }
     }
 
-    public void saveSMS(Sms sms) {
+    private void saveSMS(Sms sms) {
         smsRepository.save(sms);
     }
 
