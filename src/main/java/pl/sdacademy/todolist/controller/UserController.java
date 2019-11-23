@@ -59,7 +59,7 @@ public class UserController {
         userService.create(userForm);
         UserDto recipient = message.getRecipient();
 //        emailService.sendMessage(userForm.getEmail(), messageSource.getMessage(message.getNotificationType().getMessageKey(), null, Locale.getDefault()));
-        emailService.sendMessage(userForm.getEmail(), "Potwierdzenie rejestracji w serwisie Pinakoteka.");
+        emailService.sendMessage(userForm.getEmail(), "Dzień dobry.");
         model.addAttribute("info", "Rejestracja zakończona sukcesem. Możesz się zalogować.");
         model.addAttribute("login", userForm.getPhoneNumber());
         return "login";

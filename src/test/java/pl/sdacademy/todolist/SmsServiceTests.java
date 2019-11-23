@@ -3,13 +3,13 @@ package pl.sdacademy.todolist;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import pl.sdacademy.todolist.service.SMSService;
+import pl.sdacademy.todolist.service.SmsService;
 
 @SpringBootTest
 class SmsServiceTests {
 
     @Autowired
-    private SMSService smsService;
+    private SmsService smsService;
 
     @Test
     void testSendSms() throws Exception {

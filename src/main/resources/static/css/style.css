@@ -67,3 +67,16 @@ input:focus {
     border: 2px solid !important;
     font-size: 14px !important;
 }
+
+/*input:optional {*/
+/*    background-color: #f8f8f8 !important;*/
+/*    color: #888 !important;*/
+/*}*/
+
+/*input:required {*/
+/*    border-bottom: 3px solid #aa0088 !important;*/
+/*}*/
+
+/*input:optional:focus {*/
+/*    box-shadow: 0 0 2px 1px #aaa !important;*/
+/*}*/

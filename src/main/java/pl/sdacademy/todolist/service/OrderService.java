@@ -34,7 +34,7 @@ public class OrderService {
     private final UserRepository userRepository;
     private final OrderRepository orderRepository;
     private final RoleRepository roleRepository;
-    private final SMSService smsService;
+    private final SmsService smsService;
 
     private Map<Long, Order> orders = new ConcurrentHashMap<>();
 

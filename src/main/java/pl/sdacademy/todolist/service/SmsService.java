@@ -21,7 +21,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @Slf4j
 @Service
-public class SMSService implements MessageService {
+public class SmsService implements MessageService {
 
     private final SmsRepository smsRepository;
 
@@ -66,7 +66,7 @@ public class SMSService implements MessageService {
         }
     }
 
-    public void saveSMS(Sms sms) {
+    private void saveSMS(Sms sms) {
         smsRepository.save(sms);
     }
 

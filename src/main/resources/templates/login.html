@@ -77,7 +77,7 @@
         <div class="_4ORMAT_content_wrapper" id="content_page_wrapper">
             <div style="padding-top: 0px" class="_4ORMAT_content_page_row _4ormat_sort_item _4ORMAT_module_contact_10">
                 <div class=" align_center">
-                    <h2 th:text="${info}" style="color: green; font-size: 12px">Logowanie</h2>
+                    <h2 th:text="${info}" style="color: green; font-size: 14px">Logowanie</h2>
                     <div class="fourcol spacer"></div>
                     <div class="fourcol last">
 
@@ -89,11 +89,11 @@
                             <div class="row naked">
                                 <div class="twelvecol last">
                                     <fieldset class>
-                                        <input class="_4ORMAT_module_contact_input input-group error" id="username" name="login"
+                                        <input class="_4ORMAT_module_contact_input error" id="username" name="login"
                                                type="text" th:value="${login}"
                                                style="border-color: rgba(85, 85, 85, 0.3); border-bottom-width: 1px"
                                                placeholder="Login (numer telefonu)">
-                                        <div class="_4ORMAT_module_contact_label error-message">
+                                        <div class="_4ORMAT_module_contact_label">
                                         </div>
                                     </fieldset>
                                 </div>
@@ -105,12 +105,12 @@
                                                type="password"
                                                style="border-color: rgba(85, 85, 85, 0.3); border-bottom-width: 1px"
                                                placeholder="Podaj hasło">
-                                        <div class="_4ORMAT_module_contact_label error-message">
+                                        <div class="_4ORMAT_module_contact_label">
                                         </div>
                                     </fieldset>
                                 </div>
                             </div>
-                            <div class="error-message" style="color: #e80404"
+                            <div class="error" style="color: #e80404"
                                  th:if="${#httpServletRequest.getParameter('error') == 'true'}"
                                  th:with="errorMsg=#{error.logging}">
                                 <p class=""><span th:text="${errorMsg}"></span></p>

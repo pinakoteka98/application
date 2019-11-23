@@ -26,14 +26,15 @@ public class EmailService implements MessageService {
         MimeMessage email = javaMailSender.createMimeMessage();
         Context context = new Context();
         context.setVariable("message", message);
-        context.setVariable("title", "tytuł");
-        context.setVariable("description", "opis");
+        context.setVariable("title", "Dziękujemy za utworzenie konta.");
+        context.setVariable("description", "Rejestrując się w naszym serwisie otrzymałeś możliwość sprawdzania statusów zamówień, umawiania spotkań oraz korzystania z usług dodatkowych.");
         final String emailBody = this.templateEngine.process("template.html", context);
         try {
 //            MimeMessageHelper mmHelper = new MimeMessageHelper(email);
             MimeMessageHelper mmHelper = new MimeMessageHelper(email, true);
             mmHelper.setTo(recipient);
             mmHelper.setFrom("rejestracja@pinakoteka.pl");
+            mmHelper.setSubject("Rejestracja w serwisie Pinakoteka Design");
             mmHelper.setText(emailBody, true);//true - mogę w tekście przesłać HTML, wyświetli się mailu. mmHelper.setText(content, true);
         } catch (MessagingException e) {
             e.printStackTrace();
