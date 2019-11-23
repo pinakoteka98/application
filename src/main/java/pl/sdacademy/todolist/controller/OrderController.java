@@ -62,7 +62,7 @@ public class OrderController {
         int currentPage = orderPage.getNumber();
         int totalPages = orderPage.getTotalPages();
         double averageOrderValueFromLastYear = orderService.findMiddleOrderValueFromLastYear();
-        Integer numberOfOrdersFromLastYear = orderService.findNumberOfOrdersFromLastYear();
+        int numberOfOrdersFromLastYear = orderService.findNumberOfOrdersFromLastYear();
         double averageMonthlyNumberOfOrdersFromTheLastYear = orderService.findAverageMonthlyNumberOfOrdersFromTheLastYear();
         List<Order> orders = orderPage.getContent();
         model.addAttribute("orders", orders);
