@@ -7,11 +7,13 @@ import org.springframework.data.jpa.repository.Query;
 import pl.sdacademy.todolist.entity.Order;
 import pl.sdacademy.todolist.entity.Status;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface OrderRepository extends JpaRepository<Order, Long> {
 
     List<Order> findAllByPhoneNumber(String phoneNumber);
+
     List<Order> findAllByStatus(Status status);
 
     @Override
@@ -29,18 +31,10 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
             "OR o.phoneNumber LIKE CONCAT('%',:searchText,'%')")
     Page<Order> findAllBySearchText(Pageable pageable, String searchText);
 
-    @Query(value = "select sum(value) / count(*)\n" +
-            "from orders\n" +
-            "where date_of_order between now() - INTERVAL 12 MONTH and now()", nativeQuery = true)
-    Double findMiddleOrderValueFromLastYear();
+    @Query("select avg(o.value) from Order o where o.dateOfOrder > :date")
+    Double findMiddleOrderValueFromLastYear(LocalDate date);
 
-    @Query(value = "select count(*)\n" +
-            "from orders\n" +
-            "where date_of_order between now() - INTERVAL 12 MONTH and now()", nativeQuery = true)
-    Integer findNumberOfOrdersFromLastYear();
+    @Query("select count (o) from Order o where o.dateOfOrder > :date")
+    Integer findNumberOfOrdersFromLastYear(LocalDate date);
 
-    @Query(value = "select count(*) / 12 \n" +
-            "from orders\n" +
-            "where date_of_order between now() - INTERVAL 12 MONTH and now()", nativeQuery = true)
-    Double findAverageMonthlyNumberOfOrdersFromTheLastYear();
 }

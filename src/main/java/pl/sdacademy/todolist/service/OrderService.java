@@ -19,6 +19,7 @@ import pl.sdacademy.todolist.repository.OrderRepository;
 import pl.sdacademy.todolist.repository.RoleRepository;
 import pl.sdacademy.todolist.repository.UserRepository;
 
+import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -154,15 +155,23 @@ public class OrderService {
     }
 
     public Double findMiddleOrderValueFromLastYear() {
-        return orderRepository.findMiddleOrderValueFromLastYear();
+        LocalDate dateYearAgo = getLocalDateYearAgo();
+        return orderRepository.findMiddleOrderValueFromLastYear(dateYearAgo);
     }
 
     public Integer findNumberOfOrdersFromLastYear() {
-        return orderRepository.findNumberOfOrdersFromLastYear();
+        LocalDate dateYearAgo = getLocalDateYearAgo();
+        return orderRepository.findNumberOfOrdersFromLastYear(dateYearAgo);
     }
 
     public Double findAverageMonthlyNumberOfOrdersFromTheLastYear() {
-        return orderRepository.findAverageMonthlyNumberOfOrdersFromTheLastYear();
+        LocalDate dateYearAgo = getLocalDateYearAgo();
+        Integer numberOfOrdersFromLastYear = orderRepository.findNumberOfOrdersFromLastYear(dateYearAgo);
+        return (Double) (double) (numberOfOrdersFromLastYear / 12);
+    }
+
+    private LocalDate getLocalDateYearAgo() {
+        return LocalDate.of(LocalDate.now().getYear() - 1, LocalDate.now().getMonth(), LocalDate.now().getDayOfMonth());
     }
 
 }
