@@ -10,6 +10,8 @@
     <link href='//lucas-rfgv.format.com/stylesheet.css?v=2019-10-30T10:05:15Z' media='screen' rel='stylesheet'
           type='text/css'/>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
     <link href='https://static0.format.com/static/theme_api/v1/hosted_fonts-1fa30b0b16e206b04ff76bb76c5399ad06635e59d9fc2a338e015a0554cce89e.css'
           media='screen' rel='stylesheet' type='text/css'/>
 
@@ -81,33 +83,35 @@
                     <div class="fourcol spacer"></div>
                     <div class="fourcol last">
 
-                        <form data-editable-type="contact-form" id="contact_form_1" class=" email_form"
+                        <form class=" email_form needs-validation" data-editable-type="contact-form" id="testForm"
                               name="contact_form_1"
-                              th:action="@{/login}" method="post">
+                              th:action="@{/login}" method="post" novalidate>
                             <h2 style="margin-left: 5px; margin-top: 5px">Logowanie</h2>
 
                             <div class="row naked">
                                 <div class="twelvecol last">
-                                    <fieldset class>
-                                        <input class="_4ORMAT_module_contact_input error" id="username" name="login"
+
+                                        <input class="_4ORMAT_module_contact_input form-control" id="username"
+                                               name="login"
                                                type="text" th:value="${login}"
                                                style="border-color: rgba(85, 85, 85, 0.3); border-bottom-width: 1px"
-                                               placeholder="Login (numer telefonu)">
+                                               placeholder="Login (numer telefonu)" required>
                                         <div class="_4ORMAT_module_contact_label">
                                         </div>
-                                    </fieldset>
+
                                 </div>
                             </div>
                             <div class="row naked">
                                 <div class="twelvecol last">
-                                    <fieldset class>
-                                        <input class="_4ORMAT_module_contact_input error" id="password" name="password"
+
+                                        <input class="_4ORMAT_module_contact_input form-control" id="password"
+                                               name="password"
                                                type="password"
                                                style="border-color: rgba(85, 85, 85, 0.3); border-bottom-width: 1px"
-                                               placeholder="Podaj hasło">
+                                               placeholder="Podaj hasło" required>
                                         <div class="_4ORMAT_module_contact_label">
                                         </div>
-                                    </fieldset>
+
                                 </div>
                             </div>
                             <div class="error" style="color: #e80404"
@@ -118,7 +122,8 @@
                             <fieldset class="submit _4ORMAT_module_submit_left">
                                 <input class="btn primary _4ORMAT_module_contact_btn _4ORMAT_module_contact_input"
                                        type="submit"
-                                       value=""
+                                       value="submit"
+                                       id="submitButton"
                                        style="border-color: rgba(85, 85, 85, 0.3); margin-top: 10px">
                                 </input>
                                 <div class="_4ORMAT_module_contact_label  " data-editable-type="label" id="label_4"
@@ -167,5 +172,27 @@
         type='text/javascript'>
 
 </script>
+
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
+
 </body>
 </html>

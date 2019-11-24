@@ -17,10 +17,12 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
 </head>
 
 <body>
-<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+
 <!--<div th:replace="fragments :: header"></div>-->
 <!--<div th:replace="fragments :: language"></div>-->
 <div class="container my-2">
@@ -98,23 +100,23 @@
             </a>
             <div class="col">
                 <div class="counter">
-                    <i class="fa fa-calendar fa-2x"></i>
+                    <i class="fa fa-cc-visa fa-2x"></i>
                     <h2 class="counter-count" th:text="${averageOrderValueFromLastYear}">22</h2>
-                    <p class="count-text ">Average order value over the last 12 months</p>
+                    <p class="count-text ">Average order value</p>
                 </div>
             </div>
             <div class="col">
                 <div class="counter">
-                    <i class="fa fa-globe fa-2x"></i>
+                    <i class="fa fa-line-chart fa-2x"></i>
                     <h2 class="counter-count" th:text="${numberOfOrdersFromLastYear}">31</h2>
                     <p class="count-text ">Number of orders from last year</p>
                 </div>
             </div>
             <div class="col">
                 <div class="counter">
-                    <i class="fa fa-image fa-2x"></i>
+                    <i class="fa fa-object-ungroup fa-2x"></i>
                     <h2 class="counter-count" th:text="${averageMonthlyNumberOfOrdersFromTheLastYear}">750</h2>
-                    <p class="count-text ">Average monthly number of orders from the last year</p>
+                    <p class="count-text ">Average monthly number of orders</p>
                 </div>
             </div>
         </div>
