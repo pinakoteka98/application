@@ -7,7 +7,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 import pl.sdacademy.todolist.dto.OrderDto;
 import pl.sdacademy.todolist.entity.Order;
@@ -19,6 +18,7 @@ import pl.sdacademy.todolist.repository.OrderRepository;
 import pl.sdacademy.todolist.repository.RoleRepository;
 import pl.sdacademy.todolist.repository.UserRepository;
 
+import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
@@ -57,6 +57,7 @@ public class OrderService {
                 .orElseThrow(() -> new EntityNotFoundException(id));
     }
 
+    @Transactional
     public Order create(OrderDto orderDto) {
         User user;
         Optional<User> userOptional = userRepository.findUserByPhoneNumber(orderDto.getPhoneNumber());
@@ -86,13 +87,13 @@ public class OrderService {
     public void update(Order order) {
         Order orderEntity = orderRepository.findById(order.getId())
                 .orElseThrow(() -> new EntityNotFoundException(order.getId()));
-        Status oldStatus = orderEntity.getStatus();
-//        Status newStatus = order.getStatus();
+//        Status oldStatus = orderEntity.getStatus();
+        Status newStatus = order.getStatus();
         orderEntity.setDateOfOrder(order.getDateOfOrder());
         orderEntity.setEstimatedDate(order.getEstimatedDate());
         orderEntity.setOrderNo(order.getOrderNo());
         orderEntity.setStatus(order.getStatus());
-        if (oldStatus != Status.READY) {
+        if (newStatus == Status.READY) {
             smsService.sendMessage(orderEntity.getPhoneNumber(), "Dzień dobry! Miło nam poinformować, że zamówienie numer " + orderEntity.getOrderNo() + " zostało zrealizowane. Zapraszamy po odbiór. Pozdrawiamy i życzymy miłego dnia.");
         }
     }

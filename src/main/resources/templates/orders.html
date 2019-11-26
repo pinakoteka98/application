@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Orders</title>
+    <title>Orders list</title>
     <link href="../static/css/style.css" th:href="@{/static/css/orders.css}" type="text/css" rel="stylesheet"/>
     <link href="../static/css/style.css" th:href="@{/static/css/search.css}" type="text/css" rel="stylesheet"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -31,10 +31,10 @@
 
             <div id="header">
 
-                <div class=""
-                     style="float: left; padding: 0px; width: auto; margin-right: 30px; font-family: Planet Light, sans-serif !important;">
+                <div class="form-group"
+                     style="float: left; padding: 0px; width: auto; margin-right: 30px; font-family: Planet Light, sans-serif !important; font-size: 18px !important;">
                     <a href="/addorder" class="btn btn-primary">
-                        <i class="fa fa-tasks ml-2"></i> Add order
+                        <i class="fa fa-share-square-o ml-1"></i> Add order
 
                     </a>
                 </div>
@@ -132,23 +132,25 @@
                     <th>Estimated date</th>
                     <th>Status</th>
                     <th>Phone No.</th>
+                    <th>Value</th>
                     <th>Comments</th>
                     <th>Edit</th>
-                    <th>Delete</th>
+<!--                    <th>Delete</th>-->
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="order : ${orders}">
-                    <td th:text="${order.orderNo}"></td>
+                    <td th:text="${order.orderNo}" style="font-weight: 700"></td>
                     <td th:text="${order.dateOfOrder}"></td>
                     <td th:text="${order.estimatedDate}"></td>
                     <td th:text="${order.status}"></td>
                     <td th:text="${order.phoneNumber}"></td>
+                    <td th:text="${order.value}"></td>
                     <td th:text="${order.comments}"></td>
                     <td><a th:href="@{edit/{id}(id=${order.id})}"
-                           class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a></td>
-                    <td><a th:href="@{delete/{id}(id=${order.id})}"
-                           class="btn btn-primary"><i class="fas fa-user-times ml-2"></i></a></td>
+                           class="btn btn-primary"><i class="fas fa-pencil-square-o ml-2"></i></a></td>
+<!--                    <td><a th:href="@{delete/{id}(id=${order.id})}"-->
+<!--                           class="btn btn-primary"><i class="fas fa-user-times ml-2"></i></a></td>-->
                 </tr>
                 </tbody>
             </table>
@@ -165,12 +167,12 @@
                 </li>
 
                 <li th:block th:if="${!orders.isEmpty()}" th:each="i: ${#numbers.sequence(0, totalPages - 1)}">
-                    <a th:if="${currentPage == i}" class="page-item active"
-                       th:unless="${currentPage == i}">[[${i}+1]]</a>
+                    <a th:if="${currentPage == i}" class="page-item active" style="background-color: #428bca; color: white" >[[${i}+1]]</a>
+                       <span th:unless="${currentPage == i}">
 
-                    <a class="page-link"
+                    <a class="page-item"
                        th:href="@{/orders(page=${i}, sortcolumn=${sortcolumn}, ascdesc=${ascdesc}, searchtext=${searchtext})}">[[${i}+1]]</a>
-
+                       </span>
                 </li>
 
                 <li class="page-item" th:if="${currentPage lt totalPages+(-1)}">

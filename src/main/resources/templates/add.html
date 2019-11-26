@@ -3,18 +3,20 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Add Task</title>
+    <title>Add new order</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="../static/css/style.css" th:href="@{/static/css/add.css}" type="text/css" rel="stylesheet"/>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous"/>
 
 </head>
 <body>
-<div class="container my-5">
+<div class="container my-5" style="margin-top: 1rem !important; margin-bottom: 1rem !important;">
     <h3>Add new order</h3>
     <div class="card">
         <div class="card-body">
-            <div class="col-md-10">
+            <div class="col-md-8">
                 <form method="post" th:action="@{addorder}" th:object="${order}">
                     <div class="row">
                         <div class="form-group col-md-8">
@@ -58,10 +60,9 @@
                         </div>
 
                         <div class="col-md-6">
-                            <input type="submit" class="btn btn-primary" value="Add Order">
+                            <input type="submit" class="btn-lg btn-primary" value="Add Order">
                         </div>
 
-                        <div class="form-group col-md-8"></div>
 
                     </div>
                 </form>
@@ -69,5 +70,6 @@
         </div>
     </div>
 </div>
+
 </body>
 </html>

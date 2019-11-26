@@ -15,6 +15,7 @@
 a:link, a:hover, a:visited, a:active {
     text-decoration: none;
 }
+
 #test1, #test2, #test3 {
 
     text-decoration: none;
@@ -24,9 +25,10 @@ a:link, a:hover, a:visited, a:active {
     letter-spacing: 0.05rem;;
 }
 
-#test4 {
+#test4, #test5, #test6 {
 
-    text-decoration: #062b67;
+    text-decoration: none;
+    color: black !important;
     line-height: 2;
     font: 700 2rem 'Planet Light', sans-serif;
     padding: 2em 3em;
@@ -69,12 +71,19 @@ input:focus {
 }
 
 .was-validated .form-control:invalid {
-    border-color: #dc3545 !important;
+    border-color: #e80404 !important;
+    background-color: #ffeef7 !important;
     padding-right: calc(1.5em + .75rem) !important;
     background-position: center right calc(.375em + .1875rem);
     background-size: calc(.75em + .375rem) calc(.75em + .375rem);
+
 }
 
 .error .was-validated {
     display: inline-block;
 }
+
+.btn {
+    margin-top: 10px !important;
+}
+

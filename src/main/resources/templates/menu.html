@@ -117,6 +117,8 @@
                 <div style="padding-top: 0px" class="_4ORMAT_content_page_row _4ormat_sort_item _4ORMAT_module_image_7"
                      data-content-module-category="layout" data-content-module-template-id="18">
                     <div class=" align_center">
+
+
                         <form th:action="@{/menu}" method="post">
                             <div sec:authorize="hasRole('USER')" class="fourcol">
                                 <div class="btn1 draw-border" id="menu1">
@@ -137,64 +139,67 @@
                                     </a>
                                 </div>
                             </div>
+
                             <div sec:authorize="hasRole('ADMIN')" class="fourcol">
-                                <div class="btn1 draw-border" id="menu4">
-                                    <a id="test4" th:href="@{/orders(page=0, sortcolumn=${'orderdate'}, ascdesc=${'desc'})}">
-                                        <!--                                    <img src="/images/list.svg" title="lista zamówień">-->
-                                        <!--                                    <i class="menu"></i>-->
-                                        <!--                                    <br>-->
-                                        <!--                                    <h2>Historia zamówień</h2>-->
+                                <div style="height: 50px"></div>
+                                    <div class="btn1 draw-border" id="menu4">
+                                        <a id="test4"
+                                           th:href="@{/orders(page=0, sortcolumn=${'orderdate'}, ascdesc=${'desc'})}">
+                                            <!--                                    <img src="/images/list.svg" title="lista zamówień">-->
+                                            <!--                                    <i class="menu"></i>-->
+                                            <!--                                    <br>-->
+                                            <!--                                    <h2>Historia zamówień</h2>-->
 
-                                        <br>
-                                        Historia
-                                        <br>
-                                        zamówień
-                                        <br>
-                                        <br>
-                                        <p>panel administracyjny</p>
-                                        <br>
-                                    </a>
+                                            <br>
+                                            Historia
+                                            <br>
+                                            zamówień
+                                            <br>
+                                            <br>
+                                            <p>panel administracyjny</p>
+                                            <br>
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="fourcol">
-                                <div class="btn1 draw-border" id="menu2">
-                                    <a id="test2" href="#">
-                                        <!--                                    <img src="/images/clock.svg" title="rezerwacja wizyty">-->
-                                        <!--                                    <i class="menu"></i>-->
-                                        <!--                                    <br>-->
-                                        <!--                                    <h2>Rezerwacja wizyty</h2>-->
+                                <div class="fourcol">
+                                    <div class="btn1 draw-border" id="menu2">
+                                        <a id="test2" href="#">
+                                            <!--                                    <img src="/images/clock.svg" title="rezerwacja wizyty">-->
+                                            <!--                                    <i class="menu"></i>-->
+                                            <!--                                    <br>-->
+                                            <!--                                    <h2>Rezerwacja wizyty</h2>-->
 
-                                        <br>
-                                        Rezerwacja
-                                        <br>
-                                        wizyty
-                                        <br>
-                                        <br>
-                                        <p>umów spotkanie online</p>
-                                        <br>
+                                            <br>
+                                            Rezerwacja
+                                            <br>
+                                            wizyty
+                                            <br>
+                                            <br>
+                                            <p>umów spotkanie online</p>
+                                            <br>
 
-                                    </a>
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="fourcol last">
-                                <div class="btn1 draw-border" id="menu3">
-                                    <a id="test3" href="#">
-                                        <!--                                    <img src="images/help.svg" title="usługi dodatkowe">-->
-                                        <!--                                    <i class="menu"></i>-->
-                                        <!--                                    <br>-->
-                                        <!--                                    <h2>Usługi dodatkowe</h2>-->
+                                <div class="fourcol last">
+                                    <div class="btn1 draw-border" id="menu3">
+                                        <a id="test3" href="#">
+                                            <!--                                    <img src="images/help.svg" title="usługi dodatkowe">-->
+                                            <!--                                    <i class="menu"></i>-->
+                                            <!--                                    <br>-->
+                                            <!--                                    <h2>Usługi dodatkowe</h2>-->
 
-                                        <br>
-                                        Usługi
-                                        <br>
-                                        dodatkowe
-                                        <br>
-                                        <br>
-                                        <p>wyślij zapytanie</p>
-                                        <br>
-                                    </a>
+                                            <br>
+                                            Usługi
+                                            <br>
+                                            dodatkowe
+                                            <br>
+                                            <br>
+                                            <p>wyślij zapytanie</p>
+                                            <br>
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
 
                         </form>
                     </div>

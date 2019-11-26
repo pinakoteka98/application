@@ -60,5 +60,8 @@ a {
 .active {
     background-color: #428bca;
     text-decoration: white;
-
 }
+
+.page-item:link, .page-item:active, .page-item:hover, .page-item:visited {text-decoration: none !important}
+
+a:link, a:active, a:hover, a:visited {text-decoration: none !important}
