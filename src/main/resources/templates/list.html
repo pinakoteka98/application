@@ -139,7 +139,7 @@
 
                 <div id="order_list" th:each="order : ${orders}" style="margin-bottom: 10px !important;">
                     <div style="max-width: 1140px">
-                        <h5 style="font-weight: 700" th:text="'Numer zamówienia: '+${order.orderNo}"></h5>
+                        <h5 th:text="'Numer zamówienia: '+${order.orderNo}"></h5>
                         <p th:text="'Data złożenia zamówienia: '+${order.dateOfOrder}"></p>
 
 
@@ -212,13 +212,13 @@
                     <a th:if="${currentPage == i}" class="active">[[${i}+1]]</a>
                     <span th:unless="${currentPage == i}">
              <a id="pag2"
-                th:href="@{/list/{nr}/sort(nr=${i}, sortcolumn=${sortcolumn==null?'establishdate':sortcolumn}, ascdesc=${ascdesc==null?'asc':ascdesc}, elements=${elements==null?3:elements})}">[[${i}+1]]</a>
+                th:href="@{/list/{nr}/sort(nr=${i}, sortcolumn=${sortcolumn==null?'establishdate':sortcolumn}, ascdesc=${ascdesc==null?'desc':ascdesc}, elements=${elements==null?3:elements})}">[[${i}+1]]</a>
         </span>
                 </th:block>
 
                 <span th:if="${currentPage lt totalPages+(-1)}">
         <a id="pag3"
-           th:href="@{/list/{nr}/sort(nr=${currentPage+1}, sortcolumn=${sortcolumn==null?'establishdate':sortcolumn}, ascdesc=${ascdesc==null?'asc':ascdesc}, elements=${elements==null?3:elements})}">&gt;</a>
+           th:href="@{/list/{nr}/sort(nr=${currentPage+1}, sortcolumn=${sortcolumn==null?'establishdate':sortcolumn}, ascdesc=${ascdesc==null?'desc':ascdesc}, elements=${elements==null?3:elements})}">&gt;</a>
    </span>
             </div>
             <div class="pagination" style="float: right">
