@@ -7,12 +7,12 @@ $(document).ready(function () {
         let responseData = data;
         console.log(responseData.length);
         if (responseData.length < 1){
-            let allowableTimes = ["08:00:00", "09:00:00", "10:00:00", "11:00:00", "12:00:00", "1:00:00","02:00:00","03:00:00","04:00:00"];
+            let allowableTimes = ["08:00:00", "09:00:00", "10:00:00", "11:00:00", "12:00:00", "13:00:00","14:00:00","15:00:00","16:00:00"];
             for (let time = 0; time < allowableTimes.length; time++){
                 $('#appts').append('<option value=' + allowableTimes[time] + '>' + formatOptions(allowableTimes[time]) + '</option>');
             }
         } else {
-            let allowableTimes = ["08:00:00", "09:00:00", "10:00:00", "11:00:00", "12:00:00", "1:00:00","02:00:00","03:00:00","04:00:00"];
+            let allowableTimes = ["08:00:00", "09:00:00", "10:00:00", "11:00:00", "12:00:00", "13:00:00","14:00:00","15:00:00","16:00:00"];
             for (let i = 0; i < responseData.length; i++){
                 let apptTime = responseData[i].appointmentTime;
                 let index = allowableTimes.indexOf(apptTime);
@@ -39,12 +39,12 @@ $(document).ready(function () {
             let responseData = data;
             console.log(responseData.length);
             if (responseData.length < 1){
-                let allowableTimes = ["08:00:00", "09:00:00","11:00:00","1:00:00","02:00:00","03:00:00","04:00:00"];
+                let allowableTimes = ["08:00:00", "09:00:00", "10:00:00", "11:00:00", "12:00:00", "13:00:00","14:00:00","15:00:00","16:00:00"];
                 for (let time = 0; time < allowableTimes.length; time++){
                     $('#appts').append('<option value=' + allowableTimes[time] + '>' + formatOptions(allowableTimes[time]) + '</option>');
                 }
             } else {
-                let allowableTimes = ["08:00:00", "09:00:00", "11:00:00","1:00:00","02:00:00","03:00:00","04:00:00"];
+                let allowableTimes = ["08:00:00", "09:00:00", "10:00:00", "11:00:00", "12:00:00", "13:00:00","14:00:00","15:00:00","16:00:00"];
                 for (let i = 0; i < responseData.length; i++){
                     let apptTime = responseData[i].appointmentTime;
                     let index = allowableTimes.indexOf(apptTime);
@@ -71,12 +71,12 @@ $(document).ready(function () {
 
 function formatOptions(timeString) {
     let returnString = "";
-    timeString = timeString.replace(new RegExp("0", "g"), '');
     timeString = timeString.replace(new RegExp(":", "g"), '');
-    if(timeString === "8" || timeString === "9" || timeString === "10" || timeString === "11"){
-        returnString = timeString + " AM";
-    } else {
-        returnString = timeString + " PM";
-    }
-    return returnString;
+    timeString = timeString.replace(new RegExp("[0]{4}$", "g"), '');
+    // if(timeString === "8" || timeString === "9" || timeString === "10" || timeString === "11"){
+    //     returnString = timeString + " AM";
+    // } else {
+    //     returnString = timeString + " PM";
+    // }
+    return timeString;
 }

@@ -23,7 +23,6 @@ public class ScheduleRestController {
         try {
             appointmentRepository.save(appointment);
             return "Appointment was added succesfully";
-
         } catch (Exception ex){
             return ex.getMessage();
         }
@@ -33,33 +32,20 @@ public class ScheduleRestController {
     public @ResponseBody
     List<Appointment> getAllAppointments(){
         List<Appointment> appointments = new ArrayList<>();
-
-        for(Appointment appt : appointmentRepository.findAll()){
-            appointments.add(appt);
-        }
-
-//        appointments.addAll(appointmentRepository.findAll());
-//        Sort the List by date and then by time
-        appointments = sortAppointments(appointments);
-        return appointments;
+        return sortAppointments(appointmentRepository.findAll());
     }
 
     @GetMapping("/all/{date}")
     public @ResponseBody List<Appointment> getAppointmentsByDate(@PathVariable String date){
         try{
             Date sqlDate = Date.valueOf(date);
-            List<Appointment> appointments = appointmentRepository.findAllByAppointmentDate(sqlDate);
-
-            appointments = sortAppointments(appointments);
-
-            return appointments;
+            return sortAppointments(appointmentRepository.findAllByAppointmentDate(sqlDate));
         } catch (Exception ex){
             Appointment appt = new Appointment();
             List<Appointment> appointments = new ArrayList<>();
             appointments.add(appt);
             return appointments;
         }
-
     }
 
     private List<Appointment> sortAppointments(List<Appointment> appointments){
