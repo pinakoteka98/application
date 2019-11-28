@@ -15,6 +15,7 @@ import pl.sdacademy.todolist.service.OrderService;
 import javax.validation.Valid;
 import java.math.BigDecimal;
 import java.security.Principal;
+import java.time.LocalDate;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -90,7 +91,9 @@ public class OrderController {
     public String orderList(Model model, Principal principal) {
         List<Order> orders = orderService.findAll();
         model.addAttribute("orders", orders);
-        model.addAttribute("order", new Order());
+        Order order = new Order();
+        order.setDateOfOrder(LocalDate.now());
+        model.addAttribute("order", order);
         return "add";
     }
 
