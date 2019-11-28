@@ -24,8 +24,8 @@ $(document).ready( function () {
         "sAjaxDataProp": "",
         "order": [[ 0, "asc" ]],
         "aoColumns": [
-            { "mData": "firstname" },
-            { "mData": "lastname" },
+            { "mData": "firstName" },
+            { "mData": "user.phoneNumber" },
             { "mData": "appointmentDate" },
             { "mData": "appointmentTime" }
         ],

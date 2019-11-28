@@ -122,12 +122,12 @@ public class UserController {
         User user = userService.findByPhoneNumber(principal.getName());
         Appointment appointment = new Appointment();
         appointment.setUser(user);
-        model.addAttribute("appointment", new Appointment());
+        model.addAttribute("appointment", appointment);
         return "scheduler";
     }
 
     @PostMapping("/confirmation")
-    public String appointmentScheduleForm(@ModelAttribute Appointment appointment, Model model) {
+    public String appointmentScheduleForm(@ModelAttribute (name = "appointment") Appointment appointment, Model model) {
         try {
             appointmentRepository.save(appointment);
             model.addAttribute(appointment);

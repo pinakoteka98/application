@@ -3,70 +3,20 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3" >
 <head>
     <title>Appointment Scheduler</title>
-    <link rel="stylesheet" type="text/css" href="../static/css/site.css" th:href="@{/css/site.css}">
+    <link rel="stylesheet" type="text/css" href="../static/assets/css/site.css" th:href="@{/assets/css/site.css}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script
             src="https://code.jquery.com/jquery-3.3.1.min.js"
             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
             crossorigin="anonymous"></script>
-    <script src="/js/moment.js" type="application/javascript"></script>
+    <script src="/static/assets/js/moment.js" type="application/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script type="application/javascript" src="/js/scheduler.js"></script>
+    <script type="application/javascript" src="/static/assets/js/scheduler.js"></script>
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-light">
-    <a class="navbar-brand" href="#">
-        <img id="navBrand" src="/images/nav_logo.png" />
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navMainContent" aria-controls="navMainContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
 
-    <div class="collapse navbar-collapse" id="navMainContent">
-        <ul class="navbar-nav mr-lg-auto">
-            <li class="nav-item active">
-                <a class="nav-link" style="color: #213967; font-weight: 600" href="http://www.mrober23.istwebclass.org/IST_226/Final_Project/milestone3/" role="button">
-                    Home
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" style="color: #213967; font-weight: 600;"
-                   href="http://mrober23.istwebclass.org/IST_226/Final_Project/milestone3/about.php" role="button">
-                    About
-                </a>
-            </li>
-
-            <li class="nav-item ">
-                <a class="nav-link" style="color: #213967; font-weight: 600;"
-                   href="http://mrober23.istwebclass.org/IST_226/Final_Project/milestone3/contact.php" role="button">
-                    Contact
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" style="color: #213967; font-weight: 600;"
-                   href="http://mrober23.istwebclass.org/IST_226/Final_Project/milestone3/location.php" role="button">
-                    Location
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" style="color: #213967; font-weight: 600;"
-                   href="http://sunshadersapp.ikhaew8qq8.us-east-1.elasticbeanstalk.com/scheduler/login" role="button">
-                    Appointments
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" style="color: #213967; font-weight: 600;"
-                   href="http://mrober23.istwebclass.org/IST_226/Final_Project/milestone3/photos.php" role="button">
-                    Photos
-                </a>
-            </li>
-        </ul>
-    </div>
-</nav>
 <div id="wrapper">
     <div class="row">
         <div class="col-md-4"></div>
@@ -74,7 +24,7 @@
             <div class="form-group">
                 <form id="apptForm" th:object="${appointment}" th:action="@{/confirmation}" method="post">
 
-                    <input type = "hidden" class="form-control" id="firstname" th:field="*{user}">
+                    <input type = "hidden" class="form-control" th:field="*{user}">
                     <label for="lastname">First Name</label>
                     <input class="form-control" id="lastname" th:field="*{firstName}" type="text">
                     <label for="date">Appointment Date</label>
