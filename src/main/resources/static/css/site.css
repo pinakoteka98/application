@@ -1,0 +1,55 @@
+
+html body{
+    background-color: #213967;
+    height: 100vh;
+    color: #dfdbd2;
+}
+
+.page-header{
+    color: #dfdbd2;
+    text-align: center;
+    margin: .7em auto;
+    font-size: 350%;
+}
+.btn-primary{
+    background-color: #213967;
+}
+#navBrand{
+    width: 112%;
+    height: 105%;
+}
+.navbar{
+    background-color: #ea701b;
+}
+.nav-item{
+    margin: 0 1em 0 1em ;
+    font-size: 130%;
+}
+
+#navMainContent{
+    width: 75%;
+    margin: 0 auto;
+}
+
+.navRightContent{
+    position: relative;
+    float: right;
+    width: 30%;
+}
+.navRightContent span{
+    position: relative;
+    float: right;
+}
+
+#wrapper{
+    width: 90%;
+    margin: 2em auto;
+}
+
+form label{
+    font-size: 110%;
+}
+
+.form-button{
+    margin: 1.3em .5em 0 0;
+}

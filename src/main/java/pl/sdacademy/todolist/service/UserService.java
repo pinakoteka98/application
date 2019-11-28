@@ -43,8 +43,12 @@ public class UserService {
 
     }
 
-    public Optional<User> findByPhoneNumber(String phoneNumber){
+    public Optional<User> findUserByPhoneNumber(String phoneNumber){
         return userRepository.findUserByPhoneNumber(phoneNumber);
+    }
+
+    public User findByPhoneNumber(String phoneNumber){
+        return userRepository.findByPhoneNumber(phoneNumber);
     }
 
     public User uptade(User user) {

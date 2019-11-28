@@ -10,11 +10,12 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.sdacademy.todolist.dto.MessageDto;
-import pl.sdacademy.todolist.dto.MessageType;
 import pl.sdacademy.todolist.dto.UserDto;
 import pl.sdacademy.todolist.emailService.EmailService;
+import pl.sdacademy.todolist.entity.Appointment;
 import pl.sdacademy.todolist.entity.Order;
 import pl.sdacademy.todolist.entity.User;
+import pl.sdacademy.todolist.repository.AppointmentRepository;
 import pl.sdacademy.todolist.service.OrderService;
 import pl.sdacademy.todolist.service.UserService;
 import pl.sdacademy.todolist.utils.AppUtils;
@@ -22,7 +23,6 @@ import pl.sdacademy.todolist.validators.RegisterValidator;
 
 import java.security.Principal;
 import java.util.List;
-import java.util.Locale;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -35,7 +35,7 @@ public class UserController {
     private final OrderService orderService;
     private final EmailService emailService;
     private final PasswordEncoder passwordEncoder;
-    private final MessageSource messageSource;
+    private final AppointmentRepository appointmentRepository;
 
     @GetMapping(value = "/login")
     public String showLoginPage() {
@@ -50,7 +50,7 @@ public class UserController {
 
     @PostMapping({"/register","/message"})
     public String registerUser(@ModelAttribute(name = "userForm") UserDto userForm, BindingResult result, Model model, MessageDto message) {
-        Optional<User> existing = userService.findByPhoneNumber(userForm.getPhoneNumber());
+        Optional<User> existing = userService.findUserByPhoneNumber(userForm.getPhoneNumber());
         registerValidator.validate(userForm, result);
         registerValidator.validatePhoneExist(existing, result);
         if (result.hasErrors()) {
@@ -58,7 +58,6 @@ public class UserController {
         }
         userService.create(userForm);
         UserDto recipient = message.getRecipient();
-//        emailService.sendMessage(userForm.getEmail(), messageSource.getMessage(message.getNotificationType().getMessageKey(), null, Locale.getDefault()));
         emailService.sendMessage(userForm.getEmail(), "Dzień dobry.");
         model.addAttribute("info", "Rejestracja zakończona sukcesem. Możesz się zalogować.");
         model.addAttribute("login", userForm.getPhoneNumber());
@@ -101,7 +100,7 @@ public class UserController {
 
     @PostMapping("resetpassword")
     public String resetPassword(@RequestParam String phoneNumber, @RequestParam String email, Model model) {
-        Optional<User> userOptional = userService.findByPhoneNumber(phoneNumber);
+        Optional<User> userOptional = userService.findUserByPhoneNumber(phoneNumber);
         if (userOptional.isPresent()) {
             User user = userOptional.get();
             if (user.getEmail().equals(email)) {
@@ -116,6 +115,32 @@ public class UserController {
         }
         model.addAttribute("info", "Brak konta użytkownika w bazie dla wskazanego adresu email i nr telefonu");
         return "resetpassword";
+    }
+
+    @GetMapping("/schedule")
+    public String appointmentSchedule (Principal principal, Model model){
+        User user = userService.findByPhoneNumber(principal.getName());
+        Appointment appointment = new Appointment();
+        appointment.setUser(user);
+        model.addAttribute("appointment", new Appointment());
+        return "scheduler";
+    }
+
+    @PostMapping("/confirmation")
+    public String appointmentScheduleForm(@ModelAttribute Appointment appointment, Model model) {
+        try {
+            appointmentRepository.save(appointment);
+            model.addAttribute(appointment);
+            return "confirmation";
+        } catch (Exception ex) {
+            return "redirect:/error";
+        }
+
+    }
+
+    @GetMapping("/error")
+    public String errorsPage(){
+        return "errors";
     }
 
 }
