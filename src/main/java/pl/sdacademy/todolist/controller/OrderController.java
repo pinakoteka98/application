@@ -62,7 +62,7 @@ public class OrderController {
         long size = orderService.findAll().stream().filter(e -> e.getStatus() == Status.INPROGRESS).count();
         int currentPage = orderPage.getNumber();
         int totalPages = orderPage.getTotalPages();
-        double averageOrderValueFromLastYear = orderService.findMiddleOrderValueFromLastYear();
+        double averageOrderValueFromLastYear = orderService.findMiddleOrderValueFromLastYear() == null ? 0 : orderService.findMiddleOrderValueFromLastYear();
         int numberOfOrdersFromLastYear = orderService.findNumberOfOrdersFromLastYear();
         double averageMonthlyNumberOfOrdersFromTheLastYear = orderService.findAverageMonthlyNumberOfOrdersFromTheLastYear();
         List<Order> orders = orderPage.getContent();
