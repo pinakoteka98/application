@@ -5,7 +5,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
+import pl.sdacademy.todolist.entity.Appointment;
 import pl.sdacademy.todolist.entity.Sms;
+import pl.sdacademy.todolist.repository.AppointmentRepository;
 import pl.sdacademy.todolist.repository.SmsRepository;
 import pl.smsapi.BasicAuthClient;
 import pl.smsapi.api.SmsFactory;
@@ -14,8 +16,11 @@ import pl.smsapi.api.response.MessageResponse;
 import pl.smsapi.api.response.StatusResponse;
 import pl.smsapi.exception.SmsapiException;
 
+import java.sql.Date;
 import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Calendar;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -24,6 +29,7 @@ import java.util.List;
 public class SmsService implements MessageService {
 
     private final SmsRepository smsRepository;
+    private final AppointmentRepository appointmentRepository;
 
     @Value("${api.sms.client.login}")
     private String login;
@@ -40,8 +46,7 @@ public class SmsService implements MessageService {
             sms.setPhoneNumber(recipient);
             sms.setMessage(message);
             saveSMS(sms);
-        }
-        else {
+        } else {
             try {
                 BasicAuthClient client = new BasicAuthClient(login, password);
                 log.info("Sending SMS message \"{}\" to phone {}", message, recipient);
@@ -79,5 +84,18 @@ public class SmsService implements MessageService {
             smsRepository.delete(sms);
         });
         log.info("Sprawdzenie w bazie czy istnieją smsy do wysłania oraz ich wysłanie");
+    }
+
+    @Scheduled(cron = "0 10 10-19/1 * * SUN-FRI")
+    public void appointmentRemaining() {
+        LocalDate today = LocalDate.now();
+        Date tomorrow = Date.valueOf(today.plusDays(1));
+        List<Appointment> appointments = appointmentRepository.findAllByAppointmentDate(tomorrow);
+        appointments.forEach(a -> {
+            int hour = a.getAppointmentTime().toLocalTime().getHour();
+            sendMessage(a.getUser().getPhoneNumber(), "Przypominamy o umówionym spotkaniu, zapraszamy serdecznie jutro o godzinie " + hour + ".");
+            appointmentRepository.delete(a);
+        });
+
     }
 }
