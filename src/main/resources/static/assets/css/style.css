@@ -17,7 +17,7 @@ a:link, a:hover, a:visited, a:active {
 }
 
 #test1, #test2, #test3 {
-
+    color: #c12031 !important;
     text-decoration: none;
     line-height: 2;
     font: 700 2rem 'Planet Light', sans-serif;
@@ -71,7 +71,7 @@ input:focus {
 }
 
 .was-validated .form-control:invalid {
-    border-color: #e80404 !important;
+    border-color: #c12031 !important;
     background-color: #ffeef7 !important;
     padding-right: calc(1.5em + .75rem) !important;
     background-position: center right calc(.375em + .1875rem);

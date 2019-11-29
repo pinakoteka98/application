@@ -173,9 +173,9 @@
                     <resources>
                         <resource>
                             <source>
-                                <directory>${basedir}/src/main/resources/static/css/scss</directory>
+                                <directory>${basedir}/src/main/resources/static/assets/scss</directory>
                             </source>
-                            <destination>${basedir}/src/main/resources/static/css</destination>
+                            <destination>${basedir}/src/main/resources/static/assets/css</destination>
                         </resource>
                     </resources>
                     <sassOptions>

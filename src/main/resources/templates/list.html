@@ -47,6 +47,10 @@
     <link href='https://static1.format.com/static/_common/modal_message-cd25c4ca398e1e31ca8276375f75a14991b41526bbfbeb42dbfa5d76d89cfce7.css'
           media='screen' rel='stylesheet' type='text/css'/>
 
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
     <!--    <script src="https://bucket0.format-assets.com/theme_versions/4785108/assets/javascripts/jquery.js"-->
     <!--            type="text/javascript"></script>-->
     <!--    <script src="https://bucket0.format-assets.com/theme_versions/4785108/assets/javascripts/menu_dropdown.js"-->
@@ -87,6 +91,38 @@
                 font-size: 18.2px;
 
             }
+
+            .col-1 {
+                margin-right: 0px !important;
+            }
+            .col-2 {
+                font-size: 16px !important;
+            }
+            h5 {
+                font-size: 20px !important;
+            }
+
+            #order_list {
+                /*margin-left: 10px !important;*/
+                /*margin-right: 10px !important;*/
+            }
+
+            #footer {
+                display: none;
+            }
+
+            .mobile {
+                width: auto;
+                height: 40px;
+                display: block;
+                bottom: 0;
+                margin: 10px;
+                text-align: center;
+            }
+            .footerholder {
+                margin: 0;
+            }
+
         }
     </style>
 
@@ -144,7 +180,7 @@
 
 
                         <div class="col-1" th:switch="${order.status}">
-                            <span style="color:#e80404; font-weight: 700; text-transform: uppercase"
+                            <span style="color:#c12031; font-weight: 700; text-transform: uppercase"
                                   th:case="${order.status.INPROGRESS}">w trakcie realizacji</span>
                             <span style="color:green; font-weight: 700; text-transform: uppercase"
                                   th:case="${order.status.READY}">gotowe, oczekuje na odbiór</span>
@@ -227,6 +263,27 @@
         </div>
     </div>
 </div>
+
+<!--<div class="_4ORMAT_content_page_row _4ormat_sort_item _4ORMAT_module_contact_10">-->
+<!--    <div class="footerholder">-->
+<!--        <div class="mobile">-->
+<!--            <a th:href="@{/menu}">-->
+<!--                <div id="mob1" style="float: left;">-->
+<!--                    <i class="fa fa-arrow-left fa-3x" style="color: #c12031"></i>-->
+<!--                </div>-->
+<!--            </a>-->
+<!--        </div>-->
+
+<!--        <div class="mobile">-->
+<!--            <a href="/logout">-->
+<!--                <div id="mob2" style="float: right;">-->
+<!--                    <i class="fa fa-power-off fa-3x" style="color: #c12031"></i>-->
+<!--                </div>-->
+<!--            </a>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
 
 
 <script src='https://static0.format.com/static/theme_api/v1/4ormat-7ec6872c8e665780eead7b027e2aa66fb06142caecd57b86359163172bf23497.js'

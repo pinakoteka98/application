@@ -7,12 +7,12 @@ $(document).ready(function () {
         let responseData = data;
         console.log(responseData.length);
         if (responseData.length < 1){
-            let allowableTimes = ["08:00:00", "09:00:00", "10:00:00", "11:00:00", "12:00:00", "13:00:00","14:00:00","15:00:00","16:00:00"];
+            let allowableTimes = ["11:00:00", "13:00:00", "15:00:00"];
             for (let time = 0; time < allowableTimes.length; time++){
                 $('#appts').append('<option value=' + allowableTimes[time] + '>' + formatOptions(allowableTimes[time]) + '</option>');
             }
         } else {
-            let allowableTimes = ["08:00:00", "09:00:00", "10:00:00", "11:00:00", "12:00:00", "13:00:00","14:00:00","15:00:00","16:00:00"];
+            let allowableTimes = ["11:00:00", "13:00:00", "15:00:00"];
             for (let i = 0; i < responseData.length; i++){
                 let apptTime = responseData[i].appointmentTime;
                 let index = allowableTimes.indexOf(apptTime);
@@ -39,12 +39,12 @@ $(document).ready(function () {
             let responseData = data;
             console.log(responseData.length);
             if (responseData.length < 1){
-                let allowableTimes = ["08:00:00", "09:00:00", "10:00:00", "11:00:00", "12:00:00", "13:00:00","14:00:00","15:00:00","16:00:00"];
+                let allowableTimes = ["11:00:00", "13:00:00", "15:00:00"];
                 for (let time = 0; time < allowableTimes.length; time++){
                     $('#appts').append('<option value=' + allowableTimes[time] + '>' + formatOptions(allowableTimes[time]) + '</option>');
                 }
             } else {
-                let allowableTimes = ["08:00:00", "09:00:00", "10:00:00", "11:00:00", "12:00:00", "13:00:00","14:00:00","15:00:00","16:00:00"];
+                let allowableTimes = ["11:00:00", "13:00:00", "15:00:00"];
                 for (let i = 0; i < responseData.length; i++){
                     let apptTime = responseData[i].appointmentTime;
                     let index = allowableTimes.indexOf(apptTime);
