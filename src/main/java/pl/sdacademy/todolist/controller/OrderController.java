@@ -93,6 +93,7 @@ public class OrderController {
         model.addAttribute("orders", orders);
         Order order = new Order();
         order.setDateOfOrder(LocalDate.now());
+        order.setEstimatedDate(LocalDate.now().plusDays(7));
         model.addAttribute("order", order);
         return "add";
     }
