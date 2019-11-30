@@ -1,18 +1,33 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3" >
+>
 <head>
-    <title>Appointment Scheduler</title>
-    <link rel="stylesheet" type="text/css" href="../static/assets/css/site.css" th:href="@{/assets/css/site.css}">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <title>Umów spotkanie</title>
+    <link rel="stylesheet" type="text/css" href="../static/assets/css/site.css"
+          th:href="@{/static/assets/css/site.css}">
+    <link rel="stylesheet" type="text/css" href="../static/assets/css/scheduler.css"
+          th:href="@{/static/assets/css/scheduler.css}">
+    <!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"-->
+    <!--          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
+    <!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"-->
+    <!--            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"-->
+    <!--            crossorigin="anonymous"></script>-->
     <script
             src="https://code.jquery.com/jquery-3.3.1.min.js"
             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
             crossorigin="anonymous"></script>
     <script src="/static/assets/js/moment.js" type="text/javascript"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
     <script type="text/javascript" src="/static/assets/js/scheduler.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/airbnb.css">
+    <script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/pl.js"></script>
+
 </head>
 
 <body>
@@ -24,17 +39,19 @@
             <div class="form-group">
                 <form id="apptForm" th:object="${appointment}" th:action="@{/confirmation}" method="post">
 
-                    <input type = "hidden" class="form-control" th:field="*{user}">
-                    <label for="lastname">First Name</label>
+                    <input type="hidden" class="form-control" th:field="*{user}">
+                    <label for="lastname">Imię</label>
                     <input class="form-control" id="lastname" th:field="*{firstName}" type="text">
-                    <label for="date">Appointment Date</label>
-                    <input class="form-control" id="date" type="date" required>
-                    <input id="realDate" name="date" th:field="*{appointmentDate}" type="text" hidden >
-                    <label for="appts">Appointment Time</label>
+                    <label for="date">Data</label>
+                    <!--                    <input class="form-control" id="date" type="date" required>-->
+                    <input id="date" placeholder="Wybierz datę" th:field="*{appointmentDate}" data-input type="text"
+                           class="form-control flatpickr flatpickr-input active" readonly="readonly"
+                           style="background-color: white !important;">
+                    <label for="appts">Godzina</label>
                     <select class="form-control" id="appts" th:field="*{appointmentTime}" required></select>
 
-
-                    <button type="submit" class=" form-button btn btn-primary">Book Appointment</button>
+                    <br>
+                    <button type="submit" class=" form-button btn btn-primary">Umów spotkanie</button>
 
                 </form>
             </div>
@@ -45,6 +62,27 @@
 </div>
 <script>
 
+    // flatpickr(date, {
+    //     "locale": "pl"  // locale for this instance only
+    // });
+
+    $("#date").flatpickr({
+        enableTime: false,
+        dateFormat: "Y-m-d",
+        minDate: "today",
+        defaultDate: "today",
+        "disable": [
+            function (date) {
+                return (date.getDay() === 0 || date.getDay() === 1 || date.getDay() === 6);  // disable weekends
+            }
+        ],
+        "locale": "pl"
+
+    });
+
+
 </script>
+
+
 </body>
 </html>

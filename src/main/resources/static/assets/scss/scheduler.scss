@@ -1,0 +1,18 @@
+$dayWidth: 50px; /*pixel square for each day - default is 39 */
+$width: $dayWidth * 7;
+.flatpickr-calendar {
+  width: $width;
+}
+.dayContainer {
+  width: $width;
+  min-width: $width;
+  max-width: $width;
+}
+.flatpickr-days {
+  width: $width;
+}
+.flatpickr-day {
+  max-width: $dayWidth;
+  height: $dayWidth;
+  line-height: $dayWidth;
+}
