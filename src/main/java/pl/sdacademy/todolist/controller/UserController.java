@@ -58,7 +58,7 @@ public class UserController {
         }
         userService.create(userForm);
         UserDto recipient = message.getRecipient();
-        emailService.sendMessage(userForm.getEmail(), "Dzień dobry.");
+        emailService.sendMessage(userForm.getEmail(), "Dzień dobry!");
         model.addAttribute("info", "Rejestracja zakończona sukcesem. Możesz się zalogować.");
         model.addAttribute("login", userForm.getPhoneNumber());
         return "login";

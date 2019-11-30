@@ -52,18 +52,18 @@ tr:nth-child(even) {
     padding: 8px 16px;
     text-decoration: none;
     transition: background-color .3s;
-    border: 1px solid #ddd;
+    border: 1px solid #A5A29F;
     margin: 0 4px;
 }
 
 .pagination a.active {
-    background-color: #e80404;
+    background-color: #c12031;
     color: white;
-    border: 1px solid #e80404;
+    border: 1px solid #c12031;
 }
 
 .pagination a:hover:not(.active) {
-    background-color: #ddd;
+    background-color: #A5A29F;
 }
 
 .footerholder {

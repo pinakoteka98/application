@@ -1,17 +1,24 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3" >
+>
 <head>
     <title>Appointment Scheduler</title>
-    <link rel="stylesheet" type="text/css" href="/resources/styles/site.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/resources/styles/site.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="/resources/styles/site.css">
     <style>
-        #table-wrapper{
+        #table-wrapper {
             width: 95%;
             margin: 0 auto;
             text-align: center;
@@ -19,90 +26,41 @@
     </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light">
-    <a class="navbar-brand" href="#">
-        <img id="navBrand" src="/resources/images/nav_logo.png" />
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navMainContent" aria-controls="navMainContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
 
-    <div class="collapse navbar-collapse" id="navMainContent">
-        <ul class="navbar-nav mr-lg-auto">
-            <li class="nav-item active">
-                <a class="nav-link" style="color: #213967; font-weight: 600" href="http://www.mrober23.istwebclass.org/IST_226/Final_Project/milestone3/" role="button">
-                    Home
-                </a>
-            </li>
 
-            <li class="nav-item">
-                <a class="nav-link" style="color: #213967; font-weight: 600;"
-                   href="http://mrober23.istwebclass.org/IST_226/Final_Project/milestone3/about.php" role="button">
-                    About
+<div id="wrapper">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <div id="table-wrapper">
+                <h2>Appointment Confirmation</h2>
+                <table class="table table-striped table-bordered">
+                    <tr>
+                        <th>First Name</th>
+                        <td th:text="${appointment.firstName}"></td>
+                    </tr>
+                    <tr>
+                        <th>Phone number</th>
+                        <td th:text="${appointment.user.phoneNumber}"></td>
+                    </tr>
+                    <tr>
+                        <th>Appointment Date</th>
+                        <td th:text="${appointment.appointmentDate}"></td>
+                    </tr>
+                    <tr>
+                        <th>Appointment Time</th>
+                        <td th:text="${appointment.appointmentTime}"></td>
+                    </tr>
+                </table>
+                <a th:href="@{/menu}">
+                    <button class="btn btn-primary">Return to Homepage</button>
                 </a>
-            </li>
-
-            <li class="nav-item ">
-                <a class="nav-link" style="color: #213967; font-weight: 600;"
-                   href="http://mrober23.istwebclass.org/IST_226/Final_Project/milestone3/contact.php" role="button">
-                    Contact
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" style="color: #213967; font-weight: 600;"
-                   href="http://mrober23.istwebclass.org/IST_226/Final_Project/milestone3/location.php" role="button">
-                    Location
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" style="color: #213967; font-weight: 600;"
-                   href="http://sunshadersapp.ikhaew8qq8.us-east-1.elasticbeanstalk.com/scheduler/login" role="button">
-                    Appointments
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" style="color: #213967; font-weight: 600;"
-                   href="http://mrober23.istwebclass.org/IST_226/Final_Project/milestone3/photos.php" role="button">
-                    Photos
-                </a>
-            </li>
-        </ul>
-    </div>
-</nav>
-    <div id="wrapper">
-        <div class="row">
-            <div class="col-md-4"></div>
-            <div class="col-md-4">
-                <div id="table-wrapper">
-                    <h2>Appointment Confirmation</h2>
-                    <table class="table table-striped table-bordered">
-                        <tr>
-                            <th>First Name</th>
-                            <td th:text="${appointment.firstName}"></td>
-                        </tr>
-                        <tr>
-                            <th>Phone number</th>
-                            <td th:text="${appointment.user.phoneNumber}" ></td>
-                        </tr>
-                        <tr>
-                            <th>Appointment Date</th>
-                            <td th:text="${appointment.appointmentDate}" ></td>
-                        </tr>
-                        <tr>
-                            <th>Appointment Time</th>
-                            <td th:text="${appointment.appointmentTime}" ></td>
-                        </tr>
-                    </table>
-                    <a th:href="@{/menu}">
-                        <button class="btn btn-primary">Return to Homepage</button>
-                    </a>
-                </div>
             </div>
-            <div class="col-md-4"></div>
-
         </div>
+        <div class="col-md-4"></div>
 
     </div>
+
+</div>
 </body>
 </html>
