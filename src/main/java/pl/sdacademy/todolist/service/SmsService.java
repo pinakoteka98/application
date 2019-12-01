@@ -86,7 +86,7 @@ public class SmsService implements MessageService {
         log.info("Sprawdzenie w bazie czy istnieją smsy do wysłania oraz ich wysłanie");
     }
 
-    @Scheduled(cron = "0 10 10-19/1 * * SUN-FRI")
+    @Scheduled(cron = "0 10 15 * * SUN-FRI")
     public void appointmentRemaining() {
         LocalDate today = LocalDate.now();
         Date tomorrow = Date.valueOf(today.plusDays(1));
@@ -94,7 +94,6 @@ public class SmsService implements MessageService {
         appointments.forEach(a -> {
             int hour = a.getAppointmentTime().toLocalTime().getHour();
             sendMessage(a.getUser().getPhoneNumber(), "Przypominamy o umówionym spotkaniu, zapraszamy serdecznie jutro o godzinie " + hour + ".");
-            appointmentRepository.delete(a);
         });
 
     }
