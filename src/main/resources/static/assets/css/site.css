@@ -2,51 +2,42 @@ html body{
     height: 100vh;
 }
 
-.page-header{
-    color: #dfdbd2;
+#appts{
+    height: 44px;
+    border: none;
+    overflow: hidden;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+select[multiple]:focus option:checked {
+    background: #c12031 linear-gradient(0deg, #c12031 0%, #c12031 100%);
+}
+
+#appts option:hover {
+    background-color: lightgrey;
+}
+
+#appts option:visited{
+    border: rgb(137, 137, 137) solid 1px;
+    border-radius: 3px;
+    color: rgb(137, 137, 137);
+}
+
+#appts:focus {
+    outline: none;
+}
+
+#appts option{
+    width: 80px;
+    font-size: 1rem;
+    padding: 10px 0;
     text-align: center;
-    margin: .7em auto;
-    font-size: 350%;
-}
-.btn-primary{
-    background-color: #213967;
-}
-#navBrand{
-    width: 112%;
-    height: 105%;
-}
-.navbar{
-    background-color: #ea701b;
-}
-.nav-item{
-    margin: 0 1em 0 1em ;
-    font-size: 130%;
-}
-
-#navMainContent{
-    width: 75%;
-    margin: 0 auto;
-}
-
-.navRightContent{
-    position: relative;
-    float: right;
-    width: 30%;
-}
-.navRightContent span{
-    position: relative;
-    float: right;
-}
-
-#wrapper{
-    width: 90%;
-    margin: 2em auto;
-}
-
-form label{
-    font-size: 110%;
-}
-
-.form-button{
-    margin: 1.3em .5em 0 0;
+    margin-right: 30px;
+    margin-bottom: 20px;
+    display: inline-block;
+    cursor: pointer;
+    border: rgb(137, 137, 137) solid 1px;
+    border-radius: 3px;
+    color: rgb(137, 137, 137);
 }

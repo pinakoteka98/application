@@ -7,11 +7,11 @@
           th:href="@{/static/assets/css/site.css}">
     <link rel="stylesheet" type="text/css" href="../static/assets/css/scheduler.css"
           th:href="@{/static/assets/css/scheduler.css}">
-    <!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"-->
-    <!--          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
-    <!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"-->
-    <!--            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"-->
-    <!--            crossorigin="anonymous"></script>-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
     <script
             src="https://code.jquery.com/jquery-3.3.1.min.js"
             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -27,6 +27,7 @@
     <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/airbnb.css">
     <script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
     <script src="https://npmcdn.com/flatpickr/dist/l10n/pl.js"></script>
+
 
 </head>
 
@@ -47,10 +48,12 @@
                     <input id="date" placeholder="Wybierz datę" th:field="*{appointmentDate}" data-input type="text"
                            class="form-control flatpickr flatpickr-input active" readonly="readonly"
                            style="background-color: white !important;">
-                    <label for="appts">Godzina</label>
-                    <select class="form-control" id="appts" th:field="*{appointmentTime}" required></select>
 
+                    <label for="appts">Godzina</label>
                     <br>
+                    <select class="hours" id="appts" th:field="*{appointmentTime}" multiple required></select>
+                    <br>
+<br>
                     <button type="submit" class=" form-button btn btn-primary">Umów spotkanie</button>
 
                 </form>
@@ -69,20 +72,19 @@
     $("#date").flatpickr({
         enableTime: false,
         dateFormat: "Y-m-d",
-        minDate: "today",
-        defaultDate: "today",
-        "disable": [
+        minDate : '-1969/12/31',
+                "disable": [
             function (date) {
                 return (date.getDay() === 0 || date.getDay() === 1 || date.getDay() === 6);  // disable weekends
             }
         ],
         "locale": "pl"
 
+
     });
 
 
 </script>
-
 
 </body>
 </html>

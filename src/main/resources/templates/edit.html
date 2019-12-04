@@ -45,11 +45,18 @@
                                    placeholder="estimatedDate">
                         </div>
 
+                        <div class="form-group col-md-8">
+                            <label for="value" class="col-form-label">Value</label>
+                            <input type="text" th:field="*{value}" class="form-control" id="value"
+                                   placeholder="value">
+                        </div>
+
 
                         <div class="form-group col-md-8">
                             <label for="priority" class="col-form-label">Status</label>
 
-                            <select class="form-control form-control-lg" id="priority" name="priority" th:field="*{status}" placeholder="priority">
+                            <select class="form-control form-control-lg" id="priority" name="priority"
+                                    th:field="*{status}" placeholder="priority">
                                 <option value="INPROGRESS">w realizacji</option>
                                 <option value="READY">gotowe</option>
                                 <option value="RECEIVED">odebrane</option>
