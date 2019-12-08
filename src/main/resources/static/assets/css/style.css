@@ -101,3 +101,7 @@ input:focus {
     bottom: 0;
     text-align: center;
 }
+
+#content_page_wrapper input{
+    border-bottom-width: 1px !important;
+}

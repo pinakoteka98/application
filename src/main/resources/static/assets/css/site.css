@@ -10,11 +10,13 @@ td, th {
 }
 
 #appts{
-    height: 44px;
+    margin-top: 10px;
+    height: 50px;
     border: none;
     overflow: hidden;
     margin-left: 0px;
     margin-right: 0px;
+
 }
 
 select[multiple]:focus option:checked {
@@ -38,17 +40,18 @@ select[multiple]:focus option:checked {
 
 #appts option{
     width: 80px;
+    height: auto;
     font-size: 1rem;
     padding: 10px 0;
     text-align: center;
-    margin-left: 15px;
-    margin-right: 15px;
-    margin-bottom: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
     display: inline-block;
     cursor: pointer;
     border: rgb(137, 137, 137) solid 1px;
-    color: rgb(137, 137, 137);
     background-color: white;
+    overflow: hidden;
+    -moz-overflow:hidden;
 }
 
 input[type="text"]::before {
