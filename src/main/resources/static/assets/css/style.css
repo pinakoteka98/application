@@ -16,6 +16,14 @@ a:link, a:hover, a:visited, a:active {
     text-decoration: none;
 }
 
+#backtomenu {
+    text-decoration: none;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 15px 15px;
+    font-size: 18px;
+}
+
 #test1, #test2, #test3 {
     color: #c12031 !important;
     text-decoration: none;
@@ -28,7 +36,7 @@ a:link, a:hover, a:visited, a:active {
 #test4, #test5, #test6 {
 
     text-decoration: none;
-    color: black !important;
+    color: #c12031 !important;
     line-height: 2;
     font: 700 2rem 'Planet Light', sans-serif;
     padding: 2em 3em;

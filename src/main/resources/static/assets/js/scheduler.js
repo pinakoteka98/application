@@ -1,6 +1,6 @@
 $(document).ready(function () {
-    let initialDate = moment().add(1, 'd').format("YYYY-MM-DD");
-    $('#date').val(initialDate);
+    let initialDate = moment().add(3, 'd').format("YYYY-MM-DD");
+    // $('#date').val(initialDate);
     $('#firstname').val($('#tempFirst').val());
     $('#lastname').val($('#tempLast').val());
     $.getJSON("/services/all/" + initialDate, function (data) {

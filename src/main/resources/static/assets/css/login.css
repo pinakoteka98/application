@@ -1,0 +1,33 @@
+#moving-text {
+    position:relative;
+    width:500px;
+    height:2.2em;
+    line-height:2.2em;
+    margin:0 auto;
+    font-size:1em;
+    overflow:hidden;
+}
+
+#moving-text > p {
+    position:absolute;
+    margin:0;
+    white-space:nowrap;
+    animation:move 30s linear infinite;
+    -webkit-animation:move 30s linear infinite;
+}
+
+#moving-text > p:hover {
+    animation-play-state:paused;
+    -webkit-animation-play-state:paused;
+}
+
+@keyframes move
+{
+    0% { transform:translateX(0); padding-left:110%; }
+    100% { transform:translateX(-100%); padding-left:110%; }
+}
+
+@-webkit-keyframes move{
+    0% { -webkit-transform:translateX(0); padding-left:110%; }
+    100% { -webkit-transform:translateX(-100%); padding-left:110%; }
+}
