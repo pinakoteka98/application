@@ -48,7 +48,7 @@ public class UserController {
         return "register";
     }
 
-    @PostMapping({"/register","/message"})
+    @PostMapping({"/register", "/message"})
     public String registerUser(@ModelAttribute(name = "userForm") UserDto userForm, BindingResult result, Model model, MessageDto message) {
         Optional<User> existing = userService.findUserByPhoneNumber(userForm.getPhoneNumber());
         registerValidator.validate(userForm, result);
@@ -118,7 +118,7 @@ public class UserController {
     }
 
     @GetMapping("/schedule")
-    public String appointmentSchedule (Principal principal, Model model){
+    public String appointmentSchedule(Principal principal, Model model) {
         User user = userService.findByPhoneNumber(principal.getName());
         Appointment appointment = new Appointment();
         appointment.setUser(user);
@@ -127,9 +127,10 @@ public class UserController {
     }
 
     @PostMapping("/confirmation")
-    public String appointmentScheduleForm(@ModelAttribute (name = "appointment") Appointment appointment, Model model) {
+    public String appointmentScheduleForm(@ModelAttribute(name = "appointment") Appointment appointment, Model model) {
         try {
             appointmentRepository.save(appointment);
+            emailService.sendMessage("rejestracja@pinakoteka.pl", "Masz nowe spotkanie umowione na dzien " + appointment.getAppointmentDate() + ", na godzine " + appointment.getAppointmentTime());
             model.addAttribute(appointment);
             return "confirmation";
         } catch (Exception ex) {
@@ -139,7 +140,7 @@ public class UserController {
     }
 
     @GetMapping("/error")
-    public String errorsPage(){
+    public String errorsPage() {
         return "errors";
     }
 
