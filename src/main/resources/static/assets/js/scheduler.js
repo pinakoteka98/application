@@ -71,8 +71,9 @@ $(document).ready(function () {
 
 function formatOptions(timeString) {
     let returnString = "";
-    timeString = timeString.replace(new RegExp(":", "g"), '');
-    timeString = timeString.replace(new RegExp("[0]{4}$", "g"), '');
+    timeString = timeString.replace(new RegExp("[0]{2}$", "g"), '');
+    timeString = timeString.replace(new RegExp("[:]$", "g"), '');
+    // timeString = timeString.replace(new RegExp(":", "g"), '');
     // if(timeString === "8" || timeString === "9" || timeString === "10" || timeString === "11"){
     //     returnString = timeString + " AM";
     // } else {

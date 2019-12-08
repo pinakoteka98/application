@@ -126,7 +126,7 @@
                                  style="font-weight: 700; margin-bottom: 10px"></div>
 
                             <div>Godzina</div>
-                            <div th:text="${appointment.appointmentTime}"
+                            <div th:text="${#dates.hour(appointment.appointmentTime)+':00'}"
                                  style="font-weight: 700; margin-bottom: 10px"></div>
 
                         </div>
