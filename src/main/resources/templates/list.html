@@ -4,8 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>historia zamówień</title>
-    <link href="../static/assets/css/style.css" th:href="@{/static/assets/css/style.css}" type="text/css" rel="stylesheet"/>
-    <link href="../static/assets/css/list.css" th:href="@{/static/assets/css/list.css}" type="text/css" rel="stylesheet"/>
+    <link href="../static/assets/css/style.css" th:href="@{/static/assets/css/style.css}" type="text/css"
+          rel="stylesheet"/>
+    <link href="../static/assets/css/list.css" th:href="@{/static/assets/css/list.css}" type="text/css"
+          rel="stylesheet"/>
+    <link href="../static/assets/css/style.css" rel="stylesheet" type="text/css" media="screen"
+          th:href="@{/static/assets/css/main.css}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link href='//lucas-rfgv.format.com/stylesheet.css?v=2019-10-30T10:05:15Z' media='screen' rel='stylesheet'
@@ -95,9 +99,11 @@
             .col-1 {
                 margin-right: 0px !important;
             }
+
             .col-2 {
                 font-size: 16px !important;
             }
+
             h5 {
                 font-size: 20px !important;
             }
@@ -119,6 +125,7 @@
                 margin: 10px;
                 text-align: center;
             }
+
             .footerholder {
                 margin: 0;
             }
@@ -228,23 +235,26 @@
 
         </div>
     </div>
+
+
+    <div class="footer">
+        <div class="btn1 draw-border" style="padding: 15px; margin:auto; text-align: center;; max-width: 250px">
+            <a th:href="@{/menu}" id="backtomenu">powrót do menu
+            </a>
+        </div>
+    </div>
+
 </div>
-
-
 <div class="_4ORMAT_content_page_row _4ormat_sort_item _4ORMAT_module_contact_10">
     <div class="footerholder">
         <div id="footer">
-            <div class="pagination" style="float: left;">
-                <a th:href="@{/menu}">powrót</a>
-            </div>
-
             <div class="pagination">
             <span th:if="${currentPage gt 0}">
         <a id="pag1"
            th:href="@{/list/{nr}/sort(nr=${currentPage}-${1}, sortcolumn=${sortcolumn}, ascdesc=${ascdesc}, elements=${elements})}">&lt;</a>
 
     </span>
-                <th:block th:if="${!orders.isEmpty()}" th:each="i: ${#numbers.sequence(0, totalPages - 1)}">
+                <th:block th:if="${!orders.isEmpty()} ${totalPages>1}" th:each="i: ${#numbers.sequence(0, totalPages - 1)}">
                     <a th:if="${currentPage == i}" class="active">[[${i}+1]]</a>
                     <span th:unless="${currentPage == i}">
              <a id="pag2"
@@ -257,9 +267,7 @@
            th:href="@{/list/{nr}/sort(nr=${currentPage+1}, sortcolumn=${sortcolumn==null?'establishdate':sortcolumn}, ascdesc=${ascdesc==null?'desc':ascdesc}, elements=${elements==null?3:elements})}">&gt;</a>
    </span>
             </div>
-            <div class="pagination" style="float: right">
-                <a href="/logout">wyloguj</a>
-            </div>
+
         </div>
     </div>
 </div>
@@ -283,7 +291,6 @@
 <!--        </div>-->
 <!--    </div>-->
 <!--</div>-->
-
 
 
 <script src='https://static0.format.com/static/theme_api/v1/4ormat-7ec6872c8e665780eead7b027e2aa66fb06142caecd57b86359163172bf23497.js'

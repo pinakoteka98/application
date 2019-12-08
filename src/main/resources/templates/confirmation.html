@@ -115,28 +115,28 @@
                             <div
                                     style="border-color: rgba(85, 85, 85, 0.3); border-width: 1px">Imię
                             </div>
-                            <div th:text="${appointment.firstName}" style="font-weight: 700; margin-bottom: 10px"></div>
+                            <div th:text="${appointment.firstName}" style="font-weight: 700; margin-bottom: 10px; font-size: 1.2rem"></div>
 
                             <div>Numer telefonu</div>
                             <div th:text="${appointment.user.phoneNumber}"
-                                 style="font-weight: 700; margin-bottom: 10px"></div>
+                                 style="font-weight: 700; margin-bottom: 10px; font-size: 1.2rem"></div>
 
                             <div>Data</div>
                             <div th:text="${appointment.appointmentDate}"
-                                 style="font-weight: 700; margin-bottom: 10px"></div>
+                                 style="font-weight: 700; margin-bottom: 10px; font-size: 1.2rem"></div>
 
                             <div>Godzina</div>
                             <div th:text="${#dates.hour(appointment.appointmentTime)+':00'}"
-                                 style="font-weight: 700; margin-bottom: 10px"></div>
+                                 style="font-weight: 700; margin-bottom: 10px; ; font-size: 1.2rem"></div>
 
                         </div>
                         <br>
                         <p>Dziękujemy za skorzystanie z systemu rezerwacji online.</p>
-                        <p>Informujemy, że dzień przed umówionym terminem wyślemy przypomnienie na wskazany numer
+                        <p style="margin-bottom: 30px">Informujemy, że dzień przed umówionym terminem wyślemy przypomnienie na wskazany numer
                             telefonu.</p>
 
-                        <div class="btn1 draw-border" style="padding: 15px; margin-top: 30px">
-                            <a th:href="@{/menu}" id="backtomenu">Powrót do menu
+                        <div class="btn1 draw-border" style="padding: 15px; margin:auto; text-align: center;; max-width: 250px">
+                            <a th:href="@{/menu}" id="backtomenu">powrót do menu
                             </a>
                         </div>
                     </div>

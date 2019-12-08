@@ -130,7 +130,7 @@ public class UserController {
     public String appointmentScheduleForm(@ModelAttribute(name = "appointment") Appointment appointment, Model model) {
         try {
             appointmentRepository.save(appointment);
-            emailService.sendMessage("rejestracja@pinakoteka.pl", "Masz nowe spotkanie umowione na dzien " + appointment.getAppointmentDate() + ", na godzine " + appointment.getAppointmentTime());
+            emailService.sendMessage("imac@wp.pl", "Masz nowe spotkanie umowione na dzien " + appointment.getAppointmentDate() + ", na godzine " + appointment.getAppointmentTime());
             model.addAttribute(appointment);
             return "confirmation";
         } catch (Exception ex) {
