@@ -11,7 +11,7 @@
           th:href="@{/static/assets/css/main.css}">
     <!--    <link rel="stylesheet" type="text/css" href="../static/assets/css/scheduler.css"-->
     <!--          th:href="@{/static/assets/css/scheduler.css}">-->
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <script
             src="https://code.jquery.com/jquery-3.3.1.min.js"
             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -75,35 +75,40 @@
     ._4ORMAT_content_page_row .btn:hover {
         border-color: rgba(85, 85, 85, 0.4) !important;
         background: rgba(85, 85, 85, 0.03) !important;
-    }</style>
-
-    <style>#content_page_wrapper h2.xl-headline {
-        font-size: 21px;
     }
+    </style>
 
-    @media screen and (max-width: 768px) {
+    <style>
         #content_page_wrapper h2.xl-headline {
-            font-size: 18.2px;
+            font-size: 21px;
         }
 
-        #content_page_wrapper .spacer {
-            width: 10% !important;
-            display: none !important;
+        @media screen and (max-width: 768px) {
+            #content_page_wrapper h2.xl-headline {
+                font-size: 18.2px;
+            }
+
+            #content_page_wrapper .spacer {
+                width: 10% !important;
+                display: none !important;
+            }
+
+            #content_page_wrapper .last {
+                width: auto !important;
+                float: inherit !important;
+            }
+
+            #content_page_wrapper .twelvecol {
+                float: inherit !important;
+                margin-left: 15% !important;
+                margin-right: 15% !important;
+            }
+
+            #appts option {
+                width: 60px;
+            }
         }
-
-        #content_page_wrapper .last {
-            width: auto !important;
-            float: inherit !important;
-        }
-
-        #content_page_wrapper .twelvecol {
-            float: inherit !important;
-            margin-left: 15% !important;
-            margin-right: 15% !important;
-        }
-
-
-    }</style>
+    </style>
 
 
 </head>
@@ -111,7 +116,7 @@
 <body>
 
 <div id="content">
-    <div class="containter loaded">
+    <div class="container loaded">
         <div class="_4ORMAT_content_wrapper" id="content_page_wrapper">
             <div style="padding-top: 0px" class="_4ORMAT_content_page_row _4ormat_sort_item _4ORMAT_module_contact_10">
                 <div class=" align_center">
@@ -123,8 +128,10 @@
                               th:object="${appointment}" th:action="@{/confirmation}"
                               method="post">
                             <h2 style="margin: 5px">Rezerwacja wizyty online</h2>
+
                             <div class="row naked">
                                 <div class="twelvecol last">
+
                                     <input type="hidden" class="form-control" th:field="*{user}">
                                     <input class="_4ORMAT_module_contact_input form-control" id="lastname"
                                            th:field="*{firstName}" type="text"
@@ -136,11 +143,13 @@
                             </div>
                             <div class="row naked">
                                 <div class="twelvecol last">
-<!--                                    <label for="date" style="margin-top: 20px; margin-bottom: 20px; color: black">Wybierz datę</label>-->
+                                    <!--                                    <label for="date" style="margin-top: 20px; margin-bottom: 20px; color: black">Wybierz datę</label>-->
                                     <!--                    <input class="form-control" id="date" type="date" required>-->
-                                    <input id="date" placeholder="Wybierz datę..." th:field="*{appointmentDate}" data-input
+                                    <input id="date" placeholder="Wybierz datę..." th:field="*{appointmentDate}"
+                                           data-input
                                            type="text"
-                                           class="date form-control flatpickr flatpickr-input active" readonly="readonly"
+                                           class="date form-control flatpickr flatpickr-input active"
+                                           readonly="readonly"
                                            style="background-color: white !important;">
                                     <div class="_4ORMAT_module_contact_label">
                                     </div>
@@ -149,7 +158,8 @@
                             </div>
                             <div class="row naked">
                                 <div class="twelvecol last">
-                                    <label for="appts" style="color: black; margin-top: 15px; margin-bottom: 15px">Dostępne godziny</label>
+                                    <label for="appts" style="color: black; margin-top: 15px; margin-bottom: 15px">Dostępne
+                                        godziny</label>
                                     <select class="hours" id="appts" th:field="*{appointmentTime}" multiple
                                             required style="overflow: hidden; -moz-overflow:hidden"></select>
                                 </div>
@@ -168,11 +178,10 @@
                                 </div>
                             </fieldset>
                         </form>
-                    </div>
-                    <div class="fourcol spacer last">
+                        <div class="fourcol spacer last">
+                        </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -206,7 +215,7 @@
     $("#date").flatpickr({
         enableTime: false,
         dateFormat: "Y-m-d",
-        minDate:new Date(),
+        minDate: new Date(),
 
         "disable": [
             function (date) {

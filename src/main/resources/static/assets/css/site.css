@@ -2,13 +2,6 @@
     border-bottom-width: 1px !important;
 }
 
-td, th {
-    border: 5px solid transparent;
-    text-align: left;
-    padding: 20px;
-
-}
-
 #appts{
     margin-top: 10px;
     height: 50px;
@@ -16,7 +9,6 @@ td, th {
     overflow: hidden;
     margin-left: 0px;
     margin-right: 0px;
-
 }
 
 select[multiple]:focus option:checked {

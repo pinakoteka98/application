@@ -6,7 +6,7 @@
     <title>usługi dodatkowe</title>
 
     <link href="../static/assets/css/style.css" rel="stylesheet" type="text/css" media="screen"
-                                                          th:href="@{/static/assets/css/style.css}">
+          th:href="@{/static/assets/css/style.css}">
     <link href="../static/assets/css/services.css" rel="stylesheet" type="text/css" media="screen"
           th:href="@{/static/assets/css/services.css}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -74,74 +74,67 @@
 <div id="content">
     <div class="container loaded">
         <div class='_4ORMAT_content_wrapper' id='content_page_wrapper'>
-            <div class='_4ORMAT_content_page_container _4ormat_sort'>
-                <div class="_4ORMAT_content_page_row _4ormat_sort_item _4ORMAT_module_text_02"
-                     data-content-module-id="6407964" data-content-module-template-id="14"
-                     data-content-module-unique-id="" data-content-module-removable="true"
-                     data-content-module-category="text">
+            <div class="_4ORMAT_content_page_container _4ormat_sort">
+                <div class="_4ORMAT_content_page_row _4ormat_sort_item _4ORMAT_module_text_02" style="padding-top: 0px !important; padding-bottom: 0px !important;">
                     <div class="twocol"></div>
-                    <div class="eightcol">
-                        <div data-editable-type="text" id="text" class="  " data-force-html-mode="false"
-                             data-id="77322128" data-content-module-unique-id="">
-                            <h2 class="xl-headline">Napisz do nas</h2>
-                        </div>
-                    </div>
-                    <div class="twocol last"></div>
                 </div>
-                <div class="_4ORMAT_content_page_row _4ormat_sort_item _4ORMAT_module_contact_10">
-                    <div class="twocol spacer"></div>
-                    <div class="fourcol">
-                        <div data-editable-type="text" id="text_1" class="  " data-force-html-mode="false">
+                <div class="twocol last"></div>
+            </div>
+            <div class="_4ORMAT_content_page_row _4ormat_sort_item _4ORMAT_module_contact_10">
+                <div class="twocol spacer"></div>
+                <div class="fourcol">
+                    <div data-editable-type="text" id="text_1" class="  " data-force-html-mode="false">
 
-                            <h2>Usługi dodatkowe</h2>
-                            <p>Transport<br>Montaż<br>Pakowanie<br>Wysyłka</p>
-                        </div>
+                        <h2>Usługi dodatkowe</h2>
+                        <p>Transport<br>Montaż<br>Pakowanie<br>Wysyłka</p>
                     </div>
-                    <div class="fourcol">
-                        <form data-editable-type="contact-form" id="contact_form_1" class=" email_form"
-                              name="contact_form_1" th:action="@{services}" method="POST" data-id=""
-                              data-content-module-unique-id="">
-                            <div class="error_messages"></div>
-                            <div class="row naked">
-                                <div class="twelvecol last">
-                                        <input class="_4ORMAT_module_contact_input" name="name" type="text" placeholder="Podaj swoje imię">
-                                        <div class="_4ORMAT_module_contact_label  " data-editable-type="label"
-                                             id="label_1" data-force-html-mode="false">
-                                        </div>
-
+                </div>
+                <div class="fourcol">
+                    <form data-editable-type="contact-form" id="contact_form_1" class=" email_form"
+                          name="contact_form_1" th:action="@{services}" method="POST" data-id=""
+                          data-content-module-unique-id="">
+                        <div class="error_messages"></div>
+                        <div class="row naked">
+                            <div class="twelvecol last">
+                                <input class="_4ORMAT_module_contact_input" name="name" type="text"
+                                       placeholder="Podaj swoje imię">
+                                <div class="_4ORMAT_module_contact_label  " data-editable-type="label"
+                                     id="label_1" data-force-html-mode="false">
                                 </div>
+
                             </div>
-                            <div class="row naked">
-                                <div class="twelvecol last">
+                        </div>
+                        <div class="row naked">
+                            <div class="twelvecol last">
 
-                                        <input class="_4ORMAT_module_contact_input" data-validate="email" name="from"
-                                               type="email" placeholder="E-mail">
-                                        <div class="_4ORMAT_module_contact_label  " data-editable-type="label"
-                                             id="label_2" data-force-html-mode="false">
-                                        </div>
-
+                                <input class="_4ORMAT_module_contact_input" data-validate="email" name="from"
+                                       type="email" placeholder="E-mail">
+                                <div class="_4ORMAT_module_contact_label  " data-editable-type="label"
+                                     id="label_2" data-force-html-mode="false">
                                 </div>
+
                             </div>
-                            <div class="row naked last">
-                                <div class="twelvecol last">
+                        </div>
+                        <div class="row naked last">
+                            <div class="twelvecol last">
 
                                         <textarea class="_4ORMAT_module_contact_input" data-validate="required"
                                                   name="body" rows="4" placeholder="Wiadomość"></textarea>
-                                        <div class="_4ORMAT_module_contact_label  " data-editable-type="label"
-                                             id="label_3" data-force-html-mode="false">
-                                        </div>
-
+                                <div class="_4ORMAT_module_contact_label  " data-editable-type="label"
+                                     id="label_3" data-force-html-mode="false">
                                 </div>
+
                             </div>
-                            <fieldset class="submit _4ORMAT_module_submit_left">
-                                <input class="btn primary _4ORMAT_module_contact_btn _4ORMAT_module_contact_input"
-                                       name="submit" type="submit" value=""/>
-                                <div class="_4ORMAT_module_contact_label  " data-editable-type="label" id="label_4"
-                                     style="display:none" data-force-html-mode="false">
+                        </div>
+                        <fieldset class="submit _4ORMAT_module_submit_left">
+                            <input class="btn primary _4ORMAT_module_contact_btn _4ORMAT_module_contact_input"
+                                   name="submit" type="submit" value=""/>
+                            <div class="_4ORMAT_module_contact_label  " data-editable-type="label" id="label_4"
+                                 style="display:none" data-force-html-mode="false">
 
-                                    Wyślij wiadomość
-                                </div>
-                            </fieldset>
+                                Wyślij wiadomość
+                            </div>
+                        </fieldset>
 
 
                         <script type="text/javascript">
@@ -153,15 +146,15 @@
                             }
                             _4ORMAT.contact_forms.push('contact_form_1');
                         </script>
-                        </form>
+                    </form>
 
 
-                    </div>
-                    <div class="twocol spacer last"></div>
                 </div>
+                <div class="twocol spacer last"></div>
             </div>
         </div>
     </div>
+</div>
 </div>
 
 <script src='https://static0.format.com/static/theme_api/v1/4ormat-7ec6872c8e665780eead7b027e2aa66fb06142caecd57b86359163172bf23497.js'
