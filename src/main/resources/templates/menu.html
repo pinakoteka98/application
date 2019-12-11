@@ -122,61 +122,35 @@
     <div class="container loaded">
         <div class="_4ORMAT_content_wrapper" id="content_page_wrapper">
             <div class="_4ORMAT_content_page_container _4ormat_sort">
-                <div style="padding-top: 0px" class="_4ORMAT_content_page_row _4ormat_sort_item _4ORMAT_module_image_7"
+                <div class="_4ORMAT_content_page_row _4ormat_sort_item _4ORMAT_module_image_7"
                      data-content-module-category="layout" data-content-module-template-id="18">
                     <div class=" align_center">
 
                         <div sec:authorize="hasRole('USER')">
                             <div class="fourcol">
                                 <div class="btn1 draw-border" id="menu1">
-                                    <a id="test1" th:href="@{/list/0}">
-                                        <!--                                    <img src="/images/list.svg" title="lista zamówień">-->
-                                        <!--                                    <i class="menu"></i>-->
-                                        <!--                                    <br>-->
-                                        <!--                                    <h2>Historia zamówień</h2>-->
-
-                                        <br>
+                                    <a id="test1" th:href="@{/list/0}" class="clickable" style="width: auto">
                                         Historia
-                                        <br>
                                         zamówień
-                                        <br>
-                                        <br>
-                                        <p>sprawdź status zamówienia</p>
-                                        <br>
+                                        <p style="margin-top: 20px; margin-bottom: 30px">sprawdź status zamówienia</p>
                                     </a>
                                 </div>
                             </div>
                             <div class="fourcol">
                                 <div class="btn1 draw-border" id="menu2">
-                                    <a id="test2" th:href="@{/schedule}">
-                                        <!--                                    <img src="/images/clock.svg" title="rezerwacja wizyty">-->
-                                        <!--                                    <i class="menu"></i>-->
-                                        <!--                                    <br>-->
-                                        <!--                                    <h2>Rezerwacja wizyty</h2>-->
-
-                                        <br>
+                                    <a id="test2" th:href="@{/schedule}" class="clickable">
                                         Rezerwacja
-                                        <br>
                                         wizyty
-                                        <br>
-                                        <br>
-                                        <p>umów spotkanie online</p>
-                                        <br>
-
+                                        <p style="margin-top: 20px; margin-bottom: 30px">umów spotkanie online</p>
                                     </a>
                                 </div>
                             </div>
                             <div class="fourcol last">
                                 <div class="btn1 draw-border" id="menu3">
-                                    <a id="test3" href="#">
-                                        <br>
+                                    <a id="test3" href="#" class="clickable">
                                         Usługi
-                                        <br>
                                         dodatkowe
-                                        <br>
-                                        <br>
-                                        <p>wyślij zapytanie</p>
-                                        <br>
+                                        <p style="margin-top: 20px; margin-bottom: 30px">wyślij zapytanie</p>
                                     </a>
                                 </div>
                             </div>
@@ -187,19 +161,9 @@
                                 <div class="btn1 draw-border" id="menu4">
                                     <a id="test4"
                                        th:href="@{/orders(page=0, sortcolumn=${'orderdate'}, ascdesc=${'desc'})}">
-                                        <!--                                    <img src="/images/list.svg" title="lista zamówień">-->
-                                        <!--                                    <i class="menu"></i>-->
-                                        <!--                                    <br>-->
-                                        <!--                                    <h2>Historia zamówień</h2>-->
-
-                                        <br>
                                         Obsługa
-                                        <br>
                                         zamówień
-                                        <br>
-                                        <br>
-                                        <p>panel administracyjny</p>
-                                        <br>
+                                        <p style="margin-top: 20px; margin-bottom: 30px">panel administracyjny</p>
                                     </a>
                                 </div>
                             </div>
@@ -207,20 +171,9 @@
                                 <div style="height: 50px"></div>
                                 <div class="btn1 draw-border" id="menu5">
                                     <a id="test5" th:href="@{/appointments}">
-                                        <!--                                    <img src="/images/clock.svg" title="rezerwacja wizyty">-->
-                                        <!--                                    <i class="menu"></i>-->
-                                        <!--                                    <br>-->
-                                        <!--                                    <h2>Rezerwacja wizyty</h2>-->
-
-                                        <br>
                                         Kalendarz
-                                        <br>
                                         spotkań
-                                        <br>
-                                        <br>
-                                        <p>zobacz umówione wizyty</p>
-                                        <br>
-
+                                        <p style="margin-top: 20px; margin-bottom: 30px">zobacz umówione wizyty</p>
                                     </a>
                                 </div>
                             </div>
@@ -231,7 +184,7 @@
         </div>
     </div>
 </div>
-</div>
+
 
 <script src='https://static0.format.com/static/theme_api/v1/4ormat-7ec6872c8e665780eead7b027e2aa66fb06142caecd57b86359163172bf23497.js'
         type='text/javascript'></script>
