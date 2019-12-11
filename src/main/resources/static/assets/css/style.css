@@ -30,6 +30,12 @@ a:link, a:hover, a:visited, a:active {
     text-decoration: none;
 }
 
+.clickable-admin {
+    display: block;
+    height: 100px;
+    text-decoration: none;
+}
+
 #test1, #test2, #test3 {
     color: #c12031 !important;
     text-decoration: none;
