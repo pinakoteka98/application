@@ -29,7 +29,7 @@ $(document).ready( function () {
             { "mData": "appointmentDate" },
             { "mData": "appointmentTime" }
         ],
-        "oSearch" : {"sSearch": dayString}
+        "oSearch" : {"sSearch": monthString}
     });
 
     $('#clear-filter').on('click', function () {
