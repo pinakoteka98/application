@@ -20,7 +20,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/register", "/", "/index").permitAll()
                 .antMatchers("/menu", "/services/all/**").hasAnyRole("USER", "ADMIN")
                 .antMatchers("/addorder", "/orders", "/edit").hasRole("ADMIN")
-                .antMatchers("/list").hasRole("USER")
+                .antMatchers("/list/**", "/schedule", "/confirmation").hasRole("USER")
                 .antMatchers("/**/*.js", "/**/*.css").permitAll()
                 .antMatchers("/resources/**").permitAll()
                 .anyRequest().permitAll()

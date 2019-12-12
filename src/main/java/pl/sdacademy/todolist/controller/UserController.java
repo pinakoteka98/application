@@ -2,7 +2,6 @@ package pl.sdacademy.todolist.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.MessageSource;
 import org.springframework.data.domain.Page;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -128,20 +127,20 @@ public class UserController {
 
     @PostMapping("/confirmation")
     public String appointmentScheduleForm(@ModelAttribute(name = "appointment") Appointment appointment, Model model) {
-        try {
+//        try {
             appointmentRepository.save(appointment);
             emailService.sendMessage("imac@wp.pl", "Masz nowe spotkanie umowione na dzien " + appointment.getAppointmentDate() + ", na godzine " + appointment.getAppointmentTime());
             model.addAttribute(appointment);
             return "confirmation";
-        } catch (Exception ex) {
-            return "redirect:/error";
-        }
+//        } catch (Exception ex) {
+//            return "redirect:/error";
+//        }
 
     }
 
     @GetMapping("/error")
     public String errorsPage() {
-        return "errors";
+        return "error";
     }
 
 }
