@@ -50,6 +50,7 @@
 <body>
 <div class="container my-2">
     <div id="wrapper">
+        <h1 id="page-header-text">upcoming meetings</h1>
         <div class="row">
             <div class="col-md-2 col-xs-12">
                 <form th:action="@{/menu}" method="get">
@@ -60,7 +61,6 @@
             <div class="col-md-2 hidden-xs"></div>
         </div>
 
-        <h1 id="page-header-text">Kalendarz spotkań</h1>
         <div class="col-md-12">
             <table id="apptTable" class="table table-striped table-responsive-md">
                 <thead>
@@ -71,7 +71,6 @@
                     <th>Appt. Time</th>
                 </tr>
                 </thead>
-
             </table>
         </div>
 

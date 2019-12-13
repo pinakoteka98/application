@@ -30,14 +30,15 @@
 <div class="container my-2">
     <div class="card" style="border: 0px">
         <div class="card-body">
-
+            <h1 id="page-header-text"
+                style="text-align: center; margin-top: 10px !important; margin-bottom: 15px !important;">order
+                management</h1>
             <div id="header">
 
                 <div class="form-group"
                      style="float: left; padding: 0px; width: auto; margin-right: 30px; font-family: Planet Light, sans-serif !important; font-size: 18px !important;">
                     <a href="/addorder" class="btn btn-primary">
                         <i class="fa fa-share-square-o ml-1"></i> Add order
-
                     </a>
                 </div>
                 <div class="col-md-2" style="margin: 0px !important;">
@@ -45,10 +46,6 @@
                         <button class="btn btn-default" type="submit">Back to menu</button>
                     </form>
                 </div>
-                <!--                <div class="btn btn-secondary col-md-2 szukaj">-->
-                <!--                    <a href th:text="${size}"></a>-->
-                <!--                </div>-->
-
 
                 <form method="GET" th:action="@{/orders}" action="/orders" id="sort">
                     <div class="form-group szukaj" style="margin-left: 1rem">
@@ -58,8 +55,7 @@
                                             <option value="orderdate" th:selected="${sortcolumn}=='orderdate'">Data złożenia zamówienia
                                             </option>
                                             <option value="ordernr" th:selected="${sortcolumn}=='ordernr'">Numer zamówienia</option>
-                                            <option value="expecteddate" th:selected="${sortcolumn}=='expecteddate'">Przewidywany termin
-                                                realizacji
+                                            <option value="expecteddate" th:selected="${sortcolumn}=='expecteddate'">Przewidywany termin realizacji
                                             </option>
                                             <option value="status" th:selected="${sortcolumn}=='status'">Status realizacji zamówienia</option>
                                         </select>
@@ -91,7 +87,6 @@
         </div>
     </div>
 
-
     <div class="container">
         <div class="row text-center">
             <!--            <a class="col" id="link1"-->
@@ -116,14 +111,14 @@
                 <div class="counter">
                     <i class="fa fa-line-chart fa-2x"></i>
                     <h2 class="counter-count" th:text="${numberOfOrdersFromLastYear}">31</h2>
-                    <p class="count-text ">Number of orders from last year</p>
+                    <p class="count-text ">Number of orders (1Y)</p>
                 </div>
             </div>
             <div class="col">
                 <div class="counter">
                     <i class="fa fa-object-ungroup fa-2x"></i>
                     <h2 class="counter-count" th:text="${averageMonthlyNumberOfOrdersFromTheLastYear}">750</h2>
-                    <p class="count-text ">Average monthly number of orders</p>
+                    <p class="count-text ">Average monthly</p>
                 </div>
             </div>
         </div>

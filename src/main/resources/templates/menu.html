@@ -129,27 +129,22 @@
                         <div sec:authorize="hasRole('USER')">
                             <div class="fourcol">
                                 <div class="btn1 draw-border" id="menu1">
-                                    <a id="test1" th:href="@{/list/0}" class="clickable" style="width: auto">
-                                        Historia
-                                        zamówień
+                                    <a id="test1" th:href="@{/list/0}" class="clickable"
+                                       style="width: auto">Historia<br>zamówień
                                         <p style="margin-top: 20px; margin-bottom: 30px">sprawdź status zamówienia</p>
                                     </a>
                                 </div>
                             </div>
                             <div class="fourcol">
                                 <div class="btn1 draw-border" id="menu2">
-                                    <a id="test2" th:href="@{/schedule}" class="clickable">
-                                        Rezerwacja
-                                        wizyty
+                                    <a id="test2" th:href="@{/schedule}" class="clickable">Rezerwacja<br>wizyty
                                         <p style="margin-top: 20px; margin-bottom: 30px">umów spotkanie online</p>
                                     </a>
                                 </div>
                             </div>
                             <div class="fourcol last">
                                 <div class="btn1 draw-border" id="menu3">
-                                    <a id="test3" href="#" class="clickable">
-                                        Usługi
-                                        dodatkowe
+                                    <a id="test3" href="#" class="clickable">Usługi<br>dodatkowe
                                         <p style="margin-top: 20px; margin-bottom: 30px">wyślij zapytanie</p>
                                     </a>
                                 </div>
@@ -160,9 +155,7 @@
                                 <div style="height: 50px"></div>
                                 <div class="btn1 draw-border" id="menu4">
                                     <a id="test4" class="clickable-admin"
-                                       th:href="@{/orders(page=0, sortcolumn=${'orderdate'}, ascdesc=${'desc'})}">
-                                        Obsługa
-                                        zamówień
+                                       th:href="@{/orders(page=0, sortcolumn=${'orderdate'}, ascdesc=${'desc'})}">Obsługa<br>zamówień
                                         <p style="margin-top: 20px; margin-bottom: 20px">przeglądanie i edycja</p>
                                     </a>
                                 </div>
@@ -170,9 +163,7 @@
                             <div class="sixcol last">
                                 <div style="height: 50px"></div>
                                 <div class="btn1 draw-border" id="menu5">
-                                    <a id="test5" th:href="@{/appointments}" class="clickable-admin">
-                                        Kalendarz
-                                        spotkań
+                                    <a id="test5" th:href="@{/appointments}" class="clickable-admin">Kalendarz<br>spotkań
                                         <p style="margin-top: 20px; margin-bottom: 20px">zobacz umówione wizyty</p>
                                     </a>
                                 </div>

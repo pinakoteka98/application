@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -57,17 +57,36 @@
     ._4ORMAT_content_page_row .btn:hover {
         border-color: rgba(85, 85, 85, 0.4) !important;
         background: rgba(85, 85, 85, 0.03) !important;
-    }</style>
-
-    <style>#content_page_wrapper h2.xl-headline {
-        font-size: 21px;
     }
+    </style>
 
-    @media screen and (max-width: 768px) {
+    <style>
         #content_page_wrapper h2.xl-headline {
-            font-size: 18.2px;
+            font-size: 21px;
         }
-    }</style>
+
+        @media screen and (max-width: 768px) {
+            #content_page_wrapper h2.xl-headline {
+                font-size: 18.2px;
+            }
+
+            #content_page_wrapper .spacer {
+                width: 10% !important;
+                display: none !important;
+            }
+
+            #content_page_wrapper .last {
+                width: auto !important;
+                float: inherit !important;
+            }
+
+            #content_page_wrapper .twelvecol {
+                float: inherit !important;
+                margin-left: 15% !important;
+                margin-right: 15% !important;
+            }
+        }
+    </style>
 
 </head>
 <body>
@@ -75,7 +94,8 @@
     <div class="container loaded">
         <div class='_4ORMAT_content_wrapper' id='content_page_wrapper'>
             <div class="_4ORMAT_content_page_container _4ormat_sort">
-                <div class="_4ORMAT_content_page_row _4ormat_sort_item _4ORMAT_module_text_02" style="padding-top: 0px !important; padding-bottom: 0px !important;">
+                <div class="_4ORMAT_content_page_row _4ormat_sort_item _4ORMAT_module_text_02"
+                     style="padding-top: 0px !important; padding-bottom: 0px !important;">
                     <div class="twocol"></div>
                 </div>
                 <div class="twocol last"></div>
@@ -90,16 +110,15 @@
                     </div>
                 </div>
                 <div class="fourcol">
-                    <form data-editable-type="contact-form" id="contact_form_1" class=" email_form"
-                          name="contact_form_1" th:action="@{services}" method="POST" data-id=""
-                          data-content-module-unique-id="">
+
+                    <form class=" email_form needs-validation" data-editable-type="contact-form" id="testForm"
+                          name="contact_form_1" th:action="@{services}" method="POST" novalidate>
                         <div class="error_messages"></div>
                         <div class="row naked">
                             <div class="twelvecol last">
-                                <input class="_4ORMAT_module_contact_input" name="name" type="text"
-                                       placeholder="Podaj swoje imię">
-                                <div class="_4ORMAT_module_contact_label  " data-editable-type="label"
-                                     id="label_1" data-force-html-mode="false">
+                                <input class="_4ORMAT_module_contact_input form-control" name="name" type="text"
+                                       placeholder="Podaj swoje imię" required>
+                                <div class="_4ORMAT_module_contact_label  ">
                                 </div>
 
                             </div>
@@ -107,47 +126,42 @@
                         <div class="row naked">
                             <div class="twelvecol last">
 
-                                <input class="_4ORMAT_module_contact_input" data-validate="email" name="from"
-                                       type="email" placeholder="E-mail">
-                                <div class="_4ORMAT_module_contact_label  " data-editable-type="label"
-                                     id="label_2" data-force-html-mode="false">
+                                <input class="_4ORMAT_module_contact_input form-control" name="from"
+                                       type="email" placeholder="E-mail" required>
+                                <div class="_4ORMAT_module_contact_label  ">
                                 </div>
 
                             </div>
                         </div>
                         <div class="row naked last">
                             <div class="twelvecol last">
-
-                                        <textarea class="_4ORMAT_module_contact_input" data-validate="required"
-                                                  name="body" rows="4" placeholder="Wiadomość"></textarea>
-                                <div class="_4ORMAT_module_contact_label  " data-editable-type="label"
-                                     id="label_3" data-force-html-mode="false">
+                                <textarea class="_4ORMAT_module_contact_input form-control" data-validate="required"
+                                          name="body" rows="4" placeholder="Wiadomość" required></textarea>
+                                <div class="_4ORMAT_module_contact_label  ">
                                 </div>
 
                             </div>
                         </div>
                         <fieldset class="submit _4ORMAT_module_submit_left">
                             <input class="btn primary _4ORMAT_module_contact_btn _4ORMAT_module_contact_input"
-                                   name="submit" type="submit" value=""/>
+                                   name="submit" type="submit" value="" id="submitButton"/>
                             <div class="_4ORMAT_module_contact_label  " data-editable-type="label" id="label_4"
                                  style="display:none" data-force-html-mode="false">
-
                                 Wyślij wiadomość
                             </div>
                         </fieldset>
-
-
-                        <script type="text/javascript">
-                            if (typeof (_4ORMAT) === "undefined") {
-                                var _4ORMAT = {};
-                            }
-                            if (typeof (_4ORMAT.contact_forms) === "undefined") {
-                                _4ORMAT.contact_forms = [];
-                            }
-                            _4ORMAT.contact_forms.push('contact_form_1');
-                        </script>
                     </form>
 
+
+                    <!--                    <script type="text/javascript">-->
+                    <!--                        if (typeof (_4ORMAT) === "undefined") {-->
+                    <!--                            var _4ORMAT = {};-->
+                    <!--                        }-->
+                    <!--                        if (typeof (_4ORMAT.contact_forms) === "undefined") {-->
+                    <!--                            _4ORMAT.contact_forms = [];-->
+                    <!--                        }-->
+                    <!--                        _4ORMAT.contact_forms.push('contact_form_1');-->
+                    <!--                    </script>-->
 
                 </div>
                 <div class="twocol spacer last"></div>
@@ -155,11 +169,10 @@
         </div>
     </div>
 </div>
-</div>
+
 
 <script src='https://static0.format.com/static/theme_api/v1/4ormat-7ec6872c8e665780eead7b027e2aa66fb06142caecd57b86359163172bf23497.js'
         type='text/javascript'></script>
-
 
 <script src='https://static1.format.com/static/content_page-7e22221e690c345db9ee0a88104312831204bb61ca799fef76d3efce37ac8339.js'
         type='text/javascript'></script>
@@ -172,6 +185,28 @@
 
 <script src='https://static0.format.com/static/_common/colour_adjustments-007e264abb344638134a759453f16bebc5b209ed13f19f078cf0fd5f5c676be7.js'
         type='text/javascript'>
+
+</script>
+
+<script>
+
+    (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
 
 </script>
 
