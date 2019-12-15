@@ -121,12 +121,11 @@
         <div class="_4ORMAT_content_wrapper" id="content_page_wrapper">
 
             <div class="_4ORMAT_content_page_row _4ormat_sort_item _4ORMAT_module_contact_10" style="padding-top: 5px">
-                <h2 style="text-align: center">Historia zamówień</h2>
-                <br>
+                <h2 style="margin: 5px; text-align: center">Historia zamówień</h2>
 
                 <div id="order_list" th:each="order : ${orders}" style="margin-bottom: 10px !important;">
                     <div style="max-width: 1140px">
-                        <h5 th:text="'Numer zamówienia: '+${order.orderNo}"></h5>
+                        <h4 th:text="'Numer zamówienia: '+${order.orderNo}"></h4>
                         <p th:text="'Data złożenia zamówienia: '+${order.dateOfOrder}"></p>
 
 
