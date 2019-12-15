@@ -71,19 +71,24 @@
             }
 
             #content_page_wrapper .spacer {
-                width: 10% !important;
-                display: none !important;
-            }
+                 width: 10% !important;
+                 display: none !important;
+             }
 
             #content_page_wrapper .last {
                 width: auto !important;
                 float: inherit !important;
             }
 
-            #content_page_wrapper .twelvecol {
+            #content_page_wrapper .fourcol {
+                width: auto !important;
                 float: inherit !important;
                 margin-left: 15% !important;
                 margin-right: 15% !important;
+            }
+
+            .services {
+                display: none;
             }
         }
     </style>
@@ -99,139 +104,136 @@
                     <div class="twocol"></div>
                 </div>
                 <div class="twocol last"></div>
-            </div>
 
-            <h2 style="margin: 5px" align="center">Usługi dodatkowe</h2>
-            <div class="_4ORMAT_content_page_row _4ormat_sort_item _4ORMAT_module_contact_10">
-                <div class="twocol spacer"></div>
-                <div class="fourcol">
-                    <div data-editable-type="text" id="text_1" class="  " data-force-html-mode="false">
+                <h2 style="margin: 5px" align="center">Usługi dodatkowe</h2>
+                <div class="_4ORMAT_content_page_row _4ormat_sort_item _4ORMAT_module_contact_10">
+                    <div class="twocol spacer"></div>
+                    <div class="fourcol spacer">
+                        <div data-editable-type="text" id="text_1" class="services" data-force-html-mode="false"
+                             style="padding-top: 5px">
 
-                        <h3>Transport</h3>
-                        <p>Możemy dowieźć pracę do klienta na terenie całej Polski. Dowozimy również duże formaty i gabaryty.</p>
-                        <h3>Montaż</h3>
-                        <p>Oferujemy montaż ekspozycji w muzeach i galeriach, a także wieszanie obrazów i luster u klientów.
-                        <h3>Pakowanie</h3>
-                        <p>Oprawiane przez nas prace pakujemy na życzenie na wysyłkę (folia bąbelkowa, pianka poliuretanową, etc.). </p>
-                        <h3>Wysyłka</h3>
-                        <p>Na duże gabarytowo przesyłki oraz
-                            przesyłki zagraniczne oferujemy drewniane skrzynie na wymiar.</p>
-                    </div>
-                </div>
-                <div class="fourcol">
-
-                    <form class=" email_form needs-validation" data-editable-type="contact-form" id="testForm"
-                          name="contact_form_1" th:action="@{/services}" method="POST" novalidate>
-                        <div class="error_messages"></div>
-                        <div class="row naked">
-                            <div class="twelvecol last">
-                                <input class="_4ORMAT_module_contact_input form-control" name="name" type="text"
-                                       placeholder="Podaj swoje imię" required>
-                                <div class="_4ORMAT_module_contact_label  ">
-                                </div>
-                            </div>
+                            <h3>Transport</h3>
+                            <p>Wiemy jak delikatnym przedmiotem jest dzieło sztuki, potrafimy zająć się nim z troską, tak aby nienaruszone dotarło do odbiorcy.</p>
+                            <h3>Pakowanie</h3>
+                            <p>Każde opakowanie jest dopasowywane indywidualnie do specyfiki materiału, z którego jest wykonana praca, a także – do wybranego sposobu jego transportu.</p>
+                            <h3>Wysyłka</h3>
+                            <p>Kompleksowo osługujemy przesyłki zagraniczne, oferujemy drewniane skrzynie na wymiar. Nasze wyroby trafiły już do 32 krajów.</p>
                         </div>
-                        <div class="row naked">
-                            <div class="twelvecol last">
-                                <select class="_4ORMAT_module_contact_input form-control empty" name="category"
-                                        placeholder="Wybierz kategorię" required
-                                        style="height: 48px; font-size: 14px; font-family: Planet Light, Planet Light, sans-serif">
-                                    <option value="0" selected disabled>Wybierz kategorię</option>
-                                    <option value="transport" style="color: black">Transport</option>
-                                    <option value="montaż" style="color: black">Montaż</option>
-                                    <option value="pakowanie" style="color: black">Pakowanie</option>
-                                    <option value="wysyłka" style="color: black">Wysyłka</option>
+                    </div>
+                    <div class="fourcol">
+
+                        <form class=" email_form needs-validation" data-editable-type="contact-form" id="testForm"
+                              name="contact_form_1" th:action="@{/services}" method="POST" novalidate>
+                            <div class="error_messages"></div>
+                            <div class="row naked">
+                                <div class="twelvecol last">
+                                    <input class="_4ORMAT_module_contact_input form-control" name="name" type="text"
+                                           placeholder="Podaj swoje imię" required>
                                     <div class="_4ORMAT_module_contact_label  ">
                                     </div>
-                                </select>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row naked last">
-                            <div class="twelvecol last">
+                            <div class="row naked">
+                                <div class="twelvecol last">
+                                    <select class="_4ORMAT_module_contact_input form-control empty" name="category"
+                                            placeholder="Wybierz kategorię" required
+                                            style="height: 48px; font-size: 14px; font-family: Planet Light, Planet Light, sans-serif">
+                                        <option value="0" selected disabled>Wybierz kategorię</option>
+                                        <option value="transport" style="color: black">Transport</option>
+                                        <option value="pakowanie" style="color: black">Pakowanie</option>
+                                        <option value="wysyłka" style="color: black">Wysyłka</option>
+                                        <div class="_4ORMAT_module_contact_label  ">
+                                        </div>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row naked last">
+                                <div class="twelvecol last">
                                 <textarea class="_4ORMAT_module_contact_input form-control" data-validate="required"
                                           name="body" rows="4" placeholder="Wiadomość" required></textarea>
-                                <div class="_4ORMAT_module_contact_label  ">
+                                    <div class="_4ORMAT_module_contact_label  ">
+                                    </div>
+
                                 </div>
-
                             </div>
-                        </div>
-                        <fieldset class="submit _4ORMAT_module_submit_left">
-                            <input class="btn primary _4ORMAT_module_contact_btn _4ORMAT_module_contact_input"
-                                   name="submit" type="submit" value="" id="submitButton"/>
-                            <div class="_4ORMAT_module_contact_label  " data-editable-type="label" id="label_4"
-                                 style="display:none" data-force-html-mode="false">
-                                Wyślij wiadomość
-                            </div>
-                        </fieldset>
-                    </form>
+                            <fieldset class="submit _4ORMAT_module_submit_left">
+                                <input class="btn primary _4ORMAT_module_contact_btn _4ORMAT_module_contact_input"
+                                       name="submit" type="submit" value="" id="submitButton"/>
+                                <div class="_4ORMAT_module_contact_label  " data-editable-type="label" id="label_4"
+                                     style="display:none" data-force-html-mode="false">
+                                    Wyślij wiadomość
+                                </div>
+                            </fieldset>
+                        </form>
 
 
-                    <!--                    <script type="text/javascript">-->
-                    <!--                        if (typeof (_4ORMAT) === "undefined") {-->
-                    <!--                            var _4ORMAT = {};-->
-                    <!--                        }-->
-                    <!--                        if (typeof (_4ORMAT.contact_forms) === "undefined") {-->
-                    <!--                            _4ORMAT.contact_forms = [];-->
-                    <!--                        }-->
-                    <!--                        _4ORMAT.contact_forms.push('contact_form_1');-->
-                    <!--                    </script>-->
+                        <!--                    <script type="text/javascript">-->
+                        <!--                        if (typeof (_4ORMAT) === "undefined") {-->
+                        <!--                            var _4ORMAT = {};-->
+                        <!--                        }-->
+                        <!--                        if (typeof (_4ORMAT.contact_forms) === "undefined") {-->
+                        <!--                            _4ORMAT.contact_forms = [];-->
+                        <!--                        }-->
+                        <!--                        _4ORMAT.contact_forms.push('contact_form_1');-->
+                        <!--                    </script>-->
 
+                    </div>
+                    <div class="twocol spacer last"></div>
                 </div>
-                <div class="twocol spacer last"></div>
             </div>
         </div>
     </div>
 </div>
 
 
-<script src='https://static0.format.com/static/theme_api/v1/4ormat-7ec6872c8e665780eead7b027e2aa66fb06142caecd57b86359163172bf23497.js'
-        type='text/javascript'></script>
+    <script src='https://static0.format.com/static/theme_api/v1/4ormat-7ec6872c8e665780eead7b027e2aa66fb06142caecd57b86359163172bf23497.js'
+            type='text/javascript'></script>
 
-<script src='https://static1.format.com/static/content_page-7e22221e690c345db9ee0a88104312831204bb61ca799fef76d3efce37ac8339.js'
-        type='text/javascript'></script>
+    <script src='https://static1.format.com/static/content_page-7e22221e690c345db9ee0a88104312831204bb61ca799fef76d3efce37ac8339.js'
+            type='text/javascript'></script>
 
-<script src='https://static0.format.com/static/_common/large_headline_shim-04d68b28db57598de64ddcbb8e143b86b89b4c6df47f86593d938b79c18c3bc7.js'
-        type='text/javascript'></script>
+    <script src='https://static0.format.com/static/_common/large_headline_shim-04d68b28db57598de64ddcbb8e143b86b89b4c6df47f86593d938b79c18c3bc7.js'
+            type='text/javascript'></script>
 
-<script src='https://static0.format.com/static/_common/contact_form-a6ae6c621dd884249e13a9fda7c5f28191902db17a4cfd926b19c696fc4bd309.js'
-        type='text/javascript'></script>
+    <script src='https://static0.format.com/static/_common/contact_form-a6ae6c621dd884249e13a9fda7c5f28191902db17a4cfd926b19c696fc4bd309.js'
+            type='text/javascript'></script>
 
-<script src='https://static0.format.com/static/_common/colour_adjustments-007e264abb344638134a759453f16bebc5b209ed13f19f078cf0fd5f5c676be7.js'
-        type='text/javascript'>
+    <script src='https://static0.format.com/static/_common/colour_adjustments-007e264abb344638134a759453f16bebc5b209ed13f19f078cf0fd5f5c676be7.js'
+            type='text/javascript'>
 
-</script>
+    </script>
 
-<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 
-<script>
+    <script>
 
-    (function () {
-        'use strict';
-        window.addEventListener('load', function () {
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            var forms = document.getElementsByClassName('needs-validation');
-            // Loop over them and prevent submission
-            var validation = Array.prototype.filter.call(forms, function (form) {
-                form.addEventListener('submit', function (event) {
-                    if (form.checkValidity() === false) {
-                        event.preventDefault();
-                        event.stopPropagation();
-                    }
-                    form.classList.add('was-validated');
-                }, false);
-            });
-        }, false);
-    })();
+        (function () {
+            'use strict';
+            window.addEventListener('load', function () {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
 
-</script>
+    </script>
 
-<script>
+    <script>
 
-    $("select:has(option[value=]:first-child)").on('change', function () {
-        $(this).toggleClass("empty", $.inArray($(this).val(), ['', null]) >= 0);
-    }).trigger('change');
+        $("select:has(option[value=]:first-child)").on('change', function () {
+            $(this).toggleClass("empty", $.inArray($(this).val(), ['', null]) >= 0);
+        }).trigger('change');
 
-</script>
+    </script>
 
 </body>
 </html>
