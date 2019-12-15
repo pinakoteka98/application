@@ -26,9 +26,9 @@ public class EmailService implements MessageService {
         MimeMessage email = javaMailSender.createMimeMessage();
         Context context = new Context();
         context.setVariable("message", message);
-        context.setVariable("title", "Dziękujemy za utworzenie konta.");
-        context.setVariable("description", "Rejestrując się w naszym serwisie otrzymałeś możliwość sprawdzania statusów zamówień, umawiania spotkań oraz korzystania z dedykowanych usług dodatkowych.");
-        final String emailBody = this.templateEngine.process("template.html", context);
+//        context.setVariable("title", "Dziękujemy za utworzenie konta.");
+//        context.setVariable("description", "Rejestrując się w naszym serwisie otrzymałeś możliwość sprawdzania statusów zamówień, umawiania spotkań oraz korzystania z dedykowanych usług dodatkowych.");
+        final String emailBody = this.templateEngine.process("template1.html", context);
         try {
 //            MimeMessageHelper mmHelper = new MimeMessageHelper(email);
             MimeMessageHelper mmHelper = new MimeMessageHelper(email, true);

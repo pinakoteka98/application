@@ -5,37 +5,83 @@
     <title></title>
 </head>
 
-    <style type="text/css">
-        h1 {font-size: 22px; color: #444444 !important; font-family: "Planet Light", sans-serif; line-height: 1.5; margin: 20px}
-        h3 {font-size: 12px; color: #444444 !important; font-family: "Planet Light", sans-serif; margin: 15px}
-        p {font-size: 14px; color: #444444; font-family: "Planet Light", sans-serif; line-height: 1.5; margin: 15px}
-        table {border: 3px solid #c12031;}
-        a {color: darkgray; text-decoration: none; margin: 20px}
-        a:hover {color: #898989; text-decoration: none}
-    </style>
+<style type="text/css">
+    h1 {
+        font-size: 22px;
+        color: #444444 !important;
+        font-family: "Planet Light", sans-serif;
+        line-height: 1.5;
+        margin: 20px
+    }
+
+    h3 {
+        font-size: 12px;
+        color: #444444 !important;
+        font-family: "Planet Light", sans-serif;
+        margin: 15px
+    }
+
+    p {
+        font-size: 14px;
+        color: #444444;
+        font-family: "Planet Light", sans-serif;
+        line-height: 1.5;
+        margin: 15px
+    }
+
+    table {
+        border: 3px solid #c12031;
+    }
+
+    a {
+        color: darkgray;
+        text-decoration: none;
+        margin: 20px
+    }
+
+    a:hover {
+        color: #898989;
+        text-decoration: none
+    }
+</style>
 
 <body>
-<table width="100%" cellpadding="0" cellspacing="0">
+<table style="max-width: 500px" cellpadding="0" cellspacing="0" align="center">
 
     <tr>
 
-            <p float="auto" align="center"><img src="https://format-com-cld-res.cloudinary.com/image/private/s--9rFYXjei--/c_limit,g_center,h_150,w_65535/a_auto,fl_keep_iptc.progressive.apng/985830-53217133-logo_faktura.png" width="150"/></src></p></td>
+        <p float="auto" align="center"><img
+                src="https://format-com-cld-res.cloudinary.com/image/private/s--9rFYXjei--/c_limit,g_center,h_150,w_65535/a_auto,fl_keep_iptc.progressive.apng/985830-53217133-logo_faktura.png"
+                width="150"/></src></p></td>
 
     </tr>
     <tr>
         <td height="30" align="center"><!--/*@thymesVar id="message" type=""*/-->
-        <p th:text="${message}">header</p></td>
+            <p th:text="${message}">header</p></td>
     </tr>
     <tr>
-        <td height="120" align="center"><!--/*@thymesVar id="title" type=""*/-->
-        <h1 th:text="${title}">title</h1></td>
+        <td height="100" align="center"><!--/*@thymesVar id="title" type=""*/-->
+            <h1>Dziękujemy za utworzenie konta.</h1></td>
     </tr>
     <tr>
-        <td height="150" align="center"><!--/*@thymesVar id="description" type=""*/-->
-        <h3 th:text="${description}">description</h3></td>
+        <td height="100" align="center"><!--/*@thymesVar id="description" type=""*/-->
+            <h3>Rejestrując się w naszym serwisie otrzymałeś możliwość sprawdzania statusów zamówień, umawiania spotkań
+                oraz korzystania z dedykowanych usług dodatkowych.</h3></td>
     </tr>
     <tr>
-        <td height="150" align="center"><p>kreatywna pracownia ramiarska | <a href="http://www.pinakoteka.pl">www.pinakoteka.pl</a></p></td>
+        <td height="100" align="center"><!--/*@thymesVar id="description" type=""*/-->
+            <h3>
+                W razie jakichkolwiek pytań prosimy o kontakt.
+                <br>
+                <br>
+                Serdecznie pozdrawiamy,<br>
+                zespół Pinakoteka Design
+            </h3></td>
+    </tr>
+
+    <tr>
+        <td height="150" align="center"><p>kreatywna pracownia ramiarska | <a href="http://www.pinakoteka.pl" style="margin: 0px !important;">www.pinakoteka.pl</a>
+        </p></td>
     </tr>
 </table>
 </body>
