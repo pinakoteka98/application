@@ -24,8 +24,6 @@ import java.util.List;
 public class OrderController {
 
     private final OrderService orderService;
-//    private final SMSService smsService;
-//    private final UserService userService;
 
     @GetMapping({"/", "index"})
     public String showOrders(Model model) {
@@ -41,14 +39,6 @@ public class OrderController {
         List<Order> orders = orderService.findAll();
         model.addAttribute("orders", orders);
         return "menu";
-    }
-
-    @GetMapping({"list"})
-    public String showListOfOrders(Model model, Principal principal) {
-        log.info("list of orders");
-        List<Order> orders = orderService.findAllByPhoneNumber(principal.getName());
-        model.addAttribute("orders", orders);
-        return "list";
     }
 
     @GetMapping("orders")
@@ -79,16 +69,8 @@ public class OrderController {
         return "orders";
     }
 
-    @GetMapping({"services"})
-    public String Services(Model model) {
-        log.info("additional services");
-        List<Order> orders = orderService.findAll();
-        model.addAttribute("orders", orders);
-        return "services";
-    }
-
     @GetMapping("/addorder")
-    public String orderList(Model model, Principal principal) {
+    public String orderList(Model model) {
         List<Order> orders = orderService.findAll();
         model.addAttribute("orders", orders);
         Order order = new Order();
@@ -99,7 +81,7 @@ public class OrderController {
     }
 
     @PostMapping("/addorder")
-    public String addOrder(@Valid OrderDto order, Principal principal) {
+    public String addOrder(@Valid OrderDto order) {
         log.info("add task");
         orderService.create(order);
         return "redirect:orders";

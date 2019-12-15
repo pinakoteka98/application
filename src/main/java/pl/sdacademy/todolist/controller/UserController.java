@@ -127,15 +127,32 @@ public class UserController {
 
     @PostMapping("/confirmation")
     public String appointmentScheduleForm(@ModelAttribute(name = "appointment") Appointment appointment, Model model) {
-//        try {
-            appointmentRepository.save(appointment);
-            emailService.sendMessage("imac@wp.pl", "Masz nowe spotkanie umowione na dzien " + appointment.getAppointmentDate() + ", na godzine " + appointment.getAppointmentTime());
-            model.addAttribute(appointment);
-            return "confirmation";
-//        } catch (Exception ex) {
-//            return "redirect:/error";
-//        }
+        appointmentRepository.save(appointment);
+        emailService.sendMessage("imac@wp.pl", "Masz nowe spotkanie umowione na dzien " + appointment.getAppointmentDate() + ", na godzine " + appointment.getAppointmentTime());
+        model.addAttribute(appointment);
+        return "confirmation";
+    }
 
+    @GetMapping("/services")
+    public String showServices() {
+        log.info("additional services");
+        return "services";
+    }
+
+    @PostMapping("/services")
+    public String getService(@RequestParam String name, @RequestParam String category, @RequestParam String body, Principal principal) {
+        User user = userService.findByPhoneNumber(principal.getName());
+        emailService.sendMessage("pinakoteka@pinakoteka.pl", "Masz nowe zapytanie w kategorii: " + category
+                + ".\nImię Klienta: " + name
+                + ".\nNr telefonu: " + principal.getName()
+                + ".\nEmail: " +  user.getEmail()
+                + ".\nTreść zapytania: " + body);
+        log.info(">>>>>>>>> Masz nowe zapytanie o usługę w kategorii " + category
+                + "\nImię Klienta: " + name
+                + "\nNr telefonu " + principal.getName()
+                + "\nEmail: " +  user.getEmail()
+                + "\nTreść zapytania: " + body);
+        return "serviceaskconfirmation";
     }
 
     @GetMapping("/error")

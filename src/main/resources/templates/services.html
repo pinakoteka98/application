@@ -112,7 +112,7 @@
                 <div class="fourcol">
 
                     <form class=" email_form needs-validation" data-editable-type="contact-form" id="testForm"
-                          name="contact_form_1" th:action="@{services}" method="POST" novalidate>
+                          name="contact_form_1" th:action="@{/services}" method="POST" novalidate>
                         <div class="error_messages"></div>
                         <div class="row naked">
                             <div class="twelvecol last">
@@ -120,17 +120,20 @@
                                        placeholder="Podaj swoje imię" required>
                                 <div class="_4ORMAT_module_contact_label  ">
                                 </div>
-
                             </div>
                         </div>
                         <div class="row naked">
                             <div class="twelvecol last">
-
-                                <input class="_4ORMAT_module_contact_input form-control" name="from"
-                                       type="email" placeholder="E-mail" required>
+                                <label for="category">Wybierz kategorię:</label>
+                                <select class="_4ORMAT_module_contact_input form-control" id="category" name="category"
+                                       placeholder="Wybierz kategorię" required>
+                                    <option value="transport">Transport</option>
+                                    <option value="assembly">Montaż</option>
+                                    <option value="packing">Pakowanie</option>
+                                    <option value="shipment">Wysyłka</option>
                                 <div class="_4ORMAT_module_contact_label  ">
                                 </div>
-
+                                </select>
                             </div>
                         </div>
                         <div class="row naked last">
