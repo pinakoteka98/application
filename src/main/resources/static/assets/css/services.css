@@ -21,3 +21,11 @@ select {
     font-family: "Planet Light", sans-serif;
     color: #A5A29F;
 }
+
+.category {
+    display:none;
+}
+
+h3 {
+    font-size: 14px !important;
+}

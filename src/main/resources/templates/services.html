@@ -100,14 +100,26 @@
                 </div>
                 <div class="twocol last"></div>
             </div>
+
+            <h2 style="margin: 5px" align="center">Usługi dodatkowe</h2>
             <div class="_4ORMAT_content_page_row _4ormat_sort_item _4ORMAT_module_contact_10">
                 <div class="twocol spacer"></div>
                 <div class="fourcol">
                     <div data-editable-type="text" id="text_1" class="  " data-force-html-mode="false">
 
-                        <h2>Usługi dodatkowe</h2>
-                        <p>Oprawiane przez nas prace są zawsze bardzo starannie zapakowane. Wykorzystujemy do tego folię bąbelkową, piankę poliuretanową i płyty hdf. Takie pakowanie gwarantuje pewność że dostarczona przesyłka nie będzie uszkodzona. Na duże gabarytowo przesyłki oraz przesyłki zagraniczne oferujemy drewniane skrzynie na wymiar z piankowym wypełnieniem.</p>
-
+                        <h3>Transport</h3>
+                        <p>Możemy dowieźć pracę do klienta na terenie całej Polski. Każdą usługę rozpatrujemy
+                            indywidualnie.
+                            Dysponukemy również samochodem do dużych formatów i gabarytów.</p>
+                        <h3>Montaż</h3>
+                        <p>Oferujemy montaż ekspozycji w muzeach i galeriach, a także wieszanie obrazów i luster dla
+                            klientów indywidualnych.
+                        <h3>Pakowanie</h3>
+                        <p>Oprawiane przez nas prace mogą być przez nas zapakowane na wysyłkę. Wykorzystujemy do tego
+                            folię bąbelkową, piankę poliuretanową i płyty hdf. </p>
+                        <h3>Wysyłka</h3>
+                        <p>Na duże gabarytowo przesyłki oraz
+                            przesyłki zagraniczne oferujemy drewniane skrzynie na wymiar z piankowym wypełnieniem.</p>
                     </div>
                 </div>
                 <div class="fourcol">
@@ -118,20 +130,21 @@
                         <div class="row naked">
                             <div class="twelvecol last">
                                 <input class="_4ORMAT_module_contact_input form-control" name="name" type="text"
-                                       placeholder=" Podaj swoje imię" required>
+                                       placeholder="Podaj swoje imię" required>
                                 <div class="_4ORMAT_module_contact_label  ">
                                 </div>
                             </div>
                         </div>
                         <div class="row naked">
                             <div class="twelvecol last">
-                                <select class="_4ORMAT_module_contact_input form-control" name="category"
-                                        placeholder="Wybierz kategorię" required style="height: 48px; color: #A5A29F; font-family: Planet Light, Planet Light, sans-serif">
-                                    <option value="" disabled selected>Wybierz kategorię</option>
+                                <select class="_4ORMAT_module_contact_input form-control empty" name="category"
+                                        placeholder="Wybierz kategorię" required
+                                        style="height: 48px; font-size: 14px; font-family: Planet Light, Planet Light, sans-serif">
+                                    <option value="" selected disabled>Wybierz kategorię</option>
                                     <option value="transport" style="color: black">Transport</option>
-                                    <option value="assembly" style="color: black">Montaż</option>
-                                    <option value="packing" style="color: black">Pakowanie</option>
-                                    <option value="shipment" style="color: black">Wysyłka</option>
+                                    <option value="montaż" style="color: black">Montaż</option>
+                                    <option value="pakowanie" style="color: black">Pakowanie</option>
+                                    <option value="wysyłka" style="color: black">Wysyłka</option>
                                     <div class="_4ORMAT_module_contact_label  ">
                                     </div>
                                 </select>
@@ -140,7 +153,7 @@
                         <div class="row naked last">
                             <div class="twelvecol last">
                                 <textarea class="_4ORMAT_module_contact_input form-control" data-validate="required"
-                                          name="body" rows="4" placeholder=" Wiadomość" required></textarea>
+                                          name="body" rows="4" placeholder="Wiadomość" required></textarea>
                                 <div class="_4ORMAT_module_contact_label  ">
                                 </div>
 
@@ -192,6 +205,8 @@
 
 </script>
 
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+
 <script>
 
     (function () {
@@ -211,6 +226,14 @@
             });
         }, false);
     })();
+
+</script>
+
+<script>
+
+    $("select:has(option[value=]:first-child)").on('change', function () {
+        $(this).toggleClass("empty", $.inArray($(this).val(), ['', null]) >= 0);
+    }).trigger('change');
 
 </script>
 
