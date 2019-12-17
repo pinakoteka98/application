@@ -8,11 +8,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
+import pl.sdacademy.todolist.dto.MessageType;
 import pl.sdacademy.todolist.dto.OrderDto;
-import pl.sdacademy.todolist.entity.Order;
-import pl.sdacademy.todolist.entity.Role;
-import pl.sdacademy.todolist.entity.Status;
-import pl.sdacademy.todolist.entity.User;
+import pl.sdacademy.todolist.entity.*;
 import pl.sdacademy.todolist.exception.EntityNotFoundException;
 import pl.sdacademy.todolist.repository.OrderRepository;
 import pl.sdacademy.todolist.repository.RoleRepository;
@@ -87,14 +85,13 @@ public class OrderService {
     public void update(Order order) {
         Order orderEntity = orderRepository.findById(order.getId())
                 .orElseThrow(() -> new EntityNotFoundException(order.getId()));
-//        Status oldStatus = orderEntity.getStatus();
         Status newStatus = order.getStatus();
         orderEntity.setDateOfOrder(order.getDateOfOrder());
         orderEntity.setEstimatedDate(order.getEstimatedDate());
         orderEntity.setOrderNo(order.getOrderNo());
         orderEntity.setStatus(order.getStatus());
         if (newStatus == Status.READY) {
-            smsService.sendMessage(orderEntity.getPhoneNumber(), "Dzień dobry! Miło nam poinformować, że zamówienie numer " + orderEntity.getOrderNo() + " zostało zrealizowane. Zapraszamy po odbiór. Pozdrawiamy i życzymy miłego dnia.");
+            smsService.sendMessage(orderEntity.getPhoneNumber(), "Dzień dobry! Miło nam poinformować, że zamówienie numer " + orderEntity.getOrderNo() + " zostało zrealizowane. Zapraszamy po odbiór. Pozdrawiamy i życzymy miłego dnia.", MessageType.SMS_STATUS);
         }
     }
 

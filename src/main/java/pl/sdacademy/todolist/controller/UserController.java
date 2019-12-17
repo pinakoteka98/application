@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import pl.sdacademy.todolist.dto.MessageDto;
+import pl.sdacademy.todolist.dto.MessageType;
 import pl.sdacademy.todolist.dto.UserDto;
 import pl.sdacademy.todolist.emailService.EmailService;
 import pl.sdacademy.todolist.entity.Appointment;
@@ -48,7 +48,7 @@ public class UserController {
     }
 
     @PostMapping({"/register", "/message"})
-    public String registerUser(@ModelAttribute(name = "userForm") UserDto userForm, BindingResult result, Model model, MessageDto message) {
+    public String registerUser(@ModelAttribute(name = "userForm") UserDto userForm, BindingResult result, Model model) {
         Optional<User> existing = userService.findUserByPhoneNumber(userForm.getPhoneNumber());
         registerValidator.validate(userForm, result);
         registerValidator.validatePhoneExist(existing, result);
@@ -56,8 +56,7 @@ public class UserController {
             return "register";
         }
         userService.create(userForm);
-        UserDto recipient = message.getRecipient();
-        emailService.sendMessage(userForm.getEmail(), "Dzień dobry!");
+        emailService.sendMessage(userForm.getEmail(), "Witamy w naszym serwisie!", MessageType.MAIL_REGISTRATION);
         model.addAttribute("info", "Rejestracja zakończona sukcesem. Możesz się zalogować.");
         model.addAttribute("login", userForm.getPhoneNumber());
         return "login";
@@ -108,7 +107,7 @@ public class UserController {
                 userService.uptade(user);
                 model.addAttribute("login", phoneNumber);
                 model.addAttribute("info", "Nowe hasło zostało wysłane na Twój adres email. Możesz się nim zalogować.");
-//                emailService.notify(email, "Twoje hasło zostało zresetowane", "Twoje nowe hasło to:\n" + newPassword);
+                emailService.sendMessage(email, "Twoje nowe hasło: " + newPassword, MessageType.MAIL_RESET_PASSWORD);
                 return "login";
             }
         }
@@ -126,9 +125,13 @@ public class UserController {
     }
 
     @PostMapping("/confirmation")
-    public String appointmentScheduleForm(@ModelAttribute(name = "appointment") Appointment appointment, Model model) {
+    public String appointmentScheduleForm(@ModelAttribute(name = "appointment") Appointment appointment, Model model, Principal principal) {
         appointmentRepository.save(appointment);
-        emailService.sendMessage("imac@wp.pl", "Masz nowe spotkanie umowione na dzien " + appointment.getAppointmentDate() + ", na godzine " + appointment.getAppointmentTime());
+        User user = userService.findByPhoneNumber(principal.getName());
+        int hour = appointment.getAppointmentTime().toLocalTime().getHour();
+        emailService.sendMessage("pinakoteka@pinakoteka.pl", "Masz nowe spotkanie umowione na dzień " + appointment.getAppointmentDate() + ", na godzinę " + hour
+                + ".\nImię Klienta: " + appointment.getFirstName() + "\nEmail: " + user.getEmail() + "\nTelefon: " + user.getPhoneNumber(), MessageType.MAIL_ADMIN);
+        emailService.sendMessage(user.getEmail(), "Twoje spotkanie jest umówione na dzień " + appointment.getAppointmentDate() + ", na godzinę " + hour +". Prosimy o punktualność.", MessageType.MAIL_APPOINTMENT);
         model.addAttribute(appointment);
         return "confirmation";
     }
@@ -146,7 +149,7 @@ public class UserController {
                 + ".\nImię Klienta: " + name
                 + ".\nNr telefonu: " + principal.getName()
                 + ".\nEmail: " +  user.getEmail()
-                + ".\nTreść zapytania: " + body);
+                + ".\nTreść zapytania: " + body, MessageType.MAIL_ADMIN);
         log.info(">>>>>>>>> Masz nowe zapytanie o usługę w kategorii " + category
                 + "\nImię Klienta: " + name
                 + "\nNr telefonu " + principal.getName()

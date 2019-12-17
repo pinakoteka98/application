@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
+import pl.sdacademy.todolist.dto.MessageType;
 import pl.sdacademy.todolist.entity.Appointment;
 import pl.sdacademy.todolist.entity.Sms;
 import pl.sdacademy.todolist.repository.AppointmentRepository;
@@ -38,7 +39,7 @@ public class SmsService implements MessageService {
     private String password;
 
     @Override
-    public void sendMessage(String recipient, String message) {
+    public void sendMessage(String recipient, String message, MessageType messageType) {
         int hourNow = LocalDateTime.now().getHour();
         DayOfWeek dayOfWeek = LocalDateTime.now().getDayOfWeek();
         if (hourNow < 10 || hourNow > 20 || (dayOfWeek == DayOfWeek.SATURDAY) || dayOfWeek == DayOfWeek.SUNDAY) {
@@ -79,7 +80,7 @@ public class SmsService implements MessageService {
     public void resendUndeliveredMessages() {
         List<Sms> allSms = smsRepository.findAll();
         allSms.forEach(sms -> {
-            sendMessage(sms.getPhoneNumber(), sms.getMessage());
+            sendMessage(sms.getPhoneNumber(), sms.getMessage(), MessageType.SMS_STATUS);
             log.info("Wysłano sms o treści \"{}\" na nr telefonu: {}", sms.getMessage(), sms.getPhoneNumber());
             smsRepository.delete(sms);
         });
@@ -93,7 +94,7 @@ public class SmsService implements MessageService {
         List<Appointment> appointments = appointmentRepository.findAllByAppointmentDate(tomorrow);
         appointments.forEach(a -> {
             int hour = a.getAppointmentTime().toLocalTime().getHour();
-            sendMessage(a.getUser().getPhoneNumber(), "Przypominamy o umówionym spotkaniu, zapraszamy serdecznie jutro o godzinie " + hour + ":00.");
+            sendMessage(a.getUser().getPhoneNumber(), "Przypominamy o umówionym spotkaniu, zapraszamy serdecznie jutro o godzinie " + hour + ":00.", MessageType.SMS_APPOINTMENT);
         });
 
     }

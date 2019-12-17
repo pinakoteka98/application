@@ -24,7 +24,7 @@
     </tr>
     <tr>
         <td height="30" align="center"><!--/*@thymesVar id="message" type=""*/-->
-        <p th:text="${message}">header</p></td>
+        <p>header</p></td>
     </tr>
     <tr>
         <td height="120" align="center"><!--/*@thymesVar id="title" type=""*/-->
@@ -32,7 +32,7 @@
     </tr>
     <tr>
         <td height="150" align="center"><!--/*@thymesVar id="description" type=""*/-->
-        <h3>Twoje spotkanie jest umówione na dzień ... godz. ... Prosimy o punktualność.</h3></td>
+        <h3 th:text="${message}">Twoje spotkanie jest umówione na dzień ... godz. ... Prosimy o punktualność.</h3></td>
     </tr>
     <tr>
         <td height="100" align="center"><!--/*@thymesVar id="description" type=""*/-->
