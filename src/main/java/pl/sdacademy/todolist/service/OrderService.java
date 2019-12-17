@@ -35,21 +35,6 @@ public class OrderService {
     private final RoleRepository roleRepository;
     private final SmsService smsService;
 
-    private Map<Long, Order> orders = new ConcurrentHashMap<>();
-
-
-    public List<Order> findAllByDto(OrderDto orderDto) {
-        return orderRepository.findAllByStatus(orderDto.getStatus());
-    }
-
-    public List<Order> findAllAsPage() {
-        return orderRepository.findAll();
-    }
-
-    public List<Order> findAllByPhoneNumber(String phoneNumber) {
-        return orderRepository.findAllByPhoneNumber(phoneNumber);
-    }
-
     public Order find(Long id) {
         return orderRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException(id));
@@ -93,16 +78,6 @@ public class OrderService {
         if (newStatus == Status.READY) {
             smsService.sendMessage(orderEntity.getPhoneNumber(), "Dzień dobry! Miło nam poinformować, że zamówienie numer " + orderEntity.getOrderNo() + " zostało zrealizowane. Zapraszamy po odbiór. Pozdrawiamy i życzymy miłego dnia.", MessageType.SMS_STATUS);
         }
-    }
-
-    public void delete(Long id) {
-        Order orderEntity = orderRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException(id));
-        orderRepository.delete(orderEntity);
-    }
-
-    public Page<Order> findAllPages(Pageable pageable, String phoneNumber) {
-        return orderRepository.findAllByPhoneNumber(pageable, phoneNumber);
     }
 
     public Page<Order> findAllAsPage(int page, int elementsOnPage, String sortBy, String ascDesc, String phoneNumber) {

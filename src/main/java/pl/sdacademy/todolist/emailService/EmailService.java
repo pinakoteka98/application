@@ -27,7 +27,7 @@ public class EmailService implements MessageService {
         MimeMessage email = javaMailSender.createMimeMessage();
         Context context;
         String emailBody;
-        switch(messageType){
+        switch (messageType) {
             case MAIL_REGISTRATION:
                 context = new Context();
                 context.setVariable("message", message);

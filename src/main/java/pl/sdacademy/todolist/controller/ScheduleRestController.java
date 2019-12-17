@@ -31,7 +31,6 @@ public class ScheduleRestController {
     @GetMapping("/all")
     public @ResponseBody
     List<Appointment> getAllAppointments(){
-        List<Appointment> appointments = new ArrayList<>();
         return sortAppointments(appointmentRepository.findAll());
     }
 
