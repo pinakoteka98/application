@@ -20,7 +20,7 @@ select[multiple]:focus option:checked {
 }
 
 #appts option:visited{
-    border: rgb(137, 137, 137) solid 1px;
+
     border-radius: 3px;
     color: rgb(137, 137, 137);
     background-color: white !important;
