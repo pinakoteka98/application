@@ -72,7 +72,7 @@ public class EmailService implements MessageService {
                     MimeMessageHelper mmHelper = new MimeMessageHelper(email);//MimeMessageHelper mmHelper = new MimeMessageHelper(email, true);
                     mmHelper.setTo(recipient);
                     mmHelper.setFrom("rejestracja@pinakoteka.pl");
-                    mmHelper.setSubject("Info z seriwsu Pinakoteka");
+                    mmHelper.setSubject("Info z serwisu Pinakoteka");
                     mmHelper.setText(message); //true - mogę w tekście przesłać HTML, wyświetli się mailu. mmHelper.setText(content, true);
                 } catch (MessagingException e) {
                     e.printStackTrace();
