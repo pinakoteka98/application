@@ -94,6 +94,5 @@ public class SmsService implements MessageService {
             int hour = a.getAppointmentTime().toLocalTime().getHour();
             sendMessage(a.getUser().getPhoneNumber(), "Przypominamy o umówionym spotkaniu, zapraszamy serdecznie jutro o godzinie " + hour + ":00.", MessageType.SMS_APPOINTMENT);
         });
-
     }
 }
