@@ -129,7 +129,7 @@ public class UserController {
         appointmentRepository.save(appointment);
         User user = userService.findByPhoneNumber(principal.getName());
         int hour = appointment.getAppointmentTime().toLocalTime().getHour();
-        emailService.sendMessage("pinakoteka@pinakoteka.pl", "Masz nowe spotkanie umowione na dzień " + appointment.getAppointmentDate() + ", na godzinę " + hour
+        emailService.sendMessage("imac@wp.pl", "Masz nowe spotkanie umowione na dzień " + appointment.getAppointmentDate() + ", na godzinę " + hour
                 + ".\nImię Klienta: " + appointment.getFirstName() + "\nEmail: " + user.getEmail() + "\nTelefon: " + user.getPhoneNumber(), MessageType.MAIL_ADMIN);
         emailService.sendMessage(user.getEmail(), "Twoje spotkanie jest umówione na dzień " + appointment.getAppointmentDate() + ", na godzinę " + hour +". Prosimy o punktualność.", MessageType.MAIL_APPOINTMENT);
         model.addAttribute(appointment);
@@ -145,7 +145,7 @@ public class UserController {
     @PostMapping("/services")
     public String getService(@RequestParam String name, @RequestParam String category, @RequestParam String body, Principal principal) {
         User user = userService.findByPhoneNumber(principal.getName());
-        emailService.sendMessage("pinakoteka@pinakoteka.pl", "Masz nowe zapytanie w kategorii: " + category
+        emailService.sendMessage("imac@wp.pl", "Masz nowe zapytanie w kategorii: " + category
                 + ".\nImię Klienta: " + name
                 + ".\nNr telefonu: " + principal.getName()
                 + ".\nEmail: " +  user.getEmail()
