@@ -106,29 +106,31 @@
                         <form class=" email_form needs-validation" data-editable-type="contact-form" id="testForm"
                               name="contact_form_1"
                               th:action="@{/login}" method="post" novalidate>
-                            <h2 style="margin: 5px">Logowanie</h2>
+                            <h2 style="margin-top: 5px; margin-bottom: 25px">Logowanie</h2>
 
                             <div class="row naked">
-                                <div class="twelvecol last">
+                                <div class="twelvecol last form-group">
 
                                     <input class="_4ORMAT_module_contact_input form-control" id="username"
                                            name="login"
                                            type="text" th:value="${login}"
                                            style="border-color: rgba(85, 85, 85, 0.3); border-bottom-width: 1px !important;"
-                                           placeholder="Login (numer telefonu)" required>
+                                           placeholder="" required>
+                                    <label class="form-control-placeholder" for="username">Login (numer telefonu)</label>
                                     <div class="_4ORMAT_module_contact_label">
                                     </div>
 
                                 </div>
                             </div>
                             <div class="row naked">
-                                <div class="twelvecol last">
+                                <div class="twelvecol last form-group">
 
                                     <input class="_4ORMAT_module_contact_input form-control" id="password"
                                            name="password"
                                            type="password"
                                            style="border-color: rgba(85, 85, 85, 0.3); border-bottom-width: 1px"
-                                           placeholder="Podaj hasło" required>
+                                           placeholder="" required>
+                                    <label class="form-control-placeholder" for="password">Podaj hasło</label>
                                     <div class="_4ORMAT_module_contact_label">
                                     </div>
 
