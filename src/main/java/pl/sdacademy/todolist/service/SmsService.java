@@ -16,12 +16,10 @@ import pl.smsapi.api.action.sms.SMSSend;
 import pl.smsapi.api.response.MessageResponse;
 import pl.smsapi.api.response.StatusResponse;
 import pl.smsapi.exception.SmsapiException;
-
 import java.sql.Date;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Calendar;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -42,7 +40,7 @@ public class SmsService implements MessageService {
     public void sendMessage(String recipient, String message, MessageType messageType) {
         int hourNow = LocalDateTime.now().getHour();
         DayOfWeek dayOfWeek = LocalDateTime.now().getDayOfWeek();
-        if (hourNow < 10 || hourNow > 20 || (dayOfWeek == DayOfWeek.SATURDAY) || dayOfWeek == DayOfWeek.SUNDAY) {
+        if (hourNow < 10 || hourNow > 20 || dayOfWeek == DayOfWeek.SATURDAY || dayOfWeek == DayOfWeek.SUNDAY) {
             Sms sms = new Sms();
             sms.setPhoneNumber(recipient);
             sms.setMessage(message);
@@ -96,6 +94,5 @@ public class SmsService implements MessageService {
             int hour = a.getAppointmentTime().toLocalTime().getHour();
             sendMessage(a.getUser().getPhoneNumber(), "Przypominamy o umówionym spotkaniu, zapraszamy serdecznie jutro o godzinie " + hour + ":00.", MessageType.SMS_APPOINTMENT);
         });
-
     }
 }

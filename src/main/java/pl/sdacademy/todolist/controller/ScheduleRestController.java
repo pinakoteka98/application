@@ -18,8 +18,7 @@ public class ScheduleRestController {
     private final AppointmentRepository appointmentRepository;
 
     @PostMapping("/add")
-    public @ResponseBody
-    String addNewAppointment(@ModelAttribute Appointment appointment){
+    public String addNewAppointment(@ModelAttribute Appointment appointment){
         try {
             appointmentRepository.save(appointment);
             return "Appointment was added succesfully";
@@ -29,13 +28,12 @@ public class ScheduleRestController {
     }
 
     @GetMapping("/all")
-    public @ResponseBody
-    List<Appointment> getAllAppointments(){
+    public List<Appointment> getAllAppointments(){
         return sortAppointments(appointmentRepository.findAll());
     }
 
     @GetMapping("/all/{date}")
-    public @ResponseBody List<Appointment> getAppointmentsByDate(@PathVariable String date){
+    public List<Appointment> getAppointmentsByDate(@PathVariable String date){
         try{
             Date sqlDate = Date.valueOf(date);
             return sortAppointments(appointmentRepository.findAllByAppointmentDate(sqlDate));
