@@ -95,15 +95,41 @@ input:visited, input:active {
     background-color: white;
 }
 
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+    background-color: rgb(255, 255, 255) !important;
+    background-image: none !important;
+    color: rgb(0, 0, 0) !important;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px white inset;
+}
+
+input:-webkit-autofill:hover {
+    background-color: white;
+}
+
+input:-webkit-autofill:focus {
+    background-color: white;
+}
+
+input{
+    background-color: #fff !important;
+}
+
 textarea:focus {
     border-color: black !important;
     border: 1px solid !important;
     font-size: 14px !important;
 }
 
-select option { color: black !important; }
+select option {
+    color: black !important;
+}
 
-select.empty { color: #A5A29F !important; }
+select.empty {
+    color: #A5A29F !important;
+}
 
 select option[disabled]:first-child {
     display: none;
