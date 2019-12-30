@@ -130,12 +130,13 @@
                             <h2 style="margin: 5px">Rezerwacja wizyty online</h2>
 
                             <div class="row naked">
-                                <div class="twelvecol last">
+                                <div class="twelvecol last form-group">
 
                                     <input type="hidden" class="form-control" th:field="*{user}">
-                                    <input class="_4ORMAT_module_contact_input form-control" id="lastname"
+                                    <input class="_4ORMAT_module_contact_input form-control" id="username"
                                            th:field="*{firstName}" type="text"
-                                           placeholder="Podaj swoje imię">
+                                           placeholder="" required>
+                                    <label class="form-control-placeholder" for="username">Podaj swoje imię</label>
                                     <div class="_4ORMAT_module_contact_label">
                                     </div>
 
@@ -151,7 +152,7 @@
                                            class="date form-control flatpickr flatpickr-input active"
                                            readonly="readonly"
                                            style="background-color: white !important;">
-                                    <div class="_4ORMAT_module_contact_label">
+                                                                     <div class="_4ORMAT_module_contact_label">
                                     </div>
 
                                 </div>

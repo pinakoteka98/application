@@ -104,12 +104,13 @@
                             <h2 style="margin-left: 5px; margin-top: 5px">Rejestracja</h2>
 
                             <div class="row naked">
-                                <div class="twelvecol last">
+                                <div class="twelvecol last form-group">
 
                                     <input class="_4ORMAT_module_contact_input form-control" id="username" type="text"
                                            th:field="*{phoneNumber}"
                                            style="border-color: rgba(85, 85, 85, 0.3); border-bottom-width: 1px"
-                                           placeholder="Numer telefonu" required>
+                                           placeholder="" required>
+                                    <label class="form-control-placeholder" for="username">Numer telefonu</label>
                                     <div class="_4ORMAT_module_contact_label  ">
 
                                     </div>
@@ -120,12 +121,13 @@
                                 </div>
                             </div>
                             <div class="row naked">
-                                <div class="twelvecol last">
+                                <div class="twelvecol last form-group">
 
                                     <input class="_4ORMAT_module_contact_input form-control" id="email" name="email"
                                            type="text" th:field="*{email}"
                                            style="border-color: rgba(85, 85, 85, 0.3); border-bottom-width: 1px"
-                                           placeholder="E-mail" required>
+                                           placeholder="" required>
+                                    <label class="form-control-placeholder" for="email">E-mail</label>
                                     <div class="_4ORMAT_module_contact_label  ">
 
                                     </div>
@@ -135,13 +137,14 @@
                                 </div>
                             </div>
                             <div class="row naked">
-                                <div class="twelvecol last">
+                                <div class="twelvecol last form-group">
 
                                     <input class="_4ORMAT_module_contact_input form-control" id="password"
                                            name="password"
                                            type="password" th:field="*{password}"
                                            style="border-color: rgba(85, 85, 85, 0.3); border-bottom-width: 1px"
-                                           placeholder="Hasło (8-12 znaków)" required>
+                                           placeholder="" required>
+                                    <label class="form-control-placeholder" for="password">Hasło (8-12 znaków)</label>
                                     <div class="_4ORMAT_module_contact_label">
                                     </div>
                                     <span class="error" style="color:#e80404"

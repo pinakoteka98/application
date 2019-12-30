@@ -1,54 +1,46 @@
 #moving-text {
-    position:relative;
-    width:500px;
-    height:2.2em;
-    line-height:2.2em;
-    margin:0 auto;
-    font-size:1em;
-    overflow:hidden;
+    position: relative;
+    width: 500px;
+    height: 2.2em;
+    line-height: 2.2em;
+    margin: 0 auto;
+    font-size: 1em;
+    overflow: hidden;
 }
 
 #moving-text > p {
-    position:absolute;
-    margin:0;
-    white-space:nowrap;
-    animation:move 30s linear infinite;
-    -webkit-animation:move 30s linear infinite;
+    position: absolute;
+    margin: 0;
+    white-space: nowrap;
+    animation: move 30s linear infinite;
+    -webkit-animation: move 30s linear infinite;
 }
 
 #moving-text > p:hover {
-    animation-play-state:paused;
-    -webkit-animation-play-state:paused;
+    animation-play-state: paused;
+    -webkit-animation-play-state: paused;
 }
 
-@keyframes move
-{
-    0% { transform:translateX(0); padding-left:110%; }
-    100% { transform:translateX(-100%); padding-left:110%; }
+@keyframes move {
+    0% {
+        transform: translateX(0);
+        padding-left: 110%;
+    }
+    100% {
+        transform: translateX(-100%);
+        padding-left: 110%;
+    }
 }
 
-@-webkit-keyframes move{
-    0% { -webkit-transform:translateX(0); padding-left:110%; }
-    100% { -webkit-transform:translateX(-100%); padding-left:110%; }
+@-webkit-keyframes move {
+    0% {
+        -webkit-transform: translateX(0);
+        padding-left: 110%;
+    }
+    100% {
+        -webkit-transform: translateX(-100%);
+        padding-left: 110%;
+    }
 }
 
 
-.form-group {
-    position: relative;
-    margin-bottom: 1.5rem;
-}
-
-.form-control-placeholder {
-    position: absolute;
-    top: 0;
-    padding: 20px 0 0 15px;
-    transition: all 200ms;
-    opacity: 0.5;
-}
-
-.form-control:focus + .form-control-placeholder,
-.form-control:valid + .form-control-placeholder {
-    font-size: 75%;
-    transform: translate3d(0, -100%, 0);
-    opacity: 1;
-}

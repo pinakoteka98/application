@@ -61,9 +61,10 @@
         background: rgba(85, 85, 85, 0.03) !important;
     }
 
-    form div {
-            padding: 0px;
-    }
+        form div {
+            padding-right: 0px
+        }
+
     </style>
 
     <style>
@@ -140,18 +141,19 @@
                               name="contact_form_1" th:action="@{/services}" method="POST" novalidate>
                             <div class="error_messages"></div>
                             <div class="row naked">
-                                <div class="twelvecol last" style="padding-bottom: 10px">
-                                    <input class="_4ORMAT_module_contact_input form-control" name="name" type="text"
-                                           placeholder="Podaj swoje imię" required>
+                                <div class="twelvecol last form-group" style="padding-bottom: 10px">
+                                    <input class="_4ORMAT_module_contact_input form-control" name="name" type="text" id="username"
+                                           placeholder="" required>
+                                    <label class="form-control-placeholder" for="username">Podaj swoje imię</label>
                                     <div class="_4ORMAT_module_contact_label  ">
                                     </div>
                                 </div>
                             </div>
                             <div class="row naked">
-                                <div class="twelvecol last custom-select" style="padding-bottom: 10px">
+                                <div class="twelvecol last custom-select" style="height: 48px !important; padding-bottom: 10px; padding-top: 5px; margin-bottom: 0.5rem">
                                     <select class="_4ORMAT_module_contact_input form-control"
                                             placeholder="Wybierz kategorię" name="category"
-                                            style="height: 48px; font-size: 14px; font-family: Planet Light, Planet Light, sans-serif">
+                                            style="font-size: 14px; font-family: Planet Light, Planet Light, sans-serif">
                                         <option value="0">Wybierz kategorię</option>
                                         <option value="transport">Transport</option>
                                         <option value="pakowanie">Pakowanie</option>
@@ -162,9 +164,10 @@
                                 </div>
                             </div>
                             <div class="row naked last">
-                                <div class="twelvecol last">
-                                <textarea class="_4ORMAT_module_contact_input form-control" data-validate="required"
-                                          name="body" rows="4" placeholder="Wiadomość" required></textarea>
+                                <div class="twelvecol last form-group">
+                                <textarea class="_4ORMAT_module_contact_input form-control" data-validate="required" id="message"
+                                          style="padding: 10px 10px" name="body" rows="4" placeholder="" required></textarea>
+                                    <label class="form-control-placeholder" for="message">Wiadomość</label>
                                     <div class="_4ORMAT_module_contact_label  ">
                                     </div>
 
