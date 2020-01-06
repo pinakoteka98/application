@@ -1,7 +1,6 @@
 package pl.sdacademy.todolist.entity;
 
 import lombok.Data;
-import org.hibernate.validator.constraints.Length;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -32,6 +31,9 @@ public class Order {
     @NotNull
     @Enumerated(EnumType.STRING)
     private Status status;
+
+    @Enumerated(EnumType.STRING)
+    private Nickname nickname;
 
     @NotNull
     private String phoneNumber;

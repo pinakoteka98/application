@@ -2,6 +2,7 @@ package pl.sdacademy.todolist.dto;
 
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
+import pl.sdacademy.todolist.entity.Nickname;
 import pl.sdacademy.todolist.entity.Status;
 
 import javax.persistence.EnumType;
@@ -30,6 +31,9 @@ public class OrderDto {
     @NotNull
     @Enumerated(EnumType.STRING)
     private Status status;
+
+    @Enumerated(EnumType.STRING)
+    private Nickname nickname;
 
     @NotNull
     private String phoneNumber;

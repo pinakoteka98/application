@@ -44,6 +44,15 @@
                             </select>
                         </div>
                         <div class="form-group col-md-8">
+                            <label for="nickname" class="col-form-label">Nickname</label>
+                            <select id="nickname" name="nickname" placeholder="nick">
+                                <option th:each="nickname : ${T(pl.sdacademy.todolist.entity.Nickname).values()}"
+                                        th:value="${nickname}"
+                                        th:text="${nickname}">
+                                </option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-8">
                             <label for="phoneNumber" class="sr-only">Phone number</label>
                             <input type="text" th:field="*{phoneNumber}" class="form-control" id="phoneNumber"
                                    placeholder="Phone number 9-digits">

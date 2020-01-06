@@ -18,26 +18,26 @@ public class ScheduleRestController {
     private final AppointmentRepository appointmentRepository;
 
     @PostMapping("/add")
-    public String addNewAppointment(@ModelAttribute Appointment appointment){
+    public String addNewAppointment(@ModelAttribute Appointment appointment) {
         try {
             appointmentRepository.save(appointment);
             return "Appointment was added succesfully";
-        } catch (Exception ex){
+        } catch (Exception ex) {
             return ex.getMessage();
         }
     }
 
     @GetMapping("/all")
-    public List<Appointment> getAllAppointments(){
+    public List<Appointment> getAllAppointments() {
         return sortAppointments(appointmentRepository.findAll());
     }
 
     @GetMapping("/all/{date}")
-    public List<Appointment> getAppointmentsByDate(@PathVariable String date){
-        try{
+    public List<Appointment> getAppointmentsByDate(@PathVariable String date) {
+        try {
             Date sqlDate = Date.valueOf(date);
             return sortAppointments(appointmentRepository.findAllByAppointmentDate(sqlDate));
-        } catch (Exception ex){
+        } catch (Exception ex) {
             Appointment appt = new Appointment();
             List<Appointment> appointments = new ArrayList<>();
             appointments.add(appt);
@@ -45,7 +45,7 @@ public class ScheduleRestController {
         }
     }
 
-    private List<Appointment> sortAppointments(List<Appointment> appointments){
+    private List<Appointment> sortAppointments(List<Appointment> appointments) {
         appointments.sort(Comparator.comparing(Appointment::getAppointmentDate)
                 .thenComparing(Appointment::getAppointmentTime));
         return appointments;

@@ -61,6 +61,7 @@ public class OrderService {
         orderEntity.setOrderNo(orderDto.getOrderNo());
         orderEntity.setPhoneNumber(orderDto.getPhoneNumber());
         orderEntity.setStatus(orderDto.getStatus());
+        orderEntity.setNickname(orderDto.getNickname());
         orderEntity.setValue(orderDto.getValue());
         orderEntity.setUser(user);
         return orderRepository.save(orderEntity);
