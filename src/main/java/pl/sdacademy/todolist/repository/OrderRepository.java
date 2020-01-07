@@ -21,6 +21,7 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
 
     Page<Order> findAllByPhoneNumber(Pageable pageable, String phoneNumber);
 
+    @SuppressWarnings("JpaQlInspection")
     @Query("SELECT o FROM Order o WHERE " +
             "o.orderNo LIKE CONCAT('%',:searchText,'%') " +
             "OR o.comments LIKE CONCAT('%',:searchText,'%') " +
