@@ -111,6 +111,8 @@ input:-webkit-autofill:hover {
 
 input:-webkit-autofill:focus {
     background-color: white;
+    -webkit-box-shadow: 0 0 0 30px white inset;
+    -webkit-text-fill-color: #333333;
 }
 
 input{
