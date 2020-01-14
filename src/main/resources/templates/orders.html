@@ -169,32 +169,32 @@
         </div>
 
 
-        <nav class="pagination-control text-center">
-            <ul class="pagination justify-content-center" style="margin: 10px 0">
+<!--        <nav class="pagination-control text-center">-->
+<!--            <ul class="pagination justify-content-center" style="margin: 10px 0">-->
 
-                <li class="page-item" th:if="${currentPage gt 0}">
-                    <a class="page-link"
-                       th:href="@{/orders(page=${currentPage}-${1}, sortcolumn=${sortcolumn}, ascdesc=${ascdesc}, searchtext=${searchtext})}">Previous</a>
+<!--                <li class="page-item" th:if="${currentPage gt 0}">-->
+<!--                    <a class="page-link"-->
+<!--                       th:href="@{/orders(page=${currentPage}-${1}, sortcolumn=${sortcolumn}, ascdesc=${ascdesc}, searchtext=${searchtext})}">Previous</a>-->
 
-                </li>
+<!--                </li>-->
 
-                <li th:block th:if="${!orders.isEmpty()}" th:each="i: ${#numbers.sequence(0, totalPages - 1)}">
-                    <a th:if="${currentPage == i}" class="page-item active"
-                       style="background-color: #428bca; color: white">[[${i}+1]]</a>
-                    <span th:unless="${currentPage == i}">
+<!--                <li th:block th:if="${!orders.isEmpty()}" th:each="i: ${#numbers.sequence(0, totalPages - 1)}">-->
+<!--                    <a th:if="${currentPage == i}" class="page-item active"-->
+<!--                       style="background-color: #428bca; color: white">[[${i}+1]]</a>-->
+<!--                    <span th:unless="${currentPage == i}">-->
 
-                    <a class="page-item"
-                       th:href="@{/orders(page=${i}, sortcolumn=${sortcolumn}, ascdesc=${ascdesc}, searchtext=${searchtext})}">[[${i}+1]]</a>
-                       </span>
-                </li>
+<!--                    <a class="page-item"-->
+<!--                       th:href="@{/orders(page=${i}, sortcolumn=${sortcolumn}, ascdesc=${ascdesc}, searchtext=${searchtext})}">[[${i}+1]]</a>-->
+<!--                       </span>-->
+<!--                </li>-->
 
-                <li class="page-item" th:if="${currentPage lt totalPages+(-1)}">
-                    <a class="page-link"
-                       th:href="@{/orders(page=${currentPage+1}, sortcolumn=${sortcolumn}, ascdesc=${ascdesc}, searchtext=${searchtext})}">Next</a>
-                </li>
+<!--                <li class="page-item" th:if="${currentPage lt totalPages+(-1)}">-->
+<!--                    <a class="page-link"-->
+<!--                       th:href="@{/orders(page=${currentPage+1}, sortcolumn=${sortcolumn}, ascdesc=${ascdesc}, searchtext=${searchtext})}">Next</a>-->
+<!--                </li>-->
 
-            </ul>
-        </nav>
+<!--            </ul>-->
+<!--        </nav>-->
     </div>
 </div>
 

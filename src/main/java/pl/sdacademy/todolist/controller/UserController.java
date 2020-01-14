@@ -131,7 +131,7 @@ public class UserController {
         int hour = appointment.getAppointmentTime().toLocalTime().getHour();
         emailService.sendMessage("imac@wp.pl", "Masz nowe spotkanie umowione na dzień " + appointment.getAppointmentDate() + ", na godzinę " + hour
                 + ".\nImię Klienta: " + appointment.getFirstName() + "\nEmail: " + user.getEmail() + "\nTelefon: " + user.getPhoneNumber(), MessageType.MAIL_ADMIN);
-        emailService.sendMessage(user.getEmail(), "Twoje spotkanie jest umówione na dzień " + appointment.getAppointmentDate() + ", na godzinę " + hour +". Prosimy o punktualność.", MessageType.MAIL_APPOINTMENT);
+        emailService.sendMessage(user.getEmail(), "Twoje spotkanie jest umówione na dzień " + appointment.getAppointmentDate() + ", na godzinę " + hour + ". Prosimy o punktualność.", MessageType.MAIL_APPOINTMENT);
         model.addAttribute(appointment);
         return "confirmation";
     }
@@ -148,12 +148,12 @@ public class UserController {
         emailService.sendMessage("imac@wp.pl", "Masz nowe zapytanie w kategorii: " + category
                 + ".\nImię Klienta: " + name
                 + ".\nNr telefonu: " + principal.getName()
-                + ".\nEmail: " +  user.getEmail()
+                + ".\nEmail: " + user.getEmail()
                 + ".\nTreść zapytania: " + body, MessageType.MAIL_ADMIN);
         log.info(">>>>>>>>> Masz nowe zapytanie o usługę w kategorii " + category
                 + "\nImię Klienta: " + name
                 + "\nNr telefonu " + principal.getName()
-                + "\nEmail: " +  user.getEmail()
+                + "\nEmail: " + user.getEmail()
                 + "\nTreść zapytania: " + body);
         return "serviceaskconfirmation";
     }
