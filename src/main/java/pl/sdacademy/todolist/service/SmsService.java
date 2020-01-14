@@ -22,6 +22,9 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import static pl.sdacademy.todolist.dto.MessageType.SMS_APPOINTMENT;
+import static pl.sdacademy.todolist.dto.MessageType.SMS_STATUS;
+
 @RequiredArgsConstructor
 @Slf4j
 @Service
@@ -40,7 +43,8 @@ public class SmsService implements MessageService {
     public void sendMessage(String recipient, String message, MessageType messageType) {
         int hourNow = LocalDateTime.now().getHour();
         DayOfWeek dayOfWeek = LocalDateTime.now().getDayOfWeek();
-        if (hourNow < 10 || hourNow > 20 || dayOfWeek == DayOfWeek.SATURDAY || dayOfWeek == DayOfWeek.SUNDAY) {
+//        if (hourNow < 10 || hourNow > 20 || (dayOfWeek == DayOfWeek.SATURDAY && hourNow > 14)|| dayOfWeek == DayOfWeek.SUNDAY) {
+        if (hourNow < 10 || hourNow > 20 || messageType == SMS_STATUS ? ((dayOfWeek == DayOfWeek.SATURDAY && hourNow > 14) || dayOfWeek == DayOfWeek.SUNDAY) : dayOfWeek == DayOfWeek.SATURDAY) {
             Sms sms = new Sms();
             sms.setPhoneNumber(recipient);
             sms.setMessage(message);
@@ -53,7 +57,6 @@ public class SmsService implements MessageService {
                 SMSSend action = smsApi.actionSend()
                         .setText(message)
                         .setTo(recipient);
-
                 StatusResponse result = action.execute();
 
                 for (MessageResponse status : result.getList()) {
@@ -75,10 +78,11 @@ public class SmsService implements MessageService {
     }
 
     @Scheduled(cron = "0 10 10-19/1 * * MON-FRI")
+    @Scheduled(cron = "0 59 10-14/1 * * SAT")
     public void resendUndeliveredMessages() {
         List<Sms> allSms = smsRepository.findAll();
         allSms.forEach(sms -> {
-            sendMessage(sms.getPhoneNumber(), sms.getMessage(), MessageType.SMS_STATUS);
+            sendMessage(sms.getPhoneNumber(), sms.getMessage(), SMS_STATUS);
             log.info("Wysłano sms o treści \"{}\" na nr telefonu: {}", sms.getMessage(), sms.getPhoneNumber());
             smsRepository.delete(sms);
         });
@@ -92,7 +96,7 @@ public class SmsService implements MessageService {
         List<Appointment> appointments = appointmentRepository.findAllByAppointmentDate(tomorrow);
         appointments.forEach(a -> {
             int hour = a.getAppointmentTime().toLocalTime().getHour();
-            sendMessage(a.getUser().getPhoneNumber(), "Przypominamy o umówionym spotkaniu, zapraszamy serdecznie jutro o godzinie " + hour + ":00.", MessageType.SMS_APPOINTMENT);
+            sendMessage(a.getUser().getPhoneNumber(), "Przypominamy o umówionym spotkaniu, zapraszamy serdecznie jutro o godzinie " + hour + ":00.", SMS_APPOINTMENT);
         });
     }
 }
