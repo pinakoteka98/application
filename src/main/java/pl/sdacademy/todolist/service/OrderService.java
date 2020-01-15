@@ -75,6 +75,9 @@ public class OrderService {
         orderEntity.setDateOfOrder(order.getDateOfOrder());
         orderEntity.setEstimatedDate(order.getEstimatedDate());
         orderEntity.setOrderNo(order.getOrderNo());
+        orderEntity.setPhoneNumber(order.getPhoneNumber());
+        orderEntity.setValue(order.getValue());
+        orderEntity.setNickname(order.getNickname());
         orderEntity.setStatus(order.getStatus());
         if (newStatus == Status.READY) {
             smsService.sendMessage(orderEntity.getPhoneNumber(), "Dzień dobry! Miło nam poinformować, że zamówienie numer " + orderEntity.getOrderNo() + " zostało zrealizowane. Zapraszamy po odbiór. Pozdrawiamy i życzymy miłego dnia.", MessageType.SMS_STATUS);

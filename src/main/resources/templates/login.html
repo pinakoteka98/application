@@ -50,14 +50,17 @@
           media='screen' rel='stylesheet' type='text/css'/>
 
 
-    <style>._4ORMAT_content_page_row .btn {
-        font-family: "Planet Light", "Planet Light", sans-serif
-    }
+    <style>
+        #content_page_wrapper .btn {
+            font-family: "Planet Light", "Planet Light", sans-serif
+        }
 
-    ._4ORMAT_content_page_row .btn:hover {
-        border-color: rgba(85, 85, 85, 0.4) !important;
-        background: rgba(85, 85, 85, 0.03) !important;
-    }
+        #content_page_wrapper .btn:hover {
+            border-color: rgba(85, 85, 85, 0.4) !important;
+            background: #c12031 !important;
+            color: white !important;
+
+        }
     </style>
 
     <style>
@@ -116,7 +119,8 @@
                                            type="text" th:value="${login}"
                                            style="border-color: rgba(85, 85, 85, 0.3); border-bottom-width: 1px !important;"
                                            placeholder="" required>
-                                    <label class="form-control-placeholder" for="username">Login (numer telefonu)</label>
+                                    <label class="form-control-placeholder" for="username">Login (numer
+                                        telefonu)</label>
                                     <div class="_4ORMAT_module_contact_label">
                                     </div>
 
@@ -136,7 +140,7 @@
 
                                 </div>
                             </div>
-                            <div class="error" style="color: #e80404"
+                            <div class="error" style="color: #c12031"
                                  th:if="${#httpServletRequest.getParameter('error') == 'true'}"
                                  th:with="errorMsg=#{error.logging}">
                                 <p class=""><span th:text="${errorMsg}"></span></p>
