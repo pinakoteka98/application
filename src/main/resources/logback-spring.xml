@@ -1,5 +1,4 @@
 <configuration>
-    ​
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <pattern>[%d{yyyy-MM-dd' 'HH:mm:ss.SSS}] [%C] [%t] [%L] [%p] %m%n</pattern>
@@ -17,11 +16,11 @@
             <totalSizeCap>25MB</totalSizeCap>
         </rollingPolicy>
     </appender>
-    <root level="DEBUG">
+    <root level="INFO">
         <appender-ref ref="STDOUT"/>
         <appender-ref ref="FILE"/>
     </root>
-    <logger name="org.hibernate" additivity="false" level="DEBUG">
+    <logger name="org.hibernate" additivity="false" level="INFO">
         <appender-ref ref="STDOUT"/>
         <appender-ref ref="FILE"/>
     </logger>
@@ -29,7 +28,7 @@
         <appender-ref ref="STDOUT"/>
         <appender-ref ref="FILE"/>
     </logger>
-    <logger name="pl.sdacademy.todolist" additivity="false" level="DEBUG">
+    <logger name="pl.sdacademy.todolist" additivity="false" level="INFO">
         <appender-ref ref="STDOUT"/>
         <appender-ref ref="FILE"/>
     </logger>

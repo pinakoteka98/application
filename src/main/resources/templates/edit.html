@@ -26,6 +26,7 @@
                     <div class="row">
 
                         <input type="hidden" id="id" th:field="*{id}" name="id">
+                        <input type="hidden" th:field="*{estimatedDate}" name="id">
 
                         <div class="form-group col-md-8">
                             <label for="description" class="col-form-label">Order No.</label> <input
@@ -55,8 +56,10 @@
                         <div class="form-group col-md-8">
                         <select class="form-control" id="nickname" name="nickname"
                                 th:field="*{nickname}" placeholder="nickname">
-                            <option value="GOSIA">GOSIA</option>
-                            <option value="CZARNA">CZARNA</option>
+                            <option th:each="nickname : ${T(pl.sdacademy.todolist.entity.Nickname).values()}"
+                                    th:value="${nickname}"
+                                    th:text="${nickname}">
+                            </option>
                         </select>
                         </div>
 
