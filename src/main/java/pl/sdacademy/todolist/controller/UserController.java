@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import pl.sdacademy.todolist.dto.AppointmentDto;
 import pl.sdacademy.todolist.dto.MessageType;
 import pl.sdacademy.todolist.dto.UserDto;
 import pl.sdacademy.todolist.emailService.EmailService;
@@ -15,6 +16,7 @@ import pl.sdacademy.todolist.entity.Appointment;
 import pl.sdacademy.todolist.entity.Order;
 import pl.sdacademy.todolist.entity.User;
 import pl.sdacademy.todolist.repository.AppointmentRepository;
+import pl.sdacademy.todolist.service.AppointmentService;
 import pl.sdacademy.todolist.service.OrderService;
 import pl.sdacademy.todolist.service.UserService;
 import pl.sdacademy.todolist.utils.AppUtils;
@@ -35,6 +37,7 @@ public class UserController {
     private final EmailService emailService;
     private final PasswordEncoder passwordEncoder;
     private final AppointmentRepository appointmentRepository;
+    private final AppointmentService appointmentService;
 
     @GetMapping(value = "/login")
     public String showLoginPage() {
@@ -118,9 +121,11 @@ public class UserController {
     @GetMapping("/schedule")
     public String appointmentSchedule(Principal principal, Model model) {
         User user = userService.findByPhoneNumber(principal.getName());
+        List<AppointmentDto> appointmentList = appointmentService.getAppointment();
         Appointment appointment = new Appointment();
         appointment.setUser(user);
         model.addAttribute("appointment", appointment);
+        model.addAttribute("appointments", appointmentList);
         return "scheduler";
     }
 

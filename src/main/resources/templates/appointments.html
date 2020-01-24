@@ -10,11 +10,12 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
     <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
     <script src="/static/assets/js/datatables.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Jura&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:200&display=swap" rel="stylesheet">
 
     <style>
         h1{
-            font-family: 'Jura', sans-serif;
+            font-family: 'Work Sans', sans-serif;
+            font-weight: lighter;
         }
     </style>
 
@@ -54,7 +55,7 @@
 <body>
 <div class="container my-2">
     <div id="wrapper">
-        <h1 id="page-header-text" style="text-align: center; margin-top: 20px !important; margin-bottom: 15px !important; text-transform: uppercase; color: #c12031">upcoming meetings</h1>
+        <h1 id="page-header-text" style="text-align: center; margin-top: 20px !important; margin-bottom: 15px !important; text-transform: uppercase; letter-spacing: 5px; color: #c12031">upcoming meetings</h1>
         <div class="row">
             <div class="col-md-2 col-xs-12" style="margin-bottom: 20px">
                 <form th:action="@{/menu}" method="get">

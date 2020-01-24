@@ -1,0 +1,203 @@
+.ps-datapicker {
+  width: 100%;
+  margin: 0 auto;
+  user-select: none;
+  font-size: 1em;
+}
+
+.ps-datapicker .navigation {
+  background-color: #0c5dd6;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0;
+}
+
+.ps-datapicker .prev, .ps-datapicker .next {
+  padding: 1em;
+  cursor: pointer;
+}
+
+.ps-datapicker .period {
+  width: 100%;
+  font-size: 1.6em;
+  font-weight: 400;
+  text-align: center;
+}
+
+.ps-datapicker .week {
+  display: flex;
+  color: #fff;
+  font-size: 1.2em;
+  background-color: #0a51ad;
+}
+
+.ps-datapicker .week.rtl {
+  flex-direction: row-reverse;
+}
+
+.ps-datapicker .month {
+  display: flex;
+  flex-wrap: wrap;
+  cursor: pointer;
+}
+
+.ps-datapicker .month.rtl {
+  flex-direction: row-reverse;
+}
+
+.ps-datapicker .day {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14.28571%;
+  padding: 1em;
+  transition: background-color 0.2s cubic-bezier(0.25, 0.1, 0.49, 0.9);
+}
+
+/* weekend */
+
+.ps-datapicker .day.is-weekend {
+  color: #ff3860;
+}
+
+.ps-datapicker .day.is-highlight {
+  background-color: #8fbc8f;
+  color: #fff;
+}
+
+/* dzień dzisiejszy */
+
+.ps-datapicker .day.is-today {
+  background-color: #ff3860;
+  color: #fff;
+}
+
+/* zaznaczony dzień */
+
+.ps-datapicker .day.is-selected {
+  background-color: #7fcbc3 !important;
+  color: #fff !important;
+}
+
+.ps-datapicker .day.is-begin-range, .ps-datapicker .day.is-end-range {
+  background-color: #42a298 !important;
+  color: #fff !important;
+}
+
+.ps-datapicker .day.is-disabled {
+  cursor: not-allowed;
+  opacity: .33;
+}
+
+.appointmentDataPicker {
+  width: 500px;
+  margin: 0 auto;
+  transition: 0.2s;
+}
+
+.appointmentTimeBox {
+  margin-top: 15px;
+}
+
+.appointmentTimeButtons {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#content_page_wrapper .appointmentTimeButtons label {
+  width: 120px;
+  height: auto;
+  font-size: 1.4rem;
+  padding: 10px 0;
+  text-align: center;
+  cursor: pointer;
+  border: rgba(85, 85, 85, 0.3) solid 1px;
+}
+
+/* zaznaczona godzina */
+
+.appointmentTimeButtons input[type="radio"]:checked+label {
+  background-color: #7fcbc3;
+  color: white;
+}
+
+/* niedostępna godzina */
+
+.appointmentTimeButtons input[type="radio"]:disabled+label {
+  display: none !important;
+  /* background-color: rgb(199, 199, 199) !important; */
+  /* cursor: not-allowed !important; */
+}
+
+.appointment-button-group {
+  width: 500px;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 768px) {
+  .appointmentDataPicker {
+    width: 350px;
+  }
+  .appointment-button-group {
+    width: 350px;
+    flex-direction: column;
+    align-items: center;
+  }
+  .appointmentDataPicker .ps-datapicker .day {
+    line-height: 12px;
+  }
+  #content_page_wrapper .appointmentTimeButtons label {
+    font-size: 1.2rem;
+    width: 30%;
+  }
+}
+
+#content_page_wrapper .form-group {
+  width: 350px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#content_page_wrapper .cancel-btn {
+  height: 49px;
+  border-radius: 2px;
+  background-color: transparent;
+  color: inherit;
+  cursor: pointer;
+  margin-top: 10px;
+  padding: 15px 30px;
+  font-size: 1em;
+  width: 100px;
+  border: 1px solid rgba(85, 85, 85, 0.3);
+  font-family: "Planet Light", "Planet Light", sans-serif;
+}
+
+#content_page_wrapper .cancel-btn:hover {
+  border-color: rgba(85, 85, 85, 0.4) !important;
+  background: rgba(85, 85, 85, 0.03) !important;
+  text-decoration: none;
+}
+
+#apptForm h2 {
+  text-align: center;
+}
+
+#apptForm .submit._4ORMAT_module_submit {
+  width: fit-content;
+  /* margin: 25px auto; */
+}
+
+.appointment-button-group {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+@media screen and (max-width: 768px) {
+  #content_page_wrapper .form-group {
+    max-width: 80%;
+  }
+}
