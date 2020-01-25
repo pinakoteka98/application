@@ -55,14 +55,18 @@
     <style>
         #content_page_wrapper .btn {
             font-family: "Planet Light", "Planet Light", sans-serif
+            border-color: rgba(85, 85, 85, 0.4) !important;
+            background: #c12031 !important;
+            color: white !important;
         }
 
         #content_page_wrapper .btn:hover {
             border-color: rgba(85, 85, 85, 0.4) !important;
-            background: #c12031 !important;
+            background: #af1f30 !important;
             color: white !important;
 
         }
+
         form div {
             padding-right: 0px
         }
@@ -105,6 +109,17 @@
             }
         }
 
+        #content_page_wrapper .cancel-btn{
+            background: lightgray !important;
+            color: black !important;
+        }
+        #content_page_wrapper .cancel-btn:hover{
+            background: #c0c0c0 !important;
+            color: black !important;
+        }
+        .btn {
+            margin-top: 0px !important;
+        }
     </style>
 
 </head>
@@ -143,8 +158,9 @@
                               name="contact_form_1" th:action="@{/services}" method="POST" novalidate>
                             <div class="error_messages"></div>
                             <div class="row naked">
-                                <div class="twelvecol last form-group" style="padding-bottom: 10px">
-                                    <input class="_4ORMAT_module_contact_input form-control" name="name" type="text" id="username"
+                                <div class="twelvecol last form-group">
+                                    <input class="_4ORMAT_module_contact_input form-control" name="name" type="text"
+                                           id="username"
                                            placeholder="" required>
                                     <label class="form-control-placeholder" for="username">Podaj swoje imię</label>
                                     <div class="_4ORMAT_module_contact_label  ">
@@ -152,7 +168,8 @@
                                 </div>
                             </div>
                             <div class="row naked">
-                                <div class="twelvecol last custom-select" style="height: 48px !important; padding-bottom: 10px; padding-top: 5px; margin-bottom: 0.5rem">
+                                <div class="twelvecol last custom-select"
+                                     style="height: 48px !important; padding-bottom: 10px; padding-top: 5px; margin-bottom: 0.5rem">
                                     <select class="_4ORMAT_module_contact_input form-control"
                                             placeholder="Wybierz kategorię" name="category"
                                             style="font-size: 14px; font-family: Planet Light, Planet Light, sans-serif">
@@ -167,22 +184,29 @@
                             </div>
                             <div class="row naked last">
                                 <div class="twelvecol last form-group">
-                                <textarea class="_4ORMAT_module_contact_input form-control" data-validate="required" id="message"
-                                          style="padding: 10px 10px" name="body" rows="4" placeholder="" required></textarea>
+                                <textarea class="_4ORMAT_module_contact_input form-control" data-validate="required"
+                                          id="message"
+                                          style="padding: 10px 10px" name="body" rows="4" placeholder=""
+                                          required></textarea>
                                     <label class="form-control-placeholder" for="message">Wiadomość</label>
                                     <div class="_4ORMAT_module_contact_label  ">
                                     </div>
 
                                 </div>
                             </div>
-                            <fieldset class="submit _4ORMAT_module_submit_left">
-                                <input class="btn primary _4ORMAT_module_contact_btn _4ORMAT_module_contact_input"
-                                       name="submit" type="submit" value="" id="submitButton"/>
-                                <div class="_4ORMAT_module_contact_label  " data-editable-type="label" id="label_4"
-                                     style="display:none" data-force-html-mode="false">
-                                    Wyślij wiadomość
-                                </div>
-                            </fieldset>
+                            <div class="appointment-button-group">
+                                <a th:href="@{/menu}" class="cancel-btn">Anuluj</a>
+
+                                <fieldset class="submit _4ORMAT_module_submit">
+                                    <input class="btn primary _4ORMAT_module_contact_btn _4ORMAT_module_contact_input"
+                                           type="submit" value="submit" id="submitButton"
+                                           style="border-color: rgba(85, 85, 85, 0.3); float: right">
+                                    </input>
+                                    <div class="_4ORMAT_module_contact_label  " data-editable-type="label"
+                                         id="label_4" style="display:none" data-force-html-mode="false">
+                                        Wyślij wiadomość
+                                    </div>
+                                </fieldset>
                         </form>
                     </div>
                     <div class="twocol spacer last"></div>

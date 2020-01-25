@@ -30,3 +30,22 @@ h3 {
     border-color: black !important;
 }
 
+#content_page_wrapper .cancel-btn {
+    float: left;
+    height: 49px;
+    border-radius: 2px;
+    background-color: transparent;
+    color: inherit;
+    cursor: pointer;
+    padding: 15px 30px;
+    font-size: 1em;
+    width: 100px;
+    border: 1px solid rgba(85, 85, 85, 0.3);
+    font-family: "Planet Light", "Planet Light", sans-serif;
+    text-decoration: none;
+}
+
+.appointment-button-group {
+    display: flex;
+}
+
