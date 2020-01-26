@@ -202,17 +202,17 @@
 
                     </div>
 
-                    <div class="appointment-button-group">
+                    <div class="appointment-button-group" style="width: 340px">
                         <a th:href="@{/menu}" class="cancel-btn" style="display: none;">Anuluj</a>
 
                         <fieldset class="submit _4ORMAT_module_submit" style="display: none;">
                             <input class="btn primary _4ORMAT_module_contact_btn _4ORMAT_module_contact_input"
                                    type="submit" value="submit" id="submitButton"
-                                   style="border-color: rgba(85, 85, 85, 0.3);">
+                                   style="border-color: rgba(85, 85, 85, 0.3); float: right">
                             </input>
 
                             <div class="_4ORMAT_module_contact_label  " data-editable-type="label" id="label_4"
-                                 style="display:none" data-force-html-mode="false">Zarezerwuj termin
+                                 style="display:none;" data-force-html-mode="false">Zarezerwuj termin
                             </div>
                         </fieldset>
 
@@ -266,10 +266,11 @@
     const appointmentTimeInput = document.querySelectorAll('.appointmentDataPicker input[name="appointmentTime"]');
     const submitButton = document.querySelector('#apptForm fieldset.submit');
     const cancelButton = document.querySelector('#apptForm .cancel-btn');
+    const userNameInput = document.querySelector('#apptForm .form-group');
 
     appointmentTimeInput.forEach(item => {
         item.addEventListener('change', () => {
-            document.querySelector('#apptForm .form-group').removeAttribute('style');
+            userNameInput.removeAttribute('style');
             submitButton.removeAttribute('style');
             cancelButton.removeAttribute('style');
         })
@@ -303,6 +304,17 @@
         weekStart: 1,
         disableDates: offsetDate.concat(disableDates),
         langFolder: '../static/assets/langs/',
+        onNavigation: () => {
+            appointmentTimeInput.forEach(checkBox => {
+                checkBox.disabled = true;
+                checkBox.checked = false;
+            })
+            myCalendar.daysSelected = [];
+            myCalendar.update();
+            submitButton.style.display = 'none';
+            cancelButton.style.display = 'none';
+            userNameInput.style.display = 'none';
+        },
         onSelect: () => {
             document.querySelector('.appointmentTimeButtons').removeAttribute('style');
             let selected = myCalendar.getDays();

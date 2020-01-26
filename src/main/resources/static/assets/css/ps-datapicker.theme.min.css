@@ -6,7 +6,7 @@
 }
 
 .ps-datapicker .navigation {
-  background-color: #0c5dd6;
+  background-color: darkorange;
   color: white;
   display: flex;
   flex-direction: row;
@@ -31,7 +31,7 @@
   display: flex;
   color: #fff;
   font-size:1em;
-  background-color: #0a51ad;
+  background-color: #7d1f23;
 }
 
 .ps-datapicker .week.rtl {
@@ -80,6 +80,7 @@
 
 .ps-datapicker .day.is-selected {
   background-color: #c12031 !important;
+  border: rgba(85, 85, 85, 0.3) solid 1px;
   color: white !important;
   font-size: 1.2em;
   padding: 0.3em;
@@ -168,6 +169,11 @@
   margin-right: auto;
 }
 
+.appointment-button-group {
+  display: flex;
+  padding: 0px;
+}
+
 #content_page_wrapper .cancel-btn {
   height: 49px;
   border-radius: 2px;
@@ -179,6 +185,7 @@
   width: 100px;
   border: 1px solid rgba(85, 85, 85, 0.3);
   font-family: "Planet Light", "Planet Light", sans-serif;
+  float: left;
 }
 
 #content_page_wrapper .cancel-btn:hover {
@@ -190,16 +197,6 @@
 
 #apptForm h2 {
   text-align: center;
-}
-
-#apptForm .submit._4ORMAT_module_submit {
-  width: fit-content;
-  /* margin: 25px auto; */
-}
-
-.appointment-button-group {
-  display: flex;
-  justify-content: space-evenly;
 }
 
 @media screen and (max-width: 768px) {
