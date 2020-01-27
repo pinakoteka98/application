@@ -67,6 +67,14 @@
             font-size: 21px;
         }
 
+        #order_list {
+            margin-bottom: 15px;
+        }
+
+        body {
+            color: black !important;
+        }
+
         @media screen and (max-width: 768px) {
             #content_page_wrapper h2.xl-headline {
                 font-size: 18.2px;
@@ -122,20 +130,21 @@
 
             <div class="_4ORMAT_content_page_row _4ormat_sort_item _4ORMAT_module_contact_10" style="padding-top: 0px">
                 <h2 style="margin: 5px; text-align: center">Historia zamówień</h2>
-                <p style="margin: 5px; text-align: center; text-transform: uppercase; font-size: 12px">dane od 1 stycznia 2019 roku</p>
+                <p style="margin: 5px; text-align: center; text-transform: uppercase; font-size: 12px">dane od 1
+                    stycznia 2019 roku</p>
 
-                <div id="order_list" th:each="order : ${orders}" style="margin-bottom: 10px !important;">
-                    <div style="max-width: 1140px" th:style="${order.status == order.status.READY ? 'background-color: green' : (order.status == order.status.INPROGRESS ? 'background-color: yellow' : 'background-color: blue')}">
+                <div id="order_list" th:each="order : ${orders}" th:style="${order.status == order.status.READY ? 'background-color: #78C163' : (order.status == order.status.INPROGRESS ? 'background-color: #9C202A' : 'background-color: grey')}">
+                    <div style="max-width: 1140px">
                         <h4 th:text="'Numer zamówienia: '+${order.orderNo}"></h4>
                         <p th:text="'Data złożenia zamówienia: '+${order.dateOfOrder}"></p>
 
 
                         <div class="col-1" th:switch="${order.status}">
-                            <span style="color:#c12031; font-weight: 700; text-transform: uppercase"
+                            <span style="color:white; font-weight: 700; text-transform: uppercase"
                                   th:case="${order.status.INPROGRESS}">w trakcie realizacji</span>
-                            <span style="color:green; font-weight: 700; text-transform: uppercase"
+                            <span style="color:white; font-weight: 700; text-transform: uppercase"
                                   th:case="${order.status.READY}">gotowe, oczekuje na odbiór</span>
-                            <span style="color:darkgrey; font-weight: 700; text-transform: uppercase"
+                            <span style="color:white; font-weight: 700; text-transform: uppercase"
                                   th:case="${order.status.RECEIVED}">zrealizowane i odebrane</span>
                         </div>
 
@@ -203,6 +212,7 @@
         type='text/javascript'>
 
 </script>
+
 
 </body>
 </html>

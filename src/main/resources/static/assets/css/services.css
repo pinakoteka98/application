@@ -31,6 +31,7 @@ h3 {
 }
 
 #content_page_wrapper .cancel-btn {
+    -webkit-appearance: none;
     float: left;
     height: 49px;
     border-radius: 2px;
@@ -46,6 +47,7 @@ h3 {
 }
 
 .appointment-button-group {
+    width: 350px;
     display: flex;
 }
 
