@@ -125,7 +125,7 @@
                 <p style="margin: 5px; text-align: center; text-transform: uppercase; font-size: 12px">dane od 1 stycznia 2019 roku</p>
 
                 <div id="order_list" th:each="order : ${orders}" style="margin-bottom: 10px !important;">
-                    <div style="max-width: 1140px">
+                    <div style="max-width: 1140px" th:style="${order.status == order.status.READY ? 'background-color: green' : (order.status == order.status.INPROGRESS ? 'background-color: yellow' : 'background-color: blue')}">
                         <h4 th:text="'Numer zamówienia: '+${order.orderNo}"></h4>
                         <p th:text="'Data złożenia zamówienia: '+${order.dateOfOrder}"></p>
 
