@@ -110,6 +110,15 @@
             #content_page_wrapper fieldset {
                 text-align: center;
             }
+
+            #content_page_wrapper ._4ORMAT_content_page_row {
+                padding-top: 10px;
+                padding-bottom: 0px;
+            }
+
+            #testForm .submit._4ORMAT_module_submit {
+                margin: 10px 0;
+            }
         }
 
         #content_page_wrapper .cancel-btn {
@@ -123,9 +132,6 @@
             transition: 0.3s;
         }
 
-        .btn {
-            margin-top: 0px !important;
-        }
     </style>
 
 </head>
@@ -160,7 +166,7 @@
                     </div>
                     <div class="fourcol">
 
-                        <form class=" email_form needs-validation" data-editable-type="contact-form" id="apptForm"
+                        <form class=" email_form needs-validation" data-editable-type="contact-form" id="testForm"
                               name="contact_form_1" th:action="@{/services}" method="POST" novalidate>
                             <div class="error_messages"></div>
                             <div class="row naked">

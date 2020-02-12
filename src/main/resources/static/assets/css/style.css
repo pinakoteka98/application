@@ -21,12 +21,11 @@ a:link, a:hover, a:visited, a:active {
 }
 
 #backtomenu {
+    padding: 15px;
     text-decoration: none;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    padding: 15px 15px;
-    font-size: 18px;
+    font-size: 1.2em;
     color: #c12031 !important;
+    display: block;
 }
 
 .clickable {
@@ -164,7 +163,7 @@ select option[disabled]:first-child {
 }
 
 .btn {
-    margin-top: 10px !important;
+    margin-top: 0px !important;
 }
 
 #footer {

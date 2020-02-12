@@ -136,7 +136,7 @@ public class UserController {
         int hour = appointment.getAppointmentTime().toLocalTime().getHour();
         emailService.sendMessage("imac@wp.pl", "Masz nowe spotkanie umowione na dzień " + appointment.getAppointmentDate() + ", na godzinę " + hour
                 + ".\nImię Klienta: " + appointment.getFirstName() + "\nEmail: " + user.getEmail() + "\nTelefon: " + user.getPhoneNumber(), MessageType.MAIL_ADMIN);
-        emailService.sendMessage(user.getEmail(), "Twoje spotkanie jest umówione na dzień " + appointment.getAppointmentDate() + ", na godzinę " + hour + ". Prosimy o punktualność.", MessageType.MAIL_APPOINTMENT);
+        emailService.sendMessage(user.getEmail(), "Twoje spotkanie jest umówione na dzień" + appointment.getAppointmentDate() + ", na godzinę" + hour + ".\nProsimy o punktualność.", MessageType.MAIL_APPOINTMENT);
         model.addAttribute(appointment);
         return "confirmation";
     }

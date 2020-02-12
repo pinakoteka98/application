@@ -28,58 +28,55 @@ tr:nth-child(even) {
 .pagination {
     display: inline-block;
     text-decoration: none;
+    text-align: center;
+    max-width: 1140px;
+    bottom: 0;
+    margin: 10px auto;
+    text-align: center;
 }
 
 .pagination a:link {
     text-decoration: none;
-}
-
-.pagination a:active {
-    text-decoration: none;
+    border: 2px solid #A5A29F !important;
 }
 
 .pagination a:hover {
     text-decoration: none;
+    border: 2px solid #c12031;
+!important;
 }
 
 .pagination a:visited {
     text-decoration: none;
+    border: 2px solid #A5A29F !important;
 }
 
 .pagination a {
     color: black;
     float: left;
-    padding: 8px 16px;
+    padding: 10px 20px;
     text-decoration: none;
     transition: background-color .3s;
-    border: 1px solid #A5A29F;
-    margin: 0 4px;
+    border: 2px solid #A5A29F;
+    margin: 0 5px;
 }
 
 .pagination a.active {
     background-color: #c12031;
     color: white;
-    border: 1px solid #c12031;
+    border: 2px solid #c12031;
+    font-weight: 600;
 }
 
 .pagination a:hover:not(.active) {
     background-color: #A5A29F;
 }
 
-.footerholder {
-    background: none repeat scroll 0 0 transparent;
-    bottom: 0;
-    text-align: center;
-    position: fixed;
-    width: 100%;
-    margin: 0 auto;
-}
-
-#footer {
+.footer {
     max-width: 1140px;
     display: block;
     bottom: 0;
-    margin: 10px auto;
+    margin: 0px auto;
     text-align: center;
 }
 
@@ -89,7 +86,8 @@ tr:nth-child(even) {
 
 #order_list {
     background: #f5f5f5;
-    padding: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
     -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     -ms-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
@@ -119,4 +117,55 @@ tr:nth-child(even) {
 .col-2 {
     text-align: right !important;
     display: inline;
+}
+
+#content_page_wrapper h2.xl-headline {
+    font-size: 21px;
+}
+
+._4ORMAT_content_page_row .btn {
+    font-family: "Planet Light", "Planet Light", sans-serif
+}
+
+._4ORMAT_content_page_row .btn:hover {
+    border-color: rgba(85, 85, 85, 0.4) !important;
+    background: rgba(85, 85, 85, 0.03) !important;
+}
+
+body {
+    color: black !important;
+}
+
+#m {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    #m {
+        display: initial;
+    }
+
+    #content_page_wrapper h2.xl-headline {
+        font-size: 18.2px;
+    }
+
+    .col-1 {
+        margin-right: 0px !important;
+    }
+
+    .col-2 {
+        font-size: 16px !important;
+    }
+
+    h5 {
+        font-size: 20px !important;
+    }
+
+    #desktop {
+        display: none;
+    }
+
+    #backtomenu {
+        display: none;
+    }
 }
