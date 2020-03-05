@@ -57,7 +57,12 @@
     <div id="wrapper">
         <h1 id="page-header-text" style="text-align: center; margin-top: 20px !important; margin-bottom: 15px !important; text-transform: uppercase; letter-spacing: 5px; color: #c12031">upcoming meetings</h1>
         <div class="row">
-            <div class="col-md-2 col-xs-12" style="margin-bottom: 20px">
+            <div class="col-md-2 form-group" style="margin-bottom: 20px">
+                <form th:action="@{/leave}" method="get">
+                    <button class="btn btn-primary" type="submit">Add Leave</button>
+                </form>
+            </div>
+            <div class="col-md-2 form-group" style="margin-bottom: 20px">
                 <form th:action="@{/menu}" method="get">
                     <button class="btn btn-default" type="submit">Back to menu</button>
                 </form>

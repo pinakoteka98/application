@@ -13,10 +13,12 @@ import pl.sdacademy.todolist.dto.MessageType;
 import pl.sdacademy.todolist.dto.UserDto;
 import pl.sdacademy.todolist.emailService.EmailService;
 import pl.sdacademy.todolist.entity.Appointment;
+import pl.sdacademy.todolist.entity.LeaveDate;
 import pl.sdacademy.todolist.entity.Order;
 import pl.sdacademy.todolist.entity.User;
 import pl.sdacademy.todolist.repository.AppointmentRepository;
 import pl.sdacademy.todolist.service.AppointmentService;
+import pl.sdacademy.todolist.service.LeaveService;
 import pl.sdacademy.todolist.service.OrderService;
 import pl.sdacademy.todolist.service.UserService;
 import pl.sdacademy.todolist.utils.AppUtils;
@@ -38,6 +40,7 @@ public class UserController {
     private final PasswordEncoder passwordEncoder;
     private final AppointmentRepository appointmentRepository;
     private final AppointmentService appointmentService;
+    private final LeaveService leaveService;
 
     @GetMapping(value = "/login")
     public String showLoginPage() {
@@ -126,6 +129,8 @@ public class UserController {
         appointment.setUser(user);
         model.addAttribute("appointment", appointment);
         model.addAttribute("appointments", appointmentList);
+        List<LeaveDate> leaveDate = leaveService.getAllLeave();
+        model.addAttribute("leave", leaveDate);
         return "scheduler";
     }
 
@@ -136,7 +141,7 @@ public class UserController {
         int hour = appointment.getAppointmentTime().toLocalTime().getHour();
         emailService.sendMessage("imac@wp.pl", "Masz nowe spotkanie umowione na dzień " + appointment.getAppointmentDate() + ", na godzinę " + hour
                 + ".\nImię Klienta: " + appointment.getFirstName() + "\nEmail: " + user.getEmail() + "\nTelefon: " + user.getPhoneNumber(), MessageType.MAIL_ADMIN);
-        emailService.sendMessage(user.getEmail(), "Twoje spotkanie jest umówione na dzień" + appointment.getAppointmentDate() + ", na godzinę" + hour + ".\nProsimy o punktualność.", MessageType.MAIL_APPOINTMENT);
+        emailService.sendMessage(user.getEmail(), "Twoje spotkanie jest umówione na dzień " + appointment.getAppointmentDate() + ", na godzinę " + hour + ". Prosimy o punktualność.", MessageType.MAIL_APPOINTMENT);
         model.addAttribute(appointment);
         return "confirmation";
     }

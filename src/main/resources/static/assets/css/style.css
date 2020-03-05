@@ -127,9 +127,9 @@ textarea:focus {
     box-shadow: 0 2px 3px 0 rgba(0,0,0,.12);
 }
 
-input{
-    background-color: #fff !important;
-}
+/*input{*/
+/*    background-color: #fff !important;*/
+/*}*/
 
 textarea:focus {
     border-color: black !important;

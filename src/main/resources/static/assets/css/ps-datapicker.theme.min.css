@@ -215,20 +215,20 @@
 #apptForm .submit._4ORMAT_module_submit input {
   background-color: #c12031;
   color: white;
-  transition: .3s;
 }
 
 #apptForm .submit._4ORMAT_module_submit input:hover {
   background-color: transparent;
   color: #c12031;
   border-color: #c12031;
+  transition: all 0.5s ease-in-out;
 }
 
 #apptForm .form-control-placeholder {
   position: absolute;
   top: 0;
   margin-left: 10px;
-  margin-top: 15px;
+  margin-top: 20px;
   padding: 0 5px 0 5px;
   transition: all 200ms;
   opacity: 0.7;
