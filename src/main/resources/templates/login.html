@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -177,6 +177,13 @@
                             <h4 class="register3">
                                 <a th:href="@{/resetpassword}"
                                    href="/resetpassword" style="color: #c12031">Nie pamiętasz hasła?
+                                </a>
+                            </h4>
+                        </div>
+                        <div sec:authorize="!isAuthenticated()">
+                            <h4 class="register2">
+                                <a th:href="@{/scheduleunlogged}"
+                                   href="/scheduleunlogged" style="color: #c12031">Umów się na spotkanie
                                 </a>
                             </h4>
                         </div>

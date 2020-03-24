@@ -25,11 +25,11 @@ public class OrderController {
 
     private final OrderService orderService;
 
-    @GetMapping({"/", "index"})
+    @GetMapping("index")
     public String showOrders(Model model) {
-        log.info("get order list");
-        List<Order> orders = orderService.findAll();
-        model.addAttribute("orders", orders);
+//        log.info("get order list");
+//        List<Order> orders = orderService.findAll();
+//        model.addAttribute("orders", orders);
         return "login";
     }
 

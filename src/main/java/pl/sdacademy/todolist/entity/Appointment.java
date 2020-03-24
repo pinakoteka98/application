@@ -16,7 +16,7 @@ public class Appointment {
 
     private String firstName;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
 //    @Column(name = "user_phone")
     private User user;
 
