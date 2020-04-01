@@ -2,6 +2,9 @@ package pl.sdacademy.todolist.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.web.bind.annotation.*;
 import pl.sdacademy.todolist.entity.Appointment;
 import pl.sdacademy.todolist.repository.AppointmentRepository;
@@ -9,9 +12,11 @@ import pl.sdacademy.todolist.service.LeaveService;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
 import java.time.LocalDate;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @RestController
@@ -32,7 +37,11 @@ public class ScheduleRestController {
     }
 
     @GetMapping("/all")
-    public List<Appointment> getAllAppointments() {
+    public List<Appointment> getAllAppointments(Authentication authentication) {
+        Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+        if (authorities.contains(new SimpleGrantedAuthority("ROLE_USER"))) {
+            return sortAppointments(appointmentRepository.findAll().stream().map(this::deleteUser).collect(Collectors.toList()));
+        }
         return sortAppointments(appointmentRepository.findAll());
     }
 
@@ -47,6 +56,12 @@ public class ScheduleRestController {
             appointments.add(appt);
             return appointments;
         }
+    }
+
+    private Appointment deleteUser(Appointment appointment){
+         appointment.setUser(null);
+         appointment.setFirstName(null);
+         return appointment;
     }
 
     private List<Appointment> sortAppointments(List<Appointment> appointments) {

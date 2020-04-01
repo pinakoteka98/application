@@ -20,4 +20,8 @@ public class AppointmentService {
                 .map(value -> new AppointmentDto(value.getAppointmentDate(), value.getAppointmentTime()))
                 .collect(Collectors.toList());
     }
+
+    public void save(Appointment appointment) {
+        appointmentRepository.save(appointment);
+    }
 }

@@ -13,13 +13,11 @@ import pl.sdacademy.todolist.emailService.EmailService;
 import pl.sdacademy.todolist.entity.Appointment;
 import pl.sdacademy.todolist.entity.LeaveDate;
 import pl.sdacademy.todolist.entity.User;
-import pl.sdacademy.todolist.repository.AppointmentRepository;
 import pl.sdacademy.todolist.service.AppointmentService;
 import pl.sdacademy.todolist.service.LeaveService;
 import pl.sdacademy.todolist.service.UserService;
 
 import java.util.List;
-import java.util.Optional;
 
 @RequiredArgsConstructor
 @Controller
@@ -27,7 +25,6 @@ public class UnloggedUserController {
 
     private final AppointmentService appointmentService;
     private final LeaveService leaveService;
-    private final AppointmentRepository appointmentRepository;
     private final EmailService emailService;
     private final UserService userService;
 
@@ -44,15 +41,13 @@ public class UnloggedUserController {
 
     @PostMapping("/confirmationunlogged")
     public String appointmentScheduleForm(@ModelAttribute(name = "appointment") Appointment appointment, Model model, @RequestParam String firstName, @RequestParam String phoneNumber) {
-        Optional<User> existingUser = userService.findUserByPhoneNumber(phoneNumber);
-        User user = existingUser.orElseGet(User::new);
-        user.setPhoneNumber(phoneNumber);
+        User user = userService.createOrGetUser(phoneNumber);
         appointment.setFirstName(firstName);
         appointment.setUser(user);
-        appointmentRepository.save(appointment);
+        appointmentService.save(appointment);
         int hour = appointment.getAppointmentTime().toLocalTime().getHour();
-        emailService.sendMessage("imac@wp.pl", "Masz nowe spotkanie umowione na dzień " + appointment.getAppointmentDate() + ", na godzinę " + hour
-                + ".\nImię Klienta: " + appointment.getFirstName() + "\nEmail: " + user.getEmail() + "\nTelefon: " + user.getPhoneNumber(), MessageType.MAIL_ADMIN);
+        emailService.sendMessage("cornholio@wp.pl", "Masz nowe spotkanie umowione na dzień " + appointment.getAppointmentDate() + ", na godzinę " + hour
+                + ".\nImię Klienta: " + appointment.getFirstName() + "\nTelefon: " + user.getPhoneNumber() + "\nWIZYTA UMÓWIONA BEZ LOGOWANIA.", MessageType.MAIL_ADMIN);
         model.addAttribute(appointment);
         return "confirmation";
     }

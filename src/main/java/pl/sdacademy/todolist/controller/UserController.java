@@ -16,7 +16,6 @@ import pl.sdacademy.todolist.entity.Appointment;
 import pl.sdacademy.todolist.entity.LeaveDate;
 import pl.sdacademy.todolist.entity.Order;
 import pl.sdacademy.todolist.entity.User;
-import pl.sdacademy.todolist.repository.AppointmentRepository;
 import pl.sdacademy.todolist.service.AppointmentService;
 import pl.sdacademy.todolist.service.LeaveService;
 import pl.sdacademy.todolist.service.OrderService;
@@ -38,7 +37,6 @@ public class UserController {
     private final OrderService orderService;
     private final EmailService emailService;
     private final PasswordEncoder passwordEncoder;
-    private final AppointmentRepository appointmentRepository;
     private final AppointmentService appointmentService;
     private final LeaveService leaveService;
 
@@ -136,7 +134,7 @@ public class UserController {
 
     @PostMapping("/confirmation")
     public String appointmentScheduleForm(@ModelAttribute(name = "appointment") Appointment appointment, Model model, Principal principal) {
-        appointmentRepository.save(appointment);
+        appointmentService.save(appointment);
         User user = userService.findByPhoneNumber(principal.getName());
         int hour = appointment.getAppointmentTime().toLocalTime().getHour();
         emailService.sendMessage("imac@wp.pl", "Masz nowe spotkanie umowione na dzień " + appointment.getAppointmentDate() + ", na godzinę " + hour

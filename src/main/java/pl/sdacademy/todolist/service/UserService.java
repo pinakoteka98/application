@@ -29,8 +29,7 @@ public class UserService {
         Optional<User> user = userRepository.findUserByPhoneNumber(userDto.getPhoneNumber());
         if (user.isPresent()) {
             entity = user.get();
-        }
-        else {
+        } else {
             entity = new User();
             entity.setRoles(Collections.singleton(role));
             entity.setPhoneNumber(userDto.getPhoneNumber());
@@ -43,15 +42,24 @@ public class UserService {
 
     }
 
-    public Optional<User> findUserByPhoneNumber(String phoneNumber){
+    public Optional<User> findUserByPhoneNumber(String phoneNumber) {
         return userRepository.findUserByPhoneNumber(phoneNumber);
     }
 
-    public User findByPhoneNumber(String phoneNumber){
+    public User findByPhoneNumber(String phoneNumber) {
         return userRepository.findByPhoneNumber(phoneNumber);
     }
 
     public User uptade(User user) {
         return userRepository.save(user);
+    }
+
+    public User createOrGetUser(String phoneNumber) {
+        Role role = roleRepository.findByRole("USER");
+        Optional<User> existingUser = findUserByPhoneNumber(phoneNumber);
+        User user = existingUser.orElseGet(User::new);
+        user.setPhoneNumber(phoneNumber);
+        user.setRoles(Collections.singleton(role));
+        return user;
     }
 }
