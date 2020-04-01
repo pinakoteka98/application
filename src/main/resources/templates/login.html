@@ -5,9 +5,9 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>logowanie</title>
-    <link href="../static/assets/css/style.css" th:href="@{/static/assets/css/style.css}" type="text/css"
+    <link href="../static/assets/css/style.css" th:href="@{/static/assets/css/style.css}" type="text/css" media="screen"
           rel="stylesheet"/>
-    <link href="../static/assets/css/login.css" th:href="@{/static/assets/css/login.css}" type="text/css"
+    <link href="../static/assets/css/login.css" th:href="@{/static/assets/css/login.css}" type="text/css" media="screen"
           rel="stylesheet"/>
 
     <link href='//lucas-rfgv.format.com/stylesheet.css?v=2019-10-30T10:05:15Z' media='screen' rel='stylesheet'
@@ -177,13 +177,6 @@
                             <h4 class="register3">
                                 <a th:href="@{/resetpassword}"
                                    href="/resetpassword" style="color: #c12031">Nie pamiętasz hasła?
-                                </a>
-                            </h4>
-                        </div>
-                        <div sec:authorize="!isAuthenticated()">
-                            <h4 class="register2">
-                                <a th:href="@{/scheduleunlogged}"
-                                   href="/scheduleunlogged" style="color: #c12031">Umów się na spotkanie
                                 </a>
                             </h4>
                         </div>

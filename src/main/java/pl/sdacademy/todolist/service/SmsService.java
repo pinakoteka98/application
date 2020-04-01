@@ -96,7 +96,7 @@ public class SmsService implements MessageService {
         List<Appointment> appointments = appointmentRepository.findAllByAppointmentDate(tomorrow);
         appointments.forEach(a -> {
             int hour = a.getAppointmentTime().toLocalTime().getHour();
-            sendMessage(a.getUser().getPhoneNumber(), "Przypominamy o umówionym spotkaniu, zapraszamy serdecznie jutro o godzinie " + hour + ":00.", SMS_APPOINTMENT);
+            sendMessage(a.getUser().getPhoneNumber(), "Dzień dobry! Przypominamy o umówionym spotkaniu, zapraszamy serdecznie jutro o godzinie " + hour + ":00. Do zobaczenia!", SMS_APPOINTMENT);
         });
     }
 }

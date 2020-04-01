@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    let initialDate = moment().add(3, 'd').format("YYYY-MM-DD");
+    let initialDate = moment().add(2, 'd').format("YYYY-MM-DD");
     // $('#date').val(initialDate);
     $('#firstname').val($('#tempFirst').val());
     $('#lastname').val($('#tempLast').val());

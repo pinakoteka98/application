@@ -195,9 +195,8 @@
 
 #apptForm .form-group {
   width: 350px;
-  margin: 10px auto;
+  margin: 0px auto;
   position: relative;
-  margin-bottom: 0.5rem;
 }
 
 #apptForm {
