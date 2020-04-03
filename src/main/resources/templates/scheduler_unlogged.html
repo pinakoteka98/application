@@ -183,13 +183,13 @@
                             <div class="appointmentTimeButtons" style="display: none;">
                                 <input id="Time_11" type="radio" value="11:00:00" name="appointmentTime"
                                        style="display: none;" disabled>
-                                <label for="Time_11">11:00</label>
+                                <label for="Time_11" onclick="">11:00</label>
                                 <input id="Time_13" type="radio" value="13:00:00" name="appointmentTime"
                                        style="display: none;" disabled>
-                                <label for="Time_13">13:00</label>
+                                <label for="Time_13" onclick="">13:00</label>
                                 <input id="Time_15" type="radio" value="15:00:00" name="appointmentTime"
                                        style="display: none;" disabled>
-                                <label for="Time_15">15:00</label>
+                                <label for="Time_15" onclick="">15:00</label>
                             </div>
                         </div>
 
@@ -235,6 +235,7 @@
 </div>
 
 <script th:inline="javascript">
+    // const temp = [{"appointmentDate":"2020-04-14","appointmentTime":"11:00:00"}]
     const temp = /*[[${appointments}]]*/ null
     const leave = /*[[${leave}]]*/ null
     // console.log(temp)
@@ -309,6 +310,10 @@
         onSelect: () => {
             document.querySelector('.appointmentTimeButtons').removeAttribute('style');
             let selected = myCalendar.getDays();
+            const splitDate = selected[0].split('-')
+            splitDate[1] = ('0'+splitDate[1]).slice(-2)
+            splitDate[2] = ('0'+splitDate[2]).slice(-2)
+            selected = splitDate.join('-')
             appointmentTimeInput.forEach(checkBox => {
                 checkBox.disabled = true;
                 checkBox.checked = false;
@@ -319,9 +324,9 @@
                 userNameInput.style.display = 'none';
                 userPhoneInput.style.display = 'none';
             }
-            appointmentDataInput.value = selected[0];
+            appointmentDataInput.value = selected;
             const list = appointments.filter(appointment => {
-                const selectedDate = new Date(selected[0]);
+                const selectedDate = new Date(selected);
                 const tempDate = new Date(appointment.appointmentDate);
                 selectedDate.setHours(0, 0, 0, 0);
                 tempDate.setHours(0, 0, 0, 0);
