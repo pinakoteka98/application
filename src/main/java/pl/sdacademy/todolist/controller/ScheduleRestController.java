@@ -39,10 +39,9 @@ public class ScheduleRestController {
     @GetMapping("/all")
     public List<Appointment> getAllAppointments(Authentication authentication) {
         Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
-        if (authorities.contains(new SimpleGrantedAuthority("ROLE_USER"))) {
-            return sortAppointments(appointmentRepository.findAll().stream().map(this::deleteUser).collect(Collectors.toList()));
-        }
-        return sortAppointments(appointmentRepository.findAll());
+        return authorities.contains(new SimpleGrantedAuthority("ROLE_USER"))
+                ? sortAppointments(appointmentRepository.findAll().stream().map(this::deleteUser).collect(Collectors.toList()))
+                : sortAppointments(appointmentRepository.findAll());
     }
 
     @GetMapping("/all/{date}")
@@ -58,10 +57,10 @@ public class ScheduleRestController {
         }
     }
 
-    private Appointment deleteUser(Appointment appointment){
-         appointment.setUser(null);
-         appointment.setFirstName(null);
-         return appointment;
+    private Appointment deleteUser(Appointment appointment) {
+        appointment.setUser(null);
+        appointment.setFirstName(null);
+        return appointment;
     }
 
     private List<Appointment> sortAppointments(List<Appointment> appointments) {
@@ -73,7 +72,7 @@ public class ScheduleRestController {
     @PostMapping("/add-leave")
     public String addLeave(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate leaveDate) {
         try {
-            leaveService.addLeave( Date.valueOf(leaveDate));
+            leaveService.addLeave(Date.valueOf(leaveDate));
             return "Leave was added successfully<br><a href=\"/leave\" > Back</a>";
         } catch (Exception ex) {
             return ex.getMessage();
@@ -83,8 +82,8 @@ public class ScheduleRestController {
     @PostMapping("/delete-leave")
     public String deleteLeave(@RequestParam(required = false) String[] deleteIds) {
         try {
-            if(deleteIds!=null){
-                for (String id : deleteIds){
+            if (deleteIds != null) {
+                for (String id : deleteIds) {
                     leaveService.deleteLeave(Long.parseLong(id));
                 }
                 return "Leave was removed successfully<br><a href=\"/leave\" > Back</a>";
