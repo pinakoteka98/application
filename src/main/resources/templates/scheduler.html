@@ -333,6 +333,11 @@
         onSelect: () => {
             document.querySelector('.appointmentTimeButtons').removeAttribute('style');
             let selected = myCalendar.getDays();
+            const splitDate = selected[0].split('-')
+            splitDate[1] = ('0'+splitDate[1]).slice(-2)
+            splitDate[2] = ('0'+splitDate[2]).slice(-2)
+            selected = splitDate.join('-')
+            
             appointmentTimeInput.forEach(checkBox => {
                 checkBox.disabled = true;
                 checkBox.checked = false;
@@ -341,9 +346,9 @@
                 submitButton.style.display = 'none';
                 cancelButton.style.display = 'none';
             }
-            appointmentDataInput.value = selected[0];
+            appointmentDataInput.value = selected;
             const list = appointments.filter(appointment => {
-                const selectedDate = new Date(selected[0]);
+                const selectedDate = new Date(selected);
                 const tempDate = new Date(appointment.appointmentDate);
                 selectedDate.setHours(0, 0, 0, 0);
                 tempDate.setHours(0, 0, 0, 0);
