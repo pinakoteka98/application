@@ -2,21 +2,16 @@ package pl.sdacademy.todolist.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.web.bind.annotation.*;
 import pl.sdacademy.todolist.entity.Appointment;
 import pl.sdacademy.todolist.repository.AppointmentRepository;
 import pl.sdacademy.todolist.service.LeaveService;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
-import java.time.LocalDate;
-import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @RestController
@@ -37,11 +32,8 @@ public class ScheduleRestController {
     }
 
     @GetMapping("/all")
-    public List<Appointment> getAllAppointments(Authentication authentication) {
-        Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
-        return authorities.contains(new SimpleGrantedAuthority("ROLE_USER"))
-                ? sortAppointments(appointmentRepository.findAll().stream().map(this::deleteUser).collect(Collectors.toList()))
-                : sortAppointments(appointmentRepository.findAll());
+    public List<Appointment> getAllAppointments() {
+        return sortAppointments(appointmentRepository.findAll());
     }
 
     @GetMapping("/all/{date}")
