@@ -65,6 +65,7 @@
                                             <option value="expecteddate" th:selected="${sortcolumn}=='expecteddate'">Przewidywany termin realizacji
                                             </option>
                                             <option value="status" th:selected="${sortcolumn}=='status'">Status realizacji zamówienia</option>
+                                            <option value="bindingworkshop" th:selected="${sortcolumn}=='bindingworkshop'">Miejsce oprawy</option>
                                         </select>
                                     </span>
 
@@ -140,6 +141,7 @@
                     <th>Date of order</th>
                     <th>Estimated date</th>
                     <th>Status</th>
+                    <th>Binding workshop</th>
                     <th>Taken by</th>
                     <th>Phone No.</th>
                     <th>Value</th>
@@ -154,6 +156,7 @@
                     <td th:text="${order.dateOfOrder}"></td>
                     <td th:text="${order.estimatedDate}"></td>
                     <td th:text="${order.status}"></td>
+                    <td th:text="${order.bindingWorkshop}"></td>
                     <td th:text="${order.nickname}"></td>
                     <td th:text="${order.phoneNumber}"></td>
                     <td th:text="${order.value}"></td>
