@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>strefa klienta</title>
+    <title>menu</title>
     <link href="../static/assets/css/style.css" rel="stylesheet" type="text/css" media="screen"
           th:href="@{/static/assets/css/style.css}">
     <link href="../static/assets/css/style.css" rel="stylesheet" type="text/css" media="screen"
@@ -133,35 +133,38 @@
         <div class="_4ORMAT_content_wrapper" id="content_page_wrapper">
             <div class="_4ORMAT_content_page_container _4ormat_sort">
                 <div class="_4ORMAT_content_page_row _4ormat_sort_item _4ORMAT_module_image_7"
-                     data-content-module-category="layout" data-content-module-template-id="18">
+                     data-content-module-category="layout" data-content-module-template-id="18" style="padding-top: 0px !important; padding-bottom: 0px !important;">
                     <div class=" align_center">
 
-                        <div sec:authorize="hasRole('USER')">
-                            <div class="fourcol">
-                                <div class="btn1 draw-border" id="menu1">
-                                    <a id="test1" th:href="@{/list/0}" class="clickable"
-                                       style="width: auto">
-                                        <br>Historia<br>zamówień
-                                        <p style="margin-top: 20px; margin-bottom: 30px">sprawdź status zamówienia</p>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="fourcol">
-                                <div class="btn1 draw-border" id="menu2">
-                                    <a id="test2" th:href="@{/schedule}" class="clickable"><br>Rezerwacja<br>wizyty
-                                        <p style="margin-top: 20px; margin-bottom: 30px">umów spotkanie online</p>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="fourcol last">
-                                <div class="btn1 draw-border" id="menu3">
-                                    <a id="test3" th:href="@{/services}" class="clickable"><br>Usługi<br>dodatkowe
-                                        <p style="margin-top: 20px; margin-bottom: 30px">wyślij zapytanie</p>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div sec:authorize="hasRole('ADMIN')">
+
+                        <!--                      <div sec:authorize="hasRole('USER')">
+                                                  <div class="fourcol">
+                                                      <div class="btn1 draw-border" id="menu1">
+                                                          <a id="test1" th:href="@{/list/0}" class="clickable"
+                                                             style="width: auto">
+                                                              <br>Historia<br>zamówień
+                                                              <p style="margin-top: 20px; margin-bottom: 30px">sprawdź status zamówienia</p>
+                                                          </a>
+                                                      </div>
+                                                  </div>
+                                                  <div class="fourcol">
+                                                      <div class="btn1 draw-border" id="menu2">
+                                                          <a id="test2" th:href="@{/schedule}" class="clickable"><br>Rezerwacja<br>wizyty
+                                                              <p style="margin-top: 20px; margin-bottom: 30px">umów spotkanie online</p>
+                                                          </a>
+                                                      </div>
+                                                  </div>
+                                                  <div class="fourcol last">
+                                                      <div class="btn1 draw-border" id="menu3">
+                                                          <a id="test3" th:href="@{/services}" class="clickable"><br>Usługi<br>dodatkowe
+                                                              <p style="margin-top: 20px; margin-bottom: 30px">wyślij zapytanie</p>
+                                                          </a>
+                                                      </div>
+                                                  </div>
+                                              </div>-->
+
+                        <div sec:authorize="hasRole('ADMIN')"
+                             style="position: relative; vertical-align: middle; margin-left: 50px; margin-right: 50px">
                             <div class="sixcol">
                                 <div style="height: 50px"></div>
                                 <div class="btn1 draw-border" id="menu4">
@@ -188,16 +191,16 @@
 </div>
 
 
-<script src='https://static0.format.com/static/theme_api/v1/4ormat-7ec6872c8e665780eead7b027e2aa66fb06142caecd57b86359163172bf23497.js'
-        type='text/javascript'></script>
+        <script src='https://static0.format.com/static/theme_api/v1/4ormat-7ec6872c8e665780eead7b027e2aa66fb06142caecd57b86359163172bf23497.js'
+                type='text/javascript'></script>
 
 
-<script src='https://static0.format.com/static/content_page-5442130d8712f5393515d507535035c79d85db0bb7172529555dd5b7929fa404.js'
-        type='text/javascript'></script>
+        <script src='https://static0.format.com/static/content_page-5442130d8712f5393515d507535035c79d85db0bb7172529555dd5b7929fa404.js'
+                type='text/javascript'></script>
 
 
-<script src='https://static0.format.com/static/_common/large_headline_shim-04d68b28db57598de64ddcbb8e143b86b89b4c6df47f86593d938b79c18c3bc7.js'
-        type='text/javascript'></script>
+        <script src='https://static0.format.com/static/_common/large_headline_shim-04d68b28db57598de64ddcbb8e143b86b89b4c6df47f86593d938b79c18c3bc7.js'
+                type='text/javascript'></script>
 
 </body>
 </html>

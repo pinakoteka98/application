@@ -25,7 +25,7 @@ public class ScheduleRestController {
     public String addNewAppointment(@ModelAttribute Appointment appointment) {
         try {
             appointmentRepository.save(appointment);
-            return "Appointment was added succesfully";
+            return "Appointment was added successfully";
         } catch (Exception ex) {
             return ex.getMessage();
         }
