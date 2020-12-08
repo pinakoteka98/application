@@ -53,6 +53,15 @@
                             </select>
                         </div>
                         <div class="form-group col-md-8">
+                            <label for="bindingWorkshop" class="col-form-label">Miejsce oprawy</label>
+                            <select id="bindingWorkshop" name="bindingWorkshop" placeholder="miejsce oprawy">
+                                <option th:each="bindingWorkshop : ${T(pl.sdacademy.todolist.entity.BindingWorkshop).values()}"
+                                        th:value="${bindingWorkshop}"
+                                        th:text="${bindingWorkshop}">
+                                </option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-8">
                             <label for="phoneNumber" class="sr-only">Phone number</label>
                             <input type="text" th:field="*{phoneNumber}" class="form-control" id="phoneNumber"
                                    placeholder="Phone number 9-digits">

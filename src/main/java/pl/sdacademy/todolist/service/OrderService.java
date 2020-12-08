@@ -62,6 +62,7 @@ public class OrderService {
         orderEntity.setPhoneNumber(orderDto.getPhoneNumber());
         orderEntity.setStatus(orderDto.getStatus());
         orderEntity.setNickname(orderDto.getNickname());
+        orderEntity.setBindingWorkshop(orderDto.getBindingWorkshop());
         orderEntity.setValue(orderDto.getValue());
         orderEntity.setUser(user);
         return orderRepository.save(orderEntity);
@@ -79,6 +80,7 @@ public class OrderService {
         orderEntity.setPhoneNumber(order.getPhoneNumber());
         orderEntity.setValue(order.getValue());
         orderEntity.setNickname(order.getNickname());
+        orderEntity.setBindingWorkshop(order.getBindingWorkshop());
         orderEntity.setStatus(order.getStatus());
         if (newStatus == Status.READY && newStatus != oldStatus) {
             smsService.sendMessage(orderEntity.getPhoneNumber(), "Dzień dobry! Miło nam poinformować, że zamówienie numer " + orderEntity.getOrderNo() + " zostało zrealizowane. Zapraszamy po odbiór. Pozdrawiamy i życzymy miłego dnia.", MessageType.SMS_STATUS);
@@ -123,6 +125,12 @@ public class OrderService {
                 break;
             case "expecteddate":
                 chooseSortBy = "estimatedDate";
+                break;
+            case "ordervalue":
+                chooseSortBy = "value";
+                break;
+            case "bindingworkshop":
+                chooseSortBy = "bindingWorkshop";
                 break;
             default:
                 chooseSortBy = "dateOfOrder";
