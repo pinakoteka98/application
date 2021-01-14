@@ -1,5 +1,5 @@
 package pl.sdacademy.todolist.entity;
 
 public enum BindingWorkshop {
-    MATARNIA, SZCZEBRZESZYNO;
+    PRACOWNIA, MATARNIA, MADISON, SOPOT;
 }

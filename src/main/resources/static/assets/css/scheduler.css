@@ -1,0 +1,16 @@
+/*pixel square for each day - default is 39 */
+.flatpickr-calendar {
+  width: 7rem; }
+
+.dayContainer {
+  width: 7rem;
+  min-width: 7rem;
+  max-width: 7rem; }
+
+.flatpickr-days {
+  width: 7rem; }
+
+.flatpickr-day {
+  max-width: 1rem;
+  height: 1rem;
+  line-height: 1rem; }
