@@ -1,22 +1,26 @@
 package pl.sdacademy.todolist.controller;
 
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import java.time.LocalDate;
+import java.util.List;
+
+import javax.validation.Valid;
+
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import pl.sdacademy.todolist.dto.OrderDto;
 import pl.sdacademy.todolist.entity.Order;
 import pl.sdacademy.todolist.entity.Status;
 import pl.sdacademy.todolist.service.OrderService;
-
-import javax.validation.Valid;
-import java.math.BigDecimal;
-import java.security.Principal;
-import java.time.LocalDate;
-import java.util.List;
 
 @RequiredArgsConstructor
 @Slf4j
@@ -53,6 +57,7 @@ public class OrderController {
         int currentPage = orderPage.getNumber();
         int totalPages = orderPage.getTotalPages();
         double averageOrderValueFromLastYear = orderService.findMiddleOrderValueFromLastYear() == null ? 0 : orderService.findMiddleOrderValueFromLastYear();
+        double yearToYearPercentageChange = orderService.yearToYearPercentageChange();
         int numberOfOrdersFromLastYear = orderService.findNumberOfOrdersFromLastYear();
         double averageMonthlyNumberOfOrdersFromTheLastYear = orderService.findAverageMonthlyNumberOfOrdersFromTheLastYear();
         List<Order> orders = orderPage.getContent();
@@ -66,6 +71,7 @@ public class OrderController {
         model.addAttribute("averageOrderValueFromLastYear", averageOrderValueFromLastYear);
         model.addAttribute("numberOfOrdersFromLastYear", numberOfOrdersFromLastYear);
         model.addAttribute("averageMonthlyNumberOfOrdersFromTheLastYear", averageMonthlyNumberOfOrdersFromTheLastYear);
+        model.addAttribute("yearToYearPercentageChange", yearToYearPercentageChange);
         return "orders";
     }
 

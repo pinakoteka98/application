@@ -1,14 +1,15 @@
 package pl.sdacademy.todolist.repository;
 
+import java.time.LocalDate;
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+
 import pl.sdacademy.todolist.entity.Order;
 import pl.sdacademy.todolist.entity.Status;
-
-import java.time.LocalDate;
-import java.util.List;
 
 public interface OrderRepository extends JpaRepository<Order, Long> {
 
@@ -37,5 +38,8 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
 
     @Query("select count (o) from Order o where o.dateOfOrder > :date")
     Integer findNumberOfOrdersFromLastYear(LocalDate date);
+    
+    @Query("select count (o) from Order o where o.dateOfOrder between :dateFrom and :dateTo")
+    Integer findNumberOfOrdersFromPrevious365Days(LocalDate dateFrom, LocalDate dateTo);
 
 }

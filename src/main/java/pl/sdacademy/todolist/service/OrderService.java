@@ -1,28 +1,30 @@
 package pl.sdacademy.todolist.service;
 
-import lombok.RequiredArgsConstructor;
+import java.time.LocalDate;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
+
+import javax.transaction.Transactional;
+
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
+
+import lombok.RequiredArgsConstructor;
 import pl.sdacademy.todolist.dto.MessageType;
 import pl.sdacademy.todolist.dto.OrderDto;
-import pl.sdacademy.todolist.entity.*;
+import pl.sdacademy.todolist.entity.Order;
+import pl.sdacademy.todolist.entity.Role;
+import pl.sdacademy.todolist.entity.Status;
+import pl.sdacademy.todolist.entity.User;
 import pl.sdacademy.todolist.exception.EntityNotFoundException;
 import pl.sdacademy.todolist.repository.OrderRepository;
 import pl.sdacademy.todolist.repository.RoleRepository;
 import pl.sdacademy.todolist.repository.UserRepository;
-
-import javax.transaction.Transactional;
-import java.time.LocalDate;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.concurrent.ConcurrentHashMap;
 
 @RequiredArgsConstructor
 @Service
@@ -149,15 +151,29 @@ public class OrderService {
         LocalDate dateYearAgo = getLocalDateYearAgo();
         return orderRepository.findNumberOfOrdersFromLastYear(dateYearAgo);
     }
+    
+    public Integer findNumberOfOrdersFromPrevios365Days() {
+        LocalDate dateYearAgo = getLocalDateYearAgo();
+        LocalDate date2YearsAgo = getLocalDate2YearsAgo();
+        return orderRepository.findNumberOfOrdersFromPrevious365Days(date2YearsAgo, dateYearAgo) == 0 ? 1 : orderRepository.findNumberOfOrdersFromPrevious365Days(date2YearsAgo, dateYearAgo);
+    }
 
     public Double findAverageMonthlyNumberOfOrdersFromTheLastYear() {
         LocalDate dateYearAgo = getLocalDateYearAgo();
         Integer numberOfOrdersFromLastYear = orderRepository.findNumberOfOrdersFromLastYear(dateYearAgo);
-        return (Double) (double) (numberOfOrdersFromLastYear / 12);
+        return (double) (numberOfOrdersFromLastYear / 12);
+    }
+    
+    public Double yearToYearPercentageChange() {
+    	return (double) findNumberOfOrdersFromLastYear()/findNumberOfOrdersFromPrevios365Days() * 100;
     }
 
     private LocalDate getLocalDateYearAgo() {
         return LocalDate.of(LocalDate.now().getYear() - 1, LocalDate.now().getMonth(), LocalDate.now().getDayOfMonth());
+    }
+    
+    private LocalDate getLocalDate2YearsAgo() {
+        return LocalDate.of(LocalDate.now().getYear() - 2, LocalDate.now().getMonth(), LocalDate.now().getDayOfMonth());
     }
 
 }
