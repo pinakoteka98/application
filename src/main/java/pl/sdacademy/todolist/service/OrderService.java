@@ -144,14 +144,12 @@ public class OrderService {
 
     public Double findMiddleOrderValueFromLastYear() {
         LocalDate dateYearAgo = getLocalDateYearAgo();
-        System.out.println("Średnia kwota zamówienia z ostatniego roku:" + orderRepository.findMiddleOrderValueFromLastYear(dateYearAgo));
         return orderRepository.findMiddleOrderValueFromLastYear(dateYearAgo);
     }
     
     public Double findMiddleOrderValueFromPreviousYear() {
         LocalDate dateYearAgo = getLocalDateYearAgo();
         LocalDate date2YearsAgo = getLocalDate2YearsAgo();
-        System.out.println("Średnia kwota zamówienia z poprzedniego roku:" + orderRepository.findMiddleOrderValueFromPreviousYear(date2YearsAgo, dateYearAgo));
         return orderRepository.findMiddleOrderValueFromPreviousYear(date2YearsAgo, dateYearAgo);
     }
 
