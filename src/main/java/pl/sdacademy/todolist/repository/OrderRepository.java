@@ -35,6 +35,9 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
 
     @Query("select avg(o.value) from Order o where o.dateOfOrder > :date")
     Double findMiddleOrderValueFromLastYear(LocalDate date);
+    
+    @Query("select avg(o.value) from Order o where o.dateOfOrder between :dateFrom and :dateTo")
+    Double findMiddleOrderValueFromPreviousYear(LocalDate dateFrom, LocalDate dateTo);
 
     @Query("select count (o) from Order o where o.dateOfOrder > :date")
     Integer findNumberOfOrdersFromLastYear(LocalDate date);
