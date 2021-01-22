@@ -105,7 +105,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-8 mx-auto">
-					<h2>Upload File Example</h2>
+					<h2>Zdjęcia z projektu</h2>
 					<p th:text="${message}"></p>
 					<form method="post" th:action="@{/upload/{id}(id=${orderId})}"
 						enctype="multipart/form-data">
@@ -118,6 +118,14 @@
 			</div>
 		</div>
 	</section>
+	<!-- <img th:src="@{/images/logo2020.png}" /> -->
+
+	<div th:each="photoName : ${photosNames}">
+		<a th:href="@{/image/{id}/{name}(id=${orderId},name=${photoName})}"
+			target="_blank"> 
+			<img th:src="@{/image/{id}/{name}(id=${orderId},name=${photoName})}" width="400" />
+		</a>
+	</div>
 
 	<div class="footer">
 		<div class="btn1 draw-border"
