@@ -85,8 +85,6 @@ public class PhotosController {
 	public byte[] getImage(@PathVariable Long orderId, @PathVariable String imageName) throws IOException {
 
 		File serverFile = new File(PARENT_DIR + orderId + "\\" + imageName);
-		System.out.println("Path:" + serverFile.getCanonicalPath());
-
 		return Files.readAllBytes(serverFile.toPath());
 	}
 
