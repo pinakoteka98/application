@@ -35,12 +35,12 @@ import lombok.RequiredArgsConstructor;
 @Controller
 public class PhotosController {
 
-	private final String PARENT_DIR = new File(System.getProperty("user.dir")).getParent() + "\\uploads\\";
+	private final String PARENT_DIR = new File(System.getProperty("user.dir")).getParent() + File.separator + "uploads" + File.separator;
 
 	@GetMapping("/edit/{id}/pics")
 	public String showPhotos(@PathVariable("id") Long id, Model model) {
 		File file;
-		String dir = PARENT_DIR + id + "\\";
+		String dir = PARENT_DIR + id + File.separator;
 		file = new File(dir);
 		if (!file.exists()) {
 			file.mkdirs();
@@ -65,7 +65,7 @@ public class PhotosController {
 		String fileName = StringUtils.cleanPath(mFile.getOriginalFilename());
 
 		try {
-			Path path = Paths.get(PARENT_DIR + id + "\\" + fileName);
+			Path path = Paths.get(PARENT_DIR + id + File.separator + fileName);
 			Files.copy(mFile.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -79,7 +79,7 @@ public class PhotosController {
 	public String deletePhoto(@PathVariable Long orderId, @PathVariable String imageName,
 			RedirectAttributes attributes) {
 		File file;
-		String dir = PARENT_DIR + orderId + "\\" + imageName;
+		String dir = PARENT_DIR + orderId + File.separator + imageName;
 		file = new File(dir);
 		attributes.addFlashAttribute("message", file.delete() 
 				? "You successfully deleted " + imageName + " file!"
@@ -90,7 +90,7 @@ public class PhotosController {
 	@GetMapping(value = "/image/{orderId}/{imageName}", produces = MediaType.IMAGE_JPEG_VALUE)
 	@ResponseBody
 	public ResponseEntity<Resource> download(@PathVariable Long orderId, @PathVariable String imageName) {
-		File serverFile = new File(PARENT_DIR + orderId + "\\" + imageName);
+		File serverFile = new File(PARENT_DIR + orderId + File.separator + imageName);
 		InputStream targetStream = null;
 		try {
 			targetStream = new FileInputStream(serverFile);
