@@ -15,7 +15,6 @@ import java.util.stream.Stream;
 
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -46,7 +45,8 @@ public class PhotosController {
 		if (!file.exists()) {
 			file.mkdirs();
 		}
-		Set<String> photosNames = Stream.of(new File(dir).listFiles()).filter(fileName -> !fileName.isDirectory())
+		Set<String> photosNames = Stream.of(new File(dir).listFiles())
+				.filter(fileName -> !fileName.isDirectory())
 				.map(File::getName).collect(Collectors.toSet());
 		model.addAttribute("photosNames", photosNames);
 		model.addAttribute("orderId", id);
@@ -81,16 +81,15 @@ public class PhotosController {
 		File file;
 		String dir = PARENT_DIR + orderId + "\\" + imageName;
 		file = new File(dir);
-		attributes.addFlashAttribute("message", file.delete() ? "You successfully deleted " + imageName + " file!"
+		attributes.addFlashAttribute("message", file.delete() 
+				? "You successfully deleted " + imageName + " file!"
 				: "File " + imageName + " does't exist or you don't have permission to delete");
 		return "redirect:/edit/" + orderId + "/pics";
 	}
 
-
 	@GetMapping(value = "/image/{orderId}/{imageName}", produces = MediaType.IMAGE_JPEG_VALUE)
 	@ResponseBody
-	public ResponseEntity<Resource> download(@PathVariable Long orderId, @PathVariable String imageName)
-			{
+	public ResponseEntity<Resource> download(@PathVariable Long orderId, @PathVariable String imageName) {
 		File serverFile = new File(PARENT_DIR + orderId + "\\" + imageName);
 		InputStream targetStream = null;
 		try {
