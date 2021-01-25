@@ -1,7 +1,10 @@
 package pl.sdacademy.todolist.controller;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -10,7 +13,12 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -38,8 +46,7 @@ public class PhotosController {
 		if (!file.exists()) {
 			file.mkdirs();
 		}
-		Set<String> photosNames = Stream.of(new File(dir).listFiles())
-				.filter(fileName -> !fileName.isDirectory())
+		Set<String> photosNames = Stream.of(new File(dir).listFiles()).filter(fileName -> !fileName.isDirectory())
 				.map(File::getName).collect(Collectors.toSet());
 		model.addAttribute("photosNames", photosNames);
 		model.addAttribute("orderId", id);
@@ -74,18 +81,25 @@ public class PhotosController {
 		File file;
 		String dir = PARENT_DIR + orderId + "\\" + imageName;
 		file = new File(dir);
-		attributes.addFlashAttribute("message", file.delete() 
-				? "You successfully deleted " + imageName + " file!"
-				: "File " + imageName + " not exists!");
+		attributes.addFlashAttribute("message", file.delete() ? "You successfully deleted " + imageName + " file!"
+				: "File " + imageName + " does't exist or you don't have permission to delete");
 		return "redirect:/edit/" + orderId + "/pics";
 	}
 
+
 	@GetMapping(value = "/image/{orderId}/{imageName}", produces = MediaType.IMAGE_JPEG_VALUE)
 	@ResponseBody
-	public byte[] getImage(@PathVariable Long orderId, @PathVariable String imageName) throws IOException {
-
+	public ResponseEntity<Resource> download(@PathVariable Long orderId, @PathVariable String imageName)
+			{
 		File serverFile = new File(PARENT_DIR + orderId + "\\" + imageName);
-		return Files.readAllBytes(serverFile.toPath());
+		InputStream targetStream = null;
+		try {
+			targetStream = new FileInputStream(serverFile);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		Resource resource = new InputStreamResource(targetStream);
+		return new ResponseEntity<>(resource, HttpStatus.OK);
 	}
 
 }
