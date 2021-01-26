@@ -20,7 +20,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/register").permitAll()
                 .antMatchers("/scheduleunlogged", "/confirmationunlogged", "/", "/index").anonymous()
                 .antMatchers("/menu").hasAnyRole("USER", "ADMIN")
-                .antMatchers("/addorder", "/orders", "/edit", "/services/all", "/services/all/**").hasRole("ADMIN")
+                .antMatchers("/addorder", "/orders", "/edit/**", "/upload/**", "/image/**", "/services/all", "/services/all/**").hasRole("ADMIN")
                 .antMatchers("/list/**", "/schedule", "/confirmation", "serviceaskconfirmation").hasRole("USER")
                 .antMatchers("/**/*.js", "/**/*.css").permitAll()
                 .antMatchers("/resources/**").permitAll()
