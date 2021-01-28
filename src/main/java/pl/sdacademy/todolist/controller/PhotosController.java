@@ -87,7 +87,7 @@ public class PhotosController {
 		file = new File(dir);
 		attributes.addFlashAttribute("message", file.delete() 
 				? "You successfully deleted " + imageName + " file!"
-				: "File " + imageName + " does't exist or you don't have permission to delete");
+				: "File " + imageName + " doesn't exist or you don't have permission to delete");
 		return "redirect:/edit/" + orderId + "/pics";
 	}
 
