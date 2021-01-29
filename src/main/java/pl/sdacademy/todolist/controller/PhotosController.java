@@ -31,17 +31,21 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.RequiredArgsConstructor;
+import pl.sdacademy.todolist.entity.Order;
+import pl.sdacademy.todolist.service.OrderService;
 
 @RequiredArgsConstructor
 @Controller
 public class PhotosController {
 
 	private final ResourceLoader resourceLoader;
+	private final OrderService orderService;
 	private final String PARENT_DIR = new File(System.getProperty("user.dir")).getParent() + File.separator + "uploads"
 			+ File.separator;
 	
 	@GetMapping("/edit/{id}/pics")
 	public String showPhotos(@PathVariable("id") Long id, Model model) {
+		Order order = orderService.find(id);
 		File file;
 		String dir = PARENT_DIR + id + File.separator;
 		file = new File(dir);
@@ -53,6 +57,7 @@ public class PhotosController {
 				.map(File::getName)
 				.collect(Collectors.toSet());
 		model.addAttribute("photosNames", photosNames);
+		model.addAttribute("orderNo", order.getOrderNo());
 		model.addAttribute("orderId", id);
 		return "photos";
 	}
