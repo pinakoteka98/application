@@ -21,6 +21,9 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
     Page<Order> findAll(Pageable pageable);
 
     Page<Order> findAllByPhoneNumber(Pageable pageable, String phoneNumber);
+    
+    @Query("SELECT o.orderNo FROM Order o WHERE o.id =:id")
+    String findOrderNoById(Long id);
 
     @SuppressWarnings("JpaQlInspection")
     @Query("SELECT o FROM Order o WHERE " +

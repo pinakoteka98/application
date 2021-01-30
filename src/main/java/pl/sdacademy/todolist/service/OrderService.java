@@ -181,5 +181,9 @@ public class OrderService {
     private LocalDate getLocalDate2YearsAgo() {
         return LocalDate.of(LocalDate.now().getYear() - 2, LocalDate.now().getMonth(), LocalDate.now().getDayOfMonth());
     }
+    
+    public String findOrderNoById(Long id) {
+    	return orderRepository.findOrderNoById(id);
+    };
 
 }
