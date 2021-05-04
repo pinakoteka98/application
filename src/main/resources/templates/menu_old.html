@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>menu</title>
+    <link href="../static/assets/css/style.css" rel="stylesheet" type="text/css" media="screen"
+          th:href="@{/static/assets/css/style.css}">
+    <link href="../static/assets/css/style.css" rel="stylesheet" type="text/css" media="screen"
+          th:href="@{/static/assets/css/main.css}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href='//lucas-rfgv.format.com/stylesheet.css?v=2019-10-30T10:05:15Z' media='screen' rel='stylesheet'
+          type='text/css'/>
+
+    <link href='https://static0.format.com/static/theme_api/v1/hosted_fonts-1fa30b0b16e206b04ff76bb76c5399ad06635e59d9fc2a338e015a0554cce89e.css'
+          media='screen' rel='stylesheet' type='text/css'/>
+
+    <link href='https://static1.format.com/static/theme_api/vendor/webtype_fonts.min-51d9b9edb8f956fb39da113609d790ba607fa4fbda053af8e378bb9233ef4a39.css'
+          media='screen' rel='stylesheet' type='text/css'/>
+
+    <link href='https://static2.format.com/static/theme_api/v1/share_panel-1a26721acae26eabd7c32296e2ee8cf053d1a1a8d9f7c49f0df899bc27b784c1.css'
+          media='screen' rel='stylesheet' type='text/css'/>
+
+    <link href='https://static1.format.com/static/theme_api/v1/protected_images-2fdc6f85260105ac58908b513a09aa9c124e2007c6d4cbe63b3778f16e3a88b9.css'
+          media='screen' rel='stylesheet' type='text/css'/>
+
+    <link href='https://static0.format.com/static/theme_api/v1/font-awesome.min-3149da3014aff38a256574aa7aa1b947387efee9cdc1fb2d39e234606f231c96.css'
+          media='screen' rel='stylesheet' type='text/css'/>
+
+    <link href='https://static1.format.com/static/theme_api/v1/theme_social-c985894a58f09ef7b4feca674406de2916e87cbbb58d420fff1ac15b709ac68c.css'
+          media='screen' rel='stylesheet' type='text/css'/>
+
+    <link href='https://static0.format.com/static/theme_api/v1/sales/cart-71d654c3aca9efaf7d54bb83a588db177f85a55f6d10afc1ecb96de9011222ee.css'
+          media='screen' rel='stylesheet' type='text/css'/>
+
+    <link href='https://static1.format.com/static/theme_api/v1/960_simple-80ab8eb2695abe415bd536608db207267db1a467f2841da1c01b06c3559dd9c6.css'
+          media='screen' rel='stylesheet' type='text/css'/>
+
+    <link href='https://static1.format.com/static/_common/animation-7fc12d665fca943072e7f3c6c84d756b935958c9d92f8a940de7dcfd69c2b253.css'
+          media='screen' rel='stylesheet' type='text/css'/>
+
+    <link href='https://static1.format.com/static/_common/contact_form-93a485ae0e43cbab1eeafa8172eb4cf0b2ff0c1265f036fe604ce7584c9dba90.css'
+          media='screen' rel='stylesheet' type='text/css'/>
+
+    <link href='https://static1.format.com/static/_common/modal_message-cd25c4ca398e1e31ca8276375f75a14991b41526bbfbeb42dbfa5d76d89cfce7.css'
+          media='screen' rel='stylesheet' type='text/css'/>
+
+    <style>
+        ._4ORMAT_content_page_row .btn {
+            font-family: "Planet Light", "Planet Light", sans-serif
+        }
+
+        ._4ORMAT_content_page_row .btn:hover {
+            border-color: rgba(85, 85, 85, 0.4) !important;
+            background: rgba(85, 85, 85, 0.03) !important;
+        }
+    </style>
+
+    <style>
+        #content_page_wrapper h2.xl-headline {
+            font-size: 21px;
+        }
+
+        @media screen and (max-width: 768px) {
+            #content_page_wrapper h2.xl-headline {
+                font-size: 18.2px;
+                width: 90%;
+
+            }
+
+
+            #content_page_wrapper .fourcol {
+                width: 100% !important;
+                float: none !important;
+                align-content: center;
+
+            }
+
+            .clickable {
+                display: block;
+                height: 120px;
+                text-decoration: none;
+            }
+
+            a {
+                color: #c12031 !important;
+            }
+
+            #test1, #test2, #test3 {
+
+                text-decoration: none;
+                line-height: 0;
+                font: 700 1.25rem 'Planet Light', sans-serif;
+                padding: 0.5em 0.5em;
+                letter-spacing: 0.05rem;
+
+            }
+
+        }
+
+        @media screen and (max-width: 768px) {
+
+            #content_page_wrapper ._4ORMAT_content_page_row {
+                padding-top: 0px !important;
+            }
+
+            #menu1, #menu2, #menu3 {
+                float: none;
+                margin: 20px !important;
+                margin-bottom: 10px !important;
+
+            }
+        }
+    </style>
+
+
+</head>
+<body class="
+    page_6001971
+    content
+    content_page
+
+    ">
+<!--<div th:replace="fragments :: header"></div>-->
+<!--<div th:replace="fragments :: language"></div>-->
+
+<div id="content">
+    <div class="container loaded">
+        <div class="_4ORMAT_content_wrapper" id="content_page_wrapper">
+            <div class="_4ORMAT_content_page_container _4ormat_sort">
+                <div class="_4ORMAT_content_page_row _4ormat_sort_item _4ORMAT_module_image_7"
+                     data-content-module-category="layout" data-content-module-template-id="18" style="padding-top: 0px !important; padding-bottom: 0px !important;">
+                    <div class=" align_center">
+
+
+                        <!--                      <div sec:authorize="hasRole('USER')">
+                                                  <div class="fourcol">
+                                                      <div class="btn1 draw-border" id="menu1">
+                                                          <a id="test1" th:href="@{/list/0}" class="clickable"
+                                                             style="width: auto">
+                                                              <br>Historia<br>zamówień
+                                                              <p style="margin-top: 20px; margin-bottom: 30px">sprawdź status zamówienia</p>
+                                                          </a>
+                                                      </div>
+                                                  </div>
+                                                  <div class="fourcol">
+                                                      <div class="btn1 draw-border" id="menu2">
+                                                          <a id="test2" th:href="@{/schedule}" class="clickable"><br>Rezerwacja<br>wizyty
+                                                              <p style="margin-top: 20px; margin-bottom: 30px">umów spotkanie online</p>
+                                                          </a>
+                                                      </div>
+                                                  </div>
+                                                  <div class="fourcol last">
+                                                      <div class="btn1 draw-border" id="menu3">
+                                                          <a id="test3" th:href="@{/services}" class="clickable"><br>Usługi<br>dodatkowe
+                                                              <p style="margin-top: 20px; margin-bottom: 30px">wyślij zapytanie</p>
+                                                          </a>
+                                                      </div>
+                                                  </div>
+                                              </div>-->
+
+                        <div sec:authorize="hasRole('ADMIN')"
+                             style="position: relative; vertical-align: middle; margin-left: 50px; margin-right: 50px">
+                            <div class="sixcol">
+                                <div style="height: 50px"></div>
+                                <div class="btn1 draw-border" id="menu4">
+                                    <a id="test4" class="clickable-admin"
+                                       th:href="@{/orders(page=0, sortcolumn=${'orderdate'}, ascdesc=${'desc'})}">Obsługa<br>zamówień
+                                        <p style="margin-top: 20px; margin-bottom: 20px">przeglądanie i edycja</p>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="sixcol last">
+                                <div style="height: 50px"></div>
+                                <div class="btn1 draw-border" id="menu5">
+                                    <a id="test5" th:href="@{/appointments}" class="clickable-admin">Kalendarz<br>spotkań
+                                        <p style="margin-top: 20px; margin-bottom: 20px">zobacz umówione wizyty</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
