@@ -3,7 +3,7 @@
 >
 <head>
     <meta charset="UTF-8">
-    <title>Kalendarz spotkań</title>
+    <title>appointments</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -13,19 +13,21 @@
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:200&display=swap" rel="stylesheet">
 
     <style>
-        .form-control {
-            border-radius: 0px !important;
+
+        body {
+            font-family: "Montserrat", sans-serif !important
         }
 
-        .btn {
-            border-radius: 0px !important;
+        .btn-primary {
+            background-color: #6675df !important;
+            border-color: transparent !important;
         }
 
-        .counter {
-            border-radius: 0px !important;
+        .btn-primary:hover {
+            background: #333333 !important;
         }
 
-        h1{
+       h1 {
             font-family: 'Montserrat', sans-serif;
             font-weight: lighter;
         }
@@ -67,7 +69,9 @@
 <body>
 <div class="container my-2">
     <div id="wrapper">
-        <h1 id="page-header-text" style="text-align: center; margin-top: 10px !important; margin-bottom: 15px !important; letter-spacing: 0.05rem; font-size: 40px; color: #c12031">APPOINTMENTS</h1>
+        <h1 id="page-header-text"
+            style="text-align: center; margin-top: 10px !important; margin-bottom: 15px !important; letter-spacing: 2px; font-size: 40px; color: #c12031">
+            APPOINTMENTS</h1>
         <div class="row">
             <div class="col-md-2 form-group" style="margin-bottom: 20px">
                 <form th:action="@{/leave}" method="get">
@@ -99,21 +103,14 @@
         <br>
         <div id="filter-wrapper" class="row">
             <div class="col-md-4 col-xs-12 button-left">
-                <button type="button" id="filter-day" class="btn btn-success">Show Current Day</button>
+                <button type="button" id="filter-day" class="btn btn-primary">Show Current Day</button>
             </div>
-            <div class="col-md-4 col-xs-12 button-center">
-                <button type="button" id="filter-month" class="btn btn-info">Show Current Month</button>
+            <div class="col-md-4 col-xs-12 button-left">
+                <button type="button" id="filter-month" class="btn btn-primary">Show Current Month</button>
             </div>
-            <div class="col-md-4 col-xs-12 button-right">
-                <button type="button" id="filter-year" class="btn btn-warning">Show Current Year</button>
+            <div class="col-md-4 col-xs-12 button-left">
+                <button type="button" id="filter-year" class="btn btn-primary">Show Current Year</button>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4 hidden-xs"></div>
-            <div class="col-md-4 col-xs-12 button-center">
-                <button type="button" id="clear-filter" class="btn btn-danger">Clear Filter Options</button>
-            </div>
-            <div class="col-md-4 hidden-xs"></div>
         </div>
     </div>
 </div>

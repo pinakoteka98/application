@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>obsługa zamówień</title>
+    <title>orders</title>
     <link href="../static/assets/css/orders.css" th:href="@{/static/assets/css/orders.css}" type="text/css"
           rel="stylesheet"/>
 
@@ -23,32 +23,21 @@
 
     <style>
 
+        .btn-primary {
+            background-color: #6675df !important;
+            border-color: transparent !important;
+        }
+
+        .btn-primary:hover {
+            background: #333333 !important;
+        }
+
         body {
             font-family: "Montserrat", sans-serif !important
         }
 
         form div {
             padding: 0px !important;
-        }
-
-        .form-control {
-            border-radius: 0px !important;
-        }
-
-        .btn {
-            border-radius: 0px !important;
-        }
-
-        .page-link {
-            border-radius: 0px !important;
-        }
-
-        .btn-focus {
-            color: white !important;
-        }
-
-        .counter {
-            border-radius: 0px !important;
         }
 
         body:not(.content) h2 {
@@ -60,10 +49,9 @@
             border-bottom: 1px solid #ddd
         }
 
-        .pagination>li>a {
-            color: grey !important;
+        .pagination>li>a, .pagination>li>span {
+            color: black !important;
         }
-
 
     </style>
 
@@ -75,7 +63,7 @@
     <div class="card" style="border: 0px">
         <div class="card-body">
             <h1 id="page-header-text"
-                style="text-align: center; margin-top: 10px !important; margin-bottom: 15px !important; letter-spacing: 0.05rem; font-size: 40px; font-weight: lighter !important; color: #c12031">
+                style="text-align: center; margin-top: 10px !important; margin-bottom: 15px !important; letter-spacing: 2px; font-size: 40px; font-weight: lighter !important; color: #c12031">
                 ORDERS</h1>
             <div id="header">
 

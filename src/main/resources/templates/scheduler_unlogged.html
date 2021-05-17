@@ -1,99 +1,47 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
-    <title>Rezerwacja wizyty</title>
-    <link rel="stylesheet" type="text/css" media="screen" href="../static/assets/css/site.css"
-          th:href="@{/static/assets/css/site.css}">
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
-            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script src="/static/assets/js/moment.js" type="text/javascript"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
+    <title>Rezerwacja wizyty</title>
 
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" media="screen"
-          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script src="../static/assets/js/moment.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="/static/assets/js/scheduler.js"></script>
+    <script type="text/javascript" src="../static/assets/js/scheduler.js"></script>
 
     <script type="text/javascript" src="../static/assets/js/ps-datapicker.min.js"></script>
 
     <link href="../static/assets/css/ps-datapicker.theme.min.css" rel="stylesheet" type="text/css" media="screen"
           th:href="@{/static/assets/css/ps-datapicker.theme.min.css}">
 
-    <style>
-        #content_page_wrapper .btn:hover {
-            border-color: #c12031 !important;
-            background: #fff !important;
-            color: #c12031 !important;
-            transition: 0.3s;
-        }
-    </style>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
-    <style>
-        #content_page_wrapper h2.xl-headline {
-            font-size: 21px;
-        }
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="../static/assets/bootstrap2/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css"
+          href="../static/assets/bootstrap2/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css"
+          href="../static/assets/bootstrap2/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="../static/assets/bootstrap2/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="../static/assets/bootstrap2/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="../static/assets/bootstrap2/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="../static/assets/bootstrap2/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css"
+          href="../static/assets/bootstrap2/vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="../static/assets/bootstrap2/css/util.css">
+    <link rel="stylesheet" type="text/css" href="../static/assets/bootstrap2/css/main.css">
+    <!--===============================================================================================-->
 
-        form div {
-            padding: 5px;
-        }
-
-        @media screen and (max-width: 768px) {
-            #content_page_wrapper h2.xl-headline {
-                font-size: 18.2px;
-            }
-
-            #content_page_wrapper .spacer {
-                width: 10% !important;
-                display: none !important;
-            }
-
-            #content_page_wrapper .last {
-                width: auto !important;
-                float: inherit !important;
-            }
-
-            #content_page_wrapper .twelvecol {
-                float: inherit !important;
-                margin-left: 15% !important;
-                margin-right: 15% !important;
-            }
-
-            #appts option {
-                width: 60px;
-            }
-
-            #content_page_wrapper fieldset {
-
-                float: right;
-            }
-
-        }
-    </style>
-    <style>
-        .form-group {
-            margin-bottom: 0rem;
-            margin-top: 0.5rem;
-        }
-
-        #content_page_wrapper .cancel-btn {
-            background: lightgray !important;
-            color: black !important;
-        }
-
-        #content_page_wrapper .cancel-btn:hover {
-            background: white !important;
-            color: black !important;
-            transition: 0.3s;
-        }
-
-        .btn {
-            margin-top: 0px !important;
-        }
-    </style>
 
 </head>
 
@@ -102,72 +50,69 @@
 <div id="content">
     <div class="container loaded">
         <div class="_4ORMAT_content_wrapper" id="content_page_wrapper">
-            <div style="padding-top: 0px"
-                 class="_4ORMAT_content_page_row _4ormat_sort_item _4ORMAT_module_contact_10">
 
-                <form class=" email_form" id="apptForm" data-editable-type="contact-form" name="contact_form_1"
-                      th:object="${appointment}" th:action="@{/confirmationunlogged}" method="post">
+            <form class=" email_form validate-form" id="apptForm" data-editable-type="contact-form"
+                  name="contact_form_1"
+                  th:object="${appointment}" th:action="@{/confirmationunlogged}" method="post">
 
-                    <div class="appointmentDataPicker">
-                        <input id="date" placeholder="Wybierz datę..." data-input="" type="text" readonly="readonly"
-                               style="background-color: white !important;" name="appointmentDate" value="" hidden>
-                        <div class="appointmentDataBox">
-                            <div class="ps-datapicker">
-                                <div class="navigation"></div>
-                                <div class="week"></div>
-                                <div class="month"></div>
-                            </div>
+                <div class="appointmentDataPicker">
+                    <input id="date" placeholder="Wybierz datę..." data-input="" type="text" readonly="readonly"
+                           style="background-color: white !important;" name="appointmentDate" value="" hidden>
+                    <div class="appointmentDataBox">
+                        <div class="ps-datapicker">
+                            <div class="navigation"></div>
+                            <div class="week"></div>
+                            <div class="month"></div>
                         </div>
+                    </div>
 
-                        <div class="appointmentTimeBox">
-                            <div class="appointmentTimeButtons" style="display: none;">
-                                <input id="Time_11" type="radio" value="11:00:00" name="appointmentTime"
-                                       style="display: none;" disabled>
-                                <label for="Time_11" onclick="">11:00</label>
-                                <input id="Time_13" type="radio" value="13:00:00" name="appointmentTime"
-                                       style="display: none;" disabled>
-                                <label for="Time_13" onclick="">13:00</label>
-                                <input id="Time_15" type="radio" value="15:00:00" name="appointmentTime"
-                                       style="display: none;" disabled>
-                                <label for="Time_15" onclick="">15:00</label>
-                            </div>
+                    <div class="appointmentTimeBox">
+                        <div class="appointmentTimeButtons">
+                            <input id="Time_11" type="radio" value="11:00:00" name="appointmentTime"
+                                   style="display: none;" disabled>
+                            <label for="Time_11" onclick="">11:00</label>
+                            <input id="Time_13" type="radio" value="13:00:00" name="appointmentTime"
+                                   style="display: none;" disabled>
+                            <label for="Time_13" onclick="">13:00</label>
+                            <input id="Time_15" type="radio" value="15:00:00" name="appointmentTime"
+                                   style="display: none;" disabled>
+                            <label for="Time_15" onclick="">15:00</label>
                         </div>
+                    </div>
+                </div>
 
+
+                <div class="appointmentDataPicker login100-form userName" style="display: none">
+					<span class="login100-form-title p-b-20">
+						WPROWADŹ SWOJE DANE
+					</span>
+
+                    <div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20 userName"
+                         data-validate="Uzupełnij pole">
+                        <input id="firstName" class="input100" type="text" name="firstName"
+                               placeholder="Imię i nazwisko">
+                        <span class="focus-input100"></span>
+                    </div>
+                    <div class="wrap-input100 rs2-wrap-input100 validate-input m-b-20 userPhone"
+                         data-validate="Uzupełnij pole">
+                        <input class="input100" type="text" id="phoneNumber" name="phoneNumber" pattern="[0-9]{9}"
+                               placeholder="Numer telefonu">
+                        <span class="focus-input100"></span>
                     </div>
 
-                    <div class="form-group userName" style="display: none;">
-                        <input class="_4ORMAT_module_contact_input form-control" id="firstName"
-                               name="firstName" type="text" placeholder="" required>
-                        <label class="form-control-placeholder" for="firstName">Podaj swoje imię</label>
-                        <div class="_4ORMAT_module_contact_label"></div>
+                    <div class="container-login100-form-btn submit">
+                        <button class="login100-form-btn" id="submitButton" type="submit">
+                            Zarezerwuj termin
+                        </button>
                     </div>
-                    <div class="form-group userPhone" style="display: none;">
-                        <input class="_4ORMAT_module_contact_input form-control" id="phoneNumber"
-                               name="phoneNumber" type="text" pattern="[0-9]{9}" placeholder="" required>
-                        <label class="form-control-placeholder" for="phoneNumber">Podaj numer telefonu (9 cyfr)</label>
-                        <div class="_4ORMAT_module_contact_label"></div>
-                    </div>
+                </div>
 
-                    <div class="appointment-button-group">
-                        <a th:href="@{/}" class="cancel-btn" style="display: none;">Anuluj</a>
-
-                        <fieldset class="submit _4ORMAT_module_submit" style="display: none;">
-                            <input class="btn primary _4ORMAT_module_contact_btn _4ORMAT_module_contact_input"
-                                   type="submit" value="Zarezerwuj termin" id="submitButton"
-                                   style="border-color: rgba(85, 85, 85, 0.3); float: right">
-                            </input>
-
-                            <div class="_4ORMAT_module_contact_label  " data-editable-type="label" id="label_4"
-                                 style="display:none;" data-force-html-mode="false">Zarezerwuj termin
-                            </div>
-                        </fieldset>
-
-                    </div>
-                </form>
-            </div>
+            </form>
         </div>
     </div>
 </div>
+
+
 
 <script th:inline="javascript">
     // const temp = [{"appointmentDate":"2020-04-14","appointmentTime":"11:00:00"}]
@@ -183,10 +128,11 @@
     })
     const appointmentDataInput = document.querySelector('.appointmentDataPicker input[name="appointmentDate"]');
     const appointmentTimeInput = document.querySelectorAll('.appointmentDataPicker input[name="appointmentTime"]');
-    const submitButton = document.querySelector('#apptForm fieldset.submit');
-    const cancelButton = document.querySelector('#apptForm .cancel-btn');
+    // const submitButton = document.querySelector('#apptForm fieldset.submit');
+    // const cancelButton = document.querySelector('#apptForm .cancel-btn');
     const userNameInput = document.querySelector('#apptForm .userName');
     const userPhoneInput = document.querySelector('#apptForm .userPhone');
+    const submitButton = document.querySelector('#apptForm .submit');
 
     appointmentTimeInput.forEach(item => {
         item.addEventListener('change', () => {
@@ -216,7 +162,7 @@
             return null;
         }
     })
-    const leaveDates = leave.map(date=>{
+    const leaveDates = leave.map(date => {
         return date.leaveDate;
     })
     const disableDates = appointmentsDates.concat(leaveDates);
@@ -246,8 +192,8 @@
             document.querySelector('.appointmentTimeButtons').removeAttribute('style');
             let selected = myCalendar.getDays();
             const splitDate = selected[0].split('-')
-            splitDate[1] = ('0'+splitDate[1]).slice(-2)
-            splitDate[2] = ('0'+splitDate[2]).slice(-2)
+            splitDate[1] = ('0' + splitDate[1]).slice(-2)
+            splitDate[2] = ('0' + splitDate[2]).slice(-2)
             selected = splitDate.join('-')
             appointmentTimeInput.forEach(checkBox => {
                 checkBox.disabled = true;
@@ -289,6 +235,29 @@
     })
 
 </script>
+
+<!--===============================================================================================-->
+<script src="../static/assets/bootstrap2/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+<script src="../static/assets/bootstrap2/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+<script src="../static/assets/bootstrap2/vendor/bootstrap/js/popper.js"></script>
+<script src="../static/assets/bootstrap2/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+<script src="../static/assets/bootstrap2/vendor/select2/select2.min.js"></script>
+<script>
+    $(".selection-2").select2({
+        minimumResultsForSearch: 20,
+        dropdownParent: $('#dropDownSelect1')
+    });
+</script>
+<!--===============================================================================================-->
+<script src="../static/assets/bootstrap2/vendor/daterangepicker/moment.min.js"></script>
+<script src="../static/assets/bootstrap2/vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+<script src="../static/assets/bootstrap2/vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+<script src="../static/assets/bootstrap2/js/main.js"></script>
 
 </body>
 
