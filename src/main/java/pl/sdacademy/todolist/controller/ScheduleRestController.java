@@ -2,21 +2,16 @@ package pl.sdacademy.todolist.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.web.bind.annotation.*;
 import pl.sdacademy.todolist.entity.Appointment;
 import pl.sdacademy.todolist.repository.AppointmentRepository;
 import pl.sdacademy.todolist.service.LeaveService;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
-import java.time.LocalDate;
-import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @RestController
@@ -30,18 +25,14 @@ public class ScheduleRestController {
     public String addNewAppointment(@ModelAttribute Appointment appointment) {
         try {
             appointmentRepository.save(appointment);
-            return "Appointment was added succesfully";
+            return "Appointment was added successfully";
         } catch (Exception ex) {
             return ex.getMessage();
         }
     }
 
     @GetMapping("/all")
-    public List<Appointment> getAllAppointments(Authentication authentication) {
-        Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
-        if (authorities.contains(new SimpleGrantedAuthority("ROLE_USER"))) {
-            return sortAppointments(appointmentRepository.findAll().stream().map(this::deleteUser).collect(Collectors.toList()));
-        }
+    public List<Appointment> getAllAppointments() {
         return sortAppointments(appointmentRepository.findAll());
     }
 
@@ -58,10 +49,10 @@ public class ScheduleRestController {
         }
     }
 
-    private Appointment deleteUser(Appointment appointment){
-         appointment.setUser(null);
-         appointment.setFirstName(null);
-         return appointment;
+    private Appointment deleteUser(Appointment appointment) {
+        appointment.setUser(null);
+        appointment.setFirstName(null);
+        return appointment;
     }
 
     private List<Appointment> sortAppointments(List<Appointment> appointments) {
@@ -73,7 +64,7 @@ public class ScheduleRestController {
     @PostMapping("/add-leave")
     public String addLeave(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate leaveDate) {
         try {
-            leaveService.addLeave( Date.valueOf(leaveDate));
+            leaveService.addLeave(Date.valueOf(leaveDate));
             return "Leave was added successfully<br><a href=\"/leave\" > Back</a>";
         } catch (Exception ex) {
             return ex.getMessage();
@@ -83,8 +74,8 @@ public class ScheduleRestController {
     @PostMapping("/delete-leave")
     public String deleteLeave(@RequestParam(required = false) String[] deleteIds) {
         try {
-            if(deleteIds!=null){
-                for (String id : deleteIds){
+            if (deleteIds != null) {
+                for (String id : deleteIds) {
                     leaveService.deleteLeave(Long.parseLong(id));
                 }
                 return "Leave was removed successfully<br><a href=\"/leave\" > Back</a>";

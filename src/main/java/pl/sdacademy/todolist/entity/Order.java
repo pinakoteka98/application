@@ -35,6 +35,9 @@ public class Order {
     @Enumerated(EnumType.STRING)
     private Nickname nickname;
 
+    @Enumerated(EnumType.STRING)
+    private BindingWorkshop bindingWorkshop;
+
     @NotNull
     private String phoneNumber;
 

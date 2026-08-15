@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>logowanie</title>
+
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!--===============================================================================================-->
+
+</head>
+
+<body class="task-login action-none">
+<div id="layout">
+    <div id="layout-content" class="selected no-navbar" role="main"
+         style="text-align: center; width: 100%; display: block">
+        <img src="../images/logo2020.png"
+             style="display: inline-block; position: relative; top: 15vh;max-height: 140px; vertical-align: middle; text-align: center">
+
+        <form class=" email_form needs-validation" data-editable-type="contact-form" id="login-form"
+              name="login-form"
+              style="max-width: 320px; margin: 0 auto; top: 20vh; position: relative"
+              th:action="@{/login}" method="post" novalidate>
+
+            <!--                                <input type="hidden" name="_token" value="gjx3yXYDsdUSPzFxlSG3l6pPUWmoOvb2">-->
+            <!--                                <input type="hidden" name="_task" value="login">-->
+            <!--                                <input type="hidden" name="_action" value="login">-->
+            <!--                                <input type="hidden" name="_timezone" id="rcmlogintz" value="_default_">-->
+            <!--                                <input type="hidden" name="_url" id="rcmloginurl" value="">-->
+
+            <table>
+                <tbody>
+                <tr class="form-group row">
+                    <td class="title" style="display: none">
+                        <label for="username">E-mail lub login</label>
+                    </td>
+                    <td class="input input-group input-group-lg">
+                                        <span class="input-group-prepend">
+                                            <i class="input-group-text icon user"></i>
+                                        </span>
+                        <input name="login" id="username" required size="40" autocapitalize="off" autocomplete="off"
+                               type="text" th:value="${login}"
+                               style="border-color: rgba(85, 85, 85, 0.3); border-bottom-width: 1px !important;"
+                               placeholder="" required></td>
+                </tr>
+
+                <tr class="form-group row">
+                    <td class="title" style="display: none">
+                        <label for="password">Hasło</label>
+                    </td>
+                    <td class="input input-group input-group-lg">
+                                        <span class="input-group-prepend">
+                                            <i class="input-group-text icon pass"></i>
+                                        </span>
+                        <input name="password" id="password" required size="40" autocapitalize="off" autocomplete="off"
+                               type="password" style="border-color: rgba(85, 85, 85, 0.3); border-bottom-width: 1px"
+                               placeholder="" required>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <p class="formbuttons">
+                <button type="submit" id="submitButton"
+                        class="button mainaction submit btn btn-primary btn-lg text-uppercase w-100">Zaloguj
+                </button>
+            </p>
+
+        </form>
+
+
+    </div>
+</div>
+
+<script>
+    $(function () {
+        rcmail.init();
+    });
+</script>
+
+
+<script src="../static/assets/js/bootstrap.bundle.min.js?s=1617039239"></script>
+<script src="../static/assets/js/ui.js?s=1617038873"></script>
+
+<!--<script src='https://static0.format.com/static/theme_api/v1/4ormat-7ec6872c8e665780eead7b027e2aa66fb06142caecd57b86359163172bf23497.js'-->
+<!--        type='text/javascript'></script>-->
+
+<!--<script src='https://static1.format.com/static/content_page-7e22221e690c345db9ee0a88104312831204bb61ca799fef76d3efce37ac8339.js'-->
+<!--        type='text/javascript'></script>-->
+
+<!--<script src='https://static0.format.com/static/_common/large_headline_shim-04d68b28db57598de64ddcbb8e143b86b89b4c6df47f86593d938b79c18c3bc7.js'-->
+<!--        type='text/javascript'></script>-->
+
+<!--<script src='https://static0.format.com/static/_common/contact_form-a6ae6c621dd884249e13a9fda7c5f28191902db17a4cfd926b19c696fc4bd309.js'-->
+<!--        type='text/javascript'></script>-->
+
+<!--<script src='https://static0.format.com/static/_common/colour_adjustments-007e264abb344638134a759453f16bebc5b209ed13f19f078cf0fd5f5c676be7.js'-->
+<!--        type='text/javascript'>-->
+
+<script>
+
+    (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+
+</script>
+<script>
+    var textWrapper = document.querySelector('.ml12');
+    textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+    anime.timeline({loop: true})
+        .add({
+            targets: '.ml12 .letter',
+            translateX: [0, -30],
+            opacity: [1, 0],
+            easing: "easeInExpo",
+            duration: 1100,
+            delay: (el, i) => 100 + 30 * i
+        })
+        .add({
+            targets: '.ml12 .letter',
+            translateX: [40, 0],
+            translateZ: 0,
+            opacity: [0, 1],
+            easing: "easeOutExpo",
+            duration: 1200,
+            delay: (el, i) => 500 + 30 * i
+        });
+</script>
+
+</body>
+</html>

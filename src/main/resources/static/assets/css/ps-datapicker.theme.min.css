@@ -4,6 +4,16 @@
   appearance: none !important;
 }
 
+fieldset {
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+  padding:0px;
+  border: 0px;
+  max-width:460px;
+  width: 100%;
+}
+
 .ps-datapicker {
   width: 100%;
   margin: 0 auto;
@@ -107,13 +117,13 @@
 }
 
 .appointmentTimeButtons {
-  margin: 0 auto;
+  margin-top: 15px;
   display: flex;
   justify-content: space-evenly;
 }
 
 #content_page_wrapper .appointmentTimeButtons label {
-  width: 120px;
+  width: 150px;
   height: auto;
   font-size: 1.4rem;
   padding: 10px 0;
@@ -141,6 +151,7 @@
   margin: 0 auto;
   display: flex;
   justify-content: space-evenly;
+
 }
 
 @media screen and (max-width: 768px) {
@@ -207,16 +218,12 @@
   text-align: center;
 }
 
-#apptForm .submit._4ORMAT_module_submit {
-  width: fit-content;
-}
-
-#apptForm .submit._4ORMAT_module_submit input {
+.submit._4ORMAT_module_submit input {
   background-color: #c12031;
   color: white;
 }
 
-#apptForm .submit._4ORMAT_module_submit input:hover {
+.submit._4ORMAT_module_submit input:hover {
   background-color: transparent;
   color: #c12031;
   border-color: #c12031;
@@ -237,10 +244,6 @@
 
 #apptForm .form-control:focus+.form-control-placeholder, #apptForm .form-control:valid+.form-control-placeholder {
   font-size: 75%;
-  transform: translate3d(0, -110%, 0);
+  transform: translate3d(0, -140%, 0);
   opacity: 1;
-}
-
-#content_page_wrapper fieldset {
-  width: auto!important;
 }

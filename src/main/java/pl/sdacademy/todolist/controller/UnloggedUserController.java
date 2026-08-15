@@ -46,7 +46,7 @@ public class UnloggedUserController {
         appointment.setUser(user);
         appointmentService.save(appointment);
         int hour = appointment.getAppointmentTime().toLocalTime().getHour();
-        emailService.sendMessage("cornholio@wp.pl", "Masz nowe spotkanie umowione na dzień " + appointment.getAppointmentDate() + ", na godzinę " + hour
+        emailService.sendMessage("imac@wp.pl", "Masz nowe spotkanie umowione na dzień " + appointment.getAppointmentDate() + ", na godzinę " + hour
                 + ".\nImię Klienta: " + appointment.getFirstName() + "\nTelefon: " + user.getPhoneNumber() + "\nWIZYTA UMÓWIONA BEZ LOGOWANIA.", MessageType.MAIL_ADMIN);
         model.addAttribute(appointment);
         return "confirmation";

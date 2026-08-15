@@ -55,11 +55,13 @@ public class UserService {
     }
 
     public User createOrGetUser(String phoneNumber) {
-        Role role = roleRepository.findByRole("USER");
         Optional<User> existingUser = findUserByPhoneNumber(phoneNumber);
         User user = existingUser.orElseGet(User::new);
+        if (user.getRoles() == null || user.getRoles().isEmpty()) {
+            Role role = roleRepository.findByRole("USER");
+            user.setRoles(Collections.singleton(role));
+        }
         user.setPhoneNumber(phoneNumber);
-        user.setRoles(Collections.singleton(role));
         return user;
     }
 }

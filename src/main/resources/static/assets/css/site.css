@@ -1,3 +1,7 @@
+body {
+    font-family: "Planet Light", sans-serif;
+}
+
 #content_page_wrapper input{
     border-bottom-width: 1px !important;
 }
@@ -62,3 +66,35 @@ input[type="text"]:valid::before {
     content: "" !important;
 }
 
+.ps-datapicker .day { padding: 0.5em 0!important; }
+
+
+
+#apptForm .userName input {
+    max-width: 460px;
+    height: 32px;
+    width: 100%;
+    border: 1px solid #dedede;
+    padding: 5px 10px;
+}
+
+#apptForm .userPhone input {
+    max-width: 460px;
+    height: 32px;
+    width: 100%;
+    border: 1px solid #dedede;
+    padding: 5px 10px;
+
+}
+
+
+#apptForm input::-webkit-input-placeholder { color: #d1d1d1; }
+#apptForm input::-moz-placeholder { color: #d1d1d1; }
+#apptForm input:-ms-input-placeholder { color: #d1d1d1; }
+#apptForm input:-moz-placeholder { color: #d1d1d1; }
+
+.appointment-button-group { justify-content: normal; width: 100%; max-width: 460px; }
+
+.submit _4ORMAT_module_submit {
+    border: 0;
+}
